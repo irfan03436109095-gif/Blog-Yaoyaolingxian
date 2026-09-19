@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="default">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>sing-box 配置报错怎么办？版本兼容、检查与迁移流程 · 遥遥领先</title>
+<meta name="description" content="sing-box 升级后出现配置错误时，先核对内核版本、配置格式与迁移说明。本文提供备份、检查、最小修改和恢复验证流程。">
+<meta name="keywords" content="sing-box,客户端兼容,故障排查">
+<meta name="robots" content="index,follow,max-image-preview:large"><link rel="canonical" href="https://www.yaoyaolingxian.blog/posts/sing-box-config-compatibility/">
+<meta property="og:title" content="sing-box 配置报错怎么办？版本兼容、检查与迁移流程">
+<meta property="og:description" content="sing-box 升级后出现配置错误时，先核对内核版本、配置格式与迁移说明。本文提供备份、检查、最小修改和恢复验证流程。">
+<meta property="og:url" content="https://www.yaoyaolingxian.blog/posts/sing-box-config-compatibility/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="遥遥领先">
+<meta property="og:locale" content="zh_CN">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="sing-box 配置报错怎么办？版本兼容、检查与迁移流程">
+<meta name="twitter:description" content="sing-box 升级后出现配置错误时，先核对内核版本、配置格式与迁移说明。本文提供备份、检查、最小修改和恢复验证流程。">
+
+<meta name="author" content="王牌飞行员"><meta property="article:published_time" content="2026-09-20T00:40:45&#43;08:00"><meta property="article:modified_time" content="2026-09-20T00:41:02&#43;08:00"><meta property="article:tag" content="客户端兼容"><meta property="article:tag" content="故障排查"><meta property="article:tag" content="sing-box">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@id":"https://www.yaoyaolingxian.blog/posts/sing-box-config-compatibility/#article","@type":"BlogPosting","author":{"@type":"Person","name":"王牌飞行员"},"dateModified":"2026-09-20T00:41:02+08:00","datePublished":"2026-09-20T00:40:45+08:00","description":"sing-box 升级后出现配置错误时，先核对内核版本、配置格式与迁移说明。本文提供备份、检查、最小修改和恢复验证流程。","headline":"sing-box 配置报错怎么办？版本兼容、检查与迁移流程","inLanguage":"zh-CN","mainEntityOfPage":{"@id":"https://www.yaoyaolingxian.blog/posts/sing-box-config-compatibility/","@type":"WebPage"},"url":"https://www.yaoyaolingxian.blog/posts/sing-box-config-compatibility/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://www.yaoyaolingxian.blog/","name":"遥遥领先","position":1},{"@type":"ListItem","item":"https://www.yaoyaolingxian.blog/posts/sing-box-config-compatibility/","name":"sing-box 配置报错怎么办？版本兼容、检查与迁移流程","position":2}]}]}</script>
+
+<script>(()=>{let mode='system';try{const saved=localStorage.getItem('reader-theme');if(['system','light','dark'].includes(saved))mode=saved}catch{}const root=document.documentElement;root.dataset.colorMode=mode;root.classList.toggle('dark',mode==='dark'||(mode==='system'&&matchMedia('(prefers-color-scheme: dark)').matches))})();</script>
+<link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/style.css">
+<link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/advertisements.css">
+<link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/search.css"><script defer src="https://www.yaoyaolingxian.blog/assets/theme/search.js"></script>
+
+<link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/viewer.css">
+<link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/reader.css">
+<link rel="icon" href="https://www.yaoyaolingxian.blog/assets/theme/favicon.svg" type="image/svg+xml">
+
+<script defer src="https://www.yaoyaolingxian.blog/assets/theme/theme.js"></script>
+<script defer src="https://www.yaoyaolingxian.blog/assets/theme/reader.js"></script>
+<script defer src="https://www.yaoyaolingxian.blog/assets/theme/viewer.js"></script>
+<script defer src="https://www.yaoyaolingxian.blog/assets/theme/image-viewer.js"></script>
+
+<script defer src="https://www.yaoyaolingxian.blog/assets/theme/interactions.js"></script>
+
+
+
+</head>
+
+<body class="article-page">
+
+<a class="skip" href="#main">跳到正文</a>
+
+<header class="site-header">
+<div class="header-inner">
+<a class="brand" href="https://www.yaoyaolingxian.blog/"><span>遥遥领先</span></a>
+<nav id="site-navigation" aria-label="站点导航"><a href="https://www.yaoyaolingxian.blog/">首页</a><a href="https://www.yaoyaolingxian.blog/posts/airport-recommendation-guide/">机场推荐</a><a href="https://www.yaoyaolingxian.blog/categories/buying-guides/">选购指南</a><a href="https://www.yaoyaolingxian.blog/categories/client-guides/">客户端教程</a><a href="https://www.yaoyaolingxian.blog/categories/protocols-network/">协议与网络</a><a href="https://www.yaoyaolingxian.blog/categories/troubleshooting/">常见问题</a><a href="https://www.yaoyaolingxian.blog/categories/privacy-security/">隐私安全</a></nav>
+<a class="search-toggle" href="https://www.yaoyaolingxian.blog/search/" data-open-dialog="search-dialog" aria-haspopup="dialog" aria-controls="search-dialog" aria-label="搜索" title="搜索"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5"/></svg></a>
+<button id="theme-mode" class="theme-toggle theme-cycle" type="button" aria-label="明暗模式：跟随系统，点击切换为明亮" title="跟随系统 · 点击切换为明亮">
+<svg class="theme-icon-system" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>
+<svg class="theme-icon-moon" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.2 15.5A8.5 8.5 0 0 1 8.5 3.8 8.5 8.5 0 1 0 20.2 15.5Z"/></svg>
+<svg class="theme-icon-sun" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+</button>
+<span id="theme-mode-status" class="visually-hidden" role="status" aria-live="polite"></span>
+<button id="menu-toggle" class="menu-toggle" type="button" aria-controls="site-navigation" aria-expanded="false" aria-label="打开菜单" title="打开菜单">
+<svg class="menu-icon-open" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+<svg class="menu-icon-close" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="m6 6 12 12M6 18 18 6"/></svg>
+</button>
+</div>
+</header>
+
+<div class="article-viewport"><div class="article-scroll">
+<main id="main" tabindex="-1" class="shell article-shell" data-has-toc="true">
+
+<nav class="breadcrumbs" aria-label="面包屑导航"><ol><li><a href="https://www.yaoyaolingxian.blog/">遥遥领先</a></li><li><span aria-current="page">sing-box 配置报错怎么办？版本兼容、检查与迁移流程</span></li></ol></nav>
+
+
+
+<article data-pagefind-body>
+<header class="article-header">
+<div class="eyebrow" data-pagefind-ignore>文章</div>
+<h1 data-pagefind-meta="title">sing-box 配置报错怎么办？版本兼容、检查与迁移流程</h1>
+<div class="metadata" data-pagefind-ignore><span>王牌飞行员</span><time datetime="2026-09-20T00:40:45&#43;08:00">2026-09-20</time></div>
+<div class="chips" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/categories/client-guides/">客户端教程</a></div>
+</header>
+<div class="prose"><p>sing-box 配置能否使用，取决于配置内容与实际运行版本是否匹配。网上的示例即使来自曾经可用的教程，也不保证适合当前版本。遇到启动报错，先辨认版本与错误位置，通常比随机删除字段更有效。</p>
+<h2 id="heading">区分客户端界面和实际内核</h2>
+<p>某些图形客户端会内置或调用 sing-box。界面应用的版本号，与它实际运行的内核版本可能不同。检查时记录两者，尤其不要只写“已经升级最新版”。</p>
+<p>还要确认得到的是完整配置、某个片段，还是客户端需要转换的订阅。sing-box 官方配置采用 JSON；把其他客户端格式直接改成 <code>.json</code> 扩展名，并不会自动完成转换。<a href="https://sing-box.sagernet.org/configuration/">sing-box 配置介绍</a></p>
+<h2 id="heading-1">先备份，再确定失败阶段</h2>
+<p>保留最后可用的配置和版本信息。将错误分成三类：文件解析失败、字段或结构不支持、配置通过但运行连接失败。第一类先检查格式，第二类对照版本文档，第三类再检查网络与认证。</p>
+<p>不要在配置尚未成功加载时，把时间花在更换节点地区或 DNS 上。此时代理流程可能根本没有开始运行。</p>
+<h2 id="heading-2">用官方检查能力发现结构问题</h2>
+<p>官方文档提供 <code>sing-box check</code> 检查命令。对于命令行用户，应按所用版本帮助确认配置路径；对于图形客户端用户，优先使用界面提供的检查和日志功能。<a href="https://sing-box.sagernet.org/configuration/">配置检查说明</a></p>
+<p>检查通过只说明相应配置检查没有发现问题，不等于远端服务器可达，也不等于目标应用已走预期路由。仍需做真实访问验证。</p>
+<h2 id="--">迁移时按“旧版本 → 新版本”阅读</h2>
+<p>到<a href="https://sing-box.sagernet.org/migration/">官方迁移指南</a>查找自己跨越的版本段，只处理与现有配置相关的变化。不要把文档中用于解释旧行为的代码，当作推荐的新配置重新复制。</p>
+<p>建议每次修改一类问题：先修正首个阻止加载的字段，重新检查，再处理下一个报错。保存修改说明，便于确定哪一步恢复了行为。</p>
+<h2 id="heading-3">一份可复用的问题记录</h2>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>应记录的内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>环境</td>
+<td>操作系统、客户端版本、内核版本</td>
+</tr>
+<tr>
+<td>配置来源</td>
+<td>官方示例、服务方订阅或自己的配置</td>
+</tr>
+<tr>
+<td>变更</td>
+<td>更新了哪一部分，之前是否可用</td>
+</tr>
+<tr>
+<td>错误</td>
+<td>字段名、错误类型和必要的上下文</td>
+</tr>
+<tr>
+<td>结果</td>
+<td>配置是否加载，目标请求是否成功</td>
+</tr>
+</tbody>
+</table>
+<p>分享记录时删除密码、UUID、订阅令牌和无关个人信息，不要上传完整生产配置。</p>
+<h2 id="heading-4">何时需要联系提供方</h2>
+<p>如果错误来自远程订阅每次都会重新生成的字段，联系订阅提供方确认适配版本，通常比不断在本地临时修改更可维护。说明实际内核版本和最小错误片段，不必发送整个账号配置。</p>
+<p>相关内容：<a href="/posts/proxy-protocol-comparison/">协议兼容指南</a>、<a href="/posts/subscription-update-errors/">订阅更新失败</a>。</p>
+</div>
+
+<div class="article-tags" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/tags/client-compatibility/"># 客户端兼容</a><a href="https://www.yaoyaolingxian.blog/tags/troubleshooting/"># 故障排查</a><a href="https://www.yaoyaolingxian.blog/tags/sing-box/"># sing-box</a></div>
+<nav class="pagination" aria-label="相邻文章" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/posts/subscription-update-errors/">← 上一篇</a><a href="https://www.yaoyaolingxian.blog/posts/clash-verge-rev-guide/">下一篇 →</a></nav>
+
+</article>
+
+<div class="article-rail">
+<aside class="toc"><div>本篇目录</div><nav aria-label="文章目录"><a class="level-2" href="#heading">区分客户端界面和实际内核</a><a class="level-2" href="#heading-1">先备份，再确定失败阶段</a><a class="level-2" href="#heading-2">用官方检查能力发现结构问题</a><a class="level-2" href="#--">迁移时按“旧版本 → 新版本”阅读</a><a class="level-2" href="#heading-3">一份可复用的问题记录</a><a class="level-2" href="#heading-4">何时需要联系提供方</a></nav></aside>
+</div>
+
+</main>
+</div>
+
+<button id="back-to-top" class="back-to-top" type="button" aria-label="返回顶部" title="返回顶部" hidden>
+<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h14M12 20V8m-5 5 5-5 5 5"/></svg>
+</button>
+</div>
+
+<footer class="site-footer">
+
+<span>© @遥遥领先 2026</span>
+</footer>
+
+
+
+<dialog id="search-dialog" class="reader-dialog site-search" aria-labelledby="search-title" data-reader-dialog data-pagefind-ignore>
+<header class="reader-dialog-header"><h2 id="search-title">搜索文章</h2><button class="dialog-close" type="button" data-close-dialog aria-label="关闭搜索" title="关闭搜索">×</button></header>
+<div class="reader-dialog-body">
+
+<div id="site-search-ui" data-module="https://www.yaoyaolingxian.blog/pagefind/pagefind-component-ui.js" data-stylesheet="https://www.yaoyaolingxian.blog/pagefind/pagefind-component-ui.css" hidden>
+
+<pagefind-config bundle-path="https://www.yaoyaolingxian.blog/pagefind/" base-url="https://www.yaoyaolingxian.blog/" lang="zh-cn" no-worker></pagefind-config>
+<pagefind-input placeholder="搜索文章标题或正文"></pagefind-input>
+<pagefind-summary></pagefind-summary>
+<pagefind-results></pagefind-results>
+</div>
+<p id="search-status" class="search-status" role="status">正在加载搜索…</p>
+<button id="search-retry" class="button" type="button" hidden>重新加载</button>
+
+</div>
+</dialog>
+
+
+
+</body>
+</html>
