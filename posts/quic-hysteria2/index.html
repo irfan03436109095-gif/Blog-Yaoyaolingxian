@@ -30,7 +30,7 @@
 <link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/viewer.css">
 <link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/reader.css">
 <link rel="icon" href="https://www.yaoyaolingxian.blog/assets/media/52ff4036-42cb-4679-a721-9a08d1816c48.png">
-
+<link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/artalk.css"><script defer src="https://www.yaoyaolingxian.blog/assets/theme/artalk.js"></script>
 <script defer src="https://www.yaoyaolingxian.blog/assets/theme/theme.js"></script>
 <script defer src="https://www.yaoyaolingxian.blog/assets/theme/reader.js"></script>
 <script defer src="https://www.yaoyaolingxian.blog/assets/theme/viewer.js"></script>
@@ -75,7 +75,7 @@
 <header class="article-header">
 <div class="eyebrow" data-pagefind-ignore>文章</div>
 <h1 data-pagefind-meta="title">Hysteria 2 与 QUIC 是什么？UDP 网络下的适用条件与排查</h1>
-<div class="metadata" data-pagefind-ignore><span>王牌飞行员</span><time datetime="2026-09-20T00:37:49&#43;08:00">2026-09-20</time></div>
+<div class="metadata" data-pagefind-ignore><span>王牌飞行员</span><time datetime="2026-09-20T00:37:49&#43;08:00">2026-09-20</time><span><span id="page-views">—</span> 次阅读</span></div>
 <div class="chips" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/categories/protocols-network/">协议与网络</a></div>
 </header>
 <div class="prose"><p>看到机场提供 Hysteria 2 节点时，先确认客户端支持，并检查当前网络能否正常承载所需的 UDP 通信。它值得测试，但不能仅凭协议名称预测速度，也不适合用一句“UDP 一定快”概括。</p>
@@ -120,10 +120,15 @@
 <p>如果设备兼容、网络允许，且真实任务测试表现良好，它可以成为候选方案。若主要使用环境对 UDP 表现不佳，保留另一种可用连接方式更有实用价值。最终结论应写成“在我的环境下更适合”，而不是“所有环境都更快”。</p>
 <p>继续阅读<a href="/posts/proxy-protocol-comparison/">协议兼容指南</a>和<a href="/posts/airport-speed-test/">机场测速方法</a>。</p>
 </div>
-
+<div class="article-likes" data-pagefind-ignore>
+<button id="page-like" class="like-button" type="button" aria-pressed="false" aria-describedby="page-like-message" disabled>
+<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/></svg>
+<span id="page-like-label">点赞</span><span id="page-like-count">—</span>
+</button><p id="page-like-message" role="status"></p>
+</div>
 <div class="article-tags" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/tags/network-performance/"># 网络性能</a><a href="https://www.yaoyaolingxian.blog/tags/proxy-protocols/"># 代理协议</a><a href="https://www.yaoyaolingxian.blog/tags/quic/"># QUIC</a></div>
 <nav class="pagination" aria-label="相邻文章" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/posts/proxy-dns-explained/">← 上一篇</a><a href="https://www.yaoyaolingxian.blog/posts/proxy-protocol-comparison/">下一篇 →</a></nav>
-
+<section class="comments-section" data-pagefind-ignore><h2>评论</h2><div id="comments"></div></section>
 </article>
 
 <div class="article-rail">
@@ -162,7 +167,7 @@
 </div>
 </dialog>
 
-
+<script id="blog-comments-config" type="application/json">{"comments":true,"likes":true,"locale":"zh-CN","pageKey":"/p/9584ac0e-e1f1-4a3c-b201-c182915d816e/","pageTitle":"Hysteria 2 与 QUIC 是什么？UDP 网络下的适用条件与排查","server":"https://upfqpobmiewm.sealosgzg.site","site":"xblog-f49c63bc-e1a5-4cf0-b2f5-6e9bc109b533","views":true,"viewsBase":0}</script>
 
 </body>
 </html>
