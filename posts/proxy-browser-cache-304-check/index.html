@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="default">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>换了机场节点网页还是旧内容？缓存与304响应的排查方法 · 遥遥领先</title>
+<meta name="description" content="换机场节点后仍看到旧页面怎么查？从完整URL、304响应、浏览器缓存和独立会话对照入手，区分内容陈旧与代理连接失败。">
+<meta name="keywords" content="网页缓存,304响应,机场代理排查">
+<meta name="robots" content="index,follow,max-image-preview:large"><link rel="canonical" href="https://www.yaoyaolingxian.blog/posts/proxy-browser-cache-304-check/">
+<meta property="og:title" content="换了机场节点网页还是旧内容？缓存与304响应的排查方法">
+<meta property="og:description" content="换机场节点后仍看到旧页面怎么查？从完整URL、304响应、浏览器缓存和独立会话对照入手，区分内容陈旧与代理连接失败。">
+<meta property="og:url" content="https://www.yaoyaolingxian.blog/posts/proxy-browser-cache-304-check/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="遥遥领先">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.yaoyaolingxian.blog/assets/media/52ff4036-42cb-4679-a721-9a08d1816c48.png"><meta property="og:image:alt" content="遥遥领先">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="换了机场节点网页还是旧内容？缓存与304响应的排查方法">
+<meta name="twitter:description" content="换机场节点后仍看到旧页面怎么查？从完整URL、304响应、浏览器缓存和独立会话对照入手，区分内容陈旧与代理连接失败。">
+<meta name="twitter:image" content="https://www.yaoyaolingxian.blog/assets/media/52ff4036-42cb-4679-a721-9a08d1816c48.png">
+<meta name="author" content="王牌飞行员"><meta property="article:published_time" content="2026-09-23T13:30:47&#43;08:00"><meta property="article:modified_time" content="2026-09-23T13:31:53&#43;08:00"><meta property="article:tag" content="新手入门"><meta property="article:tag" content="网络性能"><meta property="article:tag" content="故障排查">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@id":"https://www.yaoyaolingxian.blog/posts/proxy-browser-cache-304-check/#article","@type":"BlogPosting","author":{"@type":"Person","name":"王牌飞行员"},"dateModified":"2026-09-23T13:31:53+08:00","datePublished":"2026-09-23T13:30:47+08:00","description":"换机场节点后仍看到旧页面怎么查？从完整URL、304响应、浏览器缓存和独立会话对照入手，区分内容陈旧与代理连接失败。","headline":"换了机场节点网页还是旧内容？缓存与304响应的排查方法","inLanguage":"zh-CN","mainEntityOfPage":{"@id":"https://www.yaoyaolingxian.blog/posts/proxy-browser-cache-304-check/","@type":"WebPage"},"url":"https://www.yaoyaolingxian.blog/posts/proxy-browser-cache-304-check/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://www.yaoyaolingxian.blog/","name":"遥遥领先","position":1},{"@type":"ListItem","item":"https://www.yaoyaolingxian.blog/posts/proxy-browser-cache-304-check/","name":"换了机场节点网页还是旧内容？缓存与304响应的排查方法","position":2}]}]}</script>
+
+<script>(()=>{let mode='system';try{const saved=localStorage.getItem('reader-theme');if(['system','light','dark'].includes(saved))mode=saved}catch{}const root=document.documentElement;root.dataset.colorMode=mode;root.classList.toggle('dark',mode==='dark'||(mode==='system'&&matchMedia('(prefers-color-scheme: dark)').matches))})();</script>
+<link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/style.css">
+<link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/advertisements.css">
+<link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/search.css"><script defer src="https://www.yaoyaolingxian.blog/assets/theme/search.js"></script>
+
+<link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/viewer.css">
+<link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/reader.css">
+<link rel="icon" href="https://www.yaoyaolingxian.blog/assets/media/52ff4036-42cb-4679-a721-9a08d1816c48.png">
+<link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/artalk.css"><script defer src="https://www.yaoyaolingxian.blog/assets/theme/artalk.js"></script>
+<script defer src="https://www.yaoyaolingxian.blog/assets/theme/theme.js"></script>
+<script defer src="https://www.yaoyaolingxian.blog/assets/theme/reader.js"></script>
+<script defer src="https://www.yaoyaolingxian.blog/assets/theme/viewer.js"></script>
+<script defer src="https://www.yaoyaolingxian.blog/assets/theme/image-viewer.js"></script>
+
+<script defer src="https://www.yaoyaolingxian.blog/assets/theme/interactions.js"></script>
+
+
+
+</head>
+
+<body class="article-page">
+
+<a class="skip" href="#main">跳到正文</a>
+
+<header class="site-header">
+<div class="header-inner">
+<a class="brand" href="https://www.yaoyaolingxian.blog/"><img src="https://www.yaoyaolingxian.blog/assets/media/52ff4036-42cb-4679-a721-9a08d1816c48.png" alt="" width="38" height="38"><span>遥遥领先</span></a>
+<nav id="site-navigation" aria-label="站点导航"><a href="https://www.yaoyaolingxian.blog/">首页</a><a href="https://www.yaoyaolingxian.blog/posts/airport-recommendation-guide/">机场推荐</a><a href="https://www.yaoyaolingxian.blog/categories/buying-guides/">选购指南</a><a href="https://www.yaoyaolingxian.blog/categories/client-guides/">客户端教程</a><a href="https://www.yaoyaolingxian.blog/categories/protocols-network/">协议与网络</a><a href="https://www.yaoyaolingxian.blog/categories/troubleshooting/">常见问题</a><a href="https://www.yaoyaolingxian.blog/categories/privacy-security/">隐私安全</a></nav>
+<a class="search-toggle" href="https://www.yaoyaolingxian.blog/search/" data-open-dialog="search-dialog" aria-haspopup="dialog" aria-controls="search-dialog" aria-label="搜索" title="搜索"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5"/></svg></a>
+<button id="theme-mode" class="theme-toggle theme-cycle" type="button" aria-label="明暗模式：跟随系统，点击切换为明亮" title="跟随系统 · 点击切换为明亮">
+<svg class="theme-icon-system" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>
+<svg class="theme-icon-moon" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.2 15.5A8.5 8.5 0 0 1 8.5 3.8 8.5 8.5 0 1 0 20.2 15.5Z"/></svg>
+<svg class="theme-icon-sun" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+</button>
+<span id="theme-mode-status" class="visually-hidden" role="status" aria-live="polite"></span>
+<button id="menu-toggle" class="menu-toggle" type="button" aria-controls="site-navigation" aria-expanded="false" aria-label="打开菜单" title="打开菜单">
+<svg class="menu-icon-open" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+<svg class="menu-icon-close" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="m6 6 12 12M6 18 18 6"/></svg>
+</button>
+</div>
+</header>
+
+<div class="article-viewport"><div class="article-scroll">
+<main id="main" tabindex="-1" class="shell article-shell" data-has-toc="true">
+
+<nav class="breadcrumbs" aria-label="面包屑导航"><ol><li><a href="https://www.yaoyaolingxian.blog/">遥遥领先</a></li><li><span aria-current="page">换了机场节点网页还是旧内容？缓存与304响应的排查方法</span></li></ol></nav>
+
+
+
+<article data-pagefind-body>
+<header class="article-header">
+<div class="eyebrow" data-pagefind-ignore>文章</div>
+<h1 data-pagefind-meta="title">换了机场节点网页还是旧内容？缓存与304响应的排查方法</h1>
+<div class="metadata" data-pagefind-ignore><span>王牌飞行员</span><time datetime="2026-09-23T13:30:47&#43;08:00">2026-09-23</time><span><span id="page-views">—</span> 次阅读</span></div>
+<div class="chips" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/categories/troubleshooting/">故障排查</a></div>
+</header>
+<div class="prose"><p>节点切换成功，网页却仍显示昨天的文字，这并不一定是代理没有生效。网页能否连接与拿到的是不是最新内容，是两个需要分别验证的问题。本文适用于能加载页面但内容陈旧的情况；如果浏览器直接报连接超时，应先处理连接问题。</p>
+<h2 id="heading">先把“旧”变成可核对的事实</h2>
+<p>记录完整网址、你看到的版本标记，以及预期变化，例如一段公告或一张已更新图片。确认访问的是同一个路径，而不是旧收藏、不同子域名或搜索结果中的历史页面。页面上显示的文章日期也不一定会随每次小修改更新，不能单凭日期判断缓存。</p>
+<p>如果有网站维护方，应先确认改动已经发布到正式站点。编辑器里保存成功，与公开页面更新完成可能是两个步骤。</p>
+<h2 id="304">304为什么通常不是报错</h2>
+<p>浏览器可以保存曾经取得的资源，并在后续请求中询问服务器是否变化。<code>304 Not Modified</code> 表示这次条件请求获知资源未变化，浏览器可继续使用已有内容；它不是“机场连接失败”的状态码。<code>ETag</code> 与 <code>Last-Modified</code> 常用于这类验证。<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Caching">MDN 的 HTTP 缓存说明</a>介绍了对应机制。</p>
+<p>反过来，<code>200</code> 也不自动证明内容是你期望的最新版本：服务器或中间缓存仍可能提供旧文件。要结合实际正文判断。</p>
+<h2 id="heading-1">按影响从小到大检查</h2>
+<ol>
+<li>在地址栏重新打开核对后的完整 URL，先做普通刷新，比较明确的文字或图片标记。</li>
+<li>通过浏览器支持的重新加载方式再次请求页面；如果使用开发者工具，可在网络面板打开时临时禁用浏览器缓存后重载，检查具体资源。</li>
+<li>用独立浏览器会话访问相同地址，对照内容。注意不同会话的登录状态可能不同，登录后的个性化页面不能直接与退出后的页面比较。</li>
+<li>只有当前浏览器持续陈旧时，再考虑处理该站缓存。先保存未提交表单，优先只清理目标站点；清除Cookie或站点数据可能导致退出登录，不必一开始就清空所有网站。</li>
+</ol>
+<h2 id="html">看的是HTML还是图片、脚本</h2>
+<p>正文已更新但封面没变，可能只是某个图片资源仍使用旧版本。可在网络面板找到该资源，记录完整 URL、状态和响应头。不要看到主页请求成功，就认为页面每一个资源都已经更新。</p>
+<p>若不同设备、不同网络都显示相同旧文件，而维护方确认已更新，可将资源地址和时间提供给站方继续检查部署或 CDN。用户端反复更换机场节点无法保证刷新网站自己的缓存。</p>
+<h2 id="heading-2">一张简短的复查单</h2>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>应记录的内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>目标</td>
+<td>完整URL、登录状态</td>
+</tr>
+<tr>
+<td>内容</td>
+<td>看到的标记、预期标记</td>
+</tr>
+<tr>
+<td>对照</td>
+<td>普通刷新、独立会话、另一设备</td>
+</tr>
+<tr>
+<td>请求</td>
+<td>相关资源状态、ETag或Last-Modified（如有）</td>
+</tr>
+<tr>
+<td>环境</td>
+<td>时间、网络、代理模式，保持对照条件清楚</td>
+</tr>
+</tbody>
+</table>
+<p>日志与截图只保留排障必要部分，隐藏Cookie、授权头和私人网址。机场推荐中的“线路能用”判断应来自实际请求与业务体验；缓存问题应使用内容标记验收，直到你核对的目标资源确实更新为止。</p>
+</div>
+<div class="article-likes" data-pagefind-ignore>
+<button id="page-like" class="like-button" type="button" aria-pressed="false" aria-describedby="page-like-message" disabled>
+<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/></svg>
+<span id="page-like-label">点赞</span><span id="page-like-count">—</span>
+</button><p id="page-like-message" role="status"></p>
+</div>
+<div class="article-tags" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/tags/getting-started/"># 新手入门</a><a href="https://www.yaoyaolingxian.blog/tags/network-performance/"># 网络性能</a><a href="https://www.yaoyaolingxian.blog/tags/troubleshooting/"># 故障排查</a></div>
+<nav class="pagination" aria-label="相邻文章" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/posts/airport-recommendation-guide/">← 上一篇</a><a href="https://www.yaoyaolingxian.blog/posts/proxy-download-resume-check/">下一篇 →</a></nav>
+<section class="comments-section" data-pagefind-ignore><h2>评论</h2><div id="comments"></div></section>
+</article>
+
+<div class="article-rail">
+<aside class="toc"><div>本篇目录</div><nav aria-label="文章目录"><a class="level-2" href="#heading">先把“旧”变成可核对的事实</a><a class="level-2" href="#304">304为什么通常不是报错</a><a class="level-2" href="#heading-1">按影响从小到大检查</a><a class="level-2" href="#html">看的是HTML还是图片、脚本</a><a class="level-2" href="#heading-2">一张简短的复查单</a></nav></aside>
+</div>
+
+</main>
+</div>
+
+<button id="back-to-top" class="back-to-top" type="button" aria-label="返回顶部" title="返回顶部" hidden>
+<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h14M12 20V8m-5 5 5-5 5 5"/></svg>
+</button>
+</div>
+
+<footer class="site-footer">
+<nav class="friend-links" aria-label="友情链接"><span class="friend-links-label">友情链接</span><a href="https://kkjichang.cc/" target="_blank" rel="noopener noreferrer">可靠机场推荐</a><a href="https://pyjichang.cc/" target="_blank" rel="noopener noreferrer">便宜机场推荐</a><a href="https://wdjichang.cc/" target="_blank" rel="noopener noreferrer">稳定机场推荐</a><a href="https://fengyy.org/" target="_blank" rel="noopener noreferrer">风悠悠</a><a href="https://zjtf.org/" target="_blank" rel="noopener noreferrer">酌酒听风</a></nav>
+<span>© @遥遥领先 2026</span>
+</footer>
+
+
+
+<dialog id="search-dialog" class="reader-dialog site-search" aria-labelledby="search-title" data-reader-dialog data-pagefind-ignore>
+<header class="reader-dialog-header"><h2 id="search-title">搜索文章</h2><button class="dialog-close" type="button" data-close-dialog aria-label="关闭搜索" title="关闭搜索">×</button></header>
+<div class="reader-dialog-body">
+
+<div id="site-search-ui" data-module="https://www.yaoyaolingxian.blog/pagefind/pagefind-component-ui.js" data-stylesheet="https://www.yaoyaolingxian.blog/pagefind/pagefind-component-ui.css" hidden>
+
+<pagefind-config bundle-path="https://www.yaoyaolingxian.blog/pagefind/" base-url="https://www.yaoyaolingxian.blog/" lang="zh-cn" no-worker></pagefind-config>
+<pagefind-input placeholder="搜索文章标题或正文"></pagefind-input>
+<pagefind-summary></pagefind-summary>
+<pagefind-results></pagefind-results>
+</div>
+<p id="search-status" class="search-status" role="status">正在加载搜索…</p>
+<button id="search-retry" class="button" type="button" hidden>重新加载</button>
+
+</div>
+</dialog>
+
+<script id="blog-comments-config" type="application/json">{"comments":true,"likes":true,"locale":"zh-CN","pageKey":"/p/b182eb79-4fd3-4431-9619-d4f567c3e158/","pageTitle":"换了机场节点网页还是旧内容？缓存与304响应的排查方法","server":"https://upfqpobmiewm.sealosgzg.site","site":"xblog-f49c63bc-e1a5-4cf0-b2f5-6e9bc109b533","views":true,"viewsBase":0}</script>
+
+</body>
+</html>
