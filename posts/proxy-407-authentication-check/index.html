@@ -4,23 +4,23 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>换了机场节点网页还是旧内容？缓存与304响应的排查方法 · 遥遥领先</title>
-<meta name="description" content="换机场节点后仍看到旧页面怎么查？从完整URL、304响应、浏览器缓存和独立会话对照入手，区分内容陈旧与代理连接失败。">
-<meta name="keywords" content="网页缓存,304响应,机场代理排查">
-<meta name="robots" content="index,follow,max-image-preview:large"><link rel="canonical" href="https://www.yaoyaolingxian.blog/posts/proxy-browser-cache-304-check/">
-<meta property="og:title" content="换了机场节点网页还是旧内容？缓存与304响应的排查方法">
-<meta property="og:description" content="换机场节点后仍看到旧页面怎么查？从完整URL、304响应、浏览器缓存和独立会话对照入手，区分内容陈旧与代理连接失败。">
-<meta property="og:url" content="https://www.yaoyaolingxian.blog/posts/proxy-browser-cache-304-check/">
+<title>网页提示 407 Proxy Authentication Required 怎么办？代理认证排查 · 遥遥领先</title>
+<meta name="description" content="407 Proxy Authentication Required如何解决？从代理来源、Proxy-Authenticate响应头、本地端口与凭据范围入手排查。">
+<meta name="keywords" content="407错误,代理认证,Proxy Authentication Required">
+<meta name="robots" content="index,follow,max-image-preview:large"><link rel="canonical" href="https://www.yaoyaolingxian.blog/posts/proxy-407-authentication-check/">
+<meta property="og:title" content="网页提示 407 Proxy Authentication Required 怎么办？代理认证排查">
+<meta property="og:description" content="407 Proxy Authentication Required如何解决？从代理来源、Proxy-Authenticate响应头、本地端口与凭据范围入手排查。">
+<meta property="og:url" content="https://www.yaoyaolingxian.blog/posts/proxy-407-authentication-check/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="遥遥领先">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://www.yaoyaolingxian.blog/assets/media/52ff4036-42cb-4679-a721-9a08d1816c48.png"><meta property="og:image:alt" content="遥遥领先">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="换了机场节点网页还是旧内容？缓存与304响应的排查方法">
-<meta name="twitter:description" content="换机场节点后仍看到旧页面怎么查？从完整URL、304响应、浏览器缓存和独立会话对照入手，区分内容陈旧与代理连接失败。">
+<meta name="twitter:title" content="网页提示 407 Proxy Authentication Required 怎么办？代理认证排查">
+<meta name="twitter:description" content="407 Proxy Authentication Required如何解决？从代理来源、Proxy-Authenticate响应头、本地端口与凭据范围入手排查。">
 <meta name="twitter:image" content="https://www.yaoyaolingxian.blog/assets/media/52ff4036-42cb-4679-a721-9a08d1816c48.png">
-<meta name="author" content="王牌飞行员"><meta property="article:published_time" content="2026-09-23T13:30:47&#43;08:00"><meta property="article:modified_time" content="2026-09-23T13:31:53&#43;08:00"><meta property="article:tag" content="新手入门"><meta property="article:tag" content="网络性能"><meta property="article:tag" content="故障排查">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@id":"https://www.yaoyaolingxian.blog/posts/proxy-browser-cache-304-check/#article","@type":"BlogPosting","author":{"@type":"Person","name":"王牌飞行员"},"dateModified":"2026-09-23T13:31:53+08:00","datePublished":"2026-09-23T13:30:47+08:00","description":"换机场节点后仍看到旧页面怎么查？从完整URL、304响应、浏览器缓存和独立会话对照入手，区分内容陈旧与代理连接失败。","headline":"换了机场节点网页还是旧内容？缓存与304响应的排查方法","inLanguage":"zh-CN","mainEntityOfPage":{"@id":"https://www.yaoyaolingxian.blog/posts/proxy-browser-cache-304-check/","@type":"WebPage"},"url":"https://www.yaoyaolingxian.blog/posts/proxy-browser-cache-304-check/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://www.yaoyaolingxian.blog/","name":"遥遥领先","position":1},{"@type":"ListItem","item":"https://www.yaoyaolingxian.blog/posts/proxy-browser-cache-304-check/","name":"换了机场节点网页还是旧内容？缓存与304响应的排查方法","position":2}]}]}</script>
+<meta name="author" content="王牌飞行员"><meta property="article:published_time" content="2026-09-24T10:18:19&#43;08:00"><meta property="article:modified_time" content="2026-09-24T10:19:57&#43;08:00"><meta property="article:tag" content="代理协议"><meta property="article:tag" content="故障排查">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@id":"https://www.yaoyaolingxian.blog/posts/proxy-407-authentication-check/#article","@type":"BlogPosting","author":{"@type":"Person","name":"王牌飞行员"},"dateModified":"2026-09-24T10:19:57+08:00","datePublished":"2026-09-24T10:18:19+08:00","description":"407 Proxy Authentication Required如何解决？从代理来源、Proxy-Authenticate响应头、本地端口与凭据范围入手排查。","headline":"网页提示 407 Proxy Authentication Required 怎么办？代理认证排查","inLanguage":"zh-CN","mainEntityOfPage":{"@id":"https://www.yaoyaolingxian.blog/posts/proxy-407-authentication-check/","@type":"WebPage"},"url":"https://www.yaoyaolingxian.blog/posts/proxy-407-authentication-check/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://www.yaoyaolingxian.blog/","name":"遥遥领先","position":1},{"@type":"ListItem","item":"https://www.yaoyaolingxian.blog/posts/proxy-407-authentication-check/","name":"网页提示 407 Proxy Authentication Required 怎么办？代理认证排查","position":2}]}]}</script>
 
 <script>(()=>{let mode='system';try{const saved=localStorage.getItem('reader-theme');if(['system','light','dark'].includes(saved))mode=saved}catch{}const root=document.documentElement;root.dataset.colorMode=mode;root.classList.toggle('dark',mode==='dark'||(mode==='system'&&matchMedia('(prefers-color-scheme: dark)').matches))})();</script>
 <link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/style.css">
@@ -75,66 +75,34 @@
 <div class="article-viewport"><div class="article-scroll">
 <main id="main" tabindex="-1" class="shell article-shell" data-has-toc="true">
 
-<nav class="breadcrumbs" aria-label="面包屑导航"><ol><li><a href="https://www.yaoyaolingxian.blog/">遥遥领先</a></li><li><span aria-current="page">换了机场节点网页还是旧内容？缓存与304响应的排查方法</span></li></ol></nav>
+<nav class="breadcrumbs" aria-label="面包屑导航"><ol><li><a href="https://www.yaoyaolingxian.blog/">遥遥领先</a></li><li><span aria-current="page">网页提示 407 Proxy Authentication Required 怎么办？代理认证排查</span></li></ol></nav>
 
 
 
 <article data-pagefind-body>
 <header class="article-header">
 <div class="eyebrow" data-pagefind-ignore>文章</div>
-<h1 data-pagefind-meta="title">换了机场节点网页还是旧内容？缓存与304响应的排查方法</h1>
-<div class="metadata" data-pagefind-ignore><span>王牌飞行员</span><time datetime="2026-09-23T13:30:47&#43;08:00">2026-09-23</time><span><span id="page-views">—</span> 次阅读</span></div>
+<h1 data-pagefind-meta="title">网页提示 407 Proxy Authentication Required 怎么办？代理认证排查</h1>
+<div class="metadata" data-pagefind-ignore><span>王牌飞行员</span><time datetime="2026-09-24T10:18:19&#43;08:00">2026-09-24</time><span><span id="page-views">—</span> 次阅读</span></div>
 <div class="chips" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/categories/troubleshooting/">故障排查</a></div>
 </header>
-<div class="prose"><p>节点切换成功，网页却仍显示昨天的文字，这并不一定是代理没有生效。网页能否连接与拿到的是不是最新内容，是两个需要分别验证的问题。本文适用于能加载页面但内容陈旧的情况；如果浏览器直接报连接超时，应先处理连接问题。</p>
-<h2 id="heading">先把“旧”变成可核对的事实</h2>
-<p>记录完整网址、你看到的版本标记，以及预期变化，例如一段公告或一张已更新图片。确认访问的是同一个路径，而不是旧收藏、不同子域名或搜索结果中的历史页面。页面上显示的文章日期也不一定会随每次小修改更新，不能单凭日期判断缓存。</p>
-<p>如果有网站维护方，应先确认改动已经发布到正式站点。编辑器里保存成功，与公开页面更新完成可能是两个步骤。</p>
-<h2 id="304">304为什么通常不是报错</h2>
-<p>浏览器可以保存曾经取得的资源，并在后续请求中询问服务器是否变化。<code>304 Not Modified</code> 表示这次条件请求获知资源未变化，浏览器可继续使用已有内容；它不是“机场连接失败”的状态码。<code>ETag</code> 与 <code>Last-Modified</code> 常用于这类验证。<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Caching">MDN 的 HTTP 缓存说明</a>介绍了对应机制。</p>
-<p>反过来，<code>200</code> 也不自动证明内容是你期望的最新版本：服务器或中间缓存仍可能提供旧文件。要结合实际正文判断。</p>
-<h2 id="heading-1">按影响从小到大检查</h2>
-<ol>
-<li>在地址栏重新打开核对后的完整 URL，先做普通刷新，比较明确的文字或图片标记。</li>
-<li>通过浏览器支持的重新加载方式再次请求页面；如果使用开发者工具，可在网络面板打开时临时禁用浏览器缓存后重载，检查具体资源。</li>
-<li>用独立浏览器会话访问相同地址，对照内容。注意不同会话的登录状态可能不同，登录后的个性化页面不能直接与退出后的页面比较。</li>
-<li>只有当前浏览器持续陈旧时，再考虑处理该站缓存。先保存未提交表单，优先只清理目标站点；清除Cookie或站点数据可能导致退出登录，不必一开始就清空所有网站。</li>
-</ol>
-<h2 id="html">看的是HTML还是图片、脚本</h2>
-<p>正文已更新但封面没变，可能只是某个图片资源仍使用旧版本。可在网络面板找到该资源，记录完整 URL、状态和响应头。不要看到主页请求成功，就认为页面每一个资源都已经更新。</p>
-<p>若不同设备、不同网络都显示相同旧文件，而维护方确认已更新，可将资源地址和时间提供给站方继续检查部署或 CDN。用户端反复更换机场节点无法保证刷新网站自己的缓存。</p>
-<h2 id="heading-2">一张简短的复查单</h2>
-<table>
-<thead>
-<tr>
-<th>项目</th>
-<th>应记录的内容</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>目标</td>
-<td>完整URL、登录状态</td>
-</tr>
-<tr>
-<td>内容</td>
-<td>看到的标记、预期标记</td>
-</tr>
-<tr>
-<td>对照</td>
-<td>普通刷新、独立会话、另一设备</td>
-</tr>
-<tr>
-<td>请求</td>
-<td>相关资源状态、ETag或Last-Modified（如有）</td>
-</tr>
-<tr>
-<td>环境</td>
-<td>时间、网络、代理模式，保持对照条件清楚</td>
-</tr>
-</tbody>
-</table>
-<p>日志与截图只保留排障必要部分，隐藏Cookie、授权头和私人网址。机场推荐中的“线路能用”判断应来自实际请求与业务体验；缓存问题应使用内容标记验收，直到你核对的目标资源确实更新为止。</p>
+<div class="prose"><p>网页提示 <code>407 Proxy Authentication Required</code> 时，问题发生在客户端与代理之间的认证环节，不是目标网站账户被登出。反复输入网站密码、清缓存或更换浏览器主页通常不会解决代理凭据错误。</p>
+<h2 id="-407--401403-">先把 407 与 401、403 分开</h2>
+<p><a href="https://www.rfc-editor.org/rfc/rfc9110.html#section-15.5.8">RFC 9110</a>规定，407表示客户端需要向代理进行认证，代理应返回 <code>Proxy-Authenticate</code>挑战；客户端可用新的 <code>Proxy-Authorization</code>凭据重试。401针对目标服务器的身份认证，403则表示服务器理解请求但拒绝处理，三者定位不同。</p>
+<p>浏览器看到407时，先记录完整网址、发生时间、所用网络和代理来源。不要把包含凭据的请求头、订阅链接或客户端日志原样发到公开渠道。</p>
+<h2 id="heading">确认是谁设置了这个代理</h2>
+<p>依次检查浏览器扩展、系统代理、PAC脚本、命令行环境变量和机场客户端。企业或校园网络也可能要求上游代理认证。一次只保留一个明确的代理入口，避免系统代理与浏览器扩展叠加后不知哪一层返回407。</p>
+<p>如果本地客户端提供的是无需认证的回环地址，例如 <code>127.0.0.1</code>上的端口，却收到407，先核对端口类型是否填错、是否连到了另一程序，以及客户端是否配置了局域网访问认证。</p>
+<h2 id="heading-1">用响应头确认代理挑战</h2>
+<p>对一个可信 HTTPS 目标做最小请求，可以看到状态码和代理挑战。下面命令中的地址与端口只作示例：</p>
+<pre><code class="language-powershell">curl.exe --verbose --proxy http://127.0.0.1:7890 --connect-timeout 10 --head https://example.com/
+</code></pre>
+<p>详细输出可能包含服务器和代理信息，分享前应删除用户名、密码、令牌、内网地址及其他敏感字段。看到407和<code>Proxy-Authenticate</code>后，记录认证方案即可；不要把密码直接写进命令历史或截图。</p>
+<h2 id="heading-2">按代理来源处理凭据</h2>
+<p>若代理由单位网络提供，按管理员给出的地址、端口和认证方式配置；若由机场客户端本地提供，回到客户端检查是否意外开启用户认证，或应用是否误连到局域网共享端口。订阅账户密码通常不等同于本地代理端口凭据，不能互相代替。</p>
+<p>修改后重新执行同一请求：407消失、隧道建立并收到目标响应，才算认证环节通过。若变成超时或证书错误，说明已进入下一层问题，应按新的错误继续排查。</p>
+<h2 id="heading-3">安全验收</h2>
+<p>删除为测试临时保存的代理密码，关闭不需要的局域网监听，并确认浏览器和系统代理只保留预期来源。最终记录“哪一层代理、哪种认证、修改后状态码”，比只写“换节点好了”更能防止问题再次出现。</p>
 </div>
 <div class="article-likes" data-pagefind-ignore>
 <button id="page-like" class="like-button" type="button" aria-pressed="false" aria-describedby="page-like-message" disabled>
@@ -142,13 +110,13 @@
 <span id="page-like-label">点赞</span><span id="page-like-count">—</span>
 </button><p id="page-like-message" role="status"></p>
 </div>
-<div class="article-tags" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/tags/getting-started/"># 新手入门</a><a href="https://www.yaoyaolingxian.blog/tags/network-performance/"># 网络性能</a><a href="https://www.yaoyaolingxian.blog/tags/troubleshooting/"># 故障排查</a></div>
-<nav class="pagination" aria-label="相邻文章" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/posts/proxy-407-authentication-check/">← 上一篇</a><a href="https://www.yaoyaolingxian.blog/posts/proxy-download-resume-check/">下一篇 →</a></nav>
+<div class="article-tags" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/tags/proxy-protocols/"># 代理协议</a><a href="https://www.yaoyaolingxian.blog/tags/troubleshooting/"># 故障排查</a></div>
+<nav class="pagination" aria-label="相邻文章" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/posts/airport-recommendation-guide/">← 上一篇</a><a href="https://www.yaoyaolingxian.blog/posts/proxy-browser-cache-304-check/">下一篇 →</a></nav>
 <section class="comments-section" data-pagefind-ignore><h2>评论</h2><div id="comments"></div></section>
 </article>
 
 <div class="article-rail">
-<aside class="toc"><div>本篇目录</div><nav aria-label="文章目录"><a class="level-2" href="#heading">先把“旧”变成可核对的事实</a><a class="level-2" href="#304">304为什么通常不是报错</a><a class="level-2" href="#heading-1">按影响从小到大检查</a><a class="level-2" href="#html">看的是HTML还是图片、脚本</a><a class="level-2" href="#heading-2">一张简短的复查单</a></nav></aside>
+<aside class="toc"><div>本篇目录</div><nav aria-label="文章目录"><a class="level-2" href="#-407--401403-">先把 407 与 401、403 分开</a><a class="level-2" href="#heading">确认是谁设置了这个代理</a><a class="level-2" href="#heading-1">用响应头确认代理挑战</a><a class="level-2" href="#heading-2">按代理来源处理凭据</a><a class="level-2" href="#heading-3">安全验收</a></nav></aside>
 </div>
 
 </main>
@@ -183,7 +151,7 @@
 </div>
 </dialog>
 
-<script id="blog-comments-config" type="application/json">{"comments":true,"likes":true,"locale":"zh-CN","pageKey":"/p/b182eb79-4fd3-4431-9619-d4f567c3e158/","pageTitle":"换了机场节点网页还是旧内容？缓存与304响应的排查方法","server":"https://upfqpobmiewm.sealosgzg.site","site":"xblog-f49c63bc-e1a5-4cf0-b2f5-6e9bc109b533","views":true,"viewsBase":0}</script>
+<script id="blog-comments-config" type="application/json">{"comments":true,"likes":true,"locale":"zh-CN","pageKey":"/p/e6888450-e5e2-4531-a79d-37de3076eba1/","pageTitle":"网页提示 407 Proxy Authentication Required 怎么办？代理认证排查","server":"https://upfqpobmiewm.sealosgzg.site","site":"xblog-f49c63bc-e1a5-4cf0-b2f5-6e9bc109b533","views":true,"viewsBase":0}</script>
 
 </body>
 </html>

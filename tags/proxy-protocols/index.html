@@ -20,7 +20,7 @@
 <meta name="twitter:description" content="代理协议原理、配置组合和客户端支持说明。">
 <meta name="twitter:image" content="https://www.yaoyaolingxian.blog/assets/media/52ff4036-42cb-4679-a721-9a08d1816c48.png">
 
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@id":"https://www.yaoyaolingxian.blog/tags/proxy-protocols/#collection","@type":"CollectionPage","description":"代理协议原理、配置组合和客户端支持说明。","inLanguage":"zh-CN","mainEntity":{"@type":"ItemList","itemListElement":[{"@type":"ListItem","name":"代理客户端提示证书错误怎么办？系统时间、服务器名称与 TLS 排查","position":1,"url":"https://www.yaoyaolingxian.blog/posts/proxy-tls-certificate-errors/"},{"@type":"ListItem","name":"Hysteria 2 与 QUIC 是什么？UDP 网络下的适用条件与排查","position":2,"url":"https://www.yaoyaolingxian.blog/posts/quic-hysteria2/"},{"@type":"ListItem","name":"Shadowsocks、Trojan、VLESS 怎么选？协议与客户端兼容指南","position":3,"url":"https://www.yaoyaolingxian.blog/posts/proxy-protocol-comparison/"}]},"name":"代理协议","url":"https://www.yaoyaolingxian.blog/tags/proxy-protocols/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://www.yaoyaolingxian.blog/","name":"遥遥领先","position":1},{"@type":"ListItem","item":"https://www.yaoyaolingxian.blog/tags/proxy-protocols/","name":"代理协议","position":2}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@id":"https://www.yaoyaolingxian.blog/tags/proxy-protocols/#collection","@type":"CollectionPage","description":"代理协议原理、配置组合和客户端支持说明。","inLanguage":"zh-CN","mainEntity":{"@type":"ItemList","itemListElement":[{"@type":"ListItem","name":"网页提示 407 Proxy Authentication Required 怎么办？代理认证排查","position":1,"url":"https://www.yaoyaolingxian.blog/posts/proxy-407-authentication-check/"},{"@type":"ListItem","name":"代理客户端提示证书错误怎么办？系统时间、服务器名称与 TLS 排查","position":2,"url":"https://www.yaoyaolingxian.blog/posts/proxy-tls-certificate-errors/"},{"@type":"ListItem","name":"Hysteria 2 与 QUIC 是什么？UDP 网络下的适用条件与排查","position":3,"url":"https://www.yaoyaolingxian.blog/posts/quic-hysteria2/"},{"@type":"ListItem","name":"Shadowsocks、Trojan、VLESS 怎么选？协议与客户端兼容指南","position":4,"url":"https://www.yaoyaolingxian.blog/posts/proxy-protocol-comparison/"}]},"name":"代理协议","url":"https://www.yaoyaolingxian.blog/tags/proxy-protocols/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://www.yaoyaolingxian.blog/","name":"遥遥领先","position":1},{"@type":"ListItem","item":"https://www.yaoyaolingxian.blog/tags/proxy-protocols/","name":"代理协议","position":2}]}]}</script>
 
 <script>(()=>{let mode='system';try{const saved=localStorage.getItem('reader-theme');if(['system','light','dark'].includes(saved))mode=saved}catch{}const root=document.documentElement;root.dataset.colorMode=mode;root.classList.toggle('dark',mode==='dark'||(mode==='system'&&matchMedia('(prefers-color-scheme: dark)').matches))})();</script>
 <link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/style.css">
@@ -86,6 +86,12 @@
 
 
 <section class="article-list" aria-label="文章列表">
+<article class="article-card">
+<span class="card-index" aria-hidden="true"></span>
+<h2><a href="https://www.yaoyaolingxian.blog/posts/proxy-407-authentication-check/">网页提示 407 Proxy Authentication Required 怎么办？代理认证排查</a></h2>
+<p class="card-summary">407表示代理要求认证；先区分401与403，再定位浏览器、系统、PAC或本地客户端中的代理来源。</p>
+<div class="card-footer"><span><span>王牌飞行员</span><time datetime="2026-09-24T10:18:19&#43;08:00">2026-09-24</time><a class="card-category" href="https://www.yaoyaolingxian.blog/categories/troubleshooting/">故障排查</a></span><a class="read-more" href="https://www.yaoyaolingxian.blog/posts/proxy-407-authentication-check/" aria-label="阅读网页提示 407 Proxy Authentication Required 怎么办？代理认证排查">阅读全文 <span aria-hidden="true">↗</span></a></div>
+</article>
 <article class="article-card">
 <span class="card-index" aria-hidden="true"></span>
 <h2><a href="https://www.yaoyaolingxian.blog/posts/proxy-tls-certificate-errors/">代理客户端提示证书错误怎么办？系统时间、服务器名称与 TLS 排查</a></h2>

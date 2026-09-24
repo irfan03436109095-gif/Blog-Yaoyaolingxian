@@ -33,17 +33,6 @@
   color: var(--text);
   transform: translateY(-2px);
 }
-.ad-badge {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 5px 12px;
-  font-size: 10px;
-  letter-spacing: 1px;
-  color: var(--muted);
-  border-bottom: 1px solid var(--line);
-}
 .ad-image {
   display: block;
   width: 100%;
@@ -94,9 +83,6 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   align-items: center;
-}
-.ad-slot-wide .ad-card-mixed .ad-badge {
-  grid-column: 1 / -1;
 }
 @media (max-width: 980px) {
   .article-rail {
