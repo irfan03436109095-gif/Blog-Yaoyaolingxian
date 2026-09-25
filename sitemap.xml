@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.yaoyaolingxian.blog/</loc>
-    <lastmod>2026-09-24T02:20:30Z</lastmod>
+    <lastmod>2026-09-25T01:50:58Z</lastmod>
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/categories/buying-guides/</loc>
@@ -18,7 +18,7 @@
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/categories/protocols-network/</loc>
-    <lastmod>2026-09-24T02:19:57Z</lastmod>
+    <lastmod>2026-09-25T01:50:58Z</lastmod>
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/categories/troubleshooting/</loc>
@@ -26,11 +26,11 @@
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/page/2/</loc>
-    <lastmod>2026-09-24T02:20:30Z</lastmod>
+    <lastmod>2026-09-25T01:50:58Z</lastmod>
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/page/3/</loc>
-    <lastmod>2026-09-24T02:20:30Z</lastmod>
+    <lastmod>2026-09-25T01:50:58Z</lastmod>
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/posts/airport-plan-cost/</loc>
@@ -38,7 +38,7 @@
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/posts/airport-recommendation-guide/</loc>
-    <lastmod>2026-09-24T02:20:30Z</lastmod>
+    <lastmod>2026-09-25T01:50:58Z</lastmod>
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/posts/airport-speed-test/</loc>
@@ -74,7 +74,7 @@
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/posts/proxy-407-authentication-check/</loc>
-    <lastmod>2026-09-24T02:19:57Z</lastmod>
+    <lastmod>2026-09-25T01:50:58Z</lastmod>
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/posts/proxy-browser-cache-304-check/</loc>
@@ -133,6 +133,10 @@
     <lastmod>2026-09-19T16:43:12Z</lastmod>
   </url>
   <url>
+    <loc>https://www.yaoyaolingxian.blog/posts/websocket-101-proxy-check/</loc>
+    <lastmod>2026-09-25T01:11:15Z</lastmod>
+  </url>
+  <url>
     <loc>https://www.yaoyaolingxian.blog/tags/airport-recommendations/</loc>
     <lastmod>2026-09-24T02:19:57Z</lastmod>
   </url>
@@ -178,7 +182,7 @@
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/tags/proxy-protocols/</loc>
-    <lastmod>2026-09-24T02:20:30Z</lastmod>
+    <lastmod>2026-09-25T01:50:58Z</lastmod>
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/tags/quic/</loc>
@@ -206,11 +210,11 @@
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/tags/troubleshooting/</loc>
-    <lastmod>2026-09-24T02:20:30Z</lastmod>
+    <lastmod>2026-09-25T01:50:58Z</lastmod>
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/tags/troubleshooting/page/2/</loc>
-    <lastmod>2026-09-24T02:20:30Z</lastmod>
+    <lastmod>2026-09-25T01:50:58Z</lastmod>
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/tags/tun/</loc>
