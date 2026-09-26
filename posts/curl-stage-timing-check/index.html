@@ -4,23 +4,23 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>网页聊天能打开却一直连接中？看懂 WebSocket 101 握手 · 遥遥领先</title>
-<meta name="description" content="网页正常但实时聊天一直连接中怎么办？检查WebSocket 101握手、状态码和重连行为，比较直连与机场节点。">
-<meta name="keywords" content="WebSocket 101,代理长连接,机场故障排查,实时连接">
-<meta name="robots" content="index,follow,max-image-preview:large"><link rel="canonical" href="https://www.yaoyaolingxian.blog/posts/websocket-101-proxy-check/">
-<meta property="og:title" content="网页聊天能打开却一直连接中？看懂 WebSocket 101 握手">
-<meta property="og:description" content="网页正常但实时聊天一直连接中怎么办？检查WebSocket 101握手、状态码和重连行为，比较直连与机场节点。">
-<meta property="og:url" content="https://www.yaoyaolingxian.blog/posts/websocket-101-proxy-check/">
+<title>节点慢在 DNS、连接还是首字节？用 curl 拆分耗时 · 遥遥领先</title>
+<meta name="description" content="机场节点慢在哪里？用curl分解DNS、连接、TLS、首字节和总耗时，避免只看一次总时间得出结论。">
+<meta name="keywords" content="curl write-out,机场节点测速,DNS耗时,TLS耗时,网络性能">
+<meta name="robots" content="index,follow,max-image-preview:large"><link rel="canonical" href="https://www.yaoyaolingxian.blog/posts/curl-stage-timing-check/">
+<meta property="og:title" content="节点慢在 DNS、连接还是首字节？用 curl 拆分耗时">
+<meta property="og:description" content="机场节点慢在哪里？用curl分解DNS、连接、TLS、首字节和总耗时，避免只看一次总时间得出结论。">
+<meta property="og:url" content="https://www.yaoyaolingxian.blog/posts/curl-stage-timing-check/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="遥遥领先">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://www.yaoyaolingxian.blog/assets/media/52ff4036-42cb-4679-a721-9a08d1816c48.png"><meta property="og:image:alt" content="遥遥领先">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="网页聊天能打开却一直连接中？看懂 WebSocket 101 握手">
-<meta name="twitter:description" content="网页正常但实时聊天一直连接中怎么办？检查WebSocket 101握手、状态码和重连行为，比较直连与机场节点。">
+<meta name="twitter:title" content="节点慢在 DNS、连接还是首字节？用 curl 拆分耗时">
+<meta name="twitter:description" content="机场节点慢在哪里？用curl分解DNS、连接、TLS、首字节和总耗时，避免只看一次总时间得出结论。">
 <meta name="twitter:image" content="https://www.yaoyaolingxian.blog/assets/media/52ff4036-42cb-4679-a721-9a08d1816c48.png">
-<meta name="author" content="王牌飞行员"><meta property="article:published_time" content="2026-09-25T09:10:17&#43;08:00"><meta property="article:modified_time" content="2026-09-25T09:11:15&#43;08:00"><meta property="article:tag" content="代理协议"><meta property="article:tag" content="故障排查">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@id":"https://www.yaoyaolingxian.blog/posts/websocket-101-proxy-check/#article","@type":"BlogPosting","author":{"@type":"Person","name":"王牌飞行员"},"dateModified":"2026-09-25T09:11:15+08:00","datePublished":"2026-09-25T09:10:17+08:00","description":"网页正常但实时聊天一直连接中怎么办？检查WebSocket 101握手、状态码和重连行为，比较直连与机场节点。","headline":"网页聊天能打开却一直连接中？看懂 WebSocket 101 握手","inLanguage":"zh-CN","mainEntityOfPage":{"@id":"https://www.yaoyaolingxian.blog/posts/websocket-101-proxy-check/","@type":"WebPage"},"url":"https://www.yaoyaolingxian.blog/posts/websocket-101-proxy-check/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://www.yaoyaolingxian.blog/","name":"遥遥领先","position":1},{"@type":"ListItem","item":"https://www.yaoyaolingxian.blog/posts/websocket-101-proxy-check/","name":"网页聊天能打开却一直连接中？看懂 WebSocket 101 握手","position":2}]}]}</script>
+<meta name="author" content="王牌飞行员"><meta property="article:published_time" content="2026-09-26T09:06:56&#43;08:00"><meta property="article:modified_time" content="2026-09-26T09:07:01&#43;08:00"><meta property="article:tag" content="线路测试"><meta property="article:tag" content="网络性能">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@id":"https://www.yaoyaolingxian.blog/posts/curl-stage-timing-check/#article","@type":"BlogPosting","author":{"@type":"Person","name":"王牌飞行员"},"dateModified":"2026-09-26T09:07:01+08:00","datePublished":"2026-09-26T09:06:56+08:00","description":"机场节点慢在哪里？用curl分解DNS、连接、TLS、首字节和总耗时，避免只看一次总时间得出结论。","headline":"节点慢在 DNS、连接还是首字节？用 curl 拆分耗时","inLanguage":"zh-CN","mainEntityOfPage":{"@id":"https://www.yaoyaolingxian.blog/posts/curl-stage-timing-check/","@type":"WebPage"},"url":"https://www.yaoyaolingxian.blog/posts/curl-stage-timing-check/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://www.yaoyaolingxian.blog/","name":"遥遥领先","position":1},{"@type":"ListItem","item":"https://www.yaoyaolingxian.blog/posts/curl-stage-timing-check/","name":"节点慢在 DNS、连接还是首字节？用 curl 拆分耗时","position":2}]}]}</script>
 
 <script>(()=>{let mode='system';try{const saved=localStorage.getItem('reader-theme');if(['system','light','dark'].includes(saved))mode=saved}catch{}const root=document.documentElement;root.dataset.colorMode=mode;root.classList.toggle('dark',mode==='dark'||(mode==='system'&&matchMedia('(prefers-color-scheme: dark)').matches))})();</script>
 <link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/style.css">
@@ -75,45 +75,43 @@
 <div class="article-viewport"><div class="article-scroll">
 <main id="main" tabindex="-1" class="shell article-shell" data-has-toc="true">
 
-<nav class="breadcrumbs" aria-label="面包屑导航"><ol><li><a href="https://www.yaoyaolingxian.blog/">遥遥领先</a></li><li><span aria-current="page">网页聊天能打开却一直连接中？看懂 WebSocket 101 握手</span></li></ol></nav>
+<nav class="breadcrumbs" aria-label="面包屑导航"><ol><li><a href="https://www.yaoyaolingxian.blog/">遥遥领先</a></li><li><span aria-current="page">节点慢在 DNS、连接还是首字节？用 curl 拆分耗时</span></li></ol></nav>
 
 
 
 <article data-pagefind-body>
 <header class="article-header">
 <div class="eyebrow" data-pagefind-ignore>文章</div>
-<h1 data-pagefind-meta="title">网页聊天能打开却一直连接中？看懂 WebSocket 101 握手</h1>
-<div class="metadata" data-pagefind-ignore><span>王牌飞行员</span><time datetime="2026-09-25T09:10:17&#43;08:00">2026-09-25</time><span><span id="page-views">—</span> 次阅读</span></div>
+<h1 data-pagefind-meta="title">节点慢在 DNS、连接还是首字节？用 curl 拆分耗时</h1>
+<div class="metadata" data-pagefind-ignore><span>王牌飞行员</span><time datetime="2026-09-26T09:06:56&#43;08:00">2026-09-26</time><span><span id="page-views">—</span> 次阅读</span></div>
 <div class="chips" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/categories/protocols-network/">协议与网络</a></div>
 </header>
-<div class="prose"><p>网页首页和普通接口都能打开，但在线聊天、实时通知或协作页面一直显示“正在连接”，常见原因之一是 WebSocket 握手没有完成。此时测速正常也不足以证明链路完整，因为长连接还要经过一次协议升级。</p>
-<h2 id="101-">101 状态码代表什么</h2>
-<p>WebSocket 通常从一个 HTTP 请求开始。客户端发送 <code>Upgrade: websocket</code> 和 <code>Connection: Upgrade</code> 等字段；服务器接受后返回 <code>101 Switching Protocols</code>。RFC 6455 明确说明，若状态不是 101，或 <code>Sec-WebSocket-Accept</code> 不符合预期，WebSocket 连接就没有建立。</p>
-<p>因此“页面能加载”和“实时连接能建立”是两个验收点。前者只证明普通 HTTP 内容可达，后者还要检查升级请求、持续连接和中途关闭。</p>
-<h2 id="heading">用浏览器开发者工具定位</h2>
+<div class="prose"><h2 id="-dns-curl-">节点慢在 DNS、连接还是首字节？用 curl 拆分耗时</h2>
+<p>“这个机场节点很慢”通常把多个阶段混在了一起。域名解析慢、TCP 连接慢、TLS 握手慢、服务器迟迟不返回首字节，以及正文下载慢，给人的感觉都可能是“网页转圈”。如果不拆分阶段，只看总耗时，很难知道应该换 DNS、换节点，还是换测试目标。</p>
+<p>curl 的 <code>--write-out</code> 可以在请求结束后输出各阶段计时。先选一个稳定、允许访问的 HTTPS 页面，在同一台设备上执行：</p>
+<pre><code class="language-bash">curl -o NUL -sS -w &quot;dns=%{time_namelookup}\nconnect=%{time_connect}\ntls=%{time_appconnect}\nfirst_byte=%{time_starttransfer}\ntotal=%{time_total}\n&quot; https://example.com/
+</code></pre>
+<p>在 macOS 或 Linux 上把 <code>NUL</code> 换成 <code>/dev/null</code>。<code>example.com</code> 只是示例，应替换成你平时真实使用且可公开访问的目标。</p>
+<h3 id="heading">五个时间怎样看</h3>
+<ul>
+<li><code>time_namelookup</code>：从开始到域名解析完成。</li>
+<li><code>time_connect</code>：从开始到 TCP 连接完成；若使用显式 HTTP 代理，这里通常对应到代理的连接。</li>
+<li><code>time_appconnect</code>：从开始到 TLS 等应用层握手完成。</li>
+<li><code>time_starttransfer</code>：从开始到收到首字节，包含此前阶段和服务器处理时间。</li>
+<li><code>time_total</code>：整次传输总时间。</li>
+</ul>
+<p>这些值大多是累计时间。要估算某个阶段的增量，应做相减，例如 TLS 相关增量可粗略观察 <code>time_appconnect - time_connect</code>，首字节等待增量可观察 <code>time_starttransfer - time_appconnect</code>。它们是诊断线索，不等于服务商的长期性能承诺。</p>
+<h3 id="heading-1">做公平的节点对照</h3>
 <ol>
-<li>打开出现问题的页面，再打开开发者工具的 Network 面板。</li>
-<li>选择 WS 或 WebSocket 类型，刷新页面。</li>
-<li>找到长时间 pending、失败或反复重连的请求。</li>
-<li>查看握手状态、请求 URL、时间和关闭信息，但不要公开 Cookie、令牌或查询参数。</li>
-<li>在同一浏览器中分别测试直连和一个机场节点，保持账号、页面和时间接近。</li>
+<li>固定设备、网络、目标 URL 和测试命令。</li>
+<li>每个节点只测少量几次，交替测试，避免把时段变化误当成节点差异。</li>
+<li>同时记录是否失败与 curl 退出码，不能只保留成功样本。</li>
+<li>最后用浏览器、下载或视频等真实任务验收。</li>
 </ol>
-<p>如果直连与代理都没有 101，先检查网站自身状态、登录权限或浏览器扩展。如果直连稳定返回 101，而某一节点持续得到 403、404、502 或超时，才有理由进一步检查该节点路径、分流规则或中间代理对升级连接的处理。</p>
-<h2 id="heading-1">几种结果怎样判断</h2>
-<ul>
-<li><code>101</code> 后很快断开：握手成功，问题转向心跳、网络切换、空闲超时或服务端关闭码。</li>
-<li><code>403</code>：可能涉及登录、Origin 或服务端访问策略，不能简单理解为机场被封。</li>
-<li><code>404</code>：常见于请求路径或反向代理路由不对。</li>
-<li><code>502/504</code>：说明网关无法及时从上游获得正常响应，需要结合网站自身状态判断。</li>
-<li>一直超时：再比较 DNS、TCP/TLS 建连和不同接入网络。</li>
-</ul>
-<h2 id="heading-2">机场节点的验收方法</h2>
-<p>选择一个自己日常确实使用、且允许测试的实时应用，连续观察十到十五分钟。记录握手是否为 101、是否发生重连、切换节点后是否立即恢复，以及普通网页是否同时正常。不要用陌生的 WebSocket 测试站替代真实需求，也不要把一次服务端故障写成节点长期结论。</p>
-<p>当同一应用在两个时段都能建立连接、保持在线，并且切换网络后能按预期重连，才算完成这项机场推荐验收。</p>
-<h2 id="heading-3">参考资料</h2>
-<ul>
-<li><a href="https://datatracker.ietf.org/doc/html/rfc6455">IETF RFC 6455：The WebSocket Protocol</a></li>
-</ul>
+<p>如果 DNS 时间在所有节点都高，先查本机或网络解析；如果连接阶段只在一个节点高，再检查该入口路径；如果首字节等待对所有路径都高，目标网站本身也可能是因素。</p>
+<h3 id="heading-2">机场推荐中怎样使用这组数据</h3>
+<p>不要把一次最低值写成“最快节点”。更有用的做法是记录中位表现、失败次数、测试时段和目标类型，并说明测试条件。这样读者能区分“连接建立快”和“内容传输快”，也能知道结论能否复现。</p>
+<p>curl 官方手册定义了这些 <code>--write-out</code> 变量及其计时边界：<a href="https://curl.se/docs/manpage.html">curl 命令行手册</a>。</p>
 </div>
 <div class="article-likes" data-pagefind-ignore>
 <button id="page-like" class="like-button" type="button" aria-pressed="false" aria-describedby="page-like-message" disabled>
@@ -121,13 +119,13 @@
 <span id="page-like-label">点赞</span><span id="page-like-count">—</span>
 </button><p id="page-like-message" role="status"></p>
 </div>
-<div class="article-tags" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/tags/proxy-protocols/"># 代理协议</a><a href="https://www.yaoyaolingxian.blog/tags/troubleshooting/"># 故障排查</a></div>
-<nav class="pagination" aria-label="相邻文章" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/posts/curl-stage-timing-check/">← 上一篇</a><a href="https://www.yaoyaolingxian.blog/posts/proxy-407-authentication-check/">下一篇 →</a></nav>
+<div class="article-tags" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/tags/connection-testing/"># 线路测试</a><a href="https://www.yaoyaolingxian.blog/tags/network-performance/"># 网络性能</a></div>
+<nav class="pagination" aria-label="相邻文章" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/posts/airport-recommendation-guide/">← 上一篇</a><a href="https://www.yaoyaolingxian.blog/posts/websocket-101-proxy-check/">下一篇 →</a></nav>
 <section class="comments-section" data-pagefind-ignore><h2>评论</h2><div id="comments"></div></section>
 </article>
 
 <div class="article-rail">
-<aside class="toc"><div>本篇目录</div><nav aria-label="文章目录"><a class="level-2" href="#101-">101 状态码代表什么</a><a class="level-2" href="#heading">用浏览器开发者工具定位</a><a class="level-2" href="#heading-1">几种结果怎样判断</a><a class="level-2" href="#heading-2">机场节点的验收方法</a><a class="level-2" href="#heading-3">参考资料</a></nav></aside>
+<aside class="toc"><div>本篇目录</div><nav aria-label="文章目录"><a class="level-2" href="#-dns-curl-">节点慢在 DNS、连接还是首字节？用 curl 拆分耗时</a><a class="level-3" href="#heading">五个时间怎样看</a><a class="level-3" href="#heading-1">做公平的节点对照</a><a class="level-3" href="#heading-2">机场推荐中怎样使用这组数据</a></nav></aside>
 </div>
 
 </main>
@@ -162,7 +160,7 @@
 </div>
 </dialog>
 
-<script id="blog-comments-config" type="application/json">{"comments":true,"likes":true,"locale":"zh-CN","pageKey":"/p/05ecf5fb-f665-4f4e-86dd-797c9e377fc5/","pageTitle":"网页聊天能打开却一直连接中？看懂 WebSocket 101 握手","server":"https://upfqpobmiewm.sealosgzg.site","site":"xblog-f49c63bc-e1a5-4cf0-b2f5-6e9bc109b533","views":true,"viewsBase":0}</script>
+<script id="blog-comments-config" type="application/json">{"comments":true,"likes":true,"locale":"zh-CN","pageKey":"/p/8062b26a-0ae0-49b6-8b54-f3e08e391ad8/","pageTitle":"节点慢在 DNS、连接还是首字节？用 curl 拆分耗时","server":"https://upfqpobmiewm.sealosgzg.site","site":"xblog-f49c63bc-e1a5-4cf0-b2f5-6e9bc109b533","views":true,"viewsBase":0}</script>
 
 </body>
 </html>

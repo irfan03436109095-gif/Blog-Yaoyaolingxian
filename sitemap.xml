@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.yaoyaolingxian.blog/</loc>
-    <lastmod>2026-09-25T01:50:58Z</lastmod>
+    <lastmod>2026-09-26T11:15:09Z</lastmod>
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/categories/buying-guides/</loc>
@@ -18,7 +18,7 @@
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/categories/protocols-network/</loc>
-    <lastmod>2026-09-25T01:50:58Z</lastmod>
+    <lastmod>2026-09-26T11:15:09Z</lastmod>
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/categories/troubleshooting/</loc>
@@ -26,11 +26,11 @@
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/page/2/</loc>
-    <lastmod>2026-09-25T01:50:58Z</lastmod>
+    <lastmod>2026-09-26T11:15:09Z</lastmod>
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/page/3/</loc>
-    <lastmod>2026-09-25T01:50:58Z</lastmod>
+    <lastmod>2026-09-26T11:15:09Z</lastmod>
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/posts/airport-plan-cost/</loc>
@@ -38,7 +38,7 @@
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/posts/airport-recommendation-guide/</loc>
-    <lastmod>2026-09-25T01:50:58Z</lastmod>
+    <lastmod>2026-09-26T11:15:09Z</lastmod>
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/posts/airport-speed-test/</loc>
@@ -55,6 +55,10 @@
   <url>
     <loc>https://www.yaoyaolingxian.blog/posts/connection-timeout/</loc>
     <lastmod>2026-09-19T16:43:07Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.yaoyaolingxian.blog/posts/curl-stage-timing-check/</loc>
+    <lastmod>2026-09-26T01:07:01Z</lastmod>
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/posts/direct-relay-dedicated-lines/</loc>
@@ -134,7 +138,7 @@
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/posts/websocket-101-proxy-check/</loc>
-    <lastmod>2026-09-25T01:11:15Z</lastmod>
+    <lastmod>2026-09-26T11:15:09Z</lastmod>
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/tags/airport-recommendations/</loc>
@@ -150,7 +154,7 @@
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/tags/connection-testing/</loc>
-    <lastmod>2026-09-24T02:19:57Z</lastmod>
+    <lastmod>2026-09-26T11:15:09Z</lastmod>
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/tags/dns/</loc>
@@ -170,7 +174,7 @@
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/tags/network-performance/</loc>
-    <lastmod>2026-09-24T02:19:57Z</lastmod>
+    <lastmod>2026-09-26T11:15:09Z</lastmod>
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/tags/plan-selection/</loc>
