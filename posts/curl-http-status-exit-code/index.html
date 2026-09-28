@@ -4,23 +4,23 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>同一节点第二次握手更快？TLS 会话恢复会影响测速 · 遥遥领先性价比机场</title>
-<meta name="description" content="同一机场节点第二次连接为什么更快？了解TLS会话恢复和连接复用，设计冷启动、热连接两组公平测试。">
-<meta name="keywords" content="TLS会话恢复,连接复用,机场节点测速,curl计时">
-<meta name="robots" content="index,follow,max-image-preview:large"><link rel="canonical" href="https://www.yaoyaolingxian.blog/posts/tls-session-resumption-timing/">
-<meta property="og:title" content="同一节点第二次握手更快？TLS 会话恢复会影响测速">
-<meta property="og:description" content="同一机场节点第二次连接为什么更快？了解TLS会话恢复和连接复用，设计冷启动、热连接两组公平测试。">
-<meta property="og:url" content="https://www.yaoyaolingxian.blog/posts/tls-session-resumption-timing/">
+<title>curl 显示 0 号退出码却是 404？分清传输成功与 HTTP 失败 · 遥遥领先性价比机场</title>
+<meta name="description" content="curl退出码为0却返回404怎么办？用http_code、exitcode和fail-with-body区分网络故障与HTTP错误。">
+<meta name="keywords" content="curl退出码,HTTP状态码,fail-with-body,机场节点排障">
+<meta name="robots" content="index,follow,max-image-preview:large"><link rel="canonical" href="https://www.yaoyaolingxian.blog/posts/curl-http-status-exit-code/">
+<meta property="og:title" content="curl 显示 0 号退出码却是 404？分清传输成功与 HTTP 失败">
+<meta property="og:description" content="curl退出码为0却返回404怎么办？用http_code、exitcode和fail-with-body区分网络故障与HTTP错误。">
+<meta property="og:url" content="https://www.yaoyaolingxian.blog/posts/curl-http-status-exit-code/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="遥遥领先性价比机场">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://www.yaoyaolingxian.blog/assets/media/52ff4036-42cb-4679-a721-9a08d1816c48.png"><meta property="og:image:alt" content="遥遥领先性价比机场">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="同一节点第二次握手更快？TLS 会话恢复会影响测速">
-<meta name="twitter:description" content="同一机场节点第二次连接为什么更快？了解TLS会话恢复和连接复用，设计冷启动、热连接两组公平测试。">
+<meta name="twitter:title" content="curl 显示 0 号退出码却是 404？分清传输成功与 HTTP 失败">
+<meta name="twitter:description" content="curl退出码为0却返回404怎么办？用http_code、exitcode和fail-with-body区分网络故障与HTTP错误。">
 <meta name="twitter:image" content="https://www.yaoyaolingxian.blog/assets/media/52ff4036-42cb-4679-a721-9a08d1816c48.png">
-<meta name="author" content="王牌飞行员"><meta property="article:published_time" content="2026-09-27T09:07:04&#43;08:00"><meta property="article:modified_time" content="2026-09-27T09:07:18&#43;08:00"><meta property="article:tag" content="线路测试"><meta property="article:tag" content="网络性能">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@id":"https://www.yaoyaolingxian.blog/posts/tls-session-resumption-timing/#article","@type":"BlogPosting","author":{"@type":"Person","name":"王牌飞行员"},"dateModified":"2026-09-27T09:07:18+08:00","datePublished":"2026-09-27T09:07:04+08:00","description":"同一机场节点第二次连接为什么更快？了解TLS会话恢复和连接复用，设计冷启动、热连接两组公平测试。","headline":"同一节点第二次握手更快？TLS 会话恢复会影响测速","inLanguage":"zh-CN","mainEntityOfPage":{"@id":"https://www.yaoyaolingxian.blog/posts/tls-session-resumption-timing/","@type":"WebPage"},"url":"https://www.yaoyaolingxian.blog/posts/tls-session-resumption-timing/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://www.yaoyaolingxian.blog/","name":"遥遥领先性价比机场","position":1},{"@type":"ListItem","item":"https://www.yaoyaolingxian.blog/posts/tls-session-resumption-timing/","name":"同一节点第二次握手更快？TLS 会话恢复会影响测速","position":2}]}]}</script>
+<meta name="author" content="王牌飞行员"><meta property="article:published_time" content="2026-09-28T09:07:15&#43;08:00"><meta property="article:modified_time" content="2026-09-28T09:07:37&#43;08:00"><meta property="article:tag" content="线路测试"><meta property="article:tag" content="网络性能">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@id":"https://www.yaoyaolingxian.blog/posts/curl-http-status-exit-code/#article","@type":"BlogPosting","author":{"@type":"Person","name":"王牌飞行员"},"dateModified":"2026-09-28T09:07:37+08:00","datePublished":"2026-09-28T09:07:15+08:00","description":"curl退出码为0却返回404怎么办？用http_code、exitcode和fail-with-body区分网络故障与HTTP错误。","headline":"curl 显示 0 号退出码却是 404？分清传输成功与 HTTP 失败","inLanguage":"zh-CN","mainEntityOfPage":{"@id":"https://www.yaoyaolingxian.blog/posts/curl-http-status-exit-code/","@type":"WebPage"},"url":"https://www.yaoyaolingxian.blog/posts/curl-http-status-exit-code/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://www.yaoyaolingxian.blog/","name":"遥遥领先性价比机场","position":1},{"@type":"ListItem","item":"https://www.yaoyaolingxian.blog/posts/curl-http-status-exit-code/","name":"curl 显示 0 号退出码却是 404？分清传输成功与 HTTP 失败","position":2}]}]}</script>
 
 <script>(()=>{let mode='system';try{const saved=localStorage.getItem('reader-theme');if(['system','light','dark'].includes(saved))mode=saved}catch{}const root=document.documentElement;root.dataset.colorMode=mode;root.classList.toggle('dark',mode==='dark'||(mode==='system'&&matchMedia('(prefers-color-scheme: dark)').matches))})();</script>
 <link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/style.css">
@@ -74,7 +74,7 @@
 <div class="article-viewport"><div class="article-scroll">
 <main id="main" tabindex="-1" class="network-workspace network-reading">
 
-<nav class="breadcrumbs" aria-label="面包屑导航"><ol><li><a href="https://www.yaoyaolingxian.blog/">遥遥领先性价比机场</a></li><li><span aria-current="page">同一节点第二次握手更快？TLS 会话恢复会影响测速</span></li></ol></nav>
+<nav class="breadcrumbs" aria-label="面包屑导航"><ol><li><a href="https://www.yaoyaolingxian.blog/">遥遥领先性价比机场</a></li><li><span aria-current="page">curl 显示 0 号退出码却是 404？分清传输成功与 HTTP 失败</span></li></ol></nav>
 
 
 <div class="network-columns reading-columns">
@@ -82,28 +82,35 @@
 <article data-pagefind-body>
 <header class="article-header">
 <div class="eyebrow" data-pagefind-ignore>网络手记</div>
-<h1 data-pagefind-meta="title">同一节点第二次握手更快？TLS 会话恢复会影响测速</h1>
-<div class="metadata" data-pagefind-ignore><span>王牌飞行员</span><time datetime="2026-09-27T09:07:04&#43;08:00">2026-09-27</time><span><span id="page-views">—</span> 次阅读</span></div>
+<h1 data-pagefind-meta="title">curl 显示 0 号退出码却是 404？分清传输成功与 HTTP 失败</h1>
+<div class="metadata" data-pagefind-ignore><span>王牌飞行员</span><time datetime="2026-09-28T09:07:15&#43;08:00">2026-09-28</time><span><span id="page-views">—</span> 次阅读</span></div>
 <div class="chips" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/categories/protocols-network/">协议与网络</a></div>
 </header>
-<div class="prose"><h2 id="tls-">同一节点第二次握手更快？TLS 会话恢复会影响测速</h2>
-<p>用同一个网站连续测试机场节点时，第二次往往比第一次快。除了网络波动，TLS 会话恢复和连接复用也会影响结果：客户端可能利用前一次握手得到的信息，减少后续握手工作，甚至直接复用已有连接。</p>
-<p>如果把“第一次冷启动”和“第二次热连接”混在一起比较，就可能错误地把缓存收益归到某个节点上。</p>
-<h3 id="heading">会话恢复是什么</h3>
-<p>RFC 8446 说明，TLS 1.3 可以使用先前连接建立的预共享密钥进行会话恢复。恢复连接仍要完成安全检查，但握手路径和计算工作可能与首次完整握手不同。</p>
-<p>curl 也会在同一次命令处理多个 URL 时尽量复用连接；独立运行两次 curl 通常不能直接共享同一个连接缓存。因此，浏览器连续刷新、单条 curl 多 URL 和两次独立 curl 的结果不能混为一谈。</p>
-<h3 id="heading-1">设计冷、热两组测试</h3>
-<p><strong>冷启动组：</strong> 完全退出测试浏览器或每次运行独立 curl，等待短暂间隔，再记录 <code>time_connect</code>、<code>time_appconnect</code> 和 <code>time_total</code>。</p>
-<pre><code class="language-bash">curl -o NUL -sS -w &quot;tcp=%{time_connect} tls=%{time_appconnect} total=%{time_total}\n&quot; https://example.com/
+<div class="prose"><p>用 curl 检查机场节点时，命令退出码是 0，却看到网页返回 404 或 500，并不矛盾。退出码回答“传输是否完成”，HTTP 状态码回答“服务器怎样处理请求”，必须同时记录。</p>
+<h2 id="heading">两类状态分别代表什么</h2>
+<p>curl 默认把完整收到 HTTP 错误页面视为一次成功传输，因此即使服务器返回 404，命令也可能以 0 退出。curl 官方 FAQ 说明，可使用 <code>--fail</code> 让非成功 HTTP 响应导致错误；<code>--fail-with-body</code> 则在返回错误的同时保留响应正文，便于排查。</p>
+<p>网络层失败则可能没有 HTTP 状态，例如 DNS 解析失败、连接超时或 TLS 校验失败。这时要看 curl 退出码和错误信息，而不是把状态码 000 当成服务器回复。</p>
+<h2 id="heading-1">一条命令同时记录</h2>
+<p>对自己有权访问的固定测试页执行：</p>
+<pre><code class="language-bash">curl --silent --show-error --output response.txt \
+  --write-out &quot;http=%{http_code} exit=%{exitcode} time=%{time_total}\n&quot; \
+  https://example.com/test
 </code></pre>
-<p><strong>热连接组：</strong> 在同一浏览器会话中连续访问同一目标，或使用能明确复用连接的测试工具，记录第二次及后续请求。</p>
-<p>在 macOS 或 Linux 上将 <code>NUL</code> 换为 <code>/dev/null</code>。保持目标、节点、网络和时间窗口一致。</p>
-<h3 id="heading-2">不要直接相减得出绝对结论</h3>
-<p><code>time_appconnect</code> 是从请求开始到 TLS 握手完成的累计时间，不是纯 TLS 耗时。粗略查看握手增量可以观察 <code>time_appconnect - time_connect</code>，但 DNS、代理握手、连接复用和实现差异仍会影响数值。</p>
-<p>如果第二次明显更快，应记录它属于热连接结果；如果第一次在多个时段都慢，才继续检查路由、丢包或入口负载。浏览器开发者工具还可能显示来自缓存的资源，需选择实际发起网络请求的条目。</p>
-<h3 id="heading-3">机场推荐的验收方式</h3>
-<p>分别报告冷启动和连续使用表现，每组至少做几次交替测试，并记录失败。用户首次打开应用更接近冷启动，持续浏览更接近热连接；两类体验都有价值。</p>
-<p>来源：<a href="https://datatracker.ietf.org/doc/rfc8446/">RFC 8446 TLS 1.3 会话恢复</a>、<a href="https://curl.se/docs/manpage.html">curl 官方手册关于连接复用与计时变量</a>。</p>
+<p>如需让 HTTP 4xx、5xx进入失败分支，可加入：</p>
+<pre><code class="language-bash">--fail-with-body
+</code></pre>
+<p>不要只看屏幕最后一行。保留请求时间、HTTP 状态、curl 退出码以及少量脱敏错误信息；不要记录 Cookie、Authorization、订阅链接或完整响应中的个人数据。</p>
+<h2 id="heading-2">用对照定位问题</h2>
+<ul>
+<li><code>exit=0</code> 且 <code>http=200</code>：传输和服务器响应都完成，再检查正文是否正确。</li>
+<li><code>exit=0</code> 且 <code>http=404/500</code>：网络路径已经到达服务器，问题更接近 URL、目标服务或上游响应。</li>
+<li>非零退出码且 <code>http=000</code>：优先看 DNS、TCP、TLS 或代理连接阶段。</li>
+<li>换节点后状态码完全相同：不应把服务器业务响应误写成节点故障。</li>
+</ul>
+<p>同一 URL 还应做直连、候选节点和另一网络对照。若只有某条路径无法建立连接，才继续检查节点或分流；若所有路径都收到同一个 4xx，应先核对请求本身。</p>
+<h2 id="heading-3">验收方法</h2>
+<p>机场推荐测试报告应把“请求到达”“HTTP 处理成功”和“正文正确”分成三项。只有三项都满足，才能称为任务成功；这样可以避免把 404 当断网，也避免把退出码 0 当成页面可用。</p>
+<p>来源：<a href="https://curl.se/docs/faq.html">curl 官方 FAQ</a>、<a href="https://curl.se/docs/manpage.html">curl 官方手册：<code>--fail-with-body</code>、<code>--write-out</code> 与退出码</a>。</p>
 </div>
 <div class="article-likes" data-pagefind-ignore>
 <button id="page-like" class="like-button" type="button" aria-pressed="false" aria-describedby="page-like-message" disabled>
@@ -112,12 +119,12 @@
 </button><p id="page-like-message" role="status"></p>
 </div>
 <div class="article-tags" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/tags/connection-testing/"># 线路测试</a><a href="https://www.yaoyaolingxian.blog/tags/network-performance/"># 网络性能</a></div>
-<nav class="pagination" aria-label="相邻文章" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/posts/curl-http-status-exit-code/">← 上一篇</a><a href="https://www.yaoyaolingxian.blog/posts/curl-stage-timing-check/">下一篇 →</a></nav>
+<nav class="pagination" aria-label="相邻文章" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/posts/airport-recommendation-guide/">← 上一篇</a><a href="https://www.yaoyaolingxian.blog/posts/tls-session-resumption-timing/">下一篇 →</a></nav>
 <section class="comments-section" data-pagefind-ignore><h2>评论</h2><div id="comments"></div></section>
 </article>
 </div>
 <div class="network-rail article-rail">
-<aside class="toc"><div>本篇目录</div><nav aria-label="文章目录"><a class="level-2" href="#tls-">同一节点第二次握手更快？TLS 会话恢复会影响测速</a><a class="level-3" href="#heading">会话恢复是什么</a><a class="level-3" href="#heading-1">设计冷、热两组测试</a><a class="level-3" href="#heading-2">不要直接相减得出绝对结论</a><a class="level-3" href="#heading-3">机场推荐的验收方式</a></nav></aside>
+<aside class="toc"><div>本篇目录</div><nav aria-label="文章目录"><a class="level-2" href="#heading">两类状态分别代表什么</a><a class="level-2" href="#heading-1">一条命令同时记录</a><a class="level-2" href="#heading-2">用对照定位问题</a><a class="level-2" href="#heading-3">验收方法</a></nav></aside>
 </div>
 </div>
 
@@ -152,7 +159,7 @@
 </div>
 </dialog>
 
-<script id="blog-comments-config" type="application/json">{"comments":true,"likes":true,"locale":"zh-CN","pageKey":"/p/c74a8d1b-d1f5-4915-ace4-693985997c51/","pageTitle":"同一节点第二次握手更快？TLS 会话恢复会影响测速","server":"https://upfqpobmiewm.sealosgzg.site","site":"xblog-f49c63bc-e1a5-4cf0-b2f5-6e9bc109b533","views":true,"viewsBase":0}</script>
+<script id="blog-comments-config" type="application/json">{"comments":true,"likes":true,"locale":"zh-CN","pageKey":"/p/d49209ca-439e-44ae-8b00-4d31a60fee4f/","pageTitle":"curl 显示 0 号退出码却是 404？分清传输成功与 HTTP 失败","server":"https://upfqpobmiewm.sealosgzg.site","site":"xblog-f49c63bc-e1a5-4cf0-b2f5-6e9bc109b533","views":true,"viewsBase":0}</script>
 
 </body>
 </html>
