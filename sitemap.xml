@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.yaoyaolingxian.blog/</loc>
-    <lastmod>2026-09-28T03:49:32Z</lastmod>
+    <lastmod>2026-09-29T11:53:43Z</lastmod>
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/categories/buying-guides/</loc>
@@ -22,15 +22,19 @@
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/categories/troubleshooting/</loc>
-    <lastmod>2026-09-27T11:36:48Z</lastmod>
+    <lastmod>2026-09-29T11:53:43Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.yaoyaolingxian.blog/categories/troubleshooting/page/2/</loc>
+    <lastmod>2026-09-29T01:08:29Z</lastmod>
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/page/2/</loc>
-    <lastmod>2026-09-28T03:49:32Z</lastmod>
+    <lastmod>2026-09-29T11:53:43Z</lastmod>
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/page/3/</loc>
-    <lastmod>2026-09-28T03:49:32Z</lastmod>
+    <lastmod>2026-09-29T11:53:43Z</lastmod>
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/posts/airport-plan-cost/</loc>
@@ -38,7 +42,7 @@
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/posts/airport-recommendation-guide/</loc>
-    <lastmod>2026-09-28T03:49:32Z</lastmod>
+    <lastmod>2026-09-29T11:53:43Z</lastmod>
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/posts/airport-speed-test/</loc>
@@ -58,7 +62,7 @@
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/posts/curl-http-status-exit-code/</loc>
-    <lastmod>2026-09-28T01:07:37Z</lastmod>
+    <lastmod>2026-09-29T11:53:43Z</lastmod>
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/posts/curl-stage-timing-check/</loc>
@@ -75,6 +79,10 @@
   <url>
     <loc>https://www.yaoyaolingxian.blog/posts/mtu-troubleshooting/</loc>
     <lastmod>2026-09-27T11:36:48Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.yaoyaolingxian.blog/posts/no-proxy-bypass-check/</loc>
+    <lastmod>2026-09-29T01:08:29Z</lastmod>
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/posts/phone-pc-network-differences/</loc>
@@ -162,7 +170,7 @@
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/tags/connection-testing/</loc>
-    <lastmod>2026-09-28T03:49:32Z</lastmod>
+    <lastmod>2026-09-29T11:53:43Z</lastmod>
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/tags/dns/</loc>
@@ -222,11 +230,11 @@
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/tags/troubleshooting/</loc>
-    <lastmod>2026-09-27T11:36:48Z</lastmod>
+    <lastmod>2026-09-29T11:53:43Z</lastmod>
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/tags/troubleshooting/page/2/</loc>
-    <lastmod>2026-09-27T11:36:48Z</lastmod>
+    <lastmod>2026-09-29T11:53:43Z</lastmod>
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/tags/tun/</loc>
