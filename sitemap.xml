@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.yaoyaolingxian.blog/</loc>
-    <lastmod>2026-09-30T12:05:28Z</lastmod>
+    <lastmod>2026-09-30T13:06:03Z</lastmod>
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/categories/buying-guides/</loc>
@@ -21,6 +21,10 @@
     <lastmod>2026-09-28T03:49:32Z</lastmod>
   </url>
   <url>
+    <loc>https://www.yaoyaolingxian.blog/categories/trending-topics/</loc>
+    <lastmod>2026-09-30T13:04:23Z</lastmod>
+  </url>
+  <url>
     <loc>https://www.yaoyaolingxian.blog/categories/troubleshooting/</loc>
     <lastmod>2026-09-30T12:05:28Z</lastmod>
   </url>
@@ -30,15 +34,15 @@
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/page/2/</loc>
-    <lastmod>2026-09-30T12:05:28Z</lastmod>
+    <lastmod>2026-09-30T13:06:03Z</lastmod>
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/page/3/</loc>
-    <lastmod>2026-09-30T12:05:28Z</lastmod>
+    <lastmod>2026-09-30T13:06:03Z</lastmod>
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/page/4/</loc>
-    <lastmod>2026-09-30T11:58:21Z</lastmod>
+    <lastmod>2026-09-30T13:06:03Z</lastmod>
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/posts/airport-plan-cost/</loc>
@@ -46,7 +50,7 @@
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/posts/airport-recommendation-guide/</loc>
-    <lastmod>2026-09-30T12:05:28Z</lastmod>
+    <lastmod>2026-09-30T13:06:03Z</lastmod>
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/posts/airport-speed-test/</loc>
@@ -86,7 +90,7 @@
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/posts/gpt-61-sol-value-models-plans/</loc>
-    <lastmod>2026-09-30T11:58:21Z</lastmod>
+    <lastmod>2026-09-30T13:06:03Z</lastmod>
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/posts/mtu-troubleshooting/</loc>
@@ -155,6 +159,10 @@
   <url>
     <loc>https://www.yaoyaolingxian.blog/posts/tls-session-resumption-timing/</loc>
     <lastmod>2026-09-28T03:49:32Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.yaoyaolingxian.blog/posts/tncap-rating-version-check-guide-20260930/</loc>
+    <lastmod>2026-09-30T13:04:23Z</lastmod>
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/posts/v2rayn-subscription-guide/</loc>
