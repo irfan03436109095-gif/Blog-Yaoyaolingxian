@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.yaoyaolingxian.blog/</loc>
-    <lastmod>2026-10-01T03:58:46Z</lastmod>
+    <lastmod>2026-10-01T05:02:42Z</lastmod>
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/categories/buying-guides/</loc>
@@ -21,6 +21,10 @@
     <lastmod>2026-09-28T03:49:32Z</lastmod>
   </url>
   <url>
+    <loc>https://www.yaoyaolingxian.blog/categories/travel-guides/</loc>
+    <lastmod>2026-10-01T05:01:05Z</lastmod>
+  </url>
+  <url>
     <loc>https://www.yaoyaolingxian.blog/categories/trending-topics/</loc>
     <lastmod>2026-09-30T13:04:23Z</lastmod>
   </url>
@@ -34,15 +38,15 @@
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/page/2/</loc>
-    <lastmod>2026-10-01T03:58:46Z</lastmod>
+    <lastmod>2026-10-01T05:02:42Z</lastmod>
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/page/3/</loc>
-    <lastmod>2026-10-01T03:58:46Z</lastmod>
+    <lastmod>2026-10-01T05:02:42Z</lastmod>
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/page/4/</loc>
-    <lastmod>2026-10-01T03:58:46Z</lastmod>
+    <lastmod>2026-10-01T05:02:42Z</lastmod>
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/posts/airport-plan-cost/</loc>
@@ -50,7 +54,7 @@
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/posts/airport-recommendation-guide/</loc>
-    <lastmod>2026-10-01T03:58:46Z</lastmod>
+    <lastmod>2026-10-01T05:02:42Z</lastmod>
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/posts/airport-speed-test/</loc>
@@ -78,7 +82,7 @@
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/posts/curl-interface-network-path-test/</loc>
-    <lastmod>2026-10-01T02:59:51Z</lastmod>
+    <lastmod>2026-10-01T05:02:42Z</lastmod>
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/posts/curl-stage-timing-check/</loc>
@@ -179,6 +183,10 @@
   <url>
     <loc>https://www.yaoyaolingxian.blog/posts/websocket-101-proxy-check/</loc>
     <lastmod>2026-09-27T11:36:48Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.yaoyaolingxian.blog/posts/xian-national-day-2026-history-three-days/</loc>
+    <lastmod>2026-10-01T05:01:05Z</lastmod>
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/tags/airport-recommendations/</loc>
