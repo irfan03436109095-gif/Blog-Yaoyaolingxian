@@ -4,23 +4,23 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>同一节点网页偶发断开？用 HTTP/1.1 与 HTTP/2 做协议对照 · 遥遥领先性价比机场</title>
-<meta name="description" content="机场网页偶发断开怎样排查？使用 curl 比较 HTTP/1.1 和 HTTP/2，核对构建支持、实际协议和重复请求结果。">
-<meta name="keywords" content="机场推荐,HTTP/2,HTTP/1.1,curl,协议排障">
-<meta name="robots" content="index,follow,max-image-preview:large"><link rel="canonical" href="https://www.yaoyaolingxian.blog/posts/curl-http-version-comparison/">
-<meta property="og:title" content="同一节点网页偶发断开？用 HTTP/1.1 与 HTTP/2 做协议对照">
-<meta property="og:description" content="机场网页偶发断开怎样排查？使用 curl 比较 HTTP/1.1 和 HTTP/2，核对构建支持、实际协议和重复请求结果。">
-<meta property="og:url" content="https://www.yaoyaolingxian.blog/posts/curl-http-version-comparison/">
+<title>机场测速返回 200 却打开登录页？核对最终 URL 与跳转次数 · 遥遥领先性价比机场</title>
+<meta name="description" content="使用 curl 记录最终网址、跳转次数、内容类型和正文，判断 200 是否对应预期测试资源，避免把登录页或门户页面计为测速成功。">
+<meta name="keywords" content="机场推荐,curl测速,重定向排查,最终URL,登录页">
+<meta name="robots" content="index,follow,max-image-preview:large"><link rel="canonical" href="https://www.yaoyaolingxian.blog/posts/curl-final-url-redirect-check/">
+<meta property="og:title" content="机场测速返回 200 却打开登录页？核对最终 URL 与跳转次数">
+<meta property="og:description" content="使用 curl 记录最终网址、跳转次数、内容类型和正文，判断 200 是否对应预期测试资源，避免把登录页或门户页面计为测速成功。">
+<meta property="og:url" content="https://www.yaoyaolingxian.blog/posts/curl-final-url-redirect-check/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="遥遥领先性价比机场">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://www.yaoyaolingxian.blog/assets/media/52ff4036-42cb-4679-a721-9a08d1816c48.png"><meta property="og:image:alt" content="遥遥领先性价比机场">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="同一节点网页偶发断开？用 HTTP/1.1 与 HTTP/2 做协议对照">
-<meta name="twitter:description" content="机场网页偶发断开怎样排查？使用 curl 比较 HTTP/1.1 和 HTTP/2，核对构建支持、实际协议和重复请求结果。">
+<meta name="twitter:title" content="机场测速返回 200 却打开登录页？核对最终 URL 与跳转次数">
+<meta name="twitter:description" content="使用 curl 记录最终网址、跳转次数、内容类型和正文，判断 200 是否对应预期测试资源，避免把登录页或门户页面计为测速成功。">
 <meta name="twitter:image" content="https://www.yaoyaolingxian.blog/assets/media/52ff4036-42cb-4679-a721-9a08d1816c48.png">
-<meta name="author" content="王牌飞行员"><meta property="article:published_time" content="2026-10-03T09:21:59&#43;08:00"><meta property="article:modified_time" content="2026-10-03T09:22:04&#43;08:00"><meta property="article:tag" content="线路测试"><meta property="article:tag" content="代理协议"><meta property="article:tag" content="故障排查">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@id":"https://www.yaoyaolingxian.blog/posts/curl-http-version-comparison/#article","@type":"BlogPosting","author":{"@type":"Person","name":"王牌飞行员"},"dateModified":"2026-10-03T09:22:04+08:00","datePublished":"2026-10-03T09:21:59+08:00","description":"机场网页偶发断开怎样排查？使用 curl 比较 HTTP/1.1 和 HTTP/2，核对构建支持、实际协议和重复请求结果。","headline":"同一节点网页偶发断开？用 HTTP/1.1 与 HTTP/2 做协议对照","inLanguage":"zh-CN","mainEntityOfPage":{"@id":"https://www.yaoyaolingxian.blog/posts/curl-http-version-comparison/","@type":"WebPage"},"url":"https://www.yaoyaolingxian.blog/posts/curl-http-version-comparison/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://www.yaoyaolingxian.blog/","name":"遥遥领先性价比机场","position":1},{"@type":"ListItem","item":"https://www.yaoyaolingxian.blog/posts/curl-http-version-comparison/","name":"同一节点网页偶发断开？用 HTTP/1.1 与 HTTP/2 做协议对照","position":2}]}]}</script>
+<meta name="author" content="王牌飞行员"><meta property="article:published_time" content="2026-10-04T09:32:20&#43;08:00"><meta property="article:modified_time" content="2026-10-04T09:32:23&#43;08:00"><meta property="article:tag" content="机场推荐"><meta property="article:tag" content="线路测试"><meta property="article:tag" content="故障排查">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@id":"https://www.yaoyaolingxian.blog/posts/curl-final-url-redirect-check/#article","@type":"BlogPosting","author":{"@type":"Person","name":"王牌飞行员"},"dateModified":"2026-10-04T09:32:23+08:00","datePublished":"2026-10-04T09:32:20+08:00","description":"使用 curl 记录最终网址、跳转次数、内容类型和正文，判断 200 是否对应预期测试资源，避免把登录页或门户页面计为测速成功。","headline":"机场测速返回 200 却打开登录页？核对最终 URL 与跳转次数","inLanguage":"zh-CN","mainEntityOfPage":{"@id":"https://www.yaoyaolingxian.blog/posts/curl-final-url-redirect-check/","@type":"WebPage"},"url":"https://www.yaoyaolingxian.blog/posts/curl-final-url-redirect-check/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://www.yaoyaolingxian.blog/","name":"遥遥领先性价比机场","position":1},{"@type":"ListItem","item":"https://www.yaoyaolingxian.blog/posts/curl-final-url-redirect-check/","name":"机场测速返回 200 却打开登录页？核对最终 URL 与跳转次数","position":2}]}]}</script>
 
 <script>(()=>{let mode='system';try{const saved=localStorage.getItem('reader-theme');if(['system','light','dark'].includes(saved))mode=saved}catch{}const root=document.documentElement;root.dataset.colorMode=mode;root.classList.toggle('dark',mode==='dark'||(mode==='system'&&matchMedia('(prefers-color-scheme: dark)').matches))})();</script>
 <link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/style.css">
@@ -74,7 +74,7 @@
 <div class="article-viewport"><div class="article-scroll">
 <main id="main" tabindex="-1" class="network-workspace network-reading">
 
-<nav class="breadcrumbs" aria-label="面包屑导航"><ol><li><a href="https://www.yaoyaolingxian.blog/">遥遥领先性价比机场</a></li><li><span aria-current="page">同一节点网页偶发断开？用 HTTP/1.1 与 HTTP/2 做协议对照</span></li></ol></nav>
+<nav class="breadcrumbs" aria-label="面包屑导航"><ol><li><a href="https://www.yaoyaolingxian.blog/">遥遥领先性价比机场</a></li><li><span aria-current="page">机场测速返回 200 却打开登录页？核对最终 URL 与跳转次数</span></li></ol></nav>
 
 
 <div class="network-columns reading-columns">
@@ -82,41 +82,47 @@
 <article data-pagefind-body>
 <header class="article-header">
 <div class="eyebrow" data-pagefind-ignore>网络手记</div>
-<h1 data-pagefind-meta="title">同一节点网页偶发断开？用 HTTP/1.1 与 HTTP/2 做协议对照</h1>
-<div class="metadata" data-pagefind-ignore><span>王牌飞行员</span><time datetime="2026-10-03T09:21:59&#43;08:00">2026-10-03</time><span><span id="page-views">—</span> 次阅读</span></div>
+<h1 data-pagefind-meta="title">机场测速返回 200 却打开登录页？核对最终 URL 与跳转次数</h1>
+<div class="metadata" data-pagefind-ignore><span>王牌飞行员</span><time datetime="2026-10-04T09:32:20&#43;08:00">2026-10-04</time><span><span id="page-views">—</span> 次阅读</span></div>
 <div class="chips" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/categories/troubleshooting/">故障排查</a></div>
 </header>
-<div class="prose"><p>同一节点访问同一网页，有时成功、有时连接重置，单纯换 DNS 不一定能解释。可以先做一次 HTTP/1.1 与 HTTP/2 的受控对照，看失败是否集中在某种实际协商结果上。</p>
-<p>这项测试用于缩小范围，不用于直接认定机场或网站责任。浏览器还涉及连接复用、Cookie 和扩展，curl 对照不能完全复刻浏览器行为。</p>
-<h2 id="-curl--http2">先检查 curl 是否支持 HTTP/2</h2>
-<p>运行 <code>curl.exe --version</code>，查看功能信息中是否有 HTTP2。macOS 或 Linux 使用实际安装的 <code>curl</code>。如果构建不支持 HTTP/2，选项报错说明测试工具能力不符，不能据此判定网络不支持。</p>
-<p>curl 手册说明：<code>--http1.1</code> 使用 HTTP/1.1；<code>--http2</code> 在 HTTPS 握手中协商 HTTP/2，需要底层 libcurl 构建支持。是否最终使用 HTTP/2，要看输出的实际版本，而非命令中写了什么。<a href="https://curl.se/docs/manpage.html">curl 官方手册</a></p>
-<h2 id="heading">保持其他条件一致</h2>
-<p>先固定客户端节点，并记下接管模式、实际本地代理地址和目标 URL。请选择允许测试的公开只读页面，避免账号令牌和支付接口。</p>
-<p>Windows PowerShell 示例：</p>
-<pre><code class="language-powershell">$localProxy = 'http://127.0.0.1:7890'
-curl.exe -q --proxy $localProxy --http1.1 --connect-timeout 8 --max-time 20 --output NUL --write-out 'version=%{http_version} status=%{http_code} total=%{time_total}\n' https://example.com/
-$LASTEXITCODE
-curl.exe -q --proxy $localProxy --http2 --connect-timeout 8 --max-time 20 --output NUL --write-out 'version=%{http_version} status=%{http_code} total=%{time_total}\n' https://example.com/
+<div class="prose"><p>下载测试文件时看到 HTTP 200，打开保存文件却是登录界面，这次不能计为目标下载成功。状态码说明收到响应，最终网址与实际内容才说明测到了什么。</p>
+<p><img src="https://www.yaoyaolingxian.blog/assets/media/08ea43c8-908b-48cf-95d9-60c3fd4f70bc.png" alt="初始测试网址经过跳转抵达登录页，需要核对最终网址与实际正文"></p>
+<p><em>示意图：200 是最后一次响应的状态，仍需确认它是不是想测的资源。</em></p>
+<h2 id="heading">什么时候需要这项检查</h2>
+<p>适用于公开测试资源发生跳转、公共网络门户干扰、网站要求登录，或两次测速内容大小明显不同的情况。它不用于把含订阅令牌、Cookie 或登录凭据的请求自动跟随到未知地址。</p>
+<p>先用浏览器确认预期资源的位置及用途，再选择自己有权访问的公开 URL。涉及机场推荐的对照测试，优先采用内容固定、体积适中的资源。</p>
+<h2 id="heading-1">先看原响应，再决定是否跟随</h2>
+<p>Windows PowerShell 中将公开目标填入变量，先不自动跟随跳转：</p>
+<pre><code class="language-powershell">$testUrl = 'https://example.com/'
+curl.exe -q --silent --show-error --connect-timeout 10 --max-time 30 --dump-header initial-headers.txt --output initial-body.txt $testUrl
 $LASTEXITCODE
 </code></pre>
-<p>7890只是示例端口，必须替换为客户端实际入口。如果客户端没有 HTTP 或混合代理入口，不要照抄此配置；使用它支持的路径，并在两组中保持一致。示例域名可用于基础请求，但真实业务需要另选合适的目标。</p>
-<h2 id="heading-1">交替运行，记录实际版本</h2>
-<p>按“1.1、2、2、1.1”的顺序做几轮，避免两组各测一次恰好落在不同网络负载时刻。每次是一个独立 curl 进程，并记录：时间、请求条件、<code>http_version</code>、HTTP 状态、退出码、耗时和错误文字。</p>
-<p>如果两组输出最终都是1.1，就没有形成协议差异；先确认工具支持与目标协商条件，不能把这一组数据称为 HTTP/2 对照。</p>
-<h2 id="heading-2">结果怎样解释</h2>
+<p>示例网址用于说明语法，不是测速文件。查看响应头中的状态和 Location，核对跳转域名是否符合预期。不要在这里粘贴含私有令牌的订阅地址。</p>
+<p>对确认可以跟随的无凭据公开目标，再运行：</p>
+<pre><code class="language-powershell">curl.exe -q --silent --show-error --location --max-redirs 5 --proto-redir '=https' --connect-timeout 10 --max-time 30 --output result-body.txt --write-out 'status=%{http_code}
+final=%{url_effective}
+redirects=%{num_redirects}
+type=%{content_type}
+' $testUrl
+$LASTEXITCODE
+</code></pre>
+<p>这里限制跟随次数和跳转协议，并保持 HTTPS 验证。curl 官方资料说明 --location 用于跟随跳转，url_effective 是最后取得资源的网址；不要用 --location-trusted 把凭据继续传到别处。</p>
+<h2 id="heading-2">四项一起验收</h2>
+<ol>
+<li>程序退出码：传输有没有发生错误。</li>
+<li>HTTP 状态：是否是当前任务预期的响应。</li>
+<li>最终 URL：域名和路径是否仍属于预期资源，而不是门户或登录页。</li>
+<li>正文：内容类型与实际文件是否符合预期，不能只看扩展名。</li>
+</ol>
+<p>最终 URL 含个人信息时，只在私下记录，公开分享要脱敏。内容类型也是线索而非绝对证明；服务器可能标错，因此仍要检查文件本身。</p>
+<h2 id="heading-3">怎样放进对照记录</h2>
+<p>记录每轮节点、时间、最终路径、跳转次数、内容检查结果及耗时。只有任务到达预期资源、正文通过核对，才计为这一轮成功。目标本身增加了跳转时，保留变更，不把耗时差全部归因于机场线路。</p>
+<h2 id="heading-4">官方来源与核验日期</h2>
+<p>以下资料于 2026-10-04 查阅；本文的测试步骤是基于这些资料整理的操作建议，不代表本站做过服务商实测。</p>
 <ul>
-<li>两种实际版本都失败：继续检查共同的节点、接管路径、DNS、TLS和目标服务。</li>
-<li>只有一种实际版本反复失败：为协议相关行为提供线索，但仍需在另一节点或另一网络复测。</li>
-<li>两组都正常，浏览器仍失败：查看浏览器请求本身，尤其是扩展、缓存、长连接和应用逻辑。</li>
-</ul>
-<p>记录中还应注明响应来自哪个目标，不把代理客户端入口协议和目标网站的 HTTP 版本混成一项。</p>
-<h2 id="heading-3">何时可以结束排查</h2>
-<p>当你能稳定复现差异，并在改变一个条件后重复验证，就可以提交脱敏记录给支持人员。随后恢复正常使用方式，再验证原业务。不要仅凭一次成功就全局禁用协议，也不要为完成对照关闭证书验证。</p>
-<p>机场推荐的价值在于可解释的验收证据：哪个任务、哪条路径、哪个实际协议成功，而不只是“这个节点看起来最快”。</p>
-<h2 id="heading-4">参考资料</h2>
-<ul>
-<li><a href="https://curl.se/docs/manpage.html">curl：--http1.1、--http2、--version 与 --write-out</a></li>
+<li><a href="https://everything.curl.dev/http/redirects.html">curl 官方：重定向处理</a></li>
+<li><a href="https://curl.se/docs/manpage.html#-w">curl 官方手册：write-out</a></li>
 </ul>
 </div>
 <div class="article-likes" data-pagefind-ignore>
@@ -125,8 +131,8 @@ $LASTEXITCODE
 <span id="page-like-label">点赞</span><span id="page-like-count">—</span>
 </button><p id="page-like-message" role="status"></p>
 </div>
-<div class="article-tags" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/tags/connection-testing/"># 线路测试</a><a href="https://www.yaoyaolingxian.blog/tags/proxy-protocols/"># 代理协议</a><a href="https://www.yaoyaolingxian.blog/tags/troubleshooting/"># 故障排查</a></div>
-<nav class="pagination" aria-label="相邻文章" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/posts/curl-final-url-redirect-check/">← 上一篇</a><a href="https://www.yaoyaolingxian.blog/posts/pac-direct-proxy-debug/">下一篇 →</a></nav>
+<div class="article-tags" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/tags/airport-recommendations/"># 机场推荐</a><a href="https://www.yaoyaolingxian.blog/tags/connection-testing/"># 线路测试</a><a href="https://www.yaoyaolingxian.blog/tags/troubleshooting/"># 故障排查</a></div>
+<nav class="pagination" aria-label="相邻文章" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/posts/airport-recommendation-guide/">← 上一篇</a><a href="https://www.yaoyaolingxian.blog/posts/curl-http-version-comparison/">下一篇 →</a></nav>
 <section class="comments-section" data-pagefind-ignore><h2>评论</h2><div id="comments"></div></section>
 </article>
 </div>
@@ -152,7 +158,7 @@ $LASTEXITCODE
 </div>
 </a>
 </aside>
-<aside class="toc"><div>本篇目录</div><nav aria-label="文章目录"><a class="level-2" href="#-curl--http2">先检查 curl 是否支持 HTTP/2</a><a class="level-2" href="#heading">保持其他条件一致</a><a class="level-2" href="#heading-1">交替运行，记录实际版本</a><a class="level-2" href="#heading-2">结果怎样解释</a><a class="level-2" href="#heading-3">何时可以结束排查</a><a class="level-2" href="#heading-4">参考资料</a></nav></aside>
+<aside class="toc"><div>本篇目录</div><nav aria-label="文章目录"><a class="level-2" href="#heading">什么时候需要这项检查</a><a class="level-2" href="#heading-1">先看原响应，再决定是否跟随</a><a class="level-2" href="#heading-2">四项一起验收</a><a class="level-2" href="#heading-3">怎样放进对照记录</a><a class="level-2" href="#heading-4">官方来源与核验日期</a></nav></aside>
 </div>
 </div>
 
@@ -187,7 +193,7 @@ $LASTEXITCODE
 </div>
 </dialog>
 
-<script id="blog-comments-config" type="application/json">{"comments":true,"likes":true,"locale":"zh-CN","pageKey":"/p/101c33ca-62d2-413b-84cc-b679976500c8/","pageTitle":"同一节点网页偶发断开？用 HTTP/1.1 与 HTTP/2 做协议对照","server":"https://upfqpobmiewm.sealosgzg.site","site":"xblog-f49c63bc-e1a5-4cf0-b2f5-6e9bc109b533","views":true,"viewsBase":0}</script>
+<script id="blog-comments-config" type="application/json">{"comments":true,"likes":true,"locale":"zh-CN","pageKey":"/p/443b4d9f-037f-4e47-af5e-fc90b05ef82a/","pageTitle":"机场测速返回 200 却打开登录页？核对最终 URL 与跳转次数","server":"https://upfqpobmiewm.sealosgzg.site","site":"xblog-f49c63bc-e1a5-4cf0-b2f5-6e9bc109b533","views":true,"viewsBase":0}</script>
 
 </body>
 </html>
