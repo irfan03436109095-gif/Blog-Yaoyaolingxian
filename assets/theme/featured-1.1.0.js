@@ -72,8 +72,10 @@
     fragment.querySelectorAll('img').forEach((img, index) => {
       const direct = mediaURL(img.getAttribute('src') || img.getAttribute('data-src'));
       img.removeAttribute('data-src');
-      img.removeAttribute('width');
-      img.removeAttribute('height');
+      // 有效尺寸保留占位比例，避免图片加载后推开读到的位置。
+      for (const dimension of ['width', 'height']) {
+        if (!/^[1-9]\d{0,5}$/.test(img.getAttribute(dimension) || '')) img.removeAttribute(dimension);
+      }
       img.loading = 'lazy';
       img.decoding = 'async';
       let attempted = false;
@@ -99,7 +101,51 @@
     });
     source.replaceChildren(fragment);
     source.classList.add('is-rendered');
+    setupDirectory();
+    setupCodeCopy();
   } catch {
     source.textContent = original;
+  }
+
+  function setupDirectory() {
+    const directory = document.querySelector('[data-feature-directory]');
+    const navigation = directory?.querySelector('[data-feature-toc]');
+    if (!navigation) return;
+    const headings = [...source.querySelectorAll('h3')];
+    if (headings.length < 2) return;
+    const links = document.createDocumentFragment();
+    headings.forEach(heading => {
+      heading.tabIndex = -1;
+      const link = document.createElement('a');
+      link.href = '#' + heading.id;
+      link.textContent = heading.textContent;
+      links.append(link);
+    });
+    navigation.replaceChildren(links);
+    directory.querySelector('[data-feature-section-count]').textContent = headings.length + ' 个章节';
+    directory.hidden = false;
+    navigation.addEventListener('click', event => {
+      if (event.target.closest('a') && matchMedia('(max-width: 760px)').matches) directory.open = false;
+    });
+  }
+
+  // 基础脚本在 Markdown 增强前运行，首页新生成的代码块在这里补齐复制按钮。
+  function setupCodeCopy() {
+    source.querySelectorAll('pre').forEach(block => {
+      if (!block.querySelector('code') || block.querySelector('.code-copy')) return;
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'code-copy';
+      button.textContent = '复制';
+      button.setAttribute('aria-label', '复制这段代码');
+      button.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(block.querySelector('code').textContent);
+          button.textContent = '已复制';
+          setTimeout(() => { button.textContent = '复制'; }, 1500);
+        } catch { button.textContent = '请手动复制'; }
+      });
+      block.append(button);
+    });
   }
 })();
