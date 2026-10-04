@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.yaoyaolingxian.blog/</loc>
-    <lastmod>2026-10-04T01:32:30Z</lastmod>
+    <lastmod>2026-10-04T06:37:50Z</lastmod>
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/categories/buying-guides/</loc>
@@ -10,7 +10,7 @@
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/categories/client-guides/</loc>
-    <lastmod>2026-09-30T12:05:28Z</lastmod>
+    <lastmod>2026-10-04T06:37:50Z</lastmod>
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/categories/privacy-security/</loc>
@@ -42,15 +42,15 @@
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/page/2/</loc>
-    <lastmod>2026-10-04T01:32:30Z</lastmod>
+    <lastmod>2026-10-04T06:37:50Z</lastmod>
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/page/3/</loc>
-    <lastmod>2026-10-04T01:32:30Z</lastmod>
+    <lastmod>2026-10-04T06:37:50Z</lastmod>
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/page/4/</loc>
-    <lastmod>2026-10-04T01:32:30Z</lastmod>
+    <lastmod>2026-10-04T06:37:50Z</lastmod>
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/posts/2026-airport-risk-roundup-value/</loc>
@@ -62,11 +62,15 @@
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/posts/airport-recommendation-guide/</loc>
-    <lastmod>2026-10-04T01:32:30Z</lastmod>
+    <lastmod>2026-10-04T06:37:50Z</lastmod>
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/posts/airport-speed-test/</loc>
     <lastmod>2026-10-03T16:07:12Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.yaoyaolingxian.blog/posts/airport-subscription-beginner-illustrated-2026/</loc>
+    <lastmod>2026-10-04T06:35:47Z</lastmod>
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/posts/captive-wifi-proxy-login/</loc>
@@ -86,7 +90,7 @@
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/posts/curl-final-url-redirect-check/</loc>
-    <lastmod>2026-10-04T01:32:23Z</lastmod>
+    <lastmod>2026-10-04T06:37:50Z</lastmod>
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/posts/curl-http-status-exit-code/</loc>
@@ -218,7 +222,7 @@
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/tags/client-compatibility/</loc>
-    <lastmod>2026-09-27T11:36:48Z</lastmod>
+    <lastmod>2026-10-04T06:37:50Z</lastmod>
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/tags/connection-testing/</loc>
@@ -234,7 +238,11 @@
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/tags/getting-started/</loc>
-    <lastmod>2026-09-30T12:05:28Z</lastmod>
+    <lastmod>2026-10-04T06:37:50Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.yaoyaolingxian.blog/tags/getting-started/page/2/</loc>
+    <lastmod>2026-10-04T06:35:47Z</lastmod>
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/tags/ipv6/</loc>
@@ -282,7 +290,7 @@
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/tags/subscriptions/</loc>
-    <lastmod>2026-09-27T11:36:48Z</lastmod>
+    <lastmod>2026-10-04T06:37:50Z</lastmod>
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/tags/troubleshooting/</loc>
