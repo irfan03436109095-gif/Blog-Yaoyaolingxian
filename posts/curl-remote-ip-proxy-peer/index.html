@@ -4,23 +4,23 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>命令里没写重试却反复请求？用 curl -q 检查默认配置 · 遥遥领先性价比机场</title>
-<meta name="description" content="curl 命令出现意外重试或代理行为时，怎样用首参数 -q 做默认配置对照？提供只读请求步骤、参数边界与可复现验收方法。">
-<meta name="keywords" content="机场推荐,curl默认配置,curl -q,代理配置排查">
-<meta name="robots" content="index,follow,max-image-preview:large"><link rel="canonical" href="https://www.yaoyaolingxian.blog/posts/curl-default-config-disable-check/">
-<meta property="og:title" content="命令里没写重试却反复请求？用 curl -q 检查默认配置">
-<meta property="og:description" content="curl 命令出现意外重试或代理行为时，怎样用首参数 -q 做默认配置对照？提供只读请求步骤、参数边界与可复现验收方法。">
-<meta property="og:url" content="https://www.yaoyaolingxian.blog/posts/curl-default-config-disable-check/">
+<title>curl 的 remote_ip 是机场出口吗？分清连接地址与服务端观察 · 遥遥领先性价比机场</title>
+<meta name="description" content="curl remote_ip 显示 127.0.0.1 是代理失败吗？核对本地代理对端、节点入口与目标服务器观察的来源 IP，建立准确的线路测试记录。">
+<meta name="keywords" content="机场推荐,curl remote_ip,出口IP检查,代理连接地址">
+<meta name="robots" content="index,follow,max-image-preview:large"><link rel="canonical" href="https://www.yaoyaolingxian.blog/posts/curl-remote-ip-proxy-peer/">
+<meta property="og:title" content="curl 的 remote_ip 是机场出口吗？分清连接地址与服务端观察">
+<meta property="og:description" content="curl remote_ip 显示 127.0.0.1 是代理失败吗？核对本地代理对端、节点入口与目标服务器观察的来源 IP，建立准确的线路测试记录。">
+<meta property="og:url" content="https://www.yaoyaolingxian.blog/posts/curl-remote-ip-proxy-peer/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="遥遥领先性价比机场">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://www.yaoyaolingxian.blog/assets/media/52ff4036-42cb-4679-a721-9a08d1816c48.png"><meta property="og:image:alt" content="遥遥领先性价比机场">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="命令里没写重试却反复请求？用 curl -q 检查默认配置">
-<meta name="twitter:description" content="curl 命令出现意外重试或代理行为时，怎样用首参数 -q 做默认配置对照？提供只读请求步骤、参数边界与可复现验收方法。">
+<meta name="twitter:title" content="curl 的 remote_ip 是机场出口吗？分清连接地址与服务端观察">
+<meta name="twitter:description" content="curl remote_ip 显示 127.0.0.1 是代理失败吗？核对本地代理对端、节点入口与目标服务器观察的来源 IP，建立准确的线路测试记录。">
 <meta name="twitter:image" content="https://www.yaoyaolingxian.blog/assets/media/52ff4036-42cb-4679-a721-9a08d1816c48.png">
-<meta name="author" content="加油"><meta property="article:published_time" content="2026-10-05T09:36:06&#43;08:00"><meta property="article:modified_time" content="2026-10-05T09:36:09&#43;08:00"><meta property="article:tag" content="机场推荐"><meta property="article:tag" content="客户端兼容"><meta property="article:tag" content="故障排查">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@id":"https://www.yaoyaolingxian.blog/posts/curl-default-config-disable-check/#article","@type":"BlogPosting","author":{"@type":"Person","name":"加油"},"dateModified":"2026-10-05T09:36:09+08:00","datePublished":"2026-10-05T09:36:06+08:00","description":"curl 命令出现意外重试或代理行为时，怎样用首参数 -q 做默认配置对照？提供只读请求步骤、参数边界与可复现验收方法。","headline":"命令里没写重试却反复请求？用 curl -q 检查默认配置","inLanguage":"zh-CN","mainEntityOfPage":{"@id":"https://www.yaoyaolingxian.blog/posts/curl-default-config-disable-check/","@type":"WebPage"},"url":"https://www.yaoyaolingxian.blog/posts/curl-default-config-disable-check/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://www.yaoyaolingxian.blog/","name":"遥遥领先性价比机场","position":1},{"@type":"ListItem","item":"https://www.yaoyaolingxian.blog/posts/curl-default-config-disable-check/","name":"命令里没写重试却反复请求？用 curl -q 检查默认配置","position":2}]}]}</script>
+<meta name="author" content="加油"><meta property="article:published_time" content="2026-10-06T09:25:10&#43;08:00"><meta property="article:modified_time" content="2026-10-06T09:25:22&#43;08:00"><meta property="article:tag" content="线路测试"><meta property="article:tag" content="代理协议"><meta property="article:tag" content="评测方法">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@id":"https://www.yaoyaolingxian.blog/posts/curl-remote-ip-proxy-peer/#article","@type":"BlogPosting","author":{"@type":"Person","name":"加油"},"dateModified":"2026-10-06T09:25:22+08:00","datePublished":"2026-10-06T09:25:10+08:00","description":"curl remote_ip 显示 127.0.0.1 是代理失败吗？核对本地代理对端、节点入口与目标服务器观察的来源 IP，建立准确的线路测试记录。","headline":"curl 的 remote_ip 是机场出口吗？分清连接地址与服务端观察","inLanguage":"zh-CN","mainEntityOfPage":{"@id":"https://www.yaoyaolingxian.blog/posts/curl-remote-ip-proxy-peer/","@type":"WebPage"},"url":"https://www.yaoyaolingxian.blog/posts/curl-remote-ip-proxy-peer/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://www.yaoyaolingxian.blog/","name":"遥遥领先性价比机场","position":1},{"@type":"ListItem","item":"https://www.yaoyaolingxian.blog/posts/curl-remote-ip-proxy-peer/","name":"curl 的 remote_ip 是机场出口吗？分清连接地址与服务端观察","position":2}]}]}</script>
 
 <script>(()=>{let mode='system';try{const saved=localStorage.getItem('reader-theme');if(['system','light','dark'].includes(saved))mode=saved}catch{}const root=document.documentElement;root.dataset.colorMode=mode;root.classList.toggle('dark',mode==='dark'||(mode==='system'&&matchMedia('(prefers-color-scheme: dark)').matches))})();</script>
 <link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/style.css">
@@ -74,7 +74,7 @@
 <div class="article-viewport"><div class="article-scroll">
 <main id="main" tabindex="-1" class="network-workspace network-reading">
 
-<nav class="breadcrumbs" aria-label="面包屑导航"><ol><li><a href="https://www.yaoyaolingxian.blog/">遥遥领先性价比机场</a></li><li><span aria-current="page">命令里没写重试却反复请求？用 curl -q 检查默认配置</span></li></ol></nav>
+<nav class="breadcrumbs" aria-label="面包屑导航"><ol><li><a href="https://www.yaoyaolingxian.blog/">遥遥领先性价比机场</a></li><li><span aria-current="page">curl 的 remote_ip 是机场出口吗？分清连接地址与服务端观察</span></li></ol></nav>
 
 
 <div class="network-columns reading-columns">
@@ -82,40 +82,65 @@
 <article data-pagefind-body>
 <header class="article-header">
 <div class="eyebrow" data-pagefind-ignore>网络手记</div>
-<h1 data-pagefind-meta="title">命令里没写重试却反复请求？用 curl -q 检查默认配置</h1>
-<div class="metadata" data-pagefind-ignore><span>加油</span><time datetime="2026-10-05T09:36:06&#43;08:00">2026-10-05</time><span><span id="page-views">—</span> 次阅读</span></div>
-<div class="chips" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/categories/troubleshooting/">故障排查</a></div>
+<h1 data-pagefind-meta="title">curl 的 remote_ip 是机场出口吗？分清连接地址与服务端观察</h1>
+<div class="metadata" data-pagefind-ignore><span>加油</span><time datetime="2026-10-06T09:25:10&#43;08:00">2026-10-06</time><span><span id="page-views">—</span> 次阅读</span></div>
+<div class="chips" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/categories/protocols-network/">协议与网络</a></div>
 </header>
-<div class="prose"><p>复制了一条简短命令，实际请求却发生了意外的重试、代理或跳转行为，原因可能在命令之外。排查前先确认：curl 除了显式参数，还可能读取默认配置和环境信息。</p>
-<p>本文针对 curl.exe 的调用边界，不保证一次正常请求就能证明机场恢复。</p>
-<p><img src="https://www.yaoyaolingxian.blog/assets/media/24490a9f-289c-493d-90b6-dd14a12838b9.png" alt="显式参数、默认配置文件与环境变量三种输入来源"></p>
-<p><em>示意图：-q 跳过默认配置读取，其他输入来源仍需单独核对。</em></p>
-<h2 id="-q-">-q 能排除什么</h2>
-<p>根据 <a href="https://curl.se/docs/manpage.html">curl 官方手册</a>，<code>-q</code> 或 <code>--disable</code> 必须放在第一个命令参数，才能关闭默认 curl 配置文件的读取。</p>
-<p>它不等于“清空全部网络设置”。你显式传入的 <code>--config</code>、命令参数以及适用的环境代理变量仍需分别核对。也不要把 <code>-q</code> 放在命令末尾后，误以为已经完成同样的对照。</p>
-<h2 id="heading">先运行一条参数明确的只读请求</h2>
-<pre><code class="language-powershell">curl.exe -q --show-error --max-time 20 --output NUL --write-out &quot;HTTP:%{http_code}\n&quot; https://example.com/
-$requestExit = $LASTEXITCODE
-$requestExit
+<div class="prose"><p>用 curl 做机场测试时，如果 remote_ip 显示本机回环地址，先不要判定“没有连接远程网站”。这个字段回答的是 curl 最近建立连接的对端在哪里，不是替你询问目标网站看到了哪个来源 IP。</p>
+<p>本文适用于显式使用本地 HTTP 代理的诊断场景；TUN、透明接管和其他代理链需结合各自的实际路径解释。</p>
+<p><img src="https://www.yaoyaolingxian.blog/assets/media/cc9b481e-6bb8-43eb-8782-1145bc8fa03a.png" alt="本机代理连接对端与目标网站观察的来源处在不同位置"></p>
+<p><em>示意图：curl 的连接字段和网站观察记录要分开填写，未显示真实 IP。</em></p>
+<h2 id="heading">三个地址别放进同一栏</h2>
+<table>
+<thead>
+<tr>
+<th>地址</th>
+<th>从哪里看到</th>
+<th>适合记录到哪一栏</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>curl 连接对端</td>
+<td>remote_ip、remote_port</td>
+<td>本次连接对端</td>
+</tr>
+<tr>
+<td>节点服务器地址</td>
+<td>客户端配置</td>
+<td>节点入口配置</td>
+</tr>
+<tr>
+<td>目标看到的来源</td>
+<td>可信的出口观察服务或自己服务器的记录</td>
+<td>本次请求出口观察</td>
+</tr>
+</tbody>
+</table>
+<p><a href="https://curl.se/docs/manpage.html#-w">curl 参数手册</a>将 remote_ip 定义为最近一次连接的远端 IP。<a href="https://everything.curl.dev/usingcurl/proxies/http.html">官方 HTTP 代理说明</a>指出，使用该代理时 curl 连接代理而非直接连接目标服务器。因此，在显式连接本机代理的场景，把回环对端解释为机场出口是不成立的。</p>
+<h2 id="heading-1">先观察一个明确的本地代理请求</h2>
+<p>以下为 Windows PowerShell 示例。先核对客户端实际 HTTP 端口，再修改变量，不把示例值当默认配置。</p>
+<pre><code class="language-powershell">$proxyPort = 7890 # 按当前 HTTP 代理入口修改
+curl.exe -q --noproxy 'localhost' --proxy &quot;http://127.0.0.1:$proxyPort&quot; --connect-timeout 10 --max-time 20 -sS -o NUL -w 'peer=%{remote_ip}:%{remote_port} HTTP=%{http_code}
+' 'https://example.com/'
+$LASTEXITCODE
 </code></pre>
-<p>示例只发一次小型公开 GET，没有账号凭据，也没有指定自动重试或跟随重定向。环境代理可能仍然生效；如果要判断真实出站路径，还需结合当前客户端的接管设置。</p>
-<p>不要为了比较而先执行一个内容未知的默认配置。它可能包含你已忘记的认证、文件输出或其他操作选项。已有异常请求记录可作为线索，先阅读本机配置，再决定如何恢复需要的参数。</p>
-<h2 id="heading-1">按来源拆解意外行为</h2>
-<ol>
-<li><strong>显式参数。</strong> 检查脚本、函数或命令封装最终传入了什么参数，是否存在 <code>--retry</code>、<code>--location</code>、<code>--proxy</code> 或 <code>--config</code>。</li>
-<li><strong>默认配置。</strong> 按 curl 手册中与你系统匹配的配置文件规则找到文件，只在本机查看。记录相关选项名称，不把整份配置粘到工单。</li>
-<li><strong>环境信息。</strong> 查看程序启动环境是否配置代理变量。<code>-q</code> 并不承诺忽略它们。</li>
-<li><strong>逐项重建。</strong> 在这条参数明确的公开 GET 上，每次只添加一个确认需要的选项，观察意外行为从哪一步重新出现。</li>
-</ol>
-<p>读取配置时尤其注意其中的凭据或私人 URL。对外说明“存在某个选项”通常已经足够，不需要把值全部公开。</p>
-<h2 id="heading-2">怎样确认排查有效</h2>
-<p>保留原问题现象、对照命令、时间、退出码和最终生效的选项来源。如果只知道“加 -q 好了”，仍需确认是哪项默认设置改变了行为；这只能定位请求工具的配置边界，不是对机场推荐名单或全部节点可用性的证明。</p>
-<p>确认需要的设置后，可继续在个人脚本中显式表达必要参数，使下一次请求能够复查。这里的对照流程只用于公开 GET，不用于反复提交付款、上传或写入操作。</p>
-<h2 id="heading-3">来源与核验日期</h2>
+<p>示例将代理绕过列表限定为 localhost，目标 example.com 不匹配该项，并保留网站证书验证。若改变测试域名，也要核对绕过列表，不能把参数条件不同写成节点实测差异。</p>
+<p>观察并记录对端、响应状态与客户端连接记录。回环地址能帮助确认 curl 接入了指定的本地入口；请求后续是否通过预期节点、是否被规则直连，需要继续查看客户端，而不是仅凭这一字段下结论。</p>
+<h2 id="heading-2">出口地址怎样取得</h2>
+<p>选择你信任、能显示本次来源的网络观察入口，或由自己管理的服务器记录连接来源。固定同一节点、同一应用和同一时段，再填写出口栏。不要上传完整订阅或账号凭据来换取一次查询。</p>
+<p>若服务器前还有反向代理，要区分真正的连接来源与受信任代理提供的来源信息，不能把任意转发头当真实客户端地址。不能访问服务器记录时，就明确保留“出口未核验”，不要用节点域名解析结果来补空白。</p>
+<h2 id="heading-3">两个常见误判</h2>
+<p>TUN 模式下，应用看到的连接对端不能单独证明底层实际出站路径。HTTP 请求返回内容，也不证明所有其他应用走了同一个出口。两种情况下都需要结合接管、分流和独立出口观察。</p>
+<h2 id="heading-4">验收标准</h2>
+<p>测试记录应分别包含对端、节点入口与出口观察的来源及时间；拿不到的字段标明未确认。这样的记录才能服务于机场推荐与线路比较，避免把字段名称里的“远端”误当成最终出口。</p>
+<h2 id="heading-5">来源与核验日期</h2>
 <ul>
-<li><a href="https://curl.se/docs/manpage.html">curl 官方手册：默认配置与 -q</a></li>
+<li><a href="https://curl.se/docs/manpage.html#-w">curl：write-out 连接字段</a></li>
+<li><a href="https://everything.curl.dev/usingcurl/proxies/http.html">everything curl：HTTP 代理连接行为</a></li>
+<li><a href="https://curl.se/libcurl/c/CURLINFO_PRIMARY_IP.html">libcurl：最近连接的 IP 定义</a></li>
 </ul>
-<p>官方资料核验日期：2026-10-05。文中的表格和流程用于自行检查，不代表本站对某家机场的实测结论。</p>
+<p>官方资料核验日期：2026-10-06。文中的表格和流程用于自行检查，不代表本站对某家机场的实测结论。</p>
 </div>
 <div class="article-likes" data-pagefind-ignore>
 <button id="page-like" class="like-button" type="button" aria-pressed="false" aria-describedby="page-like-message" disabled>
@@ -123,8 +148,8 @@ $requestExit
 <span id="page-like-label">点赞</span><span id="page-like-count">—</span>
 </button><p id="page-like-message" role="status"></p>
 </div>
-<div class="article-tags" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/tags/airport-recommendations/"># 机场推荐</a><a href="https://www.yaoyaolingxian.blog/tags/client-compatibility/"># 客户端兼容</a><a href="https://www.yaoyaolingxian.blog/tags/troubleshooting/"># 故障排查</a></div>
-<nav class="pagination" aria-label="相邻文章" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/posts/curl-remote-ip-proxy-peer/">← 上一篇</a><a href="https://www.yaoyaolingxian.blog/posts/airport-subscription-beginner-illustrated-2026/">下一篇 →</a></nav>
+<div class="article-tags" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/tags/connection-testing/"># 线路测试</a><a href="https://www.yaoyaolingxian.blog/tags/proxy-protocols/"># 代理协议</a><a href="https://www.yaoyaolingxian.blog/tags/review-methods/"># 评测方法</a></div>
+<nav class="pagination" aria-label="相邻文章" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/posts/airport-recommendation-guide/">← 上一篇</a><a href="https://www.yaoyaolingxian.blog/posts/curl-default-config-disable-check/">下一篇 →</a></nav>
 <section class="comments-section" data-pagefind-ignore><h2>评论</h2><div id="comments"></div></section>
 </article>
 </div>
@@ -150,7 +175,7 @@ $requestExit
 </div>
 </a>
 </aside>
-<aside class="toc"><div>本篇目录</div><nav aria-label="文章目录"><a class="level-2" href="#-q-">-q 能排除什么</a><a class="level-2" href="#heading">先运行一条参数明确的只读请求</a><a class="level-2" href="#heading-1">按来源拆解意外行为</a><a class="level-2" href="#heading-2">怎样确认排查有效</a><a class="level-2" href="#heading-3">来源与核验日期</a></nav></aside>
+<aside class="toc"><div>本篇目录</div><nav aria-label="文章目录"><a class="level-2" href="#heading">三个地址别放进同一栏</a><a class="level-2" href="#heading-1">先观察一个明确的本地代理请求</a><a class="level-2" href="#heading-2">出口地址怎样取得</a><a class="level-2" href="#heading-3">两个常见误判</a><a class="level-2" href="#heading-4">验收标准</a><a class="level-2" href="#heading-5">来源与核验日期</a></nav></aside>
 </div>
 </div>
 
@@ -185,7 +210,7 @@ $requestExit
 </div>
 </dialog>
 
-<script id="blog-comments-config" type="application/json">{"comments":true,"likes":true,"locale":"zh-CN","pageKey":"/p/75ad7202-c461-4708-a5e8-2d5384b968f1/","pageTitle":"命令里没写重试却反复请求？用 curl -q 检查默认配置","server":"https://upfqpobmiewm.sealosgzg.site","site":"xblog-f49c63bc-e1a5-4cf0-b2f5-6e9bc109b533","views":true,"viewsBase":0}</script>
+<script id="blog-comments-config" type="application/json">{"comments":true,"likes":true,"locale":"zh-CN","pageKey":"/p/bda061c8-540e-40b6-b995-122a663081e0/","pageTitle":"curl 的 remote_ip 是机场出口吗？分清连接地址与服务端观察","server":"https://upfqpobmiewm.sealosgzg.site","site":"xblog-f49c63bc-e1a5-4cf0-b2f5-6e9bc109b533","views":true,"viewsBase":0}</script>
 
 </body>
 </html>
