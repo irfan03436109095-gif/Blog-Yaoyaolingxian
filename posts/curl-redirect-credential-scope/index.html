@@ -4,23 +4,23 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>curl 的 remote_ip 是机场出口吗？分清连接地址与服务端观察 · 遥遥领先性价比机场</title>
-<meta name="description" content="curl remote_ip 显示 127.0.0.1 是代理失败吗？核对本地代理对端、节点入口与目标服务器观察的来源 IP，建立准确的线路测试记录。">
-<meta name="keywords" content="机场推荐,curl remote_ip,出口IP检查,代理连接地址">
-<meta name="robots" content="index,follow,max-image-preview:large"><link rel="canonical" href="https://www.yaoyaolingxian.blog/posts/curl-remote-ip-proxy-peer/">
-<meta property="og:title" content="curl 的 remote_ip 是机场出口吗？分清连接地址与服务端观察">
-<meta property="og:description" content="curl remote_ip 显示 127.0.0.1 是代理失败吗？核对本地代理对端、节点入口与目标服务器观察的来源 IP，建立准确的线路测试记录。">
-<meta property="og:url" content="https://www.yaoyaolingxian.blog/posts/curl-remote-ip-proxy-peer/">
+<title>curl 跟随跳转会把密码带给新域名吗？核对重定向凭据 · 遥遥领先性价比机场</title>
+<meta name="description" content="curl 重定向怎样避免误传认证信息？理解 -L 与 --location-trusted 的区别，记录最终地址，核对认证域名并避免默认放大信任范围。">
+<meta name="keywords" content="机场推荐,curl重定向,凭据保护,location-trusted">
+<meta name="robots" content="index,follow,max-image-preview:large"><link rel="canonical" href="https://www.yaoyaolingxian.blog/posts/curl-redirect-credential-scope/">
+<meta property="og:title" content="curl 跟随跳转会把密码带给新域名吗？核对重定向凭据">
+<meta property="og:description" content="curl 重定向怎样避免误传认证信息？理解 -L 与 --location-trusted 的区别，记录最终地址，核对认证域名并避免默认放大信任范围。">
+<meta property="og:url" content="https://www.yaoyaolingxian.blog/posts/curl-redirect-credential-scope/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="遥遥领先性价比机场">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://www.yaoyaolingxian.blog/assets/media/52ff4036-42cb-4679-a721-9a08d1816c48.png"><meta property="og:image:alt" content="遥遥领先性价比机场">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="curl 的 remote_ip 是机场出口吗？分清连接地址与服务端观察">
-<meta name="twitter:description" content="curl remote_ip 显示 127.0.0.1 是代理失败吗？核对本地代理对端、节点入口与目标服务器观察的来源 IP，建立准确的线路测试记录。">
+<meta name="twitter:title" content="curl 跟随跳转会把密码带给新域名吗？核对重定向凭据">
+<meta name="twitter:description" content="curl 重定向怎样避免误传认证信息？理解 -L 与 --location-trusted 的区别，记录最终地址，核对认证域名并避免默认放大信任范围。">
 <meta name="twitter:image" content="https://www.yaoyaolingxian.blog/assets/media/52ff4036-42cb-4679-a721-9a08d1816c48.png">
-<meta name="author" content="加油"><meta property="article:published_time" content="2026-10-06T09:25:10&#43;08:00"><meta property="article:modified_time" content="2026-10-06T09:25:22&#43;08:00"><meta property="article:tag" content="线路测试"><meta property="article:tag" content="代理协议"><meta property="article:tag" content="评测方法">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@id":"https://www.yaoyaolingxian.blog/posts/curl-remote-ip-proxy-peer/#article","@type":"BlogPosting","author":{"@type":"Person","name":"加油"},"dateModified":"2026-10-06T09:25:22+08:00","datePublished":"2026-10-06T09:25:10+08:00","description":"curl remote_ip 显示 127.0.0.1 是代理失败吗？核对本地代理对端、节点入口与目标服务器观察的来源 IP，建立准确的线路测试记录。","headline":"curl 的 remote_ip 是机场出口吗？分清连接地址与服务端观察","inLanguage":"zh-CN","mainEntityOfPage":{"@id":"https://www.yaoyaolingxian.blog/posts/curl-remote-ip-proxy-peer/","@type":"WebPage"},"url":"https://www.yaoyaolingxian.blog/posts/curl-remote-ip-proxy-peer/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://www.yaoyaolingxian.blog/","name":"遥遥领先性价比机场","position":1},{"@type":"ListItem","item":"https://www.yaoyaolingxian.blog/posts/curl-remote-ip-proxy-peer/","name":"curl 的 remote_ip 是机场出口吗？分清连接地址与服务端观察","position":2}]}]}</script>
+<meta name="author" content="加油"><meta property="article:published_time" content="2026-10-07T09:23:35&#43;08:00"><meta property="article:modified_time" content="2026-10-07T09:23:40&#43;08:00"><meta property="article:tag" content="故障排查"><meta property="article:tag" content="隐私安全">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@id":"https://www.yaoyaolingxian.blog/posts/curl-redirect-credential-scope/#article","@type":"BlogPosting","author":{"@type":"Person","name":"加油"},"dateModified":"2026-10-07T09:23:40+08:00","datePublished":"2026-10-07T09:23:35+08:00","description":"curl 重定向怎样避免误传认证信息？理解 -L 与 --location-trusted 的区别，记录最终地址，核对认证域名并避免默认放大信任范围。","headline":"curl 跟随跳转会把密码带给新域名吗？核对重定向凭据","inLanguage":"zh-CN","mainEntityOfPage":{"@id":"https://www.yaoyaolingxian.blog/posts/curl-redirect-credential-scope/","@type":"WebPage"},"url":"https://www.yaoyaolingxian.blog/posts/curl-redirect-credential-scope/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://www.yaoyaolingxian.blog/","name":"遥遥领先性价比机场","position":1},{"@type":"ListItem","item":"https://www.yaoyaolingxian.blog/posts/curl-redirect-credential-scope/","name":"curl 跟随跳转会把密码带给新域名吗？核对重定向凭据","position":2}]}]}</script>
 
 <script>(()=>{let mode='system';try{const saved=localStorage.getItem('reader-theme');if(['system','light','dark'].includes(saved))mode=saved}catch{}const root=document.documentElement;root.dataset.colorMode=mode;root.classList.toggle('dark',mode==='dark'||(mode==='system'&&matchMedia('(prefers-color-scheme: dark)').matches))})();</script>
 <link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/style.css">
@@ -74,7 +74,7 @@
 <div class="article-viewport"><div class="article-scroll">
 <main id="main" tabindex="-1" class="network-workspace network-reading">
 
-<nav class="breadcrumbs" aria-label="面包屑导航"><ol><li><a href="https://www.yaoyaolingxian.blog/">遥遥领先性价比机场</a></li><li><span aria-current="page">curl 的 remote_ip 是机场出口吗？分清连接地址与服务端观察</span></li></ol></nav>
+<nav class="breadcrumbs" aria-label="面包屑导航"><ol><li><a href="https://www.yaoyaolingxian.blog/">遥遥领先性价比机场</a></li><li><span aria-current="page">curl 跟随跳转会把密码带给新域名吗？核对重定向凭据</span></li></ol></nav>
 
 
 <div class="network-columns reading-columns">
@@ -82,65 +82,65 @@
 <article data-pagefind-body>
 <header class="article-header">
 <div class="eyebrow" data-pagefind-ignore>网络手记</div>
-<h1 data-pagefind-meta="title">curl 的 remote_ip 是机场出口吗？分清连接地址与服务端观察</h1>
-<div class="metadata" data-pagefind-ignore><span>加油</span><time datetime="2026-10-06T09:25:10&#43;08:00">2026-10-06</time><span><span id="page-views">—</span> 次阅读</span></div>
-<div class="chips" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/categories/protocols-network/">协议与网络</a></div>
+<h1 data-pagefind-meta="title">curl 跟随跳转会把密码带给新域名吗？核对重定向凭据</h1>
+<div class="metadata" data-pagefind-ignore><span>加油</span><time datetime="2026-10-07T09:23:35&#43;08:00">2026-10-07</time><span><span id="page-views">—</span> 次阅读</span></div>
+<div class="chips" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/categories/troubleshooting/">故障排查</a><a href="https://www.yaoyaolingxian.blog/categories/privacy-security/">隐私与安全</a></div>
 </header>
-<div class="prose"><p>用 curl 做机场测试时，如果 remote_ip 显示本机回环地址，先不要判定“没有连接远程网站”。这个字段回答的是 curl 最近建立连接的对端在哪里，不是替你询问目标网站看到了哪个来源 IP。</p>
-<p>本文适用于显式使用本地 HTTP 代理的诊断场景；TUN、透明接管和其他代理链需结合各自的实际路径解释。</p>
-<p><img src="https://www.yaoyaolingxian.blog/assets/media/cc9b481e-6bb8-43eb-8782-1145bc8fa03a.png" alt="本机代理连接对端与目标网站观察的来源处在不同位置"></p>
-<p><em>示意图：curl 的连接字段和网站观察记录要分开填写，未显示真实 IP。</em></p>
-<h2 id="heading">三个地址别放进同一栏</h2>
+<div class="prose"><p>请求被跳转到新地址，跟随跳转后又提示未认证，很容易让人复制一条带 <code>--location-trusted</code> 的命令。这个参数不仅控制访问新页面，还会改变凭据可以被发送到哪里的规则。</p>
+<p>本文适合排查你有权限使用的接口与下载入口。先用不含密码、令牌和私密查询参数的公开 URL 理解流程，再按照接口自己的认证文档处理真实请求。</p>
+<p><img src="https://www.yaoyaolingxian.blog/assets/media/c01863d2-ad78-4c51-9eb9-f91992d19f7d.png" alt="重定向时访问新目标与允许传递凭据的两项独立检查"></p>
+<p><em>示意图：跟随新地址与授权新目标接收凭据，是两项不同的决定。</em></p>
+<h2 id="heading">两个参数的差别在哪里</h2>
+<p><a href="https://curl.se/docs/manpage.html">curl 官方手册</a>说明，<code>-L</code> 或 <code>--location</code> 用于跟随 HTTP 重定向；普通跟随情况下，某些认证信息不会继续发给其他目标。而 <code>--location-trusted</code> 允许把凭据和其他秘密传给初始目标之外的主机。</p>
+<p>文档中的目标变化还涉及协议和端口，不应只比较肉眼看起来相近的域名。另一子域名、不同端口或从 HTTPS 转到 HTTP，都需要重新核对。</p>
 <table>
 <thead>
 <tr>
-<th>地址</th>
-<th>从哪里看到</th>
-<th>适合记录到哪一栏</th>
+<th>选项</th>
+<th>用途</th>
+<th>操作前应确认</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>curl 连接对端</td>
-<td>remote_ip、remote_port</td>
-<td>本次连接对端</td>
+<td>不跟随重定向</td>
+<td>观察初始响应</td>
+<td>Location 指向哪里</td>
 </tr>
 <tr>
-<td>节点服务器地址</td>
-<td>客户端配置</td>
-<td>节点入口配置</td>
+<td><code>--location</code></td>
+<td>按规则继续访问</td>
+<td>最终地址、请求方法与认证要求</td>
 </tr>
 <tr>
-<td>目标看到的来源</td>
-<td>可信的出口观察服务或自己服务器的记录</td>
-<td>本次请求出口观察</td>
+<td><code>--location-trusted</code></td>
+<td>放宽跳转后的秘密转发</td>
+<td>每个新目标是否明确被授权接收凭据</td>
 </tr>
 </tbody>
 </table>
-<p><a href="https://curl.se/docs/manpage.html#-w">curl 参数手册</a>将 remote_ip 定义为最近一次连接的远端 IP。<a href="https://everything.curl.dev/usingcurl/proxies/http.html">官方 HTTP 代理说明</a>指出，使用该代理时 curl 连接代理而非直接连接目标服务器。因此，在显式连接本机代理的场景，把回环对端解释为机场出口是不成立的。</p>
-<h2 id="heading-1">先观察一个明确的本地代理请求</h2>
-<p>以下为 Windows PowerShell 示例。先核对客户端实际 HTTP 端口，再修改变量，不把示例值当默认配置。</p>
-<pre><code class="language-powershell">$proxyPort = 7890 # 按当前 HTTP 代理入口修改
-curl.exe -q --noproxy 'localhost' --proxy &quot;http://127.0.0.1:$proxyPort&quot; --connect-timeout 10 --max-time 20 -sS -o NUL -w 'peer=%{remote_ip}:%{remote_port} HTTP=%{http_code}
-' 'https://example.com/'
-$LASTEXITCODE
+<p>此外，不是所有自定义请求头都会得到同样的自动保护。若秘密放在自定义字段、请求体或 URL 中，应逐项核对，不能把 <code>-L</code> 当成通用脱敏功能。</p>
+<h2 id="heading-1">先做一条不携带秘密的观察请求</h2>
+<p>Windows 读者可以用下面的公开示例熟悉输出：</p>
+<pre><code class="language-powershell">curl.exe -q --silent --show-error --location --proto-redir '=https' --max-redirs 5 --max-time 20 --output NUL --write-out 'final=%{url_effective} redirects=%{num_redirects}\n' 'https://example.com/'
 </code></pre>
-<p>示例将代理绕过列表限定为 localhost，目标 example.com 不匹配该项，并保留网站证书验证。若改变测试域名，也要核对绕过列表，不能把参数条件不同写成节点实测差异。</p>
-<p>观察并记录对端、响应状态与客户端连接记录。回环地址能帮助确认 curl 接入了指定的本地入口；请求后续是否通过预期节点、是否被规则直连，需要继续查看客户端，而不是仅凭这一字段下结论。</p>
-<h2 id="heading-2">出口地址怎样取得</h2>
-<p>选择你信任、能显示本次来源的网络观察入口，或由自己管理的服务器记录连接来源。固定同一节点、同一应用和同一时段，再填写出口栏。不要上传完整订阅或账号凭据来换取一次查询。</p>
-<p>若服务器前还有反向代理，要区分真正的连接来源与受信任代理提供的来源信息，不能把任意转发头当真实客户端地址。不能访问服务器记录时，就明确保留“出口未核验”，不要用节点域名解析结果来补空白。</p>
-<h2 id="heading-3">两个常见误判</h2>
-<p>TUN 模式下，应用看到的连接对端不能单独证明底层实际出站路径。HTTP 请求返回内容，也不证明所有其他应用走了同一个出口。两种情况下都需要结合接管、分流和独立出口观察。</p>
-<h2 id="heading-4">验收标准</h2>
-<p>测试记录应分别包含对端、节点入口与出口观察的来源及时间；拿不到的字段标明未确认。这样的记录才能服务于机场推荐与线路比较，避免把字段名称里的“远端”误当成最终出口。</p>
-<h2 id="heading-5">来源与核验日期</h2>
+<p>这个地址只是公开示例，不承诺一定会发生跳转。<code>--proto-redir '=https'</code> 限制被跟随的协议，<code>--max-redirs</code> 限制次数；两者都不会确认某个新域名属于你的服务商。命令没有附加认证信息，不应直接替换成带订阅令牌的链接后把输出公开。</p>
+<p>若需比较机场路径，应另外按自己的客户端说明明确选择代理，并记录实际采用的入口；不能仅因为运行了 curl 就认定走了代理。</p>
+<h2 id="heading-2">正式接口跳转后未认证怎么办</h2>
+<ol>
+<li>私下记录初始目标与跳转目标的协议、主机名和端口，遮盖查询参数及凭据。</li>
+<li>查看服务商正式接口说明，确认是否提供稳定的最终入口，是否要求在另一个目标单独认证。</li>
+<li>对新目标建立明确的认证范围。没有依据时，不用放宽信任的参数去“试试看”。</li>
+<li>保留请求方法和错误状态；下载跳转与提交表单的跳转不能套用同一处理方式。</li>
+</ol>
+<p>若真实凭据已经发给未授权目标，保留发生时间，按服务商提供的撤销或更换机制处理对应凭据。仅清空本地输出文件，并不能撤销已经发送的秘密。</p>
+<h2 id="heading-3">怎样算验收完成</h2>
+<p>你能够说明请求最终到达哪里、哪些目标被允许接收什么认证信息，并且无需扩大未知目标的信任就完成任务，才算完成这一排障。机场推荐与技术教程中的示例命令，也应把连通性验证和秘密转发权限分开。</p>
+<h2 id="heading-4">来源与核验日期</h2>
 <ul>
-<li><a href="https://curl.se/docs/manpage.html#-w">curl：write-out 连接字段</a></li>
-<li><a href="https://everything.curl.dev/usingcurl/proxies/http.html">everything curl：HTTP 代理连接行为</a></li>
-<li><a href="https://curl.se/libcurl/c/CURLINFO_PRIMARY_IP.html">libcurl：最近连接的 IP 定义</a></li>
+<li><a href="https://curl.se/docs/manpage.html">curl：--location、--location-trusted、--header 与 --proto-redir</a></li>
 </ul>
-<p>官方资料核验日期：2026-10-06。文中的表格和流程用于自行检查，不代表本站对某家机场的实测结论。</p>
+<p>官方资料核验日期：2026-10-07。本文提供自行操作与记录的方法，不代表本站对某家机场的实测结论。</p>
 </div>
 <div class="article-likes" data-pagefind-ignore>
 <button id="page-like" class="like-button" type="button" aria-pressed="false" aria-describedby="page-like-message" disabled>
@@ -148,8 +148,8 @@ $LASTEXITCODE
 <span id="page-like-label">点赞</span><span id="page-like-count">—</span>
 </button><p id="page-like-message" role="status"></p>
 </div>
-<div class="article-tags" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/tags/connection-testing/"># 线路测试</a><a href="https://www.yaoyaolingxian.blog/tags/proxy-protocols/"># 代理协议</a><a href="https://www.yaoyaolingxian.blog/tags/review-methods/"># 评测方法</a></div>
-<nav class="pagination" aria-label="相邻文章" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/posts/curl-redirect-credential-scope/">← 上一篇</a><a href="https://www.yaoyaolingxian.blog/posts/curl-default-config-disable-check/">下一篇 →</a></nav>
+<div class="article-tags" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/tags/troubleshooting/"># 故障排查</a><a href="https://www.yaoyaolingxian.blog/tags/privacy-security/"># 隐私安全</a></div>
+<nav class="pagination" aria-label="相邻文章" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/posts/airport-recommendation-guide/">← 上一篇</a><a href="https://www.yaoyaolingxian.blog/posts/curl-remote-ip-proxy-peer/">下一篇 →</a></nav>
 <section class="comments-section" data-pagefind-ignore><h2>评论</h2><div id="comments"></div></section>
 </article>
 </div>
@@ -175,7 +175,7 @@ $LASTEXITCODE
 </div>
 </a>
 </aside>
-<aside class="toc"><div>本篇目录</div><nav aria-label="文章目录"><a class="level-2" href="#heading">三个地址别放进同一栏</a><a class="level-2" href="#heading-1">先观察一个明确的本地代理请求</a><a class="level-2" href="#heading-2">出口地址怎样取得</a><a class="level-2" href="#heading-3">两个常见误判</a><a class="level-2" href="#heading-4">验收标准</a><a class="level-2" href="#heading-5">来源与核验日期</a></nav></aside>
+<aside class="toc"><div>本篇目录</div><nav aria-label="文章目录"><a class="level-2" href="#heading">两个参数的差别在哪里</a><a class="level-2" href="#heading-1">先做一条不携带秘密的观察请求</a><a class="level-2" href="#heading-2">正式接口跳转后未认证怎么办</a><a class="level-2" href="#heading-3">怎样算验收完成</a><a class="level-2" href="#heading-4">来源与核验日期</a></nav></aside>
 </div>
 </div>
 
@@ -210,7 +210,7 @@ $LASTEXITCODE
 </div>
 </dialog>
 
-<script id="blog-comments-config" type="application/json">{"comments":true,"likes":true,"locale":"zh-CN","pageKey":"/p/bda061c8-540e-40b6-b995-122a663081e0/","pageTitle":"curl 的 remote_ip 是机场出口吗？分清连接地址与服务端观察","server":"https://upfqpobmiewm.sealosgzg.site","site":"xblog-f49c63bc-e1a5-4cf0-b2f5-6e9bc109b533","views":true,"viewsBase":0}</script>
+<script id="blog-comments-config" type="application/json">{"comments":true,"likes":true,"locale":"zh-CN","pageKey":"/p/a1f7e3fd-7ca8-4216-be0a-e83e2c728c2c/","pageTitle":"curl 跟随跳转会把密码带给新域名吗？核对重定向凭据","server":"https://upfqpobmiewm.sealosgzg.site","site":"xblog-f49c63bc-e1a5-4cf0-b2f5-6e9bc109b533","views":true,"viewsBase":0}</script>
 
 </body>
 </html>
