@@ -4,23 +4,23 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>curl 测速信息混进网页正文？把文件与统计输出分开保存 · 遥遥领先性价比机场</title>
-<meta name="description" content="curl write-out 输出混入 HTML 或 JSON 怎么办？在 PowerShell 中分开保存正文、响应头与统计，检查退出码和真实文件，不混用重定向。">
-<meta name="keywords" content="机场推荐,curl输出,write-out,测速记录">
-<meta name="robots" content="index,follow,max-image-preview:large"><link rel="canonical" href="https://www.yaoyaolingxian.blog/posts/curl-body-writeout-separate-output/">
-<meta property="og:title" content="curl 测速信息混进网页正文？把文件与统计输出分开保存">
-<meta property="og:description" content="curl write-out 输出混入 HTML 或 JSON 怎么办？在 PowerShell 中分开保存正文、响应头与统计，检查退出码和真实文件，不混用重定向。">
-<meta property="og:url" content="https://www.yaoyaolingxian.blog/posts/curl-body-writeout-separate-output/">
+<title>网卡 LinkSpeed 很高，为什么下载仍慢？先分清本地链路与端到端吞吐 · 遥遥领先性价比机场</title>
+<meta name="description" content="Windows LinkSpeed 能代表机场速度吗？用 Get-NetAdapter 分清物理与虚拟网卡，记录本地链路和实际下载条件，不用网卡数字代替端到端验收。">
+<meta name="keywords" content="机场推荐,LinkSpeed,网卡链路速度,网络吞吐判断">
+<meta name="robots" content="index,follow,max-image-preview:large"><link rel="canonical" href="https://www.yaoyaolingxian.blog/posts/windows-link-speed-throughput-boundary/">
+<meta property="og:title" content="网卡 LinkSpeed 很高，为什么下载仍慢？先分清本地链路与端到端吞吐">
+<meta property="og:description" content="Windows LinkSpeed 能代表机场速度吗？用 Get-NetAdapter 分清物理与虚拟网卡，记录本地链路和实际下载条件，不用网卡数字代替端到端验收。">
+<meta property="og:url" content="https://www.yaoyaolingxian.blog/posts/windows-link-speed-throughput-boundary/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="遥遥领先性价比机场">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://www.yaoyaolingxian.blog/assets/media/52ff4036-42cb-4679-a721-9a08d1816c48.png"><meta property="og:image:alt" content="遥遥领先性价比机场">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="curl 测速信息混进网页正文？把文件与统计输出分开保存">
-<meta name="twitter:description" content="curl write-out 输出混入 HTML 或 JSON 怎么办？在 PowerShell 中分开保存正文、响应头与统计，检查退出码和真实文件，不混用重定向。">
+<meta name="twitter:title" content="网卡 LinkSpeed 很高，为什么下载仍慢？先分清本地链路与端到端吞吐">
+<meta name="twitter:description" content="Windows LinkSpeed 能代表机场速度吗？用 Get-NetAdapter 分清物理与虚拟网卡，记录本地链路和实际下载条件，不用网卡数字代替端到端验收。">
 <meta name="twitter:image" content="https://www.yaoyaolingxian.blog/assets/media/52ff4036-42cb-4679-a721-9a08d1816c48.png">
-<meta name="author" content="加油"><meta property="article:published_time" content="2026-10-09T09:25:52&#43;08:00"><meta property="article:modified_time" content="2026-10-09T09:25:55&#43;08:00"><meta property="article:tag" content="网络性能"><meta property="article:tag" content="故障排查">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@id":"https://www.yaoyaolingxian.blog/posts/curl-body-writeout-separate-output/#article","@type":"BlogPosting","author":{"@type":"Person","name":"加油"},"dateModified":"2026-10-09T09:25:55+08:00","datePublished":"2026-10-09T09:25:52+08:00","description":"curl write-out 输出混入 HTML 或 JSON 怎么办？在 PowerShell 中分开保存正文、响应头与统计，检查退出码和真实文件，不混用重定向。","headline":"curl 测速信息混进网页正文？把文件与统计输出分开保存","inLanguage":"zh-CN","mainEntityOfPage":{"@id":"https://www.yaoyaolingxian.blog/posts/curl-body-writeout-separate-output/","@type":"WebPage"},"url":"https://www.yaoyaolingxian.blog/posts/curl-body-writeout-separate-output/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://www.yaoyaolingxian.blog/","name":"遥遥领先性价比机场","position":1},{"@type":"ListItem","item":"https://www.yaoyaolingxian.blog/posts/curl-body-writeout-separate-output/","name":"curl 测速信息混进网页正文？把文件与统计输出分开保存","position":2}]}]}</script>
+<meta name="author" content="加油"><meta property="article:published_time" content="2026-10-10T09:22:44&#43;08:00"><meta property="article:modified_time" content="2026-10-10T09:22:48&#43;08:00"><meta property="article:tag" content="机场推荐"><meta property="article:tag" content="线路测试"><meta property="article:tag" content="网络性能">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@id":"https://www.yaoyaolingxian.blog/posts/windows-link-speed-throughput-boundary/#article","@type":"BlogPosting","author":{"@type":"Person","name":"加油"},"dateModified":"2026-10-10T09:22:48+08:00","datePublished":"2026-10-10T09:22:44+08:00","description":"Windows LinkSpeed 能代表机场速度吗？用 Get-NetAdapter 分清物理与虚拟网卡，记录本地链路和实际下载条件，不用网卡数字代替端到端验收。","headline":"网卡 LinkSpeed 很高，为什么下载仍慢？先分清本地链路与端到端吞吐","inLanguage":"zh-CN","mainEntityOfPage":{"@id":"https://www.yaoyaolingxian.blog/posts/windows-link-speed-throughput-boundary/","@type":"WebPage"},"url":"https://www.yaoyaolingxian.blog/posts/windows-link-speed-throughput-boundary/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://www.yaoyaolingxian.blog/","name":"遥遥领先性价比机场","position":1},{"@type":"ListItem","item":"https://www.yaoyaolingxian.blog/posts/windows-link-speed-throughput-boundary/","name":"网卡 LinkSpeed 很高，为什么下载仍慢？先分清本地链路与端到端吞吐","position":2}]}]}</script>
 
 <script>(()=>{let mode='system';try{const saved=localStorage.getItem('reader-theme');if(['system','light','dark'].includes(saved))mode=saved}catch{}const root=document.documentElement;root.dataset.colorMode=mode;root.classList.toggle('dark',mode==='dark'||(mode==='system'&&matchMedia('(prefers-color-scheme: dark)').matches))})();</script>
 <link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/style.css">
@@ -74,7 +74,7 @@
 <div class="article-viewport"><div class="article-scroll">
 <main id="main" tabindex="-1" class="network-workspace network-reading">
 
-<nav class="breadcrumbs" aria-label="面包屑导航"><ol><li><a href="https://www.yaoyaolingxian.blog/">遥遥领先性价比机场</a></li><li><span aria-current="page">curl 测速信息混进网页正文？把文件与统计输出分开保存</span></li></ol></nav>
+<nav class="breadcrumbs" aria-label="面包屑导航"><ol><li><a href="https://www.yaoyaolingxian.blog/">遥遥领先性价比机场</a></li><li><span aria-current="page">网卡 LinkSpeed 很高，为什么下载仍慢？先分清本地链路与端到端吞吐</span></li></ol></nav>
 
 
 <div class="network-columns reading-columns">
@@ -82,59 +82,62 @@
 <article data-pagefind-body>
 <header class="article-header">
 <div class="eyebrow" data-pagefind-ignore>网络手记</div>
-<h1 data-pagefind-meta="title">curl 测速信息混进网页正文？把文件与统计输出分开保存</h1>
-<div class="metadata" data-pagefind-ignore><span>加油</span><time datetime="2026-10-09T09:25:52&#43;08:00">2026-10-09</time><span><span id="page-views">—</span> 次阅读</span></div>
+<h1 data-pagefind-meta="title">网卡 LinkSpeed 很高，为什么下载仍慢？先分清本地链路与端到端吞吐</h1>
+<div class="metadata" data-pagefind-ignore><span>加油</span><time datetime="2026-10-10T09:22:44&#43;08:00">2026-10-10</time><span><span id="page-views">—</span> 次阅读</span></div>
 <div class="chips" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/categories/client-guides/">客户端教程</a></div>
 </header>
-<div class="prose"><p>下载的 HTML 或 JSON 尾部多了一行耗时、状态码，解析器随后报错，未必是机场传输了坏文件。可能是命令把正文和 curl 的统计信息一起写进了同一个输出。</p>
-<p>这篇适合 Windows PowerShell 调用 <code>curl.exe</code> 的场景。只读取公开小页面，不复制登录页面、认证请求或订阅内容。</p>
-<p><img src="https://www.yaoyaolingxian.blog/assets/media/434854a5-b2d7-47ab-8291-1490f362e24c.png" alt="正文文件、响应头文件与终端统计分成三路保存的示意"></p>
-<p><em>示意图：正文、响应头和统计各有去处，避免混写成同一个文件。</em></p>
-<h2 id="heading">两种输出先分清</h2>
-<p><a href="https://everything.curl.dev/usingcurl/verbose/writeout.html">everything curl 的 write-out 章节</a>说明，<code>--write-out</code> 默认把选定统计输出到标准输出。如果正文也留在标准输出，再把整个命令的输出重定向到一个文件，两者就容易混在一起。</p>
-<p>更清楚的分工是：正文交给 <code>--output</code>，响应头交给 <code>--dump-header</code>，统计留在终端。不要把进度、错误和正文都合并到一份“网页文件”后再判断内容是否完整。</p>
-<h2 id="powershell-">PowerShell 中的最小示例</h2>
-<p>先确认当前目录没有需要保留的同名文件；下面只是公开示例页面的命令，不是本站测速结果：</p>
-<pre><code class="language-powershell">curl.exe -q --silent --show-error --connect-timeout 10 --max-time 20 --dump-header curl-check-headers.txt --output curl-check-body.html --write-out 'http_code=%{http_code}\ntime_total=%{time_total}\n' https://example.com/
-$LASTEXITCODE
+<div class="prose"><p>Windows 显示的网卡链路速度，与从某个网站下载文件的速度，描述的不是同一段过程。一个本地属性很高，不会自动证明宽带、机场路径和目标服务器都能达到同样吞吐。</p>
+<p>本文用于查看自己的 Windows 电脑，先读取属性，不更改驱动、双工模式、网卡绑定或路由。单位设备遵守已有管理要求。</p>
+<p><img src="https://www.yaoyaolingxian.blog/assets/media/8b1f5f3f-2c14-4b52-98f7-0a97fa202af1.png" alt="本地网卡链路与经过多个环节的完整下载路径分开观察的示意"></p>
+<p><em>示意图：本地链路属性只是环境一项，下载表现需要独立验收。</em></p>
+<h2 id="heading">先确认看的到底是哪张网卡</h2>
+<p><a href="https://learn.microsoft.com/en-us/powershell/module/netadapter/get-netadapter?view=windowsserver2025-ps">微软 Get-NetAdapter 文档</a>说明，它读取网络适配器基本属性，默认返回可见适配器。可以先用下面的只读命令整理列表：</p>
+<pre><code class="language-powershell">Get-NetAdapter | Select-Object Name, InterfaceDescription, Status, LinkSpeed
+Get-NetAdapter -Physical | Select-Object Name, InterfaceDescription, Status, LinkSpeed
 </code></pre>
-<p>这里没有在命令尾部再写 <code>&gt; curl-check-body.html</code>。响应正文由 curl 直接落盘，统计显示在终端；紧接着读取 <code>$LASTEXITCODE</code>，避免先运行其他外部程序改变它。</p>
-<p>单引号里的 <code>\n</code> 由 curl 格式处理，并非 PowerShell 的换行语法。此写法用于 PowerShell；不要不加检查地复制到批处理文件，Windows 不同命令环境对百分号的处理可能不同。</p>
-<h2 id="heading-1">按三份内容验收</h2>
+<p>第一轮帮助辨认列表，第二轮缩小到物理适配器。网卡名称以本机输出为准，不假定必叫 Wi-Fi 或 Ethernet。把时间、名称、描述、状态和 LinkSpeed 记下来即可，无需公开 MAC 地址。</p>
+<p>微软的<a href="https://learn.microsoft.com/en-us/windows-server/storage/storage-spaces/performance-history-scripting">性能历史示例</a>也将网卡 LinkSpeed 属性与观测到的带宽分别处理。这里借用的是属性含义，不要求个人电脑运行集群工具。</p>
+<h2 id="heading-1">三类数字分开读</h2>
 <table>
 <thead>
 <tr>
-<th>位置</th>
-<th>要检查的内容</th>
+<th>数字或状态</th>
+<th>所描述的对象</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>curl-check-body.html</td>
-<td>是否为所需正文，有无统计尾行</td>
+<td>物理网卡的 LinkSpeed</td>
+<td>本地接口报告的链路属性</td>
 </tr>
 <tr>
-<td>curl-check-headers.txt</td>
-<td>实际状态、类型和其他响应信息</td>
+<td>虚拟适配器显示的数值</td>
+<td>相应虚拟接口的属性</td>
 </tr>
 <tr>
-<td>终端统计及退出码</td>
-<td>本轮传输是否结束、总耗时是多少</td>
+<td>下载工具实际收到的字节与用时</td>
+<td>当次端到端任务的观察</td>
 </tr>
 </tbody>
 </table>
-<p><a href="https://curl.se/docs/manpage.html">curl 官方手册</a>定义了 <code>--output</code> 与 <code>--write-out</code> 的输出分工。文件后缀不决定真实格式；如果返回的是错误页、跳转提示或其他类型，仍要按真实响应处理。</p>
-<h2 id="heading-2">已经混入的文件怎么处理</h2>
-<p>不要简单删掉最后一行就宣布修好了，因为正文自己也可能有相似文本。先回看原命令，使用新文件名按分离方式重新请求一个有权限的小资源，然后确认新文件能够正常读取。</p>
-<p>若重新请求仍有问题，再查状态、编码或传输错误；不要同时关闭证书验证、更换节点和改字符编码。日志或响应头中可能含 Cookie，分享前只保留必要字段并脱敏。</p>
-<h2 id="heading-3">怎样用于机场试用</h2>
-<p>一次记录应能关联同一目标、同一正文文件、同一统计结果和退出码。耗时更短也要在文件正确的前提下比较。整理机场推荐证据时，保留输出方式，避免让下一位读者把“统计文本污染正文”误认为线路故障。</p>
+<p>看到虚拟适配器的高数值，不能据此宣布无线链路或机场更快。多个适配器同时显示连接状态，也不能仅靠这张列表确认某个应用实际走了哪条路。</p>
+<h2 id="heading-2">下载慢时按范围核对</h2>
+<ol>
+<li><strong>保存本地属性。</strong> 先明确当前使用有线还是无线，识别对应接口；不凭数值大小挑一张网卡当作依据。</li>
+<li><strong>保存下载条件。</strong> 目标文件、大小、工具限速、并行任务、代理模式和节点分别记录。小文件瞬间完成不适合估计持续吞吐。</li>
+<li><strong>安排一轮有限任务。</strong> 使用允许访问且大小已知的资源，记录是否完成、实际字节和用时，而非只截瞬时峰值。</li>
+<li><strong>需要比较时只改一项。</strong> 例如同一资源和工具下比较已有的两种本地接入，或比较节点；两类比较分开做，避免一轮同时改变全部环境。</li>
+</ol>
+<p>如果本地属性发生变化而任务也变化，可以记录关联线索；仍需排除其他条件。不要为了提高显示数字，随意强制设备不支持的模式。</p>
+<h2 id="heading-3">怎样算记录足够清楚</h2>
+<p>读者能区分哪个数字来自接口、哪个来自真实任务，并知道测试路径和时间，就能复查这次判断。单位也要原样记清：位每秒与字节每秒不能直接当作同一数值。</p>
+<p>整理机场推荐时，LinkSpeed 可作为环境说明。最终是否满足需要，应由目标任务是否完成、持续表现和条件限制共同说明，不能把一张网卡属性表改写成服务商性能承诺。</p>
 <h2 id="heading-4">来源与核验日期</h2>
 <ul>
-<li><a href="https://everything.curl.dev/usingcurl/verbose/writeout.html">everything curl：write-out 与标准输出</a></li>
-<li><a href="https://curl.se/docs/manpage.html">curl：output、dump-header 和 write-out</a></li>
+<li><a href="https://learn.microsoft.com/en-us/powershell/module/netadapter/get-netadapter?view=windowsserver2025-ps">微软：Get-NetAdapter 及 Physical 筛选</a></li>
+<li><a href="https://learn.microsoft.com/en-us/windows-server/storage/storage-spaces/performance-history-scripting">微软：LinkSpeed 属性与实际带宽分别记录的示例</a></li>
 </ul>
-<p>官方资料核验日期：2026-10-09。操作示例与记录表供读者自行核对，不代表本站对某家机场的实测结论。</p>
+<p>官方资料核验日期：2026-10-10。本文的操作与判断方法供读者自行核对，不代表本站对某家机场的实测结论。</p>
 </div>
 <div class="article-likes" data-pagefind-ignore>
 <button id="page-like" class="like-button" type="button" aria-pressed="false" aria-describedby="page-like-message" disabled>
@@ -142,8 +145,8 @@ $LASTEXITCODE
 <span id="page-like-label">点赞</span><span id="page-like-count">—</span>
 </button><p id="page-like-message" role="status"></p>
 </div>
-<div class="article-tags" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/tags/network-performance/"># 网络性能</a><a href="https://www.yaoyaolingxian.blog/tags/troubleshooting/"># 故障排查</a></div>
-<nav class="pagination" aria-label="相邻文章" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/posts/windows-link-speed-throughput-boundary/">← 上一篇</a><a href="https://www.yaoyaolingxian.blog/posts/curl-compressed-response-readback/">下一篇 →</a></nav>
+<div class="article-tags" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/tags/airport-recommendations/"># 机场推荐</a><a href="https://www.yaoyaolingxian.blog/tags/connection-testing/"># 线路测试</a><a href="https://www.yaoyaolingxian.blog/tags/network-performance/"># 网络性能</a></div>
+<nav class="pagination" aria-label="相邻文章" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/posts/airport-recommendation-guide/">← 上一篇</a><a href="https://www.yaoyaolingxian.blog/posts/curl-body-writeout-separate-output/">下一篇 →</a></nav>
 <section class="comments-section" data-pagefind-ignore><h2>评论</h2><div id="comments"></div></section>
 </article>
 </div>
@@ -169,7 +172,7 @@ $LASTEXITCODE
 </div>
 </a>
 </aside>
-<aside class="toc"><div>本篇目录</div><nav aria-label="文章目录"><a class="level-2" href="#heading">两种输出先分清</a><a class="level-2" href="#powershell-">PowerShell 中的最小示例</a><a class="level-2" href="#heading-1">按三份内容验收</a><a class="level-2" href="#heading-2">已经混入的文件怎么处理</a><a class="level-2" href="#heading-3">怎样用于机场试用</a><a class="level-2" href="#heading-4">来源与核验日期</a></nav></aside>
+<aside class="toc"><div>本篇目录</div><nav aria-label="文章目录"><a class="level-2" href="#heading">先确认看的到底是哪张网卡</a><a class="level-2" href="#heading-1">三类数字分开读</a><a class="level-2" href="#heading-2">下载慢时按范围核对</a><a class="level-2" href="#heading-3">怎样算记录足够清楚</a><a class="level-2" href="#heading-4">来源与核验日期</a></nav></aside>
 </div>
 </div>
 
@@ -204,7 +207,7 @@ $LASTEXITCODE
 </div>
 </dialog>
 
-<script id="blog-comments-config" type="application/json">{"comments":true,"likes":true,"locale":"zh-CN","pageKey":"/p/4b430dba-d23f-43b5-9381-5d46b2e8f5aa/","pageTitle":"curl 测速信息混进网页正文？把文件与统计输出分开保存","server":"https://upfqpobmiewm.sealosgzg.site","site":"xblog-f49c63bc-e1a5-4cf0-b2f5-6e9bc109b533","views":true,"viewsBase":0}</script>
+<script id="blog-comments-config" type="application/json">{"comments":true,"likes":true,"locale":"zh-CN","pageKey":"/p/a4716c84-17fe-4922-a86a-b12baafba0dc/","pageTitle":"网卡 LinkSpeed 很高，为什么下载仍慢？先分清本地链路与端到端吞吐","server":"https://upfqpobmiewm.sealosgzg.site","site":"xblog-f49c63bc-e1a5-4cf0-b2f5-6e9bc109b533","views":true,"viewsBase":0}</script>
 
 </body>
 </html>
