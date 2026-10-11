@@ -1,6 +1,4 @@
-<!doctype html>
-<html lang="zh-CN" data-theme="yaoyao-network">
-
+<!doctype html><html lang="zh-CN" data-theme="yaoyao-network">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,22 +12,48 @@
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="遥遥领先性价比机场">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://www.yaoyaolingxian.blog/assets/media/52ff4036-42cb-4679-a721-9a08d1816c48.png"><meta property="og:image:alt" content="遥遥领先性价比机场">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://www.yaoyaolingxian.blog/assets/media/53a4e44b-90ae-41cd-b248-22e0634047b5.webp"><meta property="og:image:alt" content="curl 跟随跳转会把密码带给新域名吗？核对重定向凭据">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="curl 跟随跳转会把密码带给新域名吗？核对重定向凭据">
 <meta name="twitter:description" content="curl 重定向怎样避免误传认证信息？理解 -L 与 --location-trusted 的区别，记录最终地址，核对认证域名并避免默认放大信任范围。">
-<meta name="twitter:image" content="https://www.yaoyaolingxian.blog/assets/media/52ff4036-42cb-4679-a721-9a08d1816c48.png">
-<meta name="author" content="加油"><meta property="article:published_time" content="2026-10-07T09:23:35&#43;08:00"><meta property="article:modified_time" content="2026-10-07T09:23:40&#43;08:00"><meta property="article:tag" content="故障排查"><meta property="article:tag" content="隐私安全">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@id":"https://www.yaoyaolingxian.blog/posts/curl-redirect-credential-scope/#article","@type":"BlogPosting","author":{"@type":"Person","name":"加油"},"dateModified":"2026-10-07T09:23:40+08:00","datePublished":"2026-10-07T09:23:35+08:00","description":"curl 重定向怎样避免误传认证信息？理解 -L 与 --location-trusted 的区别，记录最终地址，核对认证域名并避免默认放大信任范围。","headline":"curl 跟随跳转会把密码带给新域名吗？核对重定向凭据","inLanguage":"zh-CN","mainEntityOfPage":{"@id":"https://www.yaoyaolingxian.blog/posts/curl-redirect-credential-scope/","@type":"WebPage"},"url":"https://www.yaoyaolingxian.blog/posts/curl-redirect-credential-scope/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://www.yaoyaolingxian.blog/","name":"遥遥领先性价比机场","position":1},{"@type":"ListItem","item":"https://www.yaoyaolingxian.blog/posts/curl-redirect-credential-scope/","name":"curl 跟随跳转会把密码带给新域名吗？核对重定向凭据","position":2}]}]}</script>
+<meta name="twitter:image" content="https://www.yaoyaolingxian.blog/assets/media/53a4e44b-90ae-41cd-b248-22e0634047b5.webp">
+<meta name="author" content="加油"><meta property="article:published_time" content="2026-10-07T09:23:35&#43;08:00"><meta property="article:modified_time" content="2026-10-11T22:42:33&#43;08:00"><meta property="article:tag" content="故障排查案例"><meta property="article:tag" content="隐私安全">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="application/ld+json">{
+"@context":"https://schema.org","@graph":[{
+"@type":"BlogPosting","@id":"https://www.yaoyaolingxian.blog/posts/curl-redirect-credential-scope/#article","url":"https://www.yaoyaolingxian.blog/posts/curl-redirect-credential-scope/","mainEntityOfPage":"https://www.yaoyaolingxian.blog/posts/curl-redirect-credential-scope/",
+"headline":"curl 跟随跳转会把密码带给新域名吗？核对重定向凭据","description":"curl 重定向怎样避免误传认证信息？理解 -L 与 --location-trusted 的区别，记录最终地址，核对认证域名并避免默认放大信任范围。","inLanguage":"zh-CN",
+"datePublished":"2026-10-07T09:23:35+08:00","dateModified":"2026-10-11T22:42:33+08:00",
+"author":{"@type":"Person","name":"加油","url":"https://www.yaoyaolingxian.blog/posts/about-site/#author-jiayou"},
+"publisher":{"@type":"Organization","name":"遥遥领先性价比机场","url":"https://www.yaoyaolingxian.blog/","logo":{"@type":"ImageObject","url":"https://www.yaoyaolingxian.blog/assets/media/d5b2829f-bc45-489e-896a-d04b27ec97c1.webp"}}
+,"image":["https://www.yaoyaolingxian.blog/assets/media/53a4e44b-90ae-41cd-b248-22e0634047b5.webp"]
+},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"遥遥领先性价比机场","item":"https://www.yaoyaolingxian.blog/"},{"@type":"ListItem","position":2,"name":"curl 跟随跳转会把密码带给新域名吗？核对重定向凭据","item":"https://www.yaoyaolingxian.blog/posts/curl-redirect-credential-scope/"}]}]}</script>
+
 
 <script>(()=>{let mode='system';try{const saved=localStorage.getItem('reader-theme');if(['system','light','dark'].includes(saved))mode=saved}catch{}const root=document.documentElement;root.dataset.colorMode=mode;root.classList.toggle('dark',mode==='dark'||(mode==='system'&&matchMedia('(prefers-color-scheme: dark)').matches))})();</script>
 <link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/style.css">
 <link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/advertisements.css">
 <link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/search.css"><script defer src="https://www.yaoyaolingxian.blog/assets/theme/search.js"></script>
-<link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/skin-1.1.0.css">
+<link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/skin-1.1.1.css">
 <link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/viewer.css">
 <link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/reader.css">
-<link rel="icon" href="https://www.yaoyaolingxian.blog/assets/media/52ff4036-42cb-4679-a721-9a08d1816c48.png">
+<link rel="icon" href="https://www.yaoyaolingxian.blog/assets/media/d5b2829f-bc45-489e-896a-d04b27ec97c1.webp">
 <link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/artalk.css"><script defer src="https://www.yaoyaolingxian.blog/assets/theme/artalk.js"></script>
 <script defer src="https://www.yaoyaolingxian.blog/assets/theme/theme.js"></script>
 <script defer src="https://www.yaoyaolingxian.blog/assets/theme/reader.js"></script>
@@ -37,25 +61,15 @@
 <script defer src="https://www.yaoyaolingxian.blog/assets/theme/image-viewer.js"></script>
 
 <script defer src="https://www.yaoyaolingxian.blog/assets/theme/interactions.js"></script>
-<script defer src="https://www.yaoyaolingxian.blog/assets/theme/markdown-it.min.js"></script><script defer src="https://www.yaoyaolingxian.blog/assets/theme/purify.min.js"></script><script defer src="https://www.yaoyaolingxian.blog/assets/theme/featured-1.1.0.js"></script>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-RMWB4R3DHD"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<script defer src="https://www.yaoyaolingxian.blog/assets/theme/featured-1.1.1.js"></script>
 
-  gtag('config', 'G-RMWB4R3DHD');
-</script>
 
 <script defer src="https://www.yaoyaolingxian.blog/assets/xblog/google-analytics.js" data-xblog-google-analytics="G-RMWB4R3DHD" data-site-hosts="www.yaoyaolingxian.blog"></script></head>
 
-<body class="yaoyao-site article-page">
-<a class="skip" href="#main">跳到正文</a>
-
+<body class="yaoyao-site article-page"><a class="skip" href="#main">跳到正文</a>
 <header class="site-header">
 <div class="header-inner">
-<a class="brand" href="https://www.yaoyaolingxian.blog/"><img src="https://www.yaoyaolingxian.blog/assets/media/52ff4036-42cb-4679-a721-9a08d1816c48.png" alt="" width="38" height="38"><span>遥遥领先性价比机场</span></a>
+<a class="brand" href="https://www.yaoyaolingxian.blog/"><img src="https://www.yaoyaolingxian.blog/assets/media/d5b2829f-bc45-489e-896a-d04b27ec97c1.webp" alt="" width="38" height="38"><span>遥遥领先性价比机场</span></a>
 <nav id="site-navigation" aria-label="站点导航"><a href="https://www.yaoyaolingxian.blog/">首页</a><a href="https://www.yaoyaolingxian.blog/posts/airport-recommendation-guide/">机场推荐</a><a href="https://www.yaoyaolingxian.blog/categories/buying-guides/">选购指南</a><a href="https://www.yaoyaolingxian.blog/categories/client-guides/">客户端教程</a><a href="https://www.yaoyaolingxian.blog/categories/protocols-network/">协议与网络</a><a href="https://www.yaoyaolingxian.blog/categories/troubleshooting/">常见问题</a><a href="https://www.yaoyaolingxian.blog/categories/privacy-security/">隐私安全</a></nav>
 <a class="search-toggle" href="https://www.yaoyaolingxian.blog/search/" data-open-dialog="search-dialog" aria-haspopup="dialog" aria-controls="search-dialog" aria-label="搜索" title="搜索"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5"/></svg></a>
 <button id="theme-mode" class="theme-toggle theme-cycle" type="button" aria-label="明暗模式：跟随系统，点击切换为明亮" title="跟随系统 · 点击切换为明亮">
@@ -70,25 +84,24 @@
 </button>
 </div>
 </header>
-
-<div class="article-viewport"><div class="article-scroll">
-<main id="main" tabindex="-1" class="network-workspace network-reading">
+<div class="page-viewport article-viewport"><div class="page-scroll article-scroll">
+<main id="main" tabindex="-1" class="network-workspace network-reading" data-has-toc="true">
 
 <nav class="breadcrumbs" aria-label="面包屑导航"><ol><li><a href="https://www.yaoyaolingxian.blog/">遥遥领先性价比机场</a></li><li><span aria-current="page">curl 跟随跳转会把密码带给新域名吗？核对重定向凭据</span></li></ol></nav>
 
-
-<div class="network-columns reading-columns">
-<div class="reading-content">
+<div class="network-columns reading-columns"><div class="reading-content">
 <article data-pagefind-body>
 <header class="article-header">
 <div class="eyebrow" data-pagefind-ignore>网络手记</div>
 <h1 data-pagefind-meta="title">curl 跟随跳转会把密码带给新域名吗？核对重定向凭据</h1>
-<div class="metadata" data-pagefind-ignore><span>加油</span><time datetime="2026-10-07T09:23:35&#43;08:00">2026-10-07</time><span><span id="page-views">—</span> 次阅读</span></div>
+<div class="metadata" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/posts/about-site/#author-jiayou" rel="author">加油</a><time datetime="2026-10-07T09:23:35&#43;08:00">2026-10-07</time><span><span id="page-views">—</span> 次阅读</span></div>
 <div class="chips" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/categories/troubleshooting/">故障排查</a><a href="https://www.yaoyaolingxian.blog/categories/privacy-security/">隐私与安全</a></div>
 </header>
-<div class="prose"><p>请求被跳转到新地址，跟随跳转后又提示未认证，很容易让人复制一条带 <code>--location-trusted</code> 的命令。这个参数不仅控制访问新页面，还会改变凭据可以被发送到哪里的规则。</p>
+<div class="prose">
+
+<p>请求被跳转到新地址，跟随跳转后又提示未认证，很容易让人复制一条带 <code>--location-trusted</code> 的命令。这个参数不仅控制访问新页面，还会改变凭据可以被发送到哪里的规则。</p>
 <p>本文适合排查你有权限使用的接口与下载入口。先用不含密码、令牌和私密查询参数的公开 URL 理解流程，再按照接口自己的认证文档处理真实请求。</p>
-<p><img src="https://www.yaoyaolingxian.blog/assets/media/c01863d2-ad78-4c51-9eb9-f91992d19f7d.png" alt="重定向时访问新目标与允许传递凭据的两项独立检查"></p>
+<p><img src="https://www.yaoyaolingxian.blog/assets/media/53a4e44b-90ae-41cd-b248-22e0634047b5.webp" alt="重定向时访问新目标与允许传递凭据的两项独立检查" width="1200" height="800" loading="eager" decoding="async"></p>
 <p><em>示意图：跟随新地址与授权新目标接收凭据，是两项不同的决定。</em></p>
 <h2 id="heading">两个参数的差别在哪里</h2>
 <p><a href="https://curl.se/docs/manpage.html">curl 官方手册</a>说明，<code>-L</code> 或 <code>--location</code> 用于跟随 HTTP 重定向；普通跟随情况下，某些认证信息不会继续发给其他目标。而 <code>--location-trusted</code> 允许把凭据和其他秘密传给初始目标之外的主机。</p>
@@ -122,7 +135,7 @@
 <p>此外，不是所有自定义请求头都会得到同样的自动保护。若秘密放在自定义字段、请求体或 URL 中，应逐项核对，不能把 <code>-L</code> 当成通用脱敏功能。</p>
 <h2 id="heading-1">先做一条不携带秘密的观察请求</h2>
 <p>Windows 读者可以用下面的公开示例熟悉输出：</p>
-<pre><code class="language-powershell">curl.exe -q --silent --show-error --location --proto-redir '=https' --max-redirs 5 --max-time 20 --output NUL --write-out 'final=%{url_effective} redirects=%{num_redirects}\n' 'https://example.com/'
+<pre><code class="language-powershell">curl.exe -q --silent --show-error --location --proto-redir '=https' --max-redirs 5 --max-time 20 --output NUL --write-out 'final=%{url_effective} redirects=%{num_redirects}\n' 'https://example.com/'
 </code></pre>
 <p>这个地址只是公开示例，不承诺一定会发生跳转。<code>--proto-redir '=https'</code> 限制被跟随的协议，<code>--max-redirs</code> 限制次数；两者都不会确认某个新域名属于你的服务商。命令没有附加认证信息，不应直接替换成带订阅令牌的链接后把输出公开。</p>
 <p>若需比较机场路径，应另外按自己的客户端说明明确选择代理，并记录实际采用的入口；不能仅因为运行了 curl 就认定走了代理。</p>
@@ -141,6 +154,7 @@
 <li><a href="https://curl.se/docs/manpage.html">curl：--location、--location-trusted、--header 与 --proto-redir</a></li>
 </ul>
 <p>官方资料核验日期：2026-10-07。本文提供自行操作与记录的方法，不代表本站对某家机场的实测结论。</p>
+
 </div>
 <div class="article-likes" data-pagefind-ignore>
 <button id="page-like" class="like-button" type="button" aria-pressed="false" aria-describedby="page-like-message" disabled>
@@ -148,15 +162,13 @@
 <span id="page-like-label">点赞</span><span id="page-like-count">—</span>
 </button><p id="page-like-message" role="status"></p>
 </div>
-<div class="article-tags" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/tags/troubleshooting/"># 故障排查</a><a href="https://www.yaoyaolingxian.blog/tags/privacy-security/"># 隐私安全</a></div>
+<div class="article-tags" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/tags/troubleshooting/"># 故障排查案例</a><a href="https://www.yaoyaolingxian.blog/tags/privacy-security/"># 隐私安全</a></div>
 <nav class="pagination" aria-label="相邻文章" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/posts/airport-coupon-renewal-price-check/">← 上一篇</a><a href="https://www.yaoyaolingxian.blog/posts/curl-remote-ip-proxy-peer/">下一篇 →</a></nav>
 <section class="comments-section" data-pagefind-ignore><h2>评论</h2><div id="comments"></div></section>
 </article>
-</div>
-<div class="network-rail article-rail">
-<aside class="ad-slot" aria-label="内容页侧边广告" data-ad-position="article_sidebar" data-pagefind-ignore>
-<a class="ad-card" href="https://goflybit.com/#/register?code=gPinVG8C" target="_blank" rel="sponsored noopener noreferrer" aria-label="FlyBit · 内容页侧边邀请入口（广告，在新标签页打开）" data-ad-link>
-<span class="ad-corner" aria-hidden="true">↗</span>
+</div><div class="article-rail network-rail">
+<aside class="toc"><div>本篇目录</div><nav aria-label="文章目录"><a class="level-2" href="#heading">两个参数的差别在哪里</a><a class="level-2" href="#heading-1">先做一条不携带秘密的观察请求</a><a class="level-2" href="#heading-2">正式接口跳转后未认证怎么办</a><a class="level-2" href="#heading-3">怎样算验收完成</a><a class="level-2" href="#heading-4">来源与核验日期</a></nav></aside>
+<aside class="ad-slot" aria-label="文章相关内容" data-ad-position="article_sidebar" data-pagefind-ignore><a class="ad-card" href="https://goflybit.com/#/register?code=gPinVG8C" target="_blank" rel="sponsored noopener noreferrer" aria-label="FlyBit · 内容页侧边邀请入口（在新标签页打开）" data-ad-link>
 
 <div class="ad-copy"><h3>FlyBit</h3>
 <p>先看当前试用与套餐，再决定是否适合自己。</p>
@@ -164,8 +176,7 @@
 <p><strong>查看注册入口 →</strong></p>
 <p>推广链接 · 资格与费用以服务方页面为准</p>
 </div>
-</a><a class="ad-card" href="https://99ba.net/#/register?code=sExBbdk9" target="_blank" rel="sponsored noopener noreferrer" aria-label="99吧 · 内容页侧边邀请入口（广告，在新标签页打开）" data-ad-link>
-<span class="ad-corner" aria-hidden="true">↗</span>
+</a><a class="ad-card" href="https://99ba.net/#/register?code=sExBbdk9" target="_blank" rel="sponsored noopener noreferrer" aria-label="99吧 · 内容页侧边邀请入口（在新标签页打开）" data-ad-link>
 
 <div class="ad-copy"><h3>99吧</h3>
 <p>先看当前试用与套餐，再决定是否适合自己。</p>
@@ -173,24 +184,18 @@
 <p><strong>查看注册入口 →</strong></p>
 <p>推广链接 · 资格与费用以服务方页面为准</p>
 </div>
-</a>
-</aside>
-<aside class="toc"><div>本篇目录</div><nav aria-label="文章目录"><a class="level-2" href="#heading">两个参数的差别在哪里</a><a class="level-2" href="#heading-1">先做一条不携带秘密的观察请求</a><a class="level-2" href="#heading-2">正式接口跳转后未认证怎么办</a><a class="level-2" href="#heading-3">怎样算验收完成</a><a class="level-2" href="#heading-4">来源与核验日期</a></nav></aside>
-</div>
-</div>
+</a></aside></div></div>
 
-</main>
-</div>
+</main></div>
 <button id="back-to-top" class="back-to-top" type="button" aria-label="返回顶部" title="返回顶部" hidden>
 <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h14M12 20V8m-5 5 5-5 5 5"/></svg>
 </button>
 </div>
-
 <footer class="site-footer">
 <nav class="friend-links" aria-label="友情链接"><span class="friend-links-label">友情链接</span><a href="https://kkjichang.cc/" target="_blank" rel="noopener noreferrer">可靠机场推荐</a><a href="https://pyjichang.cc/" target="_blank" rel="noopener noreferrer">便宜机场推荐</a><a href="https://wdjichang.cc/" target="_blank" rel="noopener noreferrer">稳定机场推荐</a><a href="https://fengyy.org/" target="_blank" rel="noopener noreferrer">风悠悠</a><a href="https://zjtf.org/" target="_blank" rel="noopener noreferrer">酌酒听风</a></nav>
 <span>© @遥遥领先 2026</span>
+<a href="https://www.yaoyaolingxian.blog/posts/about-site/">关于本站与作者</a>
 </footer>
-
 
 
 <dialog id="search-dialog" class="reader-dialog site-search" aria-labelledby="search-title" data-reader-dialog data-pagefind-ignore>
@@ -211,10 +216,4 @@
 </dialog>
 
 <script id="blog-comments-config" type="application/json">{"comments":true,"likes":true,"locale":"zh-CN","pageKey":"/p/a1f7e3fd-7ca8-4216-be0a-e83e2c728c2c/","pageTitle":"curl 跟随跳转会把密码带给新域名吗？核对重定向凭据","server":"https://upfqpobmiewm.sealosgzg.site","site":"xblog-f49c63bc-e1a5-4cf0-b2f5-6e9bc109b533","views":true,"viewsBase":0}</script>
-
-</body>
-</html>
-
-
-
-
+</body></html>

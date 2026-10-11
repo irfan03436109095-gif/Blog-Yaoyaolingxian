@@ -1,6 +1,4 @@
-<!doctype html>
-<html lang="zh-CN" data-theme="yaoyao-network">
-
+<!doctype html><html lang="zh-CN" data-theme="yaoyao-network">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,22 +12,48 @@
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="遥遥领先性价比机场">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://www.yaoyaolingxian.blog/assets/media/52ff4036-42cb-4679-a721-9a08d1816c48.png"><meta property="og:image:alt" content="遥遥领先性价比机场">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://www.yaoyaolingxian.blog/assets/media/8a2ff24c-1708-470e-8104-ab9af8a3dc92.webp"><meta property="og:image:alt" content="curl 的 remote_ip 是机场出口吗？分清连接地址与服务端观察">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="curl 的 remote_ip 是机场出口吗？分清连接地址与服务端观察">
 <meta name="twitter:description" content="curl remote_ip 显示 127.0.0.1 是代理失败吗？核对本地代理对端、节点入口与目标服务器观察的来源 IP，建立准确的线路测试记录。">
-<meta name="twitter:image" content="https://www.yaoyaolingxian.blog/assets/media/52ff4036-42cb-4679-a721-9a08d1816c48.png">
-<meta name="author" content="加油"><meta property="article:published_time" content="2026-10-06T09:25:10&#43;08:00"><meta property="article:modified_time" content="2026-10-06T09:25:22&#43;08:00"><meta property="article:tag" content="线路测试"><meta property="article:tag" content="代理协议"><meta property="article:tag" content="评测方法">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@id":"https://www.yaoyaolingxian.blog/posts/curl-remote-ip-proxy-peer/#article","@type":"BlogPosting","author":{"@type":"Person","name":"加油"},"dateModified":"2026-10-06T09:25:22+08:00","datePublished":"2026-10-06T09:25:10+08:00","description":"curl remote_ip 显示 127.0.0.1 是代理失败吗？核对本地代理对端、节点入口与目标服务器观察的来源 IP，建立准确的线路测试记录。","headline":"curl 的 remote_ip 是机场出口吗？分清连接地址与服务端观察","inLanguage":"zh-CN","mainEntityOfPage":{"@id":"https://www.yaoyaolingxian.blog/posts/curl-remote-ip-proxy-peer/","@type":"WebPage"},"url":"https://www.yaoyaolingxian.blog/posts/curl-remote-ip-proxy-peer/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://www.yaoyaolingxian.blog/","name":"遥遥领先性价比机场","position":1},{"@type":"ListItem","item":"https://www.yaoyaolingxian.blog/posts/curl-remote-ip-proxy-peer/","name":"curl 的 remote_ip 是机场出口吗？分清连接地址与服务端观察","position":2}]}]}</script>
+<meta name="twitter:image" content="https://www.yaoyaolingxian.blog/assets/media/8a2ff24c-1708-470e-8104-ab9af8a3dc92.webp">
+<meta name="author" content="加油"><meta property="article:published_time" content="2026-10-06T09:25:10&#43;08:00"><meta property="article:modified_time" content="2026-10-11T22:42:29&#43;08:00"><meta property="article:tag" content="线路测试"><meta property="article:tag" content="代理协议"><meta property="article:tag" content="评测方法">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="application/ld+json">{
+"@context":"https://schema.org","@graph":[{
+"@type":"BlogPosting","@id":"https://www.yaoyaolingxian.blog/posts/curl-remote-ip-proxy-peer/#article","url":"https://www.yaoyaolingxian.blog/posts/curl-remote-ip-proxy-peer/","mainEntityOfPage":"https://www.yaoyaolingxian.blog/posts/curl-remote-ip-proxy-peer/",
+"headline":"curl 的 remote_ip 是机场出口吗？分清连接地址与服务端观察","description":"curl remote_ip 显示 127.0.0.1 是代理失败吗？核对本地代理对端、节点入口与目标服务器观察的来源 IP，建立准确的线路测试记录。","inLanguage":"zh-CN",
+"datePublished":"2026-10-06T09:25:10+08:00","dateModified":"2026-10-11T22:42:29+08:00",
+"author":{"@type":"Person","name":"加油","url":"https://www.yaoyaolingxian.blog/posts/about-site/#author-jiayou"},
+"publisher":{"@type":"Organization","name":"遥遥领先性价比机场","url":"https://www.yaoyaolingxian.blog/","logo":{"@type":"ImageObject","url":"https://www.yaoyaolingxian.blog/assets/media/d5b2829f-bc45-489e-896a-d04b27ec97c1.webp"}}
+,"image":["https://www.yaoyaolingxian.blog/assets/media/8a2ff24c-1708-470e-8104-ab9af8a3dc92.webp"]
+},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"遥遥领先性价比机场","item":"https://www.yaoyaolingxian.blog/"},{"@type":"ListItem","position":2,"name":"curl 的 remote_ip 是机场出口吗？分清连接地址与服务端观察","item":"https://www.yaoyaolingxian.blog/posts/curl-remote-ip-proxy-peer/"}]}]}</script>
+
 
 <script>(()=>{let mode='system';try{const saved=localStorage.getItem('reader-theme');if(['system','light','dark'].includes(saved))mode=saved}catch{}const root=document.documentElement;root.dataset.colorMode=mode;root.classList.toggle('dark',mode==='dark'||(mode==='system'&&matchMedia('(prefers-color-scheme: dark)').matches))})();</script>
 <link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/style.css">
 <link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/advertisements.css">
 <link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/search.css"><script defer src="https://www.yaoyaolingxian.blog/assets/theme/search.js"></script>
-<link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/skin-1.1.0.css">
+<link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/skin-1.1.1.css">
 <link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/viewer.css">
 <link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/reader.css">
-<link rel="icon" href="https://www.yaoyaolingxian.blog/assets/media/52ff4036-42cb-4679-a721-9a08d1816c48.png">
+<link rel="icon" href="https://www.yaoyaolingxian.blog/assets/media/d5b2829f-bc45-489e-896a-d04b27ec97c1.webp">
 <link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/artalk.css"><script defer src="https://www.yaoyaolingxian.blog/assets/theme/artalk.js"></script>
 <script defer src="https://www.yaoyaolingxian.blog/assets/theme/theme.js"></script>
 <script defer src="https://www.yaoyaolingxian.blog/assets/theme/reader.js"></script>
@@ -37,25 +61,15 @@
 <script defer src="https://www.yaoyaolingxian.blog/assets/theme/image-viewer.js"></script>
 
 <script defer src="https://www.yaoyaolingxian.blog/assets/theme/interactions.js"></script>
-<script defer src="https://www.yaoyaolingxian.blog/assets/theme/markdown-it.min.js"></script><script defer src="https://www.yaoyaolingxian.blog/assets/theme/purify.min.js"></script><script defer src="https://www.yaoyaolingxian.blog/assets/theme/featured-1.1.0.js"></script>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-RMWB4R3DHD"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<script defer src="https://www.yaoyaolingxian.blog/assets/theme/featured-1.1.1.js"></script>
 
-  gtag('config', 'G-RMWB4R3DHD');
-</script>
 
 <script defer src="https://www.yaoyaolingxian.blog/assets/xblog/google-analytics.js" data-xblog-google-analytics="G-RMWB4R3DHD" data-site-hosts="www.yaoyaolingxian.blog"></script></head>
 
-<body class="yaoyao-site article-page">
-<a class="skip" href="#main">跳到正文</a>
-
+<body class="yaoyao-site article-page"><a class="skip" href="#main">跳到正文</a>
 <header class="site-header">
 <div class="header-inner">
-<a class="brand" href="https://www.yaoyaolingxian.blog/"><img src="https://www.yaoyaolingxian.blog/assets/media/52ff4036-42cb-4679-a721-9a08d1816c48.png" alt="" width="38" height="38"><span>遥遥领先性价比机场</span></a>
+<a class="brand" href="https://www.yaoyaolingxian.blog/"><img src="https://www.yaoyaolingxian.blog/assets/media/d5b2829f-bc45-489e-896a-d04b27ec97c1.webp" alt="" width="38" height="38"><span>遥遥领先性价比机场</span></a>
 <nav id="site-navigation" aria-label="站点导航"><a href="https://www.yaoyaolingxian.blog/">首页</a><a href="https://www.yaoyaolingxian.blog/posts/airport-recommendation-guide/">机场推荐</a><a href="https://www.yaoyaolingxian.blog/categories/buying-guides/">选购指南</a><a href="https://www.yaoyaolingxian.blog/categories/client-guides/">客户端教程</a><a href="https://www.yaoyaolingxian.blog/categories/protocols-network/">协议与网络</a><a href="https://www.yaoyaolingxian.blog/categories/troubleshooting/">常见问题</a><a href="https://www.yaoyaolingxian.blog/categories/privacy-security/">隐私安全</a></nav>
 <a class="search-toggle" href="https://www.yaoyaolingxian.blog/search/" data-open-dialog="search-dialog" aria-haspopup="dialog" aria-controls="search-dialog" aria-label="搜索" title="搜索"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5"/></svg></a>
 <button id="theme-mode" class="theme-toggle theme-cycle" type="button" aria-label="明暗模式：跟随系统，点击切换为明亮" title="跟随系统 · 点击切换为明亮">
@@ -70,25 +84,24 @@
 </button>
 </div>
 </header>
-
-<div class="article-viewport"><div class="article-scroll">
-<main id="main" tabindex="-1" class="network-workspace network-reading">
+<div class="page-viewport article-viewport"><div class="page-scroll article-scroll">
+<main id="main" tabindex="-1" class="network-workspace network-reading" data-has-toc="true">
 
 <nav class="breadcrumbs" aria-label="面包屑导航"><ol><li><a href="https://www.yaoyaolingxian.blog/">遥遥领先性价比机场</a></li><li><span aria-current="page">curl 的 remote_ip 是机场出口吗？分清连接地址与服务端观察</span></li></ol></nav>
 
-
-<div class="network-columns reading-columns">
-<div class="reading-content">
+<div class="network-columns reading-columns"><div class="reading-content">
 <article data-pagefind-body>
 <header class="article-header">
 <div class="eyebrow" data-pagefind-ignore>网络手记</div>
 <h1 data-pagefind-meta="title">curl 的 remote_ip 是机场出口吗？分清连接地址与服务端观察</h1>
-<div class="metadata" data-pagefind-ignore><span>加油</span><time datetime="2026-10-06T09:25:10&#43;08:00">2026-10-06</time><span><span id="page-views">—</span> 次阅读</span></div>
+<div class="metadata" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/posts/about-site/#author-jiayou" rel="author">加油</a><time datetime="2026-10-06T09:25:10&#43;08:00">2026-10-06</time><span><span id="page-views">—</span> 次阅读</span></div>
 <div class="chips" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/categories/protocols-network/">协议与网络</a></div>
 </header>
-<div class="prose"><p>用 curl 做机场测试时，如果 remote_ip 显示本机回环地址，先不要判定“没有连接远程网站”。这个字段回答的是 curl 最近建立连接的对端在哪里，不是替你询问目标网站看到了哪个来源 IP。</p>
+<div class="prose">
+
+<p>用 curl 做机场测试时，如果 remote_ip 显示本机回环地址，先不要判定“没有连接远程网站”。这个字段回答的是 curl 最近建立连接的对端在哪里，不是替你询问目标网站看到了哪个来源 IP。</p>
 <p>本文适用于显式使用本地 HTTP 代理的诊断场景；TUN、透明接管和其他代理链需结合各自的实际路径解释。</p>
-<p><img src="https://www.yaoyaolingxian.blog/assets/media/cc9b481e-6bb8-43eb-8782-1145bc8fa03a.png" alt="本机代理连接对端与目标网站观察的来源处在不同位置"></p>
+<p><img src="https://www.yaoyaolingxian.blog/assets/media/8a2ff24c-1708-470e-8104-ab9af8a3dc92.webp" alt="本机代理连接对端与目标网站观察的来源处在不同位置" width="1200" height="800" loading="eager" decoding="async"></p>
 <p><em>示意图：curl 的连接字段和网站观察记录要分开填写，未显示真实 IP。</em></p>
 <h2 id="heading">三个地址别放进同一栏</h2>
 <table>
@@ -120,10 +133,10 @@
 <p><a href="https://curl.se/docs/manpage.html#-w">curl 参数手册</a>将 remote_ip 定义为最近一次连接的远端 IP。<a href="https://everything.curl.dev/usingcurl/proxies/http.html">官方 HTTP 代理说明</a>指出，使用该代理时 curl 连接代理而非直接连接目标服务器。因此，在显式连接本机代理的场景，把回环对端解释为机场出口是不成立的。</p>
 <h2 id="heading-1">先观察一个明确的本地代理请求</h2>
 <p>以下为 Windows PowerShell 示例。先核对客户端实际 HTTP 端口，再修改变量，不把示例值当默认配置。</p>
-<pre><code class="language-powershell">$proxyPort = 7890 # 按当前 HTTP 代理入口修改
-curl.exe -q --noproxy 'localhost' --proxy &quot;http://127.0.0.1:$proxyPort&quot; --connect-timeout 10 --max-time 20 -sS -o NUL -w 'peer=%{remote_ip}:%{remote_port} HTTP=%{http_code}
-' 'https://example.com/'
-$LASTEXITCODE
+<pre><code class="language-powershell">$proxyPort = 7890 # 按当前 HTTP 代理入口修改
+curl.exe -q --noproxy 'localhost' --proxy &quot;http://127.0.0.1:$proxyPort&quot; --connect-timeout 10 --max-time 20 -sS -o NUL -w 'peer=%{remote_ip}:%{remote_port} HTTP=%{http_code}
+' 'https://example.com/'
+$LASTEXITCODE
 </code></pre>
 <p>示例将代理绕过列表限定为 localhost，目标 example.com 不匹配该项，并保留网站证书验证。若改变测试域名，也要核对绕过列表，不能把参数条件不同写成节点实测差异。</p>
 <p>观察并记录对端、响应状态与客户端连接记录。回环地址能帮助确认 curl 接入了指定的本地入口；请求后续是否通过预期节点、是否被规则直连，需要继续查看客户端，而不是仅凭这一字段下结论。</p>
@@ -141,6 +154,7 @@ $LASTEXITCODE
 <li><a href="https://curl.se/libcurl/c/CURLINFO_PRIMARY_IP.html">libcurl：最近连接的 IP 定义</a></li>
 </ul>
 <p>官方资料核验日期：2026-10-06。文中的表格和流程用于自行检查，不代表本站对某家机场的实测结论。</p>
+
 </div>
 <div class="article-likes" data-pagefind-ignore>
 <button id="page-like" class="like-button" type="button" aria-pressed="false" aria-describedby="page-like-message" disabled>
@@ -152,11 +166,9 @@ $LASTEXITCODE
 <nav class="pagination" aria-label="相邻文章" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/posts/curl-redirect-credential-scope/">← 上一篇</a><a href="https://www.yaoyaolingxian.blog/posts/curl-default-config-disable-check/">下一篇 →</a></nav>
 <section class="comments-section" data-pagefind-ignore><h2>评论</h2><div id="comments"></div></section>
 </article>
-</div>
-<div class="network-rail article-rail">
-<aside class="ad-slot" aria-label="内容页侧边广告" data-ad-position="article_sidebar" data-pagefind-ignore>
-<a class="ad-card" href="https://goflybit.com/#/register?code=gPinVG8C" target="_blank" rel="sponsored noopener noreferrer" aria-label="FlyBit · 内容页侧边邀请入口（广告，在新标签页打开）" data-ad-link>
-<span class="ad-corner" aria-hidden="true">↗</span>
+</div><div class="article-rail network-rail">
+<aside class="toc"><div>本篇目录</div><nav aria-label="文章目录"><a class="level-2" href="#heading">三个地址别放进同一栏</a><a class="level-2" href="#heading-1">先观察一个明确的本地代理请求</a><a class="level-2" href="#heading-2">出口地址怎样取得</a><a class="level-2" href="#heading-3">两个常见误判</a><a class="level-2" href="#heading-4">验收标准</a><a class="level-2" href="#heading-5">来源与核验日期</a></nav></aside>
+<aside class="ad-slot" aria-label="文章相关内容" data-ad-position="article_sidebar" data-pagefind-ignore><a class="ad-card" href="https://goflybit.com/#/register?code=gPinVG8C" target="_blank" rel="sponsored noopener noreferrer" aria-label="FlyBit · 内容页侧边邀请入口（在新标签页打开）" data-ad-link>
 
 <div class="ad-copy"><h3>FlyBit</h3>
 <p>先看当前试用与套餐，再决定是否适合自己。</p>
@@ -164,8 +176,7 @@ $LASTEXITCODE
 <p><strong>查看注册入口 →</strong></p>
 <p>推广链接 · 资格与费用以服务方页面为准</p>
 </div>
-</a><a class="ad-card" href="https://99ba.net/#/register?code=sExBbdk9" target="_blank" rel="sponsored noopener noreferrer" aria-label="99吧 · 内容页侧边邀请入口（广告，在新标签页打开）" data-ad-link>
-<span class="ad-corner" aria-hidden="true">↗</span>
+</a><a class="ad-card" href="https://99ba.net/#/register?code=sExBbdk9" target="_blank" rel="sponsored noopener noreferrer" aria-label="99吧 · 内容页侧边邀请入口（在新标签页打开）" data-ad-link>
 
 <div class="ad-copy"><h3>99吧</h3>
 <p>先看当前试用与套餐，再决定是否适合自己。</p>
@@ -173,24 +184,18 @@ $LASTEXITCODE
 <p><strong>查看注册入口 →</strong></p>
 <p>推广链接 · 资格与费用以服务方页面为准</p>
 </div>
-</a>
-</aside>
-<aside class="toc"><div>本篇目录</div><nav aria-label="文章目录"><a class="level-2" href="#heading">三个地址别放进同一栏</a><a class="level-2" href="#heading-1">先观察一个明确的本地代理请求</a><a class="level-2" href="#heading-2">出口地址怎样取得</a><a class="level-2" href="#heading-3">两个常见误判</a><a class="level-2" href="#heading-4">验收标准</a><a class="level-2" href="#heading-5">来源与核验日期</a></nav></aside>
-</div>
-</div>
+</a></aside></div></div>
 
-</main>
-</div>
+</main></div>
 <button id="back-to-top" class="back-to-top" type="button" aria-label="返回顶部" title="返回顶部" hidden>
 <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h14M12 20V8m-5 5 5-5 5 5"/></svg>
 </button>
 </div>
-
 <footer class="site-footer">
 <nav class="friend-links" aria-label="友情链接"><span class="friend-links-label">友情链接</span><a href="https://kkjichang.cc/" target="_blank" rel="noopener noreferrer">可靠机场推荐</a><a href="https://pyjichang.cc/" target="_blank" rel="noopener noreferrer">便宜机场推荐</a><a href="https://wdjichang.cc/" target="_blank" rel="noopener noreferrer">稳定机场推荐</a><a href="https://fengyy.org/" target="_blank" rel="noopener noreferrer">风悠悠</a><a href="https://zjtf.org/" target="_blank" rel="noopener noreferrer">酌酒听风</a></nav>
 <span>© @遥遥领先 2026</span>
+<a href="https://www.yaoyaolingxian.blog/posts/about-site/">关于本站与作者</a>
 </footer>
-
 
 
 <dialog id="search-dialog" class="reader-dialog site-search" aria-labelledby="search-title" data-reader-dialog data-pagefind-ignore>
@@ -211,10 +216,4 @@ $LASTEXITCODE
 </dialog>
 
 <script id="blog-comments-config" type="application/json">{"comments":true,"likes":true,"locale":"zh-CN","pageKey":"/p/bda061c8-540e-40b6-b995-122a663081e0/","pageTitle":"curl 的 remote_ip 是机场出口吗？分清连接地址与服务端观察","server":"https://upfqpobmiewm.sealosgzg.site","site":"xblog-f49c63bc-e1a5-4cf0-b2f5-6e9bc109b533","views":true,"viewsBase":0}</script>
-
-</body>
-</html>
-
-
-
-
+</body></html>

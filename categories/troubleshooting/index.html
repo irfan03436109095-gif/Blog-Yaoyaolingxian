@@ -1,6 +1,4 @@
-<!doctype html>
-<html lang="zh-CN" data-theme="yaoyao-network">
-
+<!doctype html><html lang="zh-CN" data-theme="yaoyao-network">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,11 +12,11 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="遥遥领先性价比机场">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://www.yaoyaolingxian.blog/assets/media/52ff4036-42cb-4679-a721-9a08d1816c48.png"><meta property="og:image:alt" content="遥遥领先性价比机场">
+<meta property="og:image" content="https://www.yaoyaolingxian.blog/assets/media/d5b2829f-bc45-489e-896a-d04b27ec97c1.webp"><meta property="og:image:alt" content="遥遥领先性价比机场">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="故障排查">
 <meta name="twitter:description" content="按错误现象和对照测试，定位订阅、连接和网络性能问题。">
-<meta name="twitter:image" content="https://www.yaoyaolingxian.blog/assets/media/52ff4036-42cb-4679-a721-9a08d1816c48.png">
+<meta name="twitter:image" content="https://www.yaoyaolingxian.blog/assets/media/d5b2829f-bc45-489e-896a-d04b27ec97c1.webp">
 
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@id":"https://www.yaoyaolingxian.blog/categories/troubleshooting/#collection","@type":"CollectionPage","description":"按错误现象和对照测试，定位订阅、连接和网络性能问题。","inLanguage":"zh-CN","mainEntity":{"@type":"ItemList","itemListElement":[{"@type":"ListItem","name":"Windows 连接很多，究竟哪个进程在联网？用 netstat 与 PID 做只读核对","position":1,"url":"https://www.yaoyaolingxian.blog/posts/windows-netstat-pid-connection-check/"},{"@type":"ListItem","name":"curl 下载页面变乱码？核对压缩请求与自动解压","position":2,"url":"https://www.yaoyaolingxian.blog/posts/curl-compressed-response-readback/"},{"@type":"ListItem","name":"curl 跟随跳转会把密码带给新域名吗？核对重定向凭据","position":3,"url":"https://www.yaoyaolingxian.blog/posts/curl-redirect-credential-scope/"},{"@type":"ListItem","name":"命令里没写重试却反复请求？用 curl -q 检查默认配置","position":4,"url":"https://www.yaoyaolingxian.blog/posts/curl-default-config-disable-check/"},{"@type":"ListItem","name":"机场测速返回 200 却打开登录页？核对最终 URL 与跳转次数","position":5,"url":"https://www.yaoyaolingxian.blog/posts/curl-final-url-redirect-check/"},{"@type":"ListItem","name":"同一节点网页偶发断开？用 HTTP/1.1 与 HTTP/2 做协议对照","position":6,"url":"https://www.yaoyaolingxian.blog/posts/curl-http-version-comparison/"},{"@type":"ListItem","name":"浏览器走机场、其他软件却直连？检查 PAC 自动代理规则","position":7,"url":"https://www.yaoyaolingxian.blog/posts/pac-direct-proxy-debug/"},{"@type":"ListItem","name":"电脑同时连 Wi-Fi 和网线，curl 怎么固定出口做对照？","position":8,"url":"https://www.yaoyaolingxian.blog/posts/curl-interface-network-path-test/"},{"@type":"ListItem","name":"curl 的连接超时和总超时怎么设？别把两种等待混在一起","position":9,"url":"https://www.yaoyaolingxian.blog/posts/connect-timeout-vs-max-time/"},{"@type":"ListItem","name":"命令行为什么绕过机场代理？检查 NO_PROXY 与代理环境变量","position":10,"url":"https://www.yaoyaolingxian.blog/posts/no-proxy-bypass-check/"}]},"name":"故障排查","url":"https://www.yaoyaolingxian.blog/categories/troubleshooting/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://www.yaoyaolingxian.blog/","name":"遥遥领先性价比机场","position":1},{"@type":"ListItem","item":"https://www.yaoyaolingxian.blog/categories/troubleshooting/","name":"故障排查","position":2}]}]}</script>
 
@@ -26,10 +24,10 @@
 <link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/style.css">
 <link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/advertisements.css">
 <link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/search.css"><script defer src="https://www.yaoyaolingxian.blog/assets/theme/search.js"></script>
-<link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/skin-1.1.0.css">
+<link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/skin-1.1.1.css">
 <link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/viewer.css">
 <link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/reader.css">
-<link rel="icon" href="https://www.yaoyaolingxian.blog/assets/media/52ff4036-42cb-4679-a721-9a08d1816c48.png">
+<link rel="icon" href="https://www.yaoyaolingxian.blog/assets/media/d5b2829f-bc45-489e-896a-d04b27ec97c1.webp">
 
 <script defer src="https://www.yaoyaolingxian.blog/assets/theme/theme.js"></script>
 <script defer src="https://www.yaoyaolingxian.blog/assets/theme/reader.js"></script>
@@ -37,25 +35,15 @@
 <script defer src="https://www.yaoyaolingxian.blog/assets/theme/image-viewer.js"></script>
 
 <script defer src="https://www.yaoyaolingxian.blog/assets/theme/interactions.js"></script>
-<script defer src="https://www.yaoyaolingxian.blog/assets/theme/markdown-it.min.js"></script><script defer src="https://www.yaoyaolingxian.blog/assets/theme/purify.min.js"></script><script defer src="https://www.yaoyaolingxian.blog/assets/theme/featured-1.1.0.js"></script>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-RMWB4R3DHD"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<script defer src="https://www.yaoyaolingxian.blog/assets/theme/featured-1.1.1.js"></script>
 
-  gtag('config', 'G-RMWB4R3DHD');
-</script>
 
 <script defer src="https://www.yaoyaolingxian.blog/assets/xblog/google-analytics.js" data-xblog-google-analytics="G-RMWB4R3DHD" data-site-hosts="www.yaoyaolingxian.blog"></script></head>
 
-<body class="yaoyao-site">
-<a class="skip" href="#main">跳到正文</a>
-
+<body class="yaoyao-site"><a class="skip" href="#main">跳到正文</a>
 <header class="site-header">
 <div class="header-inner">
-<a class="brand" href="https://www.yaoyaolingxian.blog/"><img src="https://www.yaoyaolingxian.blog/assets/media/52ff4036-42cb-4679-a721-9a08d1816c48.png" alt="" width="38" height="38"><span>遥遥领先性价比机场</span></a>
+<a class="brand" href="https://www.yaoyaolingxian.blog/"><img src="https://www.yaoyaolingxian.blog/assets/media/d5b2829f-bc45-489e-896a-d04b27ec97c1.webp" alt="" width="38" height="38"><span>遥遥领先性价比机场</span></a>
 <nav id="site-navigation" aria-label="站点导航"><a href="https://www.yaoyaolingxian.blog/">首页</a><a href="https://www.yaoyaolingxian.blog/posts/airport-recommendation-guide/">机场推荐</a><a href="https://www.yaoyaolingxian.blog/categories/buying-guides/">选购指南</a><a href="https://www.yaoyaolingxian.blog/categories/client-guides/">客户端教程</a><a href="https://www.yaoyaolingxian.blog/categories/protocols-network/">协议与网络</a><a href="https://www.yaoyaolingxian.blog/categories/troubleshooting/" aria-current="page">常见问题</a><a href="https://www.yaoyaolingxian.blog/categories/privacy-security/">隐私安全</a></nav>
 <a class="search-toggle" href="https://www.yaoyaolingxian.blog/search/" data-open-dialog="search-dialog" aria-haspopup="dialog" aria-controls="search-dialog" aria-label="搜索" title="搜索"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5"/></svg></a>
 <button id="theme-mode" class="theme-toggle theme-cycle" type="button" aria-label="明暗模式：跟随系统，点击切换为明亮" title="跟随系统 · 点击切换为明亮">
@@ -70,171 +58,123 @@
 </button>
 </div>
 </header>
-
-
+<div class="page-viewport"><div class="page-scroll">
 <main id="main" tabindex="-1" class="network-workspace">
 
 <nav class="breadcrumbs" aria-label="面包屑导航"><ol><li><a href="https://www.yaoyaolingxian.blog/">遥遥领先性价比机场</a></li><li><span aria-current="page">故障排查</span></li></ol></nav>
+<header class="archive-header"><h1>故障排查</h1><p>按错误现象和对照测试，定位订阅、连接和网络性能问题。</p></header>
+
+<div class="network-columns archive-columns"><div class="content-column"><section class="article-list network-entries" aria-label="文章列表">
 
 
-<header class="archive-header"><p class="section-kicker">网络知识库</p><h1>故障排查</h1><p>按错误现象和对照测试，定位订阅、连接和网络性能问题。</p></header>
-
-
-<div class="network-columns archive-columns">
-<div class="content-column">
-
-<div class="section-heading"><h2>文章列表</h2><span>本页 10 篇</span></div>
-
-<section class="article-list network-entries" aria-label="文章列表">
-
-
-
-<article class="article-card network-card has-cover">
-<figure class="article-cover"><img src="https://www.yaoyaolingxian.blog/assets/media/3964a5d5-88ba-47ef-967d-6ca1b3c9ccd5.png" alt="Windows 连接很多，究竟哪个进程在联网？用 netstat 与 PID 做只读核对" loading="lazy" decoding="async"></figure>
-<div class="card-content">
-<div class="card-topic"><a href="https://www.yaoyaolingxian.blog/categories/troubleshooting/">故障排查</a></div>
-<h2><a href="https://www.yaoyaolingxian.blog/posts/windows-netstat-pid-connection-check/">Windows 连接很多，究竟哪个进程在联网？用 netstat 与 PID 做只读核对</a></h2>
-<p class="card-summary">从 netstat 的地址、连接状态和 PID 找到对应进程，区分监听与已建立连接，避免把连接数量当成流量或机场出口证据。</p>
-<div class="card-footer"><span><span>加油</span><time datetime="2026-10-11T09:22:55&#43;08:00">2026-10-11</time></span><a class="read-more" href="https://www.yaoyaolingxian.blog/posts/windows-netstat-pid-connection-check/">阅读全文 <span aria-hidden="true">↗</span></a></div>
-</div>
-</article>
+<article class="article-card network-card has-cover"><figure class="article-cover">
 
 
 
 
-<article class="article-card network-card has-cover">
-<figure class="article-cover"><img src="https://www.yaoyaolingxian.blog/assets/media/6f2a2d71-2525-476c-a0c8-64e1db458de5.png" alt="curl 下载页面变乱码？核对压缩请求与自动解压" loading="lazy" decoding="async"></figure>
-<div class="card-content">
-<div class="card-topic"><a href="https://www.yaoyaolingxian.blog/categories/troubleshooting/">故障排查</a></div>
-<h2><a href="https://www.yaoyaolingxian.blog/posts/curl-compressed-response-readback/">curl 下载页面变乱码？核对压缩请求与自动解压</a></h2>
-<p class="card-summary">用 --compressed 接收并解压服务端支持的压缩内容，核对保存文件与原响应头，避免误把解压后的正文再次解压。</p>
-<div class="card-footer"><span><span>加油</span><time datetime="2026-10-08T09:34:53&#43;08:00">2026-10-08</time></span><a class="read-more" href="https://www.yaoyaolingxian.blog/posts/curl-compressed-response-readback/">阅读全文 <span aria-hidden="true">↗</span></a></div>
-</div>
-</article>
 
 
 
 
-<article class="article-card network-card has-cover">
-<figure class="article-cover"><img src="https://www.yaoyaolingxian.blog/assets/media/c01863d2-ad78-4c51-9eb9-f91992d19f7d.png" alt="curl 跟随跳转会把密码带给新域名吗？核对重定向凭据" loading="lazy" decoding="async"></figure>
-<div class="card-content">
-<div class="card-topic"><a href="https://www.yaoyaolingxian.blog/categories/troubleshooting/">故障排查</a><a href="https://www.yaoyaolingxian.blog/categories/privacy-security/">隐私与安全</a></div>
-<h2><a href="https://www.yaoyaolingxian.blog/posts/curl-redirect-credential-scope/">curl 跟随跳转会把密码带给新域名吗？核对重定向凭据</a></h2>
-<p class="card-summary">区分普通 -L 与扩大凭据转发范围的 --location-trusted，先用不含秘密的公开请求核对跳转目标。</p>
-<div class="card-footer"><span><span>加油</span><time datetime="2026-10-07T09:23:35&#43;08:00">2026-10-07</time></span><a class="read-more" href="https://www.yaoyaolingxian.blog/posts/curl-redirect-credential-scope/">阅读全文 <span aria-hidden="true">↗</span></a></div>
-</div>
-</article>
+
+
+
+<img src="https://www.yaoyaolingxian.blog/assets/media/0681478d-f4d8-4b1f-87b1-1d6bcf5d395f.webp" srcset="https://www.yaoyaolingxian.blog/assets/media/0681478d-f4d8-4b1f-87b1-1d6bcf5d395f.webp 640w, https://www.yaoyaolingxian.blog/assets/media/79a06fd0-ce2f-4234-86bc-88c3c131a4e6.webp 1200w" sizes="(max-width: 760px) calc(100vw - 72px), 184px" width="1200" height="800" alt="Windows 连接很多，究竟哪个进程在联网？用 netstat 与 PID 做只读核对" loading="lazy" decoding="async"></figure>
+<div class="card-content"><div class="card-topic"><a href="https://www.yaoyaolingxian.blog/categories/troubleshooting/">故障排查</a></div><h2><a href="https://www.yaoyaolingxian.blog/posts/windows-netstat-pid-connection-check/">Windows 连接很多，究竟哪个进程在联网？用 netstat 与 PID 做只读核对</a></h2><p class="card-summary">从 netstat 的地址、连接状态和 PID 找到对应进程，区分监听与已建立连接，避免把连接数量当成流量或机场出口证据。</p><div class="card-footer"><span><a rel="author" href="https://www.yaoyaolingxian.blog/posts/about-site/#author-jiayou">加油</a><time datetime="2026-10-11T09:22:55&#43;08:00">2026-10-11</time></span><a class="read-more" href="https://www.yaoyaolingxian.blog/posts/windows-netstat-pid-connection-check/" aria-label="阅读Windows 连接很多，究竟哪个进程在联网？用 netstat 与 PID 做只读核对">阅读全文 <span aria-hidden="true">↗</span></a></div></div></article>
+
+
+<article class="article-card network-card has-cover"><figure class="article-cover">
 
 
 
 
-<article class="article-card network-card has-cover">
-<figure class="article-cover"><img src="https://www.yaoyaolingxian.blog/assets/media/24490a9f-289c-493d-90b6-dd14a12838b9.png" alt="命令里没写重试却反复请求？用 curl -q 检查默认配置" loading="lazy" decoding="async"></figure>
-<div class="card-content">
-<div class="card-topic"><a href="https://www.yaoyaolingxian.blog/categories/troubleshooting/">故障排查</a></div>
-<h2><a href="https://www.yaoyaolingxian.blog/posts/curl-default-config-disable-check/">命令里没写重试却反复请求？用 curl -q 检查默认配置</a></h2>
-<p class="card-summary">让默认 curl 配置退出一次对照请求，再分别核对显式参数与环境变量。</p>
-<div class="card-footer"><span><span>加油</span><time datetime="2026-10-05T09:36:06&#43;08:00">2026-10-05</time></span><a class="read-more" href="https://www.yaoyaolingxian.blog/posts/curl-default-config-disable-check/">阅读全文 <span aria-hidden="true">↗</span></a></div>
-</div>
-</article>
 
 
 
 
-<article class="article-card network-card has-cover">
-<figure class="article-cover"><img src="https://www.yaoyaolingxian.blog/assets/media/08ea43c8-908b-48cf-95d9-60c3fd4f70bc.png" alt="机场测速返回 200 却打开登录页？核对最终 URL 与跳转次数" loading="lazy" decoding="async"></figure>
-<div class="card-content">
-<div class="card-topic"><a href="https://www.yaoyaolingxian.blog/categories/troubleshooting/">故障排查</a></div>
-<h2><a href="https://www.yaoyaolingxian.blog/posts/curl-final-url-redirect-check/">机场测速返回 200 却打开登录页？核对最终 URL 与跳转次数</a></h2>
-<p class="card-summary">使用 curl 记录最终网址、跳转次数、内容类型和正文，判断 200 是否对应预期测试资源，避免把登录页或门户页面计为测速成功。</p>
-<div class="card-footer"><span><span>王牌飞行员</span><time datetime="2026-10-04T09:32:20&#43;08:00">2026-10-04</time></span><a class="read-more" href="https://www.yaoyaolingxian.blog/posts/curl-final-url-redirect-check/">阅读全文 <span aria-hidden="true">↗</span></a></div>
-</div>
-</article>
+
+
+
+<img src="https://www.yaoyaolingxian.blog/assets/media/9693f5df-ba09-4491-ad29-b4bdd06364dd.webp" srcset="https://www.yaoyaolingxian.blog/assets/media/9693f5df-ba09-4491-ad29-b4bdd06364dd.webp 640w, https://www.yaoyaolingxian.blog/assets/media/72efab03-3586-4720-86e1-c8b676c1c143.webp 1200w" sizes="(max-width: 760px) calc(100vw - 72px), 184px" width="1200" height="800" alt="curl 下载页面变乱码？核对压缩请求与自动解压" loading="lazy" decoding="async"></figure>
+<div class="card-content"><div class="card-topic"><a href="https://www.yaoyaolingxian.blog/categories/troubleshooting/">故障排查</a></div><h2><a href="https://www.yaoyaolingxian.blog/posts/curl-compressed-response-readback/">curl 下载页面变乱码？核对压缩请求与自动解压</a></h2><p class="card-summary">用 --compressed 接收并解压服务端支持的压缩内容，核对保存文件与原响应头，避免误把解压后的正文再次解压。</p><div class="card-footer"><span><a rel="author" href="https://www.yaoyaolingxian.blog/posts/about-site/#author-jiayou">加油</a><time datetime="2026-10-08T09:34:53&#43;08:00">2026-10-08</time></span><a class="read-more" href="https://www.yaoyaolingxian.blog/posts/curl-compressed-response-readback/" aria-label="阅读curl 下载页面变乱码？核对压缩请求与自动解压">阅读全文 <span aria-hidden="true">↗</span></a></div></div></article>
+
+
+<article class="article-card network-card has-cover"><figure class="article-cover">
 
 
 
 
-<article class="article-card network-card">
-
-<div class="card-content">
-<div class="card-topic"><a href="https://www.yaoyaolingxian.blog/categories/troubleshooting/">故障排查</a></div>
-<h2><a href="https://www.yaoyaolingxian.blog/posts/curl-http-version-comparison/">同一节点网页偶发断开？用 HTTP/1.1 与 HTTP/2 做协议对照</a></h2>
-<p class="card-summary">保持节点、目标和超时一致，交替请求 HTTP/1.1 与 HTTP/2，并记录实际协商版本，缩小偶发断开的检查范围。</p>
-<div class="card-footer"><span><span>王牌飞行员</span><time datetime="2026-10-03T09:21:59&#43;08:00">2026-10-03</time></span><a class="read-more" href="https://www.yaoyaolingxian.blog/posts/curl-http-version-comparison/">阅读全文 <span aria-hidden="true">↗</span></a></div>
-</div>
-</article>
 
 
+
+
+
+
+
+<img src="https://www.yaoyaolingxian.blog/assets/media/5d79f41c-f7cd-4033-9feb-b1145e54fac9.webp" srcset="https://www.yaoyaolingxian.blog/assets/media/5d79f41c-f7cd-4033-9feb-b1145e54fac9.webp 640w, https://www.yaoyaolingxian.blog/assets/media/53a4e44b-90ae-41cd-b248-22e0634047b5.webp 1200w" sizes="(max-width: 760px) calc(100vw - 72px), 184px" width="1200" height="800" alt="curl 跟随跳转会把密码带给新域名吗？核对重定向凭据" loading="lazy" decoding="async"></figure>
+<div class="card-content"><div class="card-topic"><a href="https://www.yaoyaolingxian.blog/categories/troubleshooting/">故障排查</a><a href="https://www.yaoyaolingxian.blog/categories/privacy-security/">隐私与安全</a></div><h2><a href="https://www.yaoyaolingxian.blog/posts/curl-redirect-credential-scope/">curl 跟随跳转会把密码带给新域名吗？核对重定向凭据</a></h2><p class="card-summary">区分普通 -L 与扩大凭据转发范围的 --location-trusted，先用不含秘密的公开请求核对跳转目标。</p><div class="card-footer"><span><a rel="author" href="https://www.yaoyaolingxian.blog/posts/about-site/#author-jiayou">加油</a><time datetime="2026-10-07T09:23:35&#43;08:00">2026-10-07</time></span><a class="read-more" href="https://www.yaoyaolingxian.blog/posts/curl-redirect-credential-scope/" aria-label="阅读curl 跟随跳转会把密码带给新域名吗？核对重定向凭据">阅读全文 <span aria-hidden="true">↗</span></a></div></div></article>
+
+
+<article class="article-card network-card has-cover"><figure class="article-cover">
+
+
+
+
+
+
+
+
+
+
+
+<img src="https://www.yaoyaolingxian.blog/assets/media/54d14a70-5032-4bec-8fb3-450943a7dacb.webp" srcset="https://www.yaoyaolingxian.blog/assets/media/54d14a70-5032-4bec-8fb3-450943a7dacb.webp 640w, https://www.yaoyaolingxian.blog/assets/media/47d15ad7-5602-4ad3-9c85-82679c5ac29a.webp 1200w" sizes="(max-width: 760px) calc(100vw - 72px), 184px" width="1200" height="800" alt="命令里没写重试却反复请求？用 curl -q 检查默认配置" loading="lazy" decoding="async"></figure>
+<div class="card-content"><div class="card-topic"><a href="https://www.yaoyaolingxian.blog/categories/troubleshooting/">故障排查</a></div><h2><a href="https://www.yaoyaolingxian.blog/posts/curl-default-config-disable-check/">命令里没写重试却反复请求？用 curl -q 检查默认配置</a></h2><p class="card-summary">让默认 curl 配置退出一次对照请求，再分别核对显式参数与环境变量。</p><div class="card-footer"><span><a rel="author" href="https://www.yaoyaolingxian.blog/posts/about-site/#author-jiayou">加油</a><time datetime="2026-10-05T09:36:06&#43;08:00">2026-10-05</time></span><a class="read-more" href="https://www.yaoyaolingxian.blog/posts/curl-default-config-disable-check/" aria-label="阅读命令里没写重试却反复请求？用 curl -q 检查默认配置">阅读全文 <span aria-hidden="true">↗</span></a></div></div></article>
+
+
+<article class="article-card network-card has-cover"><figure class="article-cover">
+
+
+
+
+
+
+
+
+
+
+
+<img src="https://www.yaoyaolingxian.blog/assets/media/9a652fb8-5206-43ac-8ebc-751692edc93c.webp" srcset="https://www.yaoyaolingxian.blog/assets/media/9a652fb8-5206-43ac-8ebc-751692edc93c.webp 640w, https://www.yaoyaolingxian.blog/assets/media/29509e57-9523-4675-b6e8-c5935cb4c6f3.webp 1200w" sizes="(max-width: 760px) calc(100vw - 72px), 184px" width="1200" height="800" alt="机场测速返回 200 却打开登录页？核对最终 URL 与跳转次数" loading="lazy" decoding="async"></figure>
+<div class="card-content"><div class="card-topic"><a href="https://www.yaoyaolingxian.blog/categories/troubleshooting/">故障排查</a></div><h2><a href="https://www.yaoyaolingxian.blog/posts/curl-final-url-redirect-check/">机场测速返回 200 却打开登录页？核对最终 URL 与跳转次数</a></h2><p class="card-summary">使用 curl 记录最终网址、跳转次数、内容类型和正文，判断 200 是否对应预期测试资源，避免把登录页或门户页面计为测速成功。</p><div class="card-footer"><span><a rel="author" href="https://www.yaoyaolingxian.blog/posts/about-site/#author-pilot">王牌飞行员</a><time datetime="2026-10-04T09:32:20&#43;08:00">2026-10-04</time></span><a class="read-more" href="https://www.yaoyaolingxian.blog/posts/curl-final-url-redirect-check/" aria-label="阅读机场测速返回 200 却打开登录页？核对最终 URL 与跳转次数">阅读全文 <span aria-hidden="true">↗</span></a></div></div></article>
 
 
 <article class="article-card network-card">
-
-<div class="card-content">
-<div class="card-topic"><a href="https://www.yaoyaolingxian.blog/categories/troubleshooting/">故障排查</a></div>
-<h2><a href="https://www.yaoyaolingxian.blog/posts/pac-direct-proxy-debug/">浏览器走机场、其他软件却直连？检查 PAC 自动代理规则</a></h2>
-<p class="card-summary">解释PAC的FindProxyForURL如何返回代理或直连，用脚本来源、规则命中和固定代理对照定位应用路径差异。</p>
-<div class="card-footer"><span><span>王牌飞行员</span><time datetime="2026-10-02T09:08:36&#43;08:00">2026-10-02</time></span><a class="read-more" href="https://www.yaoyaolingxian.blog/posts/pac-direct-proxy-debug/">阅读全文 <span aria-hidden="true">↗</span></a></div>
-</div>
-</article>
-
-
+<div class="card-content"><div class="card-topic"><a href="https://www.yaoyaolingxian.blog/categories/troubleshooting/">故障排查</a></div><h2><a href="https://www.yaoyaolingxian.blog/posts/curl-http-version-comparison/">同一节点网页偶发断开？用 HTTP/1.1 与 HTTP/2 做协议对照</a></h2><p class="card-summary">保持节点、目标和超时一致，交替请求 HTTP/1.1 与 HTTP/2，并记录实际协商版本，缩小偶发断开的检查范围。</p><div class="card-footer"><span><a rel="author" href="https://www.yaoyaolingxian.blog/posts/about-site/#author-pilot">王牌飞行员</a><time datetime="2026-10-03T09:21:59&#43;08:00">2026-10-03</time></span><a class="read-more" href="https://www.yaoyaolingxian.blog/posts/curl-http-version-comparison/" aria-label="阅读同一节点网页偶发断开？用 HTTP/1.1 与 HTTP/2 做协议对照">阅读全文 <span aria-hidden="true">↗</span></a></div></div></article>
 
 
 <article class="article-card network-card">
-
-<div class="card-content">
-<div class="card-topic"><a href="https://www.yaoyaolingxian.blog/categories/troubleshooting/">故障排查</a></div>
-<h2><a href="https://www.yaoyaolingxian.blog/posts/curl-interface-network-path-test/">电脑同时连 Wi-Fi 和网线，curl 怎么固定出口做对照？</a></h2>
-<p class="card-summary">用curl --interface固定本地出口，交替比较Wi-Fi与网线的连接、首字节和总耗时，排除接入路径混淆。</p>
-<div class="card-footer"><span><span>王牌飞行员</span><time datetime="2026-10-01T10:59:03&#43;08:00">2026-10-01</time></span><a class="read-more" href="https://www.yaoyaolingxian.blog/posts/curl-interface-network-path-test/">阅读全文 <span aria-hidden="true">↗</span></a></div>
-</div>
-</article>
-
-
+<div class="card-content"><div class="card-topic"><a href="https://www.yaoyaolingxian.blog/categories/troubleshooting/">故障排查</a></div><h2><a href="https://www.yaoyaolingxian.blog/posts/pac-direct-proxy-debug/">浏览器走机场、其他软件却直连？检查 PAC 自动代理规则</a></h2><p class="card-summary">解释PAC的FindProxyForURL如何返回代理或直连，用脚本来源、规则命中和固定代理对照定位应用路径差异。</p><div class="card-footer"><span><a rel="author" href="https://www.yaoyaolingxian.blog/posts/about-site/#author-pilot">王牌飞行员</a><time datetime="2026-10-02T09:08:36&#43;08:00">2026-10-02</time></span><a class="read-more" href="https://www.yaoyaolingxian.blog/posts/pac-direct-proxy-debug/" aria-label="阅读浏览器走机场、其他软件却直连？检查 PAC 自动代理规则">阅读全文 <span aria-hidden="true">↗</span></a></div></div></article>
 
 
 <article class="article-card network-card">
-
-<div class="card-content">
-<div class="card-topic"><a href="https://www.yaoyaolingxian.blog/categories/troubleshooting/">故障排查</a></div>
-<h2><a href="https://www.yaoyaolingxian.blog/posts/connect-timeout-vs-max-time/">curl 的连接超时和总超时怎么设？别把两种等待混在一起</a></h2>
-<p class="card-summary">区分curl连接超时与总超时，用三组边界测试定位建连慢、首字节慢或正文传输慢。</p>
-<div class="card-footer"><span><span>王牌飞行员</span><time datetime="2026-09-30T09:08:34&#43;08:00">2026-09-30</time></span><a class="read-more" href="https://www.yaoyaolingxian.blog/posts/connect-timeout-vs-max-time/">阅读全文 <span aria-hidden="true">↗</span></a></div>
-</div>
-</article>
-
-
+<div class="card-content"><div class="card-topic"><a href="https://www.yaoyaolingxian.blog/categories/troubleshooting/">故障排查</a></div><h2><a href="https://www.yaoyaolingxian.blog/posts/curl-interface-network-path-test/">电脑同时连 Wi-Fi 和网线，curl 怎么固定出口做对照？</a></h2><p class="card-summary">用curl --interface固定本地出口，交替比较Wi-Fi与网线的连接、首字节和总耗时，排除接入路径混淆。</p><div class="card-footer"><span><a rel="author" href="https://www.yaoyaolingxian.blog/posts/about-site/#author-pilot">王牌飞行员</a><time datetime="2026-10-01T10:59:03&#43;08:00">2026-10-01</time></span><a class="read-more" href="https://www.yaoyaolingxian.blog/posts/curl-interface-network-path-test/" aria-label="阅读电脑同时连 Wi-Fi 和网线，curl 怎么固定出口做对照？">阅读全文 <span aria-hidden="true">↗</span></a></div></div></article>
 
 
 <article class="article-card network-card">
-
-<div class="card-content">
-<div class="card-topic"><a href="https://www.yaoyaolingxian.blog/categories/troubleshooting/">故障排查</a></div>
-<h2><a href="https://www.yaoyaolingxian.blog/posts/no-proxy-bypass-check/">命令行为什么绕过机场代理？检查 NO_PROXY 与代理环境变量</a></h2>
-<p class="card-summary">核对HTTP_PROXY、HTTPS_PROXY、ALL_PROXY和NO_PROXY，用显式代理与显式直连两组请求确认命令行路径。</p>
-<div class="card-footer"><span><span>王牌飞行员</span><time datetime="2026-09-29T09:07:58&#43;08:00">2026-09-29</time></span><a class="read-more" href="https://www.yaoyaolingxian.blog/posts/no-proxy-bypass-check/">阅读全文 <span aria-hidden="true">↗</span></a></div>
-</div>
-</article>
+<div class="card-content"><div class="card-topic"><a href="https://www.yaoyaolingxian.blog/categories/troubleshooting/">故障排查</a></div><h2><a href="https://www.yaoyaolingxian.blog/posts/connect-timeout-vs-max-time/">curl 的连接超时和总超时怎么设？别把两种等待混在一起</a></h2><p class="card-summary">区分curl连接超时与总超时，用三组边界测试定位建连慢、首字节慢或正文传输慢。</p><div class="card-footer"><span><a rel="author" href="https://www.yaoyaolingxian.blog/posts/about-site/#author-pilot">王牌飞行员</a><time datetime="2026-09-30T09:08:34&#43;08:00">2026-09-30</time></span><a class="read-more" href="https://www.yaoyaolingxian.blog/posts/connect-timeout-vs-max-time/" aria-label="阅读curl 的连接超时和总超时怎么设？别把两种等待混在一起">阅读全文 <span aria-hidden="true">↗</span></a></div></div></article>
 
 
+<article class="article-card network-card">
+<div class="card-content"><div class="card-topic"><a href="https://www.yaoyaolingxian.blog/categories/troubleshooting/">故障排查</a></div><h2><a href="https://www.yaoyaolingxian.blog/posts/no-proxy-bypass-check/">命令行为什么绕过机场代理？检查 NO_PROXY 与代理环境变量</a></h2><p class="card-summary">核对HTTP_PROXY、HTTPS_PROXY、ALL_PROXY和NO_PROXY，用显式代理与显式直连两组请求确认命令行路径。</p><div class="card-footer"><span><a rel="author" href="https://www.yaoyaolingxian.blog/posts/about-site/#author-pilot">王牌飞行员</a><time datetime="2026-09-29T09:07:58&#43;08:00">2026-09-29</time></span><a class="read-more" href="https://www.yaoyaolingxian.blog/posts/no-proxy-bypass-check/" aria-label="阅读命令行为什么绕过机场代理？检查 NO_PROXY 与代理环境变量">阅读全文 <span aria-hidden="true">↗</span></a></div></div></article>
 </section>
-
-
 <nav class="pagination" aria-label="分页"><span></span><span>1 / 2</span><a href="https://www.yaoyaolingxian.blog/categories/troubleshooting/page/2/">下一页 →</a></nav>
-
-
 </div>
-
 </div>
-
-</main>
-
-
+</main></div></div>
 <footer class="site-footer">
 <nav class="friend-links" aria-label="友情链接"><span class="friend-links-label">友情链接</span><a href="https://kkjichang.cc/" target="_blank" rel="noopener noreferrer">可靠机场推荐</a><a href="https://pyjichang.cc/" target="_blank" rel="noopener noreferrer">便宜机场推荐</a><a href="https://wdjichang.cc/" target="_blank" rel="noopener noreferrer">稳定机场推荐</a><a href="https://fengyy.org/" target="_blank" rel="noopener noreferrer">风悠悠</a><a href="https://zjtf.org/" target="_blank" rel="noopener noreferrer">酌酒听风</a></nav>
 <span>© @遥遥领先 2026</span>
+<a href="https://www.yaoyaolingxian.blog/posts/about-site/">关于本站与作者</a>
 </footer>
-
 
 
 <dialog id="search-dialog" class="reader-dialog site-search" aria-labelledby="search-title" data-reader-dialog data-pagefind-ignore>
@@ -255,10 +195,4 @@
 </dialog>
 
 
-
-</body>
-</html>
-
-
-
-
+</body></html>

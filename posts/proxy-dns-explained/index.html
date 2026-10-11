@@ -1,6 +1,4 @@
-<!doctype html>
-<html lang="zh-CN" data-theme="yaoyao-network">
-
+<!doctype html><html lang="zh-CN" data-theme="yaoyao-network">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,22 +12,48 @@
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="遥遥领先性价比机场">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://www.yaoyaolingxian.blog/assets/media/52ff4036-42cb-4679-a721-9a08d1816c48.png"><meta property="og:image:alt" content="遥遥领先性价比机场">
+<meta property="og:image" content="https://www.yaoyaolingxian.blog/assets/media/d5b2829f-bc45-489e-896a-d04b27ec97c1.webp"><meta property="og:image:alt" content="遥遥领先性价比机场">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="代理 DNS 怎么工作：节点解析、网站解析与 Fake-IP 入门">
 <meta name="twitter:description" content="分清代理节点域名和目标网站域名的解析，理解 Fake-IP 与真实地址的区别，按 DNS、路由和连接三层定位网页打不开的问题。">
-<meta name="twitter:image" content="https://www.yaoyaolingxian.blog/assets/media/52ff4036-42cb-4679-a721-9a08d1816c48.png">
+<meta name="twitter:image" content="https://www.yaoyaolingxian.blog/assets/media/d5b2829f-bc45-489e-896a-d04b27ec97c1.webp">
 <meta name="author" content="王牌飞行员"><meta property="article:published_time" content="2026-09-20T00:37:55&#43;08:00"><meta property="article:modified_time" content="2026-09-20T00:38:12&#43;08:00"><meta property="article:tag" content="新手入门"><meta property="article:tag" content="DNS"><meta property="article:tag" content="路由分流">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@id":"https://www.yaoyaolingxian.blog/posts/proxy-dns-explained/#article","@type":"BlogPosting","author":{"@type":"Person","name":"王牌飞行员"},"dateModified":"2026-09-20T00:38:12+08:00","datePublished":"2026-09-20T00:37:55+08:00","description":"分清代理节点域名和目标网站域名的解析，理解 Fake-IP 与真实地址的区别，按 DNS、路由和连接三层定位网页打不开的问题。","headline":"代理 DNS 怎么工作：节点解析、网站解析与 Fake-IP 入门","inLanguage":"zh-CN","mainEntityOfPage":{"@id":"https://www.yaoyaolingxian.blog/posts/proxy-dns-explained/","@type":"WebPage"},"url":"https://www.yaoyaolingxian.blog/posts/proxy-dns-explained/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://www.yaoyaolingxian.blog/","name":"遥遥领先性价比机场","position":1},{"@type":"ListItem","item":"https://www.yaoyaolingxian.blog/posts/proxy-dns-explained/","name":"代理 DNS 怎么工作：节点解析、网站解析与 Fake-IP 入门","position":2}]}]}</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="application/ld+json">{
+"@context":"https://schema.org","@graph":[{
+"@type":"BlogPosting","@id":"https://www.yaoyaolingxian.blog/posts/proxy-dns-explained/#article","url":"https://www.yaoyaolingxian.blog/posts/proxy-dns-explained/","mainEntityOfPage":"https://www.yaoyaolingxian.blog/posts/proxy-dns-explained/",
+"headline":"代理 DNS 怎么工作：节点解析、网站解析与 Fake-IP 入门","description":"分清代理节点域名和目标网站域名的解析，理解 Fake-IP 与真实地址的区别，按 DNS、路由和连接三层定位网页打不开的问题。","inLanguage":"zh-CN",
+"datePublished":"2026-09-20T00:37:55+08:00","dateModified":"2026-09-20T00:38:12+08:00",
+"author":{"@type":"Person","name":"王牌飞行员","url":"https://www.yaoyaolingxian.blog/posts/about-site/#author-pilot"},
+"publisher":{"@type":"Organization","name":"遥遥领先性价比机场","url":"https://www.yaoyaolingxian.blog/","logo":{"@type":"ImageObject","url":"https://www.yaoyaolingxian.blog/assets/media/d5b2829f-bc45-489e-896a-d04b27ec97c1.webp"}}
+
+},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"遥遥领先性价比机场","item":"https://www.yaoyaolingxian.blog/"},{"@type":"ListItem","position":2,"name":"代理 DNS 怎么工作：节点解析、网站解析与 Fake-IP 入门","item":"https://www.yaoyaolingxian.blog/posts/proxy-dns-explained/"}]}]}</script>
+
 
 <script>(()=>{let mode='system';try{const saved=localStorage.getItem('reader-theme');if(['system','light','dark'].includes(saved))mode=saved}catch{}const root=document.documentElement;root.dataset.colorMode=mode;root.classList.toggle('dark',mode==='dark'||(mode==='system'&&matchMedia('(prefers-color-scheme: dark)').matches))})();</script>
 <link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/style.css">
 <link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/advertisements.css">
 <link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/search.css"><script defer src="https://www.yaoyaolingxian.blog/assets/theme/search.js"></script>
-<link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/skin-1.1.0.css">
+<link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/skin-1.1.1.css">
 <link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/viewer.css">
 <link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/reader.css">
-<link rel="icon" href="https://www.yaoyaolingxian.blog/assets/media/52ff4036-42cb-4679-a721-9a08d1816c48.png">
+<link rel="icon" href="https://www.yaoyaolingxian.blog/assets/media/d5b2829f-bc45-489e-896a-d04b27ec97c1.webp">
 <link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/artalk.css"><script defer src="https://www.yaoyaolingxian.blog/assets/theme/artalk.js"></script>
 <script defer src="https://www.yaoyaolingxian.blog/assets/theme/theme.js"></script>
 <script defer src="https://www.yaoyaolingxian.blog/assets/theme/reader.js"></script>
@@ -37,25 +61,15 @@
 <script defer src="https://www.yaoyaolingxian.blog/assets/theme/image-viewer.js"></script>
 
 <script defer src="https://www.yaoyaolingxian.blog/assets/theme/interactions.js"></script>
-<script defer src="https://www.yaoyaolingxian.blog/assets/theme/markdown-it.min.js"></script><script defer src="https://www.yaoyaolingxian.blog/assets/theme/purify.min.js"></script><script defer src="https://www.yaoyaolingxian.blog/assets/theme/featured-1.1.0.js"></script>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-RMWB4R3DHD"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<script defer src="https://www.yaoyaolingxian.blog/assets/theme/featured-1.1.1.js"></script>
 
-  gtag('config', 'G-RMWB4R3DHD');
-</script>
 
 <script defer src="https://www.yaoyaolingxian.blog/assets/xblog/google-analytics.js" data-xblog-google-analytics="G-RMWB4R3DHD" data-site-hosts="www.yaoyaolingxian.blog"></script></head>
 
-<body class="yaoyao-site article-page">
-<a class="skip" href="#main">跳到正文</a>
-
+<body class="yaoyao-site article-page"><a class="skip" href="#main">跳到正文</a>
 <header class="site-header">
 <div class="header-inner">
-<a class="brand" href="https://www.yaoyaolingxian.blog/"><img src="https://www.yaoyaolingxian.blog/assets/media/52ff4036-42cb-4679-a721-9a08d1816c48.png" alt="" width="38" height="38"><span>遥遥领先性价比机场</span></a>
+<a class="brand" href="https://www.yaoyaolingxian.blog/"><img src="https://www.yaoyaolingxian.blog/assets/media/d5b2829f-bc45-489e-896a-d04b27ec97c1.webp" alt="" width="38" height="38"><span>遥遥领先性价比机场</span></a>
 <nav id="site-navigation" aria-label="站点导航"><a href="https://www.yaoyaolingxian.blog/">首页</a><a href="https://www.yaoyaolingxian.blog/posts/airport-recommendation-guide/">机场推荐</a><a href="https://www.yaoyaolingxian.blog/categories/buying-guides/">选购指南</a><a href="https://www.yaoyaolingxian.blog/categories/client-guides/">客户端教程</a><a href="https://www.yaoyaolingxian.blog/categories/protocols-network/">协议与网络</a><a href="https://www.yaoyaolingxian.blog/categories/troubleshooting/">常见问题</a><a href="https://www.yaoyaolingxian.blog/categories/privacy-security/">隐私安全</a></nav>
 <a class="search-toggle" href="https://www.yaoyaolingxian.blog/search/" data-open-dialog="search-dialog" aria-haspopup="dialog" aria-controls="search-dialog" aria-label="搜索" title="搜索"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5"/></svg></a>
 <button id="theme-mode" class="theme-toggle theme-cycle" type="button" aria-label="明暗模式：跟随系统，点击切换为明亮" title="跟随系统 · 点击切换为明亮">
@@ -70,23 +84,21 @@
 </button>
 </div>
 </header>
-
-<div class="article-viewport"><div class="article-scroll">
-<main id="main" tabindex="-1" class="network-workspace network-reading">
+<div class="page-viewport article-viewport"><div class="page-scroll article-scroll">
+<main id="main" tabindex="-1" class="network-workspace network-reading" data-has-toc="true">
 
 <nav class="breadcrumbs" aria-label="面包屑导航"><ol><li><a href="https://www.yaoyaolingxian.blog/">遥遥领先性价比机场</a></li><li><span aria-current="page">代理 DNS 怎么工作：节点解析、网站解析与 Fake-IP 入门</span></li></ol></nav>
 
-
-<div class="network-columns reading-columns">
-<div class="reading-content">
+<div class="network-columns reading-columns"><div class="reading-content">
 <article data-pagefind-body>
 <header class="article-header">
 <div class="eyebrow" data-pagefind-ignore>网络手记</div>
 <h1 data-pagefind-meta="title">代理 DNS 怎么工作：节点解析、网站解析与 Fake-IP 入门</h1>
-<div class="metadata" data-pagefind-ignore><span>王牌飞行员</span><time datetime="2026-09-20T00:37:55&#43;08:00">2026-09-20</time><span><span id="page-views">—</span> 次阅读</span></div>
+<div class="metadata" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/posts/about-site/#author-pilot" rel="author">王牌飞行员</a><time datetime="2026-09-20T00:37:55&#43;08:00">2026-09-20</time><span><span id="page-views">—</span> 次阅读</span></div>
 <div class="chips" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/categories/protocols-network/">协议与网络</a></div>
 </header>
-<div class="prose"><p>节点有延迟、网站却打不开，不一定是节点失效。代理使用过程中，至少要区分“如何找到代理服务器”和“如何找到目标网站”两件事。它们可能使用不同解析路径，也可能在不同阶段失败。</p>
+<div class="prose">
+<p>节点有延迟、网站却打不开，不一定是节点失效。代理使用过程中，至少要区分“如何找到代理服务器”和“如何找到目标网站”两件事。它们可能使用不同解析路径，也可能在不同阶段失败。</p>
 <h2 id="heading">先分清两类域名</h2>
 <p>代理节点若使用域名作为地址，客户端需要先得到能连接的服务器地址；网站域名则是应用最终访问的目标。若前者失败，代理连接还没有建立；若后者失败，则需要结合客户端 DNS 与路由配置检查。</p>
 <p>以 mihomo 为例，文档区分节点域名解析、直连域名解析和按域名指定的解析策略。这说明“修改一个 DNS 地址就能解决全部问题”并不是可靠假设。<a href="https://wiki.metacubex.one/config/dns/">mihomo DNS 配置</a></p>
@@ -117,11 +129,9 @@
 <nav class="pagination" aria-label="相邻文章" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/posts/rule-global-direct/">← 上一篇</a><a href="https://www.yaoyaolingxian.blog/posts/quic-hysteria2/">下一篇 →</a></nav>
 <section class="comments-section" data-pagefind-ignore><h2>评论</h2><div id="comments"></div></section>
 </article>
-</div>
-<div class="network-rail article-rail">
-<aside class="ad-slot" aria-label="内容页侧边广告" data-ad-position="article_sidebar" data-pagefind-ignore>
-<a class="ad-card" href="https://goflybit.com/#/register?code=gPinVG8C" target="_blank" rel="sponsored noopener noreferrer" aria-label="FlyBit · 内容页侧边邀请入口（广告，在新标签页打开）" data-ad-link>
-<span class="ad-corner" aria-hidden="true">↗</span>
+</div><div class="article-rail network-rail">
+<aside class="toc"><div>本篇目录</div><nav aria-label="文章目录"><a class="level-2" href="#heading">先分清两类域名</a><a class="level-2" href="#fake-ip-">Fake-IP 为什么会显示一个陌生地址</a><a class="level-2" href="#doh-">DoH 能解决什么</a><a class="level-2" href="#heading-1">用三个问题定位失败阶段</a><a class="level-2" href="#heading-2">一个容易误判的例子</a></nav></aside>
+<aside class="ad-slot" aria-label="文章相关内容" data-ad-position="article_sidebar" data-pagefind-ignore><a class="ad-card" href="https://goflybit.com/#/register?code=gPinVG8C" target="_blank" rel="sponsored noopener noreferrer" aria-label="FlyBit · 内容页侧边邀请入口（在新标签页打开）" data-ad-link>
 
 <div class="ad-copy"><h3>FlyBit</h3>
 <p>先看当前试用与套餐，再决定是否适合自己。</p>
@@ -129,8 +139,7 @@
 <p><strong>查看注册入口 →</strong></p>
 <p>推广链接 · 资格与费用以服务方页面为准</p>
 </div>
-</a><a class="ad-card" href="https://99ba.net/#/register?code=sExBbdk9" target="_blank" rel="sponsored noopener noreferrer" aria-label="99吧 · 内容页侧边邀请入口（广告，在新标签页打开）" data-ad-link>
-<span class="ad-corner" aria-hidden="true">↗</span>
+</a><a class="ad-card" href="https://99ba.net/#/register?code=sExBbdk9" target="_blank" rel="sponsored noopener noreferrer" aria-label="99吧 · 内容页侧边邀请入口（在新标签页打开）" data-ad-link>
 
 <div class="ad-copy"><h3>99吧</h3>
 <p>先看当前试用与套餐，再决定是否适合自己。</p>
@@ -138,24 +147,18 @@
 <p><strong>查看注册入口 →</strong></p>
 <p>推广链接 · 资格与费用以服务方页面为准</p>
 </div>
-</a>
-</aside>
-<aside class="toc"><div>本篇目录</div><nav aria-label="文章目录"><a class="level-2" href="#heading">先分清两类域名</a><a class="level-2" href="#fake-ip-">Fake-IP 为什么会显示一个陌生地址</a><a class="level-2" href="#doh-">DoH 能解决什么</a><a class="level-2" href="#heading-1">用三个问题定位失败阶段</a><a class="level-2" href="#heading-2">一个容易误判的例子</a></nav></aside>
-</div>
-</div>
+</a></aside></div></div>
 
-</main>
-</div>
+</main></div>
 <button id="back-to-top" class="back-to-top" type="button" aria-label="返回顶部" title="返回顶部" hidden>
 <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h14M12 20V8m-5 5 5-5 5 5"/></svg>
 </button>
 </div>
-
 <footer class="site-footer">
 <nav class="friend-links" aria-label="友情链接"><span class="friend-links-label">友情链接</span><a href="https://kkjichang.cc/" target="_blank" rel="noopener noreferrer">可靠机场推荐</a><a href="https://pyjichang.cc/" target="_blank" rel="noopener noreferrer">便宜机场推荐</a><a href="https://wdjichang.cc/" target="_blank" rel="noopener noreferrer">稳定机场推荐</a><a href="https://fengyy.org/" target="_blank" rel="noopener noreferrer">风悠悠</a><a href="https://zjtf.org/" target="_blank" rel="noopener noreferrer">酌酒听风</a></nav>
 <span>© @遥遥领先 2026</span>
+<a href="https://www.yaoyaolingxian.blog/posts/about-site/">关于本站与作者</a>
 </footer>
-
 
 
 <dialog id="search-dialog" class="reader-dialog site-search" aria-labelledby="search-title" data-reader-dialog data-pagefind-ignore>
@@ -176,10 +179,4 @@
 </dialog>
 
 <script id="blog-comments-config" type="application/json">{"comments":true,"likes":true,"locale":"zh-CN","pageKey":"/p/e97197c2-fbad-43a6-aefb-f888ac6759b3/","pageTitle":"代理 DNS 怎么工作：节点解析、网站解析与 Fake-IP 入门","server":"https://upfqpobmiewm.sealosgzg.site","site":"xblog-f49c63bc-e1a5-4cf0-b2f5-6e9bc109b533","views":true,"viewsBase":0}</script>
-
-</body>
-</html>
-
-
-
-
+</body></html>

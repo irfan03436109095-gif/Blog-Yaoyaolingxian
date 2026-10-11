@@ -1,6 +1,4 @@
-<!doctype html>
-<html lang="zh-CN" data-theme="yaoyao-network">
-
+<!doctype html><html lang="zh-CN" data-theme="yaoyao-network">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,22 +12,48 @@
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="遥遥领先性价比机场">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://www.yaoyaolingxian.blog/assets/media/52ff4036-42cb-4679-a721-9a08d1816c48.png"><meta property="og:image:alt" content="遥遥领先性价比机场">
+<meta property="og:image" content="https://www.yaoyaolingxian.blog/assets/media/d5b2829f-bc45-489e-896a-d04b27ec97c1.webp"><meta property="og:image:alt" content="遥遥领先性价比机场">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="节点慢在 DNS、连接还是首字节？用 curl 拆分耗时">
 <meta name="twitter:description" content="机场节点慢在哪里？用curl分解DNS、连接、TLS、首字节和总耗时，避免只看一次总时间得出结论。">
-<meta name="twitter:image" content="https://www.yaoyaolingxian.blog/assets/media/52ff4036-42cb-4679-a721-9a08d1816c48.png">
+<meta name="twitter:image" content="https://www.yaoyaolingxian.blog/assets/media/d5b2829f-bc45-489e-896a-d04b27ec97c1.webp">
 <meta name="author" content="王牌飞行员"><meta property="article:published_time" content="2026-09-26T09:06:56&#43;08:00"><meta property="article:modified_time" content="2026-09-26T09:07:01&#43;08:00"><meta property="article:tag" content="线路测试"><meta property="article:tag" content="网络性能">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@id":"https://www.yaoyaolingxian.blog/posts/curl-stage-timing-check/#article","@type":"BlogPosting","author":{"@type":"Person","name":"王牌飞行员"},"dateModified":"2026-09-26T09:07:01+08:00","datePublished":"2026-09-26T09:06:56+08:00","description":"机场节点慢在哪里？用curl分解DNS、连接、TLS、首字节和总耗时，避免只看一次总时间得出结论。","headline":"节点慢在 DNS、连接还是首字节？用 curl 拆分耗时","inLanguage":"zh-CN","mainEntityOfPage":{"@id":"https://www.yaoyaolingxian.blog/posts/curl-stage-timing-check/","@type":"WebPage"},"url":"https://www.yaoyaolingxian.blog/posts/curl-stage-timing-check/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://www.yaoyaolingxian.blog/","name":"遥遥领先性价比机场","position":1},{"@type":"ListItem","item":"https://www.yaoyaolingxian.blog/posts/curl-stage-timing-check/","name":"节点慢在 DNS、连接还是首字节？用 curl 拆分耗时","position":2}]}]}</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="application/ld+json">{
+"@context":"https://schema.org","@graph":[{
+"@type":"BlogPosting","@id":"https://www.yaoyaolingxian.blog/posts/curl-stage-timing-check/#article","url":"https://www.yaoyaolingxian.blog/posts/curl-stage-timing-check/","mainEntityOfPage":"https://www.yaoyaolingxian.blog/posts/curl-stage-timing-check/",
+"headline":"节点慢在 DNS、连接还是首字节？用 curl 拆分耗时","description":"机场节点慢在哪里？用curl分解DNS、连接、TLS、首字节和总耗时，避免只看一次总时间得出结论。","inLanguage":"zh-CN",
+"datePublished":"2026-09-26T09:06:56+08:00","dateModified":"2026-09-26T09:07:01+08:00",
+"author":{"@type":"Person","name":"王牌飞行员","url":"https://www.yaoyaolingxian.blog/posts/about-site/#author-pilot"},
+"publisher":{"@type":"Organization","name":"遥遥领先性价比机场","url":"https://www.yaoyaolingxian.blog/","logo":{"@type":"ImageObject","url":"https://www.yaoyaolingxian.blog/assets/media/d5b2829f-bc45-489e-896a-d04b27ec97c1.webp"}}
+
+},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"遥遥领先性价比机场","item":"https://www.yaoyaolingxian.blog/"},{"@type":"ListItem","position":2,"name":"节点慢在 DNS、连接还是首字节？用 curl 拆分耗时","item":"https://www.yaoyaolingxian.blog/posts/curl-stage-timing-check/"}]}]}</script>
+
 
 <script>(()=>{let mode='system';try{const saved=localStorage.getItem('reader-theme');if(['system','light','dark'].includes(saved))mode=saved}catch{}const root=document.documentElement;root.dataset.colorMode=mode;root.classList.toggle('dark',mode==='dark'||(mode==='system'&&matchMedia('(prefers-color-scheme: dark)').matches))})();</script>
 <link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/style.css">
 <link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/advertisements.css">
 <link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/search.css"><script defer src="https://www.yaoyaolingxian.blog/assets/theme/search.js"></script>
-<link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/skin-1.1.0.css">
+<link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/skin-1.1.1.css">
 <link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/viewer.css">
 <link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/reader.css">
-<link rel="icon" href="https://www.yaoyaolingxian.blog/assets/media/52ff4036-42cb-4679-a721-9a08d1816c48.png">
+<link rel="icon" href="https://www.yaoyaolingxian.blog/assets/media/d5b2829f-bc45-489e-896a-d04b27ec97c1.webp">
 <link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/artalk.css"><script defer src="https://www.yaoyaolingxian.blog/assets/theme/artalk.js"></script>
 <script defer src="https://www.yaoyaolingxian.blog/assets/theme/theme.js"></script>
 <script defer src="https://www.yaoyaolingxian.blog/assets/theme/reader.js"></script>
@@ -37,25 +61,15 @@
 <script defer src="https://www.yaoyaolingxian.blog/assets/theme/image-viewer.js"></script>
 
 <script defer src="https://www.yaoyaolingxian.blog/assets/theme/interactions.js"></script>
-<script defer src="https://www.yaoyaolingxian.blog/assets/theme/markdown-it.min.js"></script><script defer src="https://www.yaoyaolingxian.blog/assets/theme/purify.min.js"></script><script defer src="https://www.yaoyaolingxian.blog/assets/theme/featured-1.1.0.js"></script>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-RMWB4R3DHD"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<script defer src="https://www.yaoyaolingxian.blog/assets/theme/featured-1.1.1.js"></script>
 
-  gtag('config', 'G-RMWB4R3DHD');
-</script>
 
 <script defer src="https://www.yaoyaolingxian.blog/assets/xblog/google-analytics.js" data-xblog-google-analytics="G-RMWB4R3DHD" data-site-hosts="www.yaoyaolingxian.blog"></script></head>
 
-<body class="yaoyao-site article-page">
-<a class="skip" href="#main">跳到正文</a>
-
+<body class="yaoyao-site article-page"><a class="skip" href="#main">跳到正文</a>
 <header class="site-header">
 <div class="header-inner">
-<a class="brand" href="https://www.yaoyaolingxian.blog/"><img src="https://www.yaoyaolingxian.blog/assets/media/52ff4036-42cb-4679-a721-9a08d1816c48.png" alt="" width="38" height="38"><span>遥遥领先性价比机场</span></a>
+<a class="brand" href="https://www.yaoyaolingxian.blog/"><img src="https://www.yaoyaolingxian.blog/assets/media/d5b2829f-bc45-489e-896a-d04b27ec97c1.webp" alt="" width="38" height="38"><span>遥遥领先性价比机场</span></a>
 <nav id="site-navigation" aria-label="站点导航"><a href="https://www.yaoyaolingxian.blog/">首页</a><a href="https://www.yaoyaolingxian.blog/posts/airport-recommendation-guide/">机场推荐</a><a href="https://www.yaoyaolingxian.blog/categories/buying-guides/">选购指南</a><a href="https://www.yaoyaolingxian.blog/categories/client-guides/">客户端教程</a><a href="https://www.yaoyaolingxian.blog/categories/protocols-network/">协议与网络</a><a href="https://www.yaoyaolingxian.blog/categories/troubleshooting/">常见问题</a><a href="https://www.yaoyaolingxian.blog/categories/privacy-security/">隐私安全</a></nav>
 <a class="search-toggle" href="https://www.yaoyaolingxian.blog/search/" data-open-dialog="search-dialog" aria-haspopup="dialog" aria-controls="search-dialog" aria-label="搜索" title="搜索"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5"/></svg></a>
 <button id="theme-mode" class="theme-toggle theme-cycle" type="button" aria-label="明暗模式：跟随系统，点击切换为明亮" title="跟随系统 · 点击切换为明亮">
@@ -70,23 +84,21 @@
 </button>
 </div>
 </header>
-
-<div class="article-viewport"><div class="article-scroll">
-<main id="main" tabindex="-1" class="network-workspace network-reading">
+<div class="page-viewport article-viewport"><div class="page-scroll article-scroll">
+<main id="main" tabindex="-1" class="network-workspace network-reading" data-has-toc="true">
 
 <nav class="breadcrumbs" aria-label="面包屑导航"><ol><li><a href="https://www.yaoyaolingxian.blog/">遥遥领先性价比机场</a></li><li><span aria-current="page">节点慢在 DNS、连接还是首字节？用 curl 拆分耗时</span></li></ol></nav>
 
-
-<div class="network-columns reading-columns">
-<div class="reading-content">
+<div class="network-columns reading-columns"><div class="reading-content">
 <article data-pagefind-body>
 <header class="article-header">
 <div class="eyebrow" data-pagefind-ignore>网络手记</div>
 <h1 data-pagefind-meta="title">节点慢在 DNS、连接还是首字节？用 curl 拆分耗时</h1>
-<div class="metadata" data-pagefind-ignore><span>王牌飞行员</span><time datetime="2026-09-26T09:06:56&#43;08:00">2026-09-26</time><span><span id="page-views">—</span> 次阅读</span></div>
+<div class="metadata" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/posts/about-site/#author-pilot" rel="author">王牌飞行员</a><time datetime="2026-09-26T09:06:56&#43;08:00">2026-09-26</time><span><span id="page-views">—</span> 次阅读</span></div>
 <div class="chips" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/categories/protocols-network/">协议与网络</a></div>
 </header>
-<div class="prose"><h2 id="-dns-curl-">节点慢在 DNS、连接还是首字节？用 curl 拆分耗时</h2>
+<div class="prose">
+<h2 id="-dns-curl-">节点慢在 DNS、连接还是首字节？用 curl 拆分耗时</h2>
 <p>“这个机场节点很慢”通常把多个阶段混在了一起。域名解析慢、TCP 连接慢、TLS 握手慢、服务器迟迟不返回首字节，以及正文下载慢，给人的感觉都可能是“网页转圈”。如果不拆分阶段，只看总耗时，很难知道应该换 DNS、换节点，还是换测试目标。</p>
 <p>curl 的 <code>--write-out</code> 可以在请求结束后输出各阶段计时。先选一个稳定、允许访问的 HTTPS 页面，在同一台设备上执行：</p>
 <pre><code class="language-bash">curl -o NUL -sS -w &quot;dns=%{time_namelookup}\nconnect=%{time_connect}\ntls=%{time_appconnect}\nfirst_byte=%{time_starttransfer}\ntotal=%{time_total}\n&quot; https://example.com/
@@ -123,11 +135,9 @@
 <nav class="pagination" aria-label="相邻文章" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/posts/tls-session-resumption-timing/">← 上一篇</a><a href="https://www.yaoyaolingxian.blog/posts/websocket-101-proxy-check/">下一篇 →</a></nav>
 <section class="comments-section" data-pagefind-ignore><h2>评论</h2><div id="comments"></div></section>
 </article>
-</div>
-<div class="network-rail article-rail">
-<aside class="ad-slot" aria-label="内容页侧边广告" data-ad-position="article_sidebar" data-pagefind-ignore>
-<a class="ad-card" href="https://goflybit.com/#/register?code=gPinVG8C" target="_blank" rel="sponsored noopener noreferrer" aria-label="FlyBit · 内容页侧边邀请入口（广告，在新标签页打开）" data-ad-link>
-<span class="ad-corner" aria-hidden="true">↗</span>
+</div><div class="article-rail network-rail">
+<aside class="toc"><div>本篇目录</div><nav aria-label="文章目录"><a class="level-2" href="#-dns-curl-">节点慢在 DNS、连接还是首字节？用 curl 拆分耗时</a><a class="level-3" href="#heading">五个时间怎样看</a><a class="level-3" href="#heading-1">做公平的节点对照</a><a class="level-3" href="#heading-2">机场推荐中怎样使用这组数据</a></nav></aside>
+<aside class="ad-slot" aria-label="文章相关内容" data-ad-position="article_sidebar" data-pagefind-ignore><a class="ad-card" href="https://goflybit.com/#/register?code=gPinVG8C" target="_blank" rel="sponsored noopener noreferrer" aria-label="FlyBit · 内容页侧边邀请入口（在新标签页打开）" data-ad-link>
 
 <div class="ad-copy"><h3>FlyBit</h3>
 <p>先看当前试用与套餐，再决定是否适合自己。</p>
@@ -135,8 +145,7 @@
 <p><strong>查看注册入口 →</strong></p>
 <p>推广链接 · 资格与费用以服务方页面为准</p>
 </div>
-</a><a class="ad-card" href="https://99ba.net/#/register?code=sExBbdk9" target="_blank" rel="sponsored noopener noreferrer" aria-label="99吧 · 内容页侧边邀请入口（广告，在新标签页打开）" data-ad-link>
-<span class="ad-corner" aria-hidden="true">↗</span>
+</a><a class="ad-card" href="https://99ba.net/#/register?code=sExBbdk9" target="_blank" rel="sponsored noopener noreferrer" aria-label="99吧 · 内容页侧边邀请入口（在新标签页打开）" data-ad-link>
 
 <div class="ad-copy"><h3>99吧</h3>
 <p>先看当前试用与套餐，再决定是否适合自己。</p>
@@ -144,24 +153,18 @@
 <p><strong>查看注册入口 →</strong></p>
 <p>推广链接 · 资格与费用以服务方页面为准</p>
 </div>
-</a>
-</aside>
-<aside class="toc"><div>本篇目录</div><nav aria-label="文章目录"><a class="level-2" href="#-dns-curl-">节点慢在 DNS、连接还是首字节？用 curl 拆分耗时</a><a class="level-3" href="#heading">五个时间怎样看</a><a class="level-3" href="#heading-1">做公平的节点对照</a><a class="level-3" href="#heading-2">机场推荐中怎样使用这组数据</a></nav></aside>
-</div>
-</div>
+</a></aside></div></div>
 
-</main>
-</div>
+</main></div>
 <button id="back-to-top" class="back-to-top" type="button" aria-label="返回顶部" title="返回顶部" hidden>
 <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h14M12 20V8m-5 5 5-5 5 5"/></svg>
 </button>
 </div>
-
 <footer class="site-footer">
 <nav class="friend-links" aria-label="友情链接"><span class="friend-links-label">友情链接</span><a href="https://kkjichang.cc/" target="_blank" rel="noopener noreferrer">可靠机场推荐</a><a href="https://pyjichang.cc/" target="_blank" rel="noopener noreferrer">便宜机场推荐</a><a href="https://wdjichang.cc/" target="_blank" rel="noopener noreferrer">稳定机场推荐</a><a href="https://fengyy.org/" target="_blank" rel="noopener noreferrer">风悠悠</a><a href="https://zjtf.org/" target="_blank" rel="noopener noreferrer">酌酒听风</a></nav>
 <span>© @遥遥领先 2026</span>
+<a href="https://www.yaoyaolingxian.blog/posts/about-site/">关于本站与作者</a>
 </footer>
-
 
 
 <dialog id="search-dialog" class="reader-dialog site-search" aria-labelledby="search-title" data-reader-dialog data-pagefind-ignore>
@@ -182,10 +185,4 @@
 </dialog>
 
 <script id="blog-comments-config" type="application/json">{"comments":true,"likes":true,"locale":"zh-CN","pageKey":"/p/8062b26a-0ae0-49b6-8b54-f3e08e391ad8/","pageTitle":"节点慢在 DNS、连接还是首字节？用 curl 拆分耗时","server":"https://upfqpobmiewm.sealosgzg.site","site":"xblog-f49c63bc-e1a5-4cf0-b2f5-6e9bc109b533","views":true,"viewsBase":0}</script>
-
-</body>
-</html>
-
-
-
-
+</body></html>

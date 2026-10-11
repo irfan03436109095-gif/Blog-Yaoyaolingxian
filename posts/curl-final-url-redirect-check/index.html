@@ -1,6 +1,4 @@
-<!doctype html>
-<html lang="zh-CN" data-theme="yaoyao-network">
-
+<!doctype html><html lang="zh-CN" data-theme="yaoyao-network">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,22 +12,48 @@
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="遥遥领先性价比机场">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://www.yaoyaolingxian.blog/assets/media/52ff4036-42cb-4679-a721-9a08d1816c48.png"><meta property="og:image:alt" content="遥遥领先性价比机场">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://www.yaoyaolingxian.blog/assets/media/29509e57-9523-4675-b6e8-c5935cb4c6f3.webp"><meta property="og:image:alt" content="机场测速返回 200 却打开登录页？核对最终 URL 与跳转次数">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="机场测速返回 200 却打开登录页？核对最终 URL 与跳转次数">
 <meta name="twitter:description" content="使用 curl 记录最终网址、跳转次数、内容类型和正文，判断 200 是否对应预期测试资源，避免把登录页或门户页面计为测速成功。">
-<meta name="twitter:image" content="https://www.yaoyaolingxian.blog/assets/media/52ff4036-42cb-4679-a721-9a08d1816c48.png">
-<meta name="author" content="王牌飞行员"><meta property="article:published_time" content="2026-10-04T09:32:20&#43;08:00"><meta property="article:modified_time" content="2026-10-04T09:32:23&#43;08:00"><meta property="article:tag" content="机场推荐"><meta property="article:tag" content="线路测试"><meta property="article:tag" content="故障排查">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@id":"https://www.yaoyaolingxian.blog/posts/curl-final-url-redirect-check/#article","@type":"BlogPosting","author":{"@type":"Person","name":"王牌飞行员"},"dateModified":"2026-10-04T09:32:23+08:00","datePublished":"2026-10-04T09:32:20+08:00","description":"使用 curl 记录最终网址、跳转次数、内容类型和正文，判断 200 是否对应预期测试资源，避免把登录页或门户页面计为测速成功。","headline":"机场测速返回 200 却打开登录页？核对最终 URL 与跳转次数","inLanguage":"zh-CN","mainEntityOfPage":{"@id":"https://www.yaoyaolingxian.blog/posts/curl-final-url-redirect-check/","@type":"WebPage"},"url":"https://www.yaoyaolingxian.blog/posts/curl-final-url-redirect-check/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://www.yaoyaolingxian.blog/","name":"遥遥领先性价比机场","position":1},{"@type":"ListItem","item":"https://www.yaoyaolingxian.blog/posts/curl-final-url-redirect-check/","name":"机场测速返回 200 却打开登录页？核对最终 URL 与跳转次数","position":2}]}]}</script>
+<meta name="twitter:image" content="https://www.yaoyaolingxian.blog/assets/media/29509e57-9523-4675-b6e8-c5935cb4c6f3.webp">
+<meta name="author" content="王牌飞行员"><meta property="article:published_time" content="2026-10-04T09:32:20&#43;08:00"><meta property="article:modified_time" content="2026-10-11T22:42:14&#43;08:00"><meta property="article:tag" content="机场推荐"><meta property="article:tag" content="线路测试"><meta property="article:tag" content="故障排查案例">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="application/ld+json">{
+"@context":"https://schema.org","@graph":[{
+"@type":"BlogPosting","@id":"https://www.yaoyaolingxian.blog/posts/curl-final-url-redirect-check/#article","url":"https://www.yaoyaolingxian.blog/posts/curl-final-url-redirect-check/","mainEntityOfPage":"https://www.yaoyaolingxian.blog/posts/curl-final-url-redirect-check/",
+"headline":"机场测速返回 200 却打开登录页？核对最终 URL 与跳转次数","description":"使用 curl 记录最终网址、跳转次数、内容类型和正文，判断 200 是否对应预期测试资源，避免把登录页或门户页面计为测速成功。","inLanguage":"zh-CN",
+"datePublished":"2026-10-04T09:32:20+08:00","dateModified":"2026-10-11T22:42:14+08:00",
+"author":{"@type":"Person","name":"王牌飞行员","url":"https://www.yaoyaolingxian.blog/posts/about-site/#author-pilot"},
+"publisher":{"@type":"Organization","name":"遥遥领先性价比机场","url":"https://www.yaoyaolingxian.blog/","logo":{"@type":"ImageObject","url":"https://www.yaoyaolingxian.blog/assets/media/d5b2829f-bc45-489e-896a-d04b27ec97c1.webp"}}
+,"image":["https://www.yaoyaolingxian.blog/assets/media/29509e57-9523-4675-b6e8-c5935cb4c6f3.webp"]
+},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"遥遥领先性价比机场","item":"https://www.yaoyaolingxian.blog/"},{"@type":"ListItem","position":2,"name":"机场测速返回 200 却打开登录页？核对最终 URL 与跳转次数","item":"https://www.yaoyaolingxian.blog/posts/curl-final-url-redirect-check/"}]}]}</script>
+
 
 <script>(()=>{let mode='system';try{const saved=localStorage.getItem('reader-theme');if(['system','light','dark'].includes(saved))mode=saved}catch{}const root=document.documentElement;root.dataset.colorMode=mode;root.classList.toggle('dark',mode==='dark'||(mode==='system'&&matchMedia('(prefers-color-scheme: dark)').matches))})();</script>
 <link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/style.css">
 <link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/advertisements.css">
 <link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/search.css"><script defer src="https://www.yaoyaolingxian.blog/assets/theme/search.js"></script>
-<link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/skin-1.1.0.css">
+<link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/skin-1.1.1.css">
 <link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/viewer.css">
 <link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/reader.css">
-<link rel="icon" href="https://www.yaoyaolingxian.blog/assets/media/52ff4036-42cb-4679-a721-9a08d1816c48.png">
+<link rel="icon" href="https://www.yaoyaolingxian.blog/assets/media/d5b2829f-bc45-489e-896a-d04b27ec97c1.webp">
 <link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/artalk.css"><script defer src="https://www.yaoyaolingxian.blog/assets/theme/artalk.js"></script>
 <script defer src="https://www.yaoyaolingxian.blog/assets/theme/theme.js"></script>
 <script defer src="https://www.yaoyaolingxian.blog/assets/theme/reader.js"></script>
@@ -37,25 +61,15 @@
 <script defer src="https://www.yaoyaolingxian.blog/assets/theme/image-viewer.js"></script>
 
 <script defer src="https://www.yaoyaolingxian.blog/assets/theme/interactions.js"></script>
-<script defer src="https://www.yaoyaolingxian.blog/assets/theme/markdown-it.min.js"></script><script defer src="https://www.yaoyaolingxian.blog/assets/theme/purify.min.js"></script><script defer src="https://www.yaoyaolingxian.blog/assets/theme/featured-1.1.0.js"></script>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-RMWB4R3DHD"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<script defer src="https://www.yaoyaolingxian.blog/assets/theme/featured-1.1.1.js"></script>
 
-  gtag('config', 'G-RMWB4R3DHD');
-</script>
 
 <script defer src="https://www.yaoyaolingxian.blog/assets/xblog/google-analytics.js" data-xblog-google-analytics="G-RMWB4R3DHD" data-site-hosts="www.yaoyaolingxian.blog"></script></head>
 
-<body class="yaoyao-site article-page">
-<a class="skip" href="#main">跳到正文</a>
-
+<body class="yaoyao-site article-page"><a class="skip" href="#main">跳到正文</a>
 <header class="site-header">
 <div class="header-inner">
-<a class="brand" href="https://www.yaoyaolingxian.blog/"><img src="https://www.yaoyaolingxian.blog/assets/media/52ff4036-42cb-4679-a721-9a08d1816c48.png" alt="" width="38" height="38"><span>遥遥领先性价比机场</span></a>
+<a class="brand" href="https://www.yaoyaolingxian.blog/"><img src="https://www.yaoyaolingxian.blog/assets/media/d5b2829f-bc45-489e-896a-d04b27ec97c1.webp" alt="" width="38" height="38"><span>遥遥领先性价比机场</span></a>
 <nav id="site-navigation" aria-label="站点导航"><a href="https://www.yaoyaolingxian.blog/">首页</a><a href="https://www.yaoyaolingxian.blog/posts/airport-recommendation-guide/">机场推荐</a><a href="https://www.yaoyaolingxian.blog/categories/buying-guides/">选购指南</a><a href="https://www.yaoyaolingxian.blog/categories/client-guides/">客户端教程</a><a href="https://www.yaoyaolingxian.blog/categories/protocols-network/">协议与网络</a><a href="https://www.yaoyaolingxian.blog/categories/troubleshooting/">常见问题</a><a href="https://www.yaoyaolingxian.blog/categories/privacy-security/">隐私安全</a></nav>
 <a class="search-toggle" href="https://www.yaoyaolingxian.blog/search/" data-open-dialog="search-dialog" aria-haspopup="dialog" aria-controls="search-dialog" aria-label="搜索" title="搜索"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5"/></svg></a>
 <button id="theme-mode" class="theme-toggle theme-cycle" type="button" aria-label="明暗模式：跟随系统，点击切换为明亮" title="跟随系统 · 点击切换为明亮">
@@ -70,42 +84,41 @@
 </button>
 </div>
 </header>
-
-<div class="article-viewport"><div class="article-scroll">
-<main id="main" tabindex="-1" class="network-workspace network-reading">
+<div class="page-viewport article-viewport"><div class="page-scroll article-scroll">
+<main id="main" tabindex="-1" class="network-workspace network-reading" data-has-toc="true">
 
 <nav class="breadcrumbs" aria-label="面包屑导航"><ol><li><a href="https://www.yaoyaolingxian.blog/">遥遥领先性价比机场</a></li><li><span aria-current="page">机场测速返回 200 却打开登录页？核对最终 URL 与跳转次数</span></li></ol></nav>
 
-
-<div class="network-columns reading-columns">
-<div class="reading-content">
+<div class="network-columns reading-columns"><div class="reading-content">
 <article data-pagefind-body>
 <header class="article-header">
 <div class="eyebrow" data-pagefind-ignore>网络手记</div>
 <h1 data-pagefind-meta="title">机场测速返回 200 却打开登录页？核对最终 URL 与跳转次数</h1>
-<div class="metadata" data-pagefind-ignore><span>王牌飞行员</span><time datetime="2026-10-04T09:32:20&#43;08:00">2026-10-04</time><span><span id="page-views">—</span> 次阅读</span></div>
+<div class="metadata" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/posts/about-site/#author-pilot" rel="author">王牌飞行员</a><time datetime="2026-10-04T09:32:20&#43;08:00">2026-10-04</time><span><span id="page-views">—</span> 次阅读</span></div>
 <div class="chips" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/categories/troubleshooting/">故障排查</a></div>
 </header>
-<div class="prose"><p>下载测试文件时看到 HTTP 200，打开保存文件却是登录界面，这次不能计为目标下载成功。状态码说明收到响应，最终网址与实际内容才说明测到了什么。</p>
-<p><img src="https://www.yaoyaolingxian.blog/assets/media/08ea43c8-908b-48cf-95d9-60c3fd4f70bc.png" alt="初始测试网址经过跳转抵达登录页，需要核对最终网址与实际正文"></p>
+<div class="prose">
+
+<p>下载测试文件时看到 HTTP 200，打开保存文件却是登录界面，这次不能计为目标下载成功。状态码说明收到响应，最终网址与实际内容才说明测到了什么。</p>
+<p><img src="https://www.yaoyaolingxian.blog/assets/media/29509e57-9523-4675-b6e8-c5935cb4c6f3.webp" alt="初始测试网址经过跳转抵达登录页，需要核对最终网址与实际正文" width="1200" height="800" loading="eager" decoding="async"></p>
 <p><em>示意图：200 是最后一次响应的状态，仍需确认它是不是想测的资源。</em></p>
 <h2 id="heading">什么时候需要这项检查</h2>
 <p>适用于公开测试资源发生跳转、公共网络门户干扰、网站要求登录，或两次测速内容大小明显不同的情况。它不用于把含订阅令牌、Cookie 或登录凭据的请求自动跟随到未知地址。</p>
 <p>先用浏览器确认预期资源的位置及用途，再选择自己有权访问的公开 URL。涉及机场推荐的对照测试，优先采用内容固定、体积适中的资源。</p>
 <h2 id="heading-1">先看原响应，再决定是否跟随</h2>
 <p>Windows PowerShell 中将公开目标填入变量，先不自动跟随跳转：</p>
-<pre><code class="language-powershell">$testUrl = 'https://example.com/'
-curl.exe -q --silent --show-error --connect-timeout 10 --max-time 30 --dump-header initial-headers.txt --output initial-body.txt $testUrl
-$LASTEXITCODE
+<pre><code class="language-powershell">$testUrl = 'https://example.com/'
+curl.exe -q --silent --show-error --connect-timeout 10 --max-time 30 --dump-header initial-headers.txt --output initial-body.txt $testUrl
+$LASTEXITCODE
 </code></pre>
 <p>示例网址用于说明语法，不是测速文件。查看响应头中的状态和 Location，核对跳转域名是否符合预期。不要在这里粘贴含私有令牌的订阅地址。</p>
 <p>对确认可以跟随的无凭据公开目标，再运行：</p>
-<pre><code class="language-powershell">curl.exe -q --silent --show-error --location --max-redirs 5 --proto-redir '=https' --connect-timeout 10 --max-time 30 --output result-body.txt --write-out 'status=%{http_code}
-final=%{url_effective}
-redirects=%{num_redirects}
-type=%{content_type}
-' $testUrl
-$LASTEXITCODE
+<pre><code class="language-powershell">curl.exe -q --silent --show-error --location --max-redirs 5 --proto-redir '=https' --connect-timeout 10 --max-time 30 --output result-body.txt --write-out 'status=%{http_code}
+final=%{url_effective}
+redirects=%{num_redirects}
+type=%{content_type}
+' $testUrl
+$LASTEXITCODE
 </code></pre>
 <p>这里限制跟随次数和跳转协议，并保持 HTTPS 验证。curl 官方资料说明 --location 用于跟随跳转，url_effective 是最后取得资源的网址；不要用 --location-trusted 把凭据继续传到别处。</p>
 <h2 id="heading-2">四项一起验收</h2>
@@ -124,6 +137,7 @@ $LASTEXITCODE
 <li><a href="https://everything.curl.dev/http/redirects.html">curl 官方：重定向处理</a></li>
 <li><a href="https://curl.se/docs/manpage.html#-w">curl 官方手册：write-out</a></li>
 </ul>
+
 </div>
 <div class="article-likes" data-pagefind-ignore>
 <button id="page-like" class="like-button" type="button" aria-pressed="false" aria-describedby="page-like-message" disabled>
@@ -131,15 +145,13 @@ $LASTEXITCODE
 <span id="page-like-label">点赞</span><span id="page-like-count">—</span>
 </button><p id="page-like-message" role="status"></p>
 </div>
-<div class="article-tags" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/tags/airport-recommendations/"># 机场推荐</a><a href="https://www.yaoyaolingxian.blog/tags/connection-testing/"># 线路测试</a><a href="https://www.yaoyaolingxian.blog/tags/troubleshooting/"># 故障排查</a></div>
+<div class="article-tags" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/tags/airport-recommendations/"># 机场推荐</a><a href="https://www.yaoyaolingxian.blog/tags/connection-testing/"># 线路测试</a><a href="https://www.yaoyaolingxian.blog/tags/troubleshooting/"># 故障排查案例</a></div>
 <nav class="pagination" aria-label="相邻文章" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/posts/airport-subscription-beginner-illustrated-2026/">← 上一篇</a><a href="https://www.yaoyaolingxian.blog/posts/curl-http-version-comparison/">下一篇 →</a></nav>
 <section class="comments-section" data-pagefind-ignore><h2>评论</h2><div id="comments"></div></section>
 </article>
-</div>
-<div class="network-rail article-rail">
-<aside class="ad-slot" aria-label="内容页侧边广告" data-ad-position="article_sidebar" data-pagefind-ignore>
-<a class="ad-card" href="https://goflybit.com/#/register?code=gPinVG8C" target="_blank" rel="sponsored noopener noreferrer" aria-label="FlyBit · 内容页侧边邀请入口（广告，在新标签页打开）" data-ad-link>
-<span class="ad-corner" aria-hidden="true">↗</span>
+</div><div class="article-rail network-rail">
+<aside class="toc"><div>本篇目录</div><nav aria-label="文章目录"><a class="level-2" href="#heading">什么时候需要这项检查</a><a class="level-2" href="#heading-1">先看原响应，再决定是否跟随</a><a class="level-2" href="#heading-2">四项一起验收</a><a class="level-2" href="#heading-3">怎样放进对照记录</a><a class="level-2" href="#heading-4">官方来源与核验日期</a></nav></aside>
+<aside class="ad-slot" aria-label="文章相关内容" data-ad-position="article_sidebar" data-pagefind-ignore><a class="ad-card" href="https://goflybit.com/#/register?code=gPinVG8C" target="_blank" rel="sponsored noopener noreferrer" aria-label="FlyBit · 内容页侧边邀请入口（在新标签页打开）" data-ad-link>
 
 <div class="ad-copy"><h3>FlyBit</h3>
 <p>先看当前试用与套餐，再决定是否适合自己。</p>
@@ -147,8 +159,7 @@ $LASTEXITCODE
 <p><strong>查看注册入口 →</strong></p>
 <p>推广链接 · 资格与费用以服务方页面为准</p>
 </div>
-</a><a class="ad-card" href="https://99ba.net/#/register?code=sExBbdk9" target="_blank" rel="sponsored noopener noreferrer" aria-label="99吧 · 内容页侧边邀请入口（广告，在新标签页打开）" data-ad-link>
-<span class="ad-corner" aria-hidden="true">↗</span>
+</a><a class="ad-card" href="https://99ba.net/#/register?code=sExBbdk9" target="_blank" rel="sponsored noopener noreferrer" aria-label="99吧 · 内容页侧边邀请入口（在新标签页打开）" data-ad-link>
 
 <div class="ad-copy"><h3>99吧</h3>
 <p>先看当前试用与套餐，再决定是否适合自己。</p>
@@ -156,24 +167,18 @@ $LASTEXITCODE
 <p><strong>查看注册入口 →</strong></p>
 <p>推广链接 · 资格与费用以服务方页面为准</p>
 </div>
-</a>
-</aside>
-<aside class="toc"><div>本篇目录</div><nav aria-label="文章目录"><a class="level-2" href="#heading">什么时候需要这项检查</a><a class="level-2" href="#heading-1">先看原响应，再决定是否跟随</a><a class="level-2" href="#heading-2">四项一起验收</a><a class="level-2" href="#heading-3">怎样放进对照记录</a><a class="level-2" href="#heading-4">官方来源与核验日期</a></nav></aside>
-</div>
-</div>
+</a></aside></div></div>
 
-</main>
-</div>
+</main></div>
 <button id="back-to-top" class="back-to-top" type="button" aria-label="返回顶部" title="返回顶部" hidden>
 <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h14M12 20V8m-5 5 5-5 5 5"/></svg>
 </button>
 </div>
-
 <footer class="site-footer">
 <nav class="friend-links" aria-label="友情链接"><span class="friend-links-label">友情链接</span><a href="https://kkjichang.cc/" target="_blank" rel="noopener noreferrer">可靠机场推荐</a><a href="https://pyjichang.cc/" target="_blank" rel="noopener noreferrer">便宜机场推荐</a><a href="https://wdjichang.cc/" target="_blank" rel="noopener noreferrer">稳定机场推荐</a><a href="https://fengyy.org/" target="_blank" rel="noopener noreferrer">风悠悠</a><a href="https://zjtf.org/" target="_blank" rel="noopener noreferrer">酌酒听风</a></nav>
 <span>© @遥遥领先 2026</span>
+<a href="https://www.yaoyaolingxian.blog/posts/about-site/">关于本站与作者</a>
 </footer>
-
 
 
 <dialog id="search-dialog" class="reader-dialog site-search" aria-labelledby="search-title" data-reader-dialog data-pagefind-ignore>
@@ -194,10 +199,4 @@ $LASTEXITCODE
 </dialog>
 
 <script id="blog-comments-config" type="application/json">{"comments":true,"likes":true,"locale":"zh-CN","pageKey":"/p/443b4d9f-037f-4e47-af5e-fc90b05ef82a/","pageTitle":"机场测速返回 200 却打开登录页？核对最终 URL 与跳转次数","server":"https://upfqpobmiewm.sealosgzg.site","site":"xblog-f49c63bc-e1a5-4cf0-b2f5-6e9bc109b533","views":true,"viewsBase":0}</script>
-
-</body>
-</html>
-
-
-
-
+</body></html>

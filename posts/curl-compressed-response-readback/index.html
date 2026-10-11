@@ -1,6 +1,4 @@
-<!doctype html>
-<html lang="zh-CN" data-theme="yaoyao-network">
-
+<!doctype html><html lang="zh-CN" data-theme="yaoyao-network">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,22 +12,48 @@
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="遥遥领先性价比机场">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://www.yaoyaolingxian.blog/assets/media/52ff4036-42cb-4679-a721-9a08d1816c48.png"><meta property="og:image:alt" content="遥遥领先性价比机场">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://www.yaoyaolingxian.blog/assets/media/72efab03-3586-4720-86e1-c8b676c1c143.webp"><meta property="og:image:alt" content="curl 下载页面变乱码？核对压缩请求与自动解压">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="curl 下载页面变乱码？核对压缩请求与自动解压">
 <meta name="twitter:description" content="curl 下载 HTML 乱码怎样排查？区分 Accept-Encoding 请求、Content-Encoding 响应与 --compressed 自动解压，再检查字符编码和实际正文。">
-<meta name="twitter:image" content="https://www.yaoyaolingxian.blog/assets/media/52ff4036-42cb-4679-a721-9a08d1816c48.png">
-<meta name="author" content="加油"><meta property="article:published_time" content="2026-10-08T09:34:53&#43;08:00"><meta property="article:modified_time" content="2026-10-08T09:34:56&#43;08:00"><meta property="article:tag" content="网络性能"><meta property="article:tag" content="故障排查">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@id":"https://www.yaoyaolingxian.blog/posts/curl-compressed-response-readback/#article","@type":"BlogPosting","author":{"@type":"Person","name":"加油"},"dateModified":"2026-10-08T09:34:56+08:00","datePublished":"2026-10-08T09:34:53+08:00","description":"curl 下载 HTML 乱码怎样排查？区分 Accept-Encoding 请求、Content-Encoding 响应与 --compressed 自动解压，再检查字符编码和实际正文。","headline":"curl 下载页面变乱码？核对压缩请求与自动解压","inLanguage":"zh-CN","mainEntityOfPage":{"@id":"https://www.yaoyaolingxian.blog/posts/curl-compressed-response-readback/","@type":"WebPage"},"url":"https://www.yaoyaolingxian.blog/posts/curl-compressed-response-readback/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://www.yaoyaolingxian.blog/","name":"遥遥领先性价比机场","position":1},{"@type":"ListItem","item":"https://www.yaoyaolingxian.blog/posts/curl-compressed-response-readback/","name":"curl 下载页面变乱码？核对压缩请求与自动解压","position":2}]}]}</script>
+<meta name="twitter:image" content="https://www.yaoyaolingxian.blog/assets/media/72efab03-3586-4720-86e1-c8b676c1c143.webp">
+<meta name="author" content="加油"><meta property="article:published_time" content="2026-10-08T09:34:53&#43;08:00"><meta property="article:modified_time" content="2026-10-11T22:42:42&#43;08:00"><meta property="article:tag" content="网络性能"><meta property="article:tag" content="故障排查案例">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="application/ld+json">{
+"@context":"https://schema.org","@graph":[{
+"@type":"BlogPosting","@id":"https://www.yaoyaolingxian.blog/posts/curl-compressed-response-readback/#article","url":"https://www.yaoyaolingxian.blog/posts/curl-compressed-response-readback/","mainEntityOfPage":"https://www.yaoyaolingxian.blog/posts/curl-compressed-response-readback/",
+"headline":"curl 下载页面变乱码？核对压缩请求与自动解压","description":"curl 下载 HTML 乱码怎样排查？区分 Accept-Encoding 请求、Content-Encoding 响应与 --compressed 自动解压，再检查字符编码和实际正文。","inLanguage":"zh-CN",
+"datePublished":"2026-10-08T09:34:53+08:00","dateModified":"2026-10-11T22:42:42+08:00",
+"author":{"@type":"Person","name":"加油","url":"https://www.yaoyaolingxian.blog/posts/about-site/#author-jiayou"},
+"publisher":{"@type":"Organization","name":"遥遥领先性价比机场","url":"https://www.yaoyaolingxian.blog/","logo":{"@type":"ImageObject","url":"https://www.yaoyaolingxian.blog/assets/media/d5b2829f-bc45-489e-896a-d04b27ec97c1.webp"}}
+,"image":["https://www.yaoyaolingxian.blog/assets/media/72efab03-3586-4720-86e1-c8b676c1c143.webp"]
+},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"遥遥领先性价比机场","item":"https://www.yaoyaolingxian.blog/"},{"@type":"ListItem","position":2,"name":"curl 下载页面变乱码？核对压缩请求与自动解压","item":"https://www.yaoyaolingxian.blog/posts/curl-compressed-response-readback/"}]}]}</script>
+
 
 <script>(()=>{let mode='system';try{const saved=localStorage.getItem('reader-theme');if(['system','light','dark'].includes(saved))mode=saved}catch{}const root=document.documentElement;root.dataset.colorMode=mode;root.classList.toggle('dark',mode==='dark'||(mode==='system'&&matchMedia('(prefers-color-scheme: dark)').matches))})();</script>
 <link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/style.css">
 <link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/advertisements.css">
 <link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/search.css"><script defer src="https://www.yaoyaolingxian.blog/assets/theme/search.js"></script>
-<link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/skin-1.1.0.css">
+<link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/skin-1.1.1.css">
 <link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/viewer.css">
 <link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/reader.css">
-<link rel="icon" href="https://www.yaoyaolingxian.blog/assets/media/52ff4036-42cb-4679-a721-9a08d1816c48.png">
+<link rel="icon" href="https://www.yaoyaolingxian.blog/assets/media/d5b2829f-bc45-489e-896a-d04b27ec97c1.webp">
 <link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/artalk.css"><script defer src="https://www.yaoyaolingxian.blog/assets/theme/artalk.js"></script>
 <script defer src="https://www.yaoyaolingxian.blog/assets/theme/theme.js"></script>
 <script defer src="https://www.yaoyaolingxian.blog/assets/theme/reader.js"></script>
@@ -37,25 +61,15 @@
 <script defer src="https://www.yaoyaolingxian.blog/assets/theme/image-viewer.js"></script>
 
 <script defer src="https://www.yaoyaolingxian.blog/assets/theme/interactions.js"></script>
-<script defer src="https://www.yaoyaolingxian.blog/assets/theme/markdown-it.min.js"></script><script defer src="https://www.yaoyaolingxian.blog/assets/theme/purify.min.js"></script><script defer src="https://www.yaoyaolingxian.blog/assets/theme/featured-1.1.0.js"></script>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-RMWB4R3DHD"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<script defer src="https://www.yaoyaolingxian.blog/assets/theme/featured-1.1.1.js"></script>
 
-  gtag('config', 'G-RMWB4R3DHD');
-</script>
 
 <script defer src="https://www.yaoyaolingxian.blog/assets/xblog/google-analytics.js" data-xblog-google-analytics="G-RMWB4R3DHD" data-site-hosts="www.yaoyaolingxian.blog"></script></head>
 
-<body class="yaoyao-site article-page">
-<a class="skip" href="#main">跳到正文</a>
-
+<body class="yaoyao-site article-page"><a class="skip" href="#main">跳到正文</a>
 <header class="site-header">
 <div class="header-inner">
-<a class="brand" href="https://www.yaoyaolingxian.blog/"><img src="https://www.yaoyaolingxian.blog/assets/media/52ff4036-42cb-4679-a721-9a08d1816c48.png" alt="" width="38" height="38"><span>遥遥领先性价比机场</span></a>
+<a class="brand" href="https://www.yaoyaolingxian.blog/"><img src="https://www.yaoyaolingxian.blog/assets/media/d5b2829f-bc45-489e-896a-d04b27ec97c1.webp" alt="" width="38" height="38"><span>遥遥领先性价比机场</span></a>
 <nav id="site-navigation" aria-label="站点导航"><a href="https://www.yaoyaolingxian.blog/">首页</a><a href="https://www.yaoyaolingxian.blog/posts/airport-recommendation-guide/">机场推荐</a><a href="https://www.yaoyaolingxian.blog/categories/buying-guides/">选购指南</a><a href="https://www.yaoyaolingxian.blog/categories/client-guides/">客户端教程</a><a href="https://www.yaoyaolingxian.blog/categories/protocols-network/">协议与网络</a><a href="https://www.yaoyaolingxian.blog/categories/troubleshooting/">常见问题</a><a href="https://www.yaoyaolingxian.blog/categories/privacy-security/">隐私安全</a></nav>
 <a class="search-toggle" href="https://www.yaoyaolingxian.blog/search/" data-open-dialog="search-dialog" aria-haspopup="dialog" aria-controls="search-dialog" aria-label="搜索" title="搜索"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5"/></svg></a>
 <button id="theme-mode" class="theme-toggle theme-cycle" type="button" aria-label="明暗模式：跟随系统，点击切换为明亮" title="跟随系统 · 点击切换为明亮">
@@ -70,25 +84,24 @@
 </button>
 </div>
 </header>
-
-<div class="article-viewport"><div class="article-scroll">
-<main id="main" tabindex="-1" class="network-workspace network-reading">
+<div class="page-viewport article-viewport"><div class="page-scroll article-scroll">
+<main id="main" tabindex="-1" class="network-workspace network-reading" data-has-toc="true">
 
 <nav class="breadcrumbs" aria-label="面包屑导航"><ol><li><a href="https://www.yaoyaolingxian.blog/">遥遥领先性价比机场</a></li><li><span aria-current="page">curl 下载页面变乱码？核对压缩请求与自动解压</span></li></ol></nav>
 
-
-<div class="network-columns reading-columns">
-<div class="reading-content">
+<div class="network-columns reading-columns"><div class="reading-content">
 <article data-pagefind-body>
 <header class="article-header">
 <div class="eyebrow" data-pagefind-ignore>网络手记</div>
 <h1 data-pagefind-meta="title">curl 下载页面变乱码？核对压缩请求与自动解压</h1>
-<div class="metadata" data-pagefind-ignore><span>加油</span><time datetime="2026-10-08T09:34:53&#43;08:00">2026-10-08</time><span><span id="page-views">—</span> 次阅读</span></div>
+<div class="metadata" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/posts/about-site/#author-jiayou" rel="author">加油</a><time datetime="2026-10-08T09:34:53&#43;08:00">2026-10-08</time><span><span id="page-views">—</span> 次阅读</span></div>
 <div class="chips" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/categories/troubleshooting/">故障排查</a></div>
 </header>
-<div class="prose"><p>把浏览器里的请求头复制到 curl 后，保存的“网页”却像一串二进制内容，问题可能出在压缩处理，不一定是机场传坏了数据。请求压缩与解压正文需要分开核对。</p>
+<div class="prose">
+
+<p>把浏览器里的请求头复制到 curl 后，保存的“网页”却像一串二进制内容，问题可能出在压缩处理，不一定是机场传坏了数据。请求压缩与解压正文需要分开核对。</p>
 <p>这篇适合检查小型公开 HTML 或文本资源。不要把账号页面、订阅响应和含令牌的请求复制到示例中，也不直接向论坛提交完整响应。</p>
-<p><img src="https://www.yaoyaolingxian.blog/assets/media/6f2a2d71-2525-476c-a0c8-64e1db458de5.png" alt="压缩响应经过解压处理后成为可读页面而原响应头仍单独保留的示意"></p>
+<p><img src="https://www.yaoyaolingxian.blog/assets/media/72efab03-3586-4720-86e1-c8b676c1c143.webp" alt="压缩响应经过解压处理后成为可读页面而原响应头仍单独保留的示意" width="1200" height="800" loading="eager" decoding="async"></p>
 <p><em>示意图：响应头记录与已经解压的保存正文需要分别理解。</em></p>
 <h2 id="heading">先看两类编码提示</h2>
 <table>
@@ -121,7 +134,7 @@
 <p>不要仅凭“头部出现 gzip”就把文件交给解压程序。先回看命令和正文实际状态，再判断是否需要进一步处理。</p>
 <h2 id="heading-1">用一条明确的命令建立基线</h2>
 <p>下面是公开小页面的检查示例，不代表本站已测得该站采用某种压缩：</p>
-<pre><code class="language-powershell">curl.exe -q --compressed --connect-timeout 10 --max-time 20 --dump-header page-headers.txt --output page-body.html https://example.com/
+<pre><code class="language-powershell">curl.exe -q --compressed --connect-timeout 10 --max-time 20 --dump-header page-headers.txt --output page-body.html https://example.com/
 </code></pre>
 <p>确认当前目录没有需要保留的同名文件，再运行；如有，换新文件名。<code>page-headers.txt</code> 保存响应头，<code>page-body.html</code> 保存 curl 处理后的正文。命令没有认证信息，也没有跟随跳转。</p>
 <p>若目标返回跳转、错误页或非 HTML，先记录真实状态与类型，不把输出扩展名当作正文格式的保证。要核对代理路径时，另使用客户端正式给出的入口，保持其余选项相同。</p>
@@ -163,6 +176,7 @@
 <li><a href="https://everything.curl.dev/http/modify/compression.html">everything curl：HTTP 压缩与解压</a></li>
 </ul>
 <p>官方资料核验日期：2026-10-08。本文提供自行操作与记录的方法，不代表本站对某家机场的实测结论。</p>
+
 </div>
 <div class="article-likes" data-pagefind-ignore>
 <button id="page-like" class="like-button" type="button" aria-pressed="false" aria-describedby="page-like-message" disabled>
@@ -170,15 +184,13 @@
 <span id="page-like-label">点赞</span><span id="page-like-count">—</span>
 </button><p id="page-like-message" role="status"></p>
 </div>
-<div class="article-tags" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/tags/network-performance/"># 网络性能</a><a href="https://www.yaoyaolingxian.blog/tags/troubleshooting/"># 故障排查</a></div>
+<div class="article-tags" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/tags/network-performance/"># 网络性能</a><a href="https://www.yaoyaolingxian.blog/tags/troubleshooting/"># 故障排查案例</a></div>
 <nav class="pagination" aria-label="相邻文章" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/posts/curl-body-writeout-separate-output/">← 上一篇</a><a href="https://www.yaoyaolingxian.blog/posts/airport-coupon-renewal-price-check/">下一篇 →</a></nav>
 <section class="comments-section" data-pagefind-ignore><h2>评论</h2><div id="comments"></div></section>
 </article>
-</div>
-<div class="network-rail article-rail">
-<aside class="ad-slot" aria-label="内容页侧边广告" data-ad-position="article_sidebar" data-pagefind-ignore>
-<a class="ad-card" href="https://goflybit.com/#/register?code=gPinVG8C" target="_blank" rel="sponsored noopener noreferrer" aria-label="FlyBit · 内容页侧边邀请入口（广告，在新标签页打开）" data-ad-link>
-<span class="ad-corner" aria-hidden="true">↗</span>
+</div><div class="article-rail network-rail">
+<aside class="toc"><div>本篇目录</div><nav aria-label="文章目录"><a class="level-2" href="#heading">先看两类编码提示</a><a class="level-2" href="#heading-1">用一条明确的命令建立基线</a><a class="level-2" href="#heading-2">压缩和字符编码分别排查</a><a class="level-2" href="#heading-3">怎样避免错误地比较大小</a><a class="level-2" href="#heading-4">来源与核验日期</a></nav></aside>
+<aside class="ad-slot" aria-label="文章相关内容" data-ad-position="article_sidebar" data-pagefind-ignore><a class="ad-card" href="https://goflybit.com/#/register?code=gPinVG8C" target="_blank" rel="sponsored noopener noreferrer" aria-label="FlyBit · 内容页侧边邀请入口（在新标签页打开）" data-ad-link>
 
 <div class="ad-copy"><h3>FlyBit</h3>
 <p>先看当前试用与套餐，再决定是否适合自己。</p>
@@ -186,8 +198,7 @@
 <p><strong>查看注册入口 →</strong></p>
 <p>推广链接 · 资格与费用以服务方页面为准</p>
 </div>
-</a><a class="ad-card" href="https://99ba.net/#/register?code=sExBbdk9" target="_blank" rel="sponsored noopener noreferrer" aria-label="99吧 · 内容页侧边邀请入口（广告，在新标签页打开）" data-ad-link>
-<span class="ad-corner" aria-hidden="true">↗</span>
+</a><a class="ad-card" href="https://99ba.net/#/register?code=sExBbdk9" target="_blank" rel="sponsored noopener noreferrer" aria-label="99吧 · 内容页侧边邀请入口（在新标签页打开）" data-ad-link>
 
 <div class="ad-copy"><h3>99吧</h3>
 <p>先看当前试用与套餐，再决定是否适合自己。</p>
@@ -195,24 +206,18 @@
 <p><strong>查看注册入口 →</strong></p>
 <p>推广链接 · 资格与费用以服务方页面为准</p>
 </div>
-</a>
-</aside>
-<aside class="toc"><div>本篇目录</div><nav aria-label="文章目录"><a class="level-2" href="#heading">先看两类编码提示</a><a class="level-2" href="#heading-1">用一条明确的命令建立基线</a><a class="level-2" href="#heading-2">压缩和字符编码分别排查</a><a class="level-2" href="#heading-3">怎样避免错误地比较大小</a><a class="level-2" href="#heading-4">来源与核验日期</a></nav></aside>
-</div>
-</div>
+</a></aside></div></div>
 
-</main>
-</div>
+</main></div>
 <button id="back-to-top" class="back-to-top" type="button" aria-label="返回顶部" title="返回顶部" hidden>
 <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h14M12 20V8m-5 5 5-5 5 5"/></svg>
 </button>
 </div>
-
 <footer class="site-footer">
 <nav class="friend-links" aria-label="友情链接"><span class="friend-links-label">友情链接</span><a href="https://kkjichang.cc/" target="_blank" rel="noopener noreferrer">可靠机场推荐</a><a href="https://pyjichang.cc/" target="_blank" rel="noopener noreferrer">便宜机场推荐</a><a href="https://wdjichang.cc/" target="_blank" rel="noopener noreferrer">稳定机场推荐</a><a href="https://fengyy.org/" target="_blank" rel="noopener noreferrer">风悠悠</a><a href="https://zjtf.org/" target="_blank" rel="noopener noreferrer">酌酒听风</a></nav>
 <span>© @遥遥领先 2026</span>
+<a href="https://www.yaoyaolingxian.blog/posts/about-site/">关于本站与作者</a>
 </footer>
-
 
 
 <dialog id="search-dialog" class="reader-dialog site-search" aria-labelledby="search-title" data-reader-dialog data-pagefind-ignore>
@@ -233,10 +238,4 @@
 </dialog>
 
 <script id="blog-comments-config" type="application/json">{"comments":true,"likes":true,"locale":"zh-CN","pageKey":"/p/aa8d63ae-34dc-4f09-b262-046cf8b25d96/","pageTitle":"curl 下载页面变乱码？核对压缩请求与自动解压","server":"https://upfqpobmiewm.sealosgzg.site","site":"xblog-f49c63bc-e1a5-4cf0-b2f5-6e9bc109b533","views":true,"viewsBase":0}</script>
-
-</body>
-</html>
-
-
-
-
+</body></html>
