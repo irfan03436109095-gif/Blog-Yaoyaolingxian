@@ -1,0 +1,186 @@
+<!doctype html><html lang="zh-CN" data-theme="yaoyao-network">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TUN 显示已连接，Windows 路由真的切了吗？做一次前后对照 · 遥遥领先性价比机场</title>
+<meta name="description" content="Windows 客户端 TUN 已连接却仍直连？读取 IPv4 与 IPv6 默认路由、接口和度量值，做前后快照并验证实际应用。">
+<meta name="keywords" content="机场推荐,TUN模式,Windows默认路由,IPv6,客户端排障">
+<meta name="robots" content="index,follow,max-image-preview:large"><link rel="canonical" href="https://www.yaoyaolingxian.blog/posts/windows-tun-default-route-check/">
+<meta property="og:title" content="TUN 显示已连接，Windows 路由真的切了吗？做一次前后对照">
+<meta property="og:description" content="Windows 客户端 TUN 已连接却仍直连？读取 IPv4 与 IPv6 默认路由、接口和度量值，做前后快照并验证实际应用。">
+<meta property="og:url" content="https://www.yaoyaolingxian.blog/posts/windows-tun-default-route-check/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="遥遥领先性价比机场">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.yaoyaolingxian.blog/assets/media/95a1ebe1-6ec5-4f83-bc56-66cdaf21ad95.webp"><meta property="og:image:alt" content="TUN 显示已连接，Windows 路由真的切了吗？做一次前后对照">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="TUN 显示已连接，Windows 路由真的切了吗？做一次前后对照">
+<meta name="twitter:description" content="Windows 客户端 TUN 已连接却仍直连？读取 IPv4 与 IPv6 默认路由、接口和度量值，做前后快照并验证实际应用。">
+<meta name="twitter:image" content="https://www.yaoyaolingxian.blog/assets/media/95a1ebe1-6ec5-4f83-bc56-66cdaf21ad95.webp">
+<meta name="author" content="加油"><meta property="article:published_time" content="2026-10-14T09:26:24&#43;08:00"><meta property="article:modified_time" content="2026-10-14T09:26:35&#43;08:00"><meta property="article:tag" content="网络性能"><meta property="article:tag" content="TUN">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="application/ld+json">{
+"@context":"https://schema.org","@graph":[{
+"@type":"BlogPosting","@id":"https://www.yaoyaolingxian.blog/posts/windows-tun-default-route-check/#article","url":"https://www.yaoyaolingxian.blog/posts/windows-tun-default-route-check/","mainEntityOfPage":"https://www.yaoyaolingxian.blog/posts/windows-tun-default-route-check/",
+"headline":"TUN 显示已连接，Windows 路由真的切了吗？做一次前后对照","description":"Windows 客户端 TUN 已连接却仍直连？读取 IPv4 与 IPv6 默认路由、接口和度量值，做前后快照并验证实际应用。","inLanguage":"zh-CN",
+"datePublished":"2026-10-14T09:26:24+08:00","dateModified":"2026-10-14T09:26:35+08:00",
+"author":{"@type":"Person","name":"加油","url":"https://www.yaoyaolingxian.blog/posts/about-site/#author-jiayou"},
+"publisher":{"@type":"Organization","name":"遥遥领先性价比机场","url":"https://www.yaoyaolingxian.blog/","logo":{"@type":"ImageObject","url":"https://www.yaoyaolingxian.blog/assets/media/d5b2829f-bc45-489e-896a-d04b27ec97c1.webp"}}
+,"image":["https://www.yaoyaolingxian.blog/assets/media/95a1ebe1-6ec5-4f83-bc56-66cdaf21ad95.webp"]
+},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"遥遥领先性价比机场","item":"https://www.yaoyaolingxian.blog/"},{"@type":"ListItem","position":2,"name":"TUN 显示已连接，Windows 路由真的切了吗？做一次前后对照","item":"https://www.yaoyaolingxian.blog/posts/windows-tun-default-route-check/"}]}]}</script>
+
+
+<script>(()=>{let mode='system';try{const saved=localStorage.getItem('reader-theme');if(['system','light','dark'].includes(saved))mode=saved}catch{}const root=document.documentElement;root.dataset.colorMode=mode;root.classList.toggle('dark',mode==='dark'||(mode==='system'&&matchMedia('(prefers-color-scheme: dark)').matches))})();</script>
+<link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/style.css">
+<link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/advertisements.css">
+<link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/search.css"><script defer src="https://www.yaoyaolingxian.blog/assets/theme/search.js"></script>
+<link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/skin-1.1.1.css">
+<link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/viewer.css">
+<link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/reader.css">
+<link rel="icon" href="https://www.yaoyaolingxian.blog/assets/media/d5b2829f-bc45-489e-896a-d04b27ec97c1.webp">
+<link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/artalk.css"><script defer src="https://www.yaoyaolingxian.blog/assets/theme/artalk.js"></script>
+<script defer src="https://www.yaoyaolingxian.blog/assets/theme/theme.js"></script>
+<script defer src="https://www.yaoyaolingxian.blog/assets/theme/reader.js"></script>
+<script defer src="https://www.yaoyaolingxian.blog/assets/theme/viewer.js"></script>
+<script defer src="https://www.yaoyaolingxian.blog/assets/theme/image-viewer.js"></script>
+
+<script defer src="https://www.yaoyaolingxian.blog/assets/theme/interactions.js"></script>
+<script defer src="https://www.yaoyaolingxian.blog/assets/theme/featured-1.1.1.js"></script>
+<style id="xblog-article-images-half">main article .prose img{width:50%;max-width:50%;height:auto;display:block;margin-left:auto;margin-right:auto;}</style>
+
+<script defer src="https://www.yaoyaolingxian.blog/assets/xblog/google-analytics.js" data-xblog-google-analytics="G-RMWB4R3DHD" data-site-hosts="www.yaoyaolingxian.blog"></script></head>
+
+<body class="yaoyao-site article-page"><a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+<div class="header-inner">
+<a class="brand" href="https://www.yaoyaolingxian.blog/"><img src="https://www.yaoyaolingxian.blog/assets/media/d5b2829f-bc45-489e-896a-d04b27ec97c1.webp" alt="" width="38" height="38"><span>遥遥领先性价比机场</span></a>
+<nav id="site-navigation" aria-label="站点导航"><a href="https://www.yaoyaolingxian.blog/">首页</a><a href="https://www.yaoyaolingxian.blog/posts/airport-recommendation-guide/">机场推荐</a><a href="https://www.yaoyaolingxian.blog/categories/buying-guides/">选购指南</a><a href="https://www.yaoyaolingxian.blog/categories/client-guides/">客户端教程</a><a href="https://www.yaoyaolingxian.blog/categories/protocols-network/">协议与网络</a><a href="https://www.yaoyaolingxian.blog/categories/troubleshooting/">常见问题</a><a href="https://www.yaoyaolingxian.blog/categories/privacy-security/">隐私安全</a></nav>
+<a class="search-toggle" href="https://www.yaoyaolingxian.blog/search/" data-open-dialog="search-dialog" aria-haspopup="dialog" aria-controls="search-dialog" aria-label="搜索" title="搜索"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5"/></svg></a>
+<button id="theme-mode" class="theme-toggle theme-cycle" type="button" aria-label="明暗模式：跟随系统，点击切换为明亮" title="跟随系统 · 点击切换为明亮">
+<svg class="theme-icon-system" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>
+<svg class="theme-icon-moon" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.2 15.5A8.5 8.5 0 0 1 8.5 3.8 8.5 8.5 0 1 0 20.2 15.5Z"/></svg>
+<svg class="theme-icon-sun" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+</button>
+<span id="theme-mode-status" class="visually-hidden" role="status" aria-live="polite"></span>
+<button id="menu-toggle" class="menu-toggle" type="button" aria-controls="site-navigation" aria-expanded="false" aria-label="打开菜单" title="打开菜单">
+<svg class="menu-icon-open" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+<svg class="menu-icon-close" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="m6 6 12 12M6 18 18 6"/></svg>
+</button>
+</div>
+</header>
+<div class="page-viewport article-viewport"><div class="page-scroll article-scroll">
+<main id="main" tabindex="-1" class="network-workspace network-reading" data-has-toc="true">
+
+<nav class="breadcrumbs" aria-label="面包屑导航"><ol><li><a href="https://www.yaoyaolingxian.blog/">遥遥领先性价比机场</a></li><li><span aria-current="page">TUN 显示已连接，Windows 路由真的切了吗？做一次前后对照</span></li></ol></nav>
+
+<div class="network-columns reading-columns"><div class="reading-content">
+<article data-pagefind-body>
+<header class="article-header">
+<div class="eyebrow" data-pagefind-ignore>网络手记</div>
+<h1 data-pagefind-meta="title">TUN 显示已连接，Windows 路由真的切了吗？做一次前后对照</h1>
+<div class="metadata" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/posts/about-site/#author-jiayou" rel="author">加油</a><time datetime="2026-10-14T09:26:24&#43;08:00">2026-10-14</time><span><span id="page-views">—</span> 次阅读</span></div>
+<div class="chips" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/categories/protocols-network/">协议与网络</a></div>
+</header>
+<div class="prose">
+<p>在 Windows 客户端开启 TUN 后，有人看到“已连接”，但部分应用仍像在直连。与其先改一堆规则，不如对照开启前后的<strong>默认路由</strong>：系统把 IPv4 和 IPv6 的流量分别指向哪个接口？路由表是线索，实际应用是否走代理仍需用目标任务验证。</p>
+<h2 id="heading">做一份只读的前后快照</h2>
+<p>在 PowerShell 中，先保持客户端原状态并运行：</p>
+<pre><code class="language-powershell">Get-NetRoute -DestinationPrefix '0.0.0.0/0' | Select-Object DestinationPrefix,InterfaceAlias,NextHop,RouteMetric,InterfaceMetric
+Get-NetRoute -DestinationPrefix '::/0' | Select-Object DestinationPrefix,InterfaceAlias,NextHop,RouteMetric,InterfaceMetric
+</code></pre>
+<p>记下输出的时间与客户端模式，再按客户端自己的界面开启 TUN，重复执行两条<strong>读取命令</strong>。微软的 <a href="https://learn.microsoft.com/powershell/module/nettcpip/get-netroute">Get-NetRoute 文档</a> 说明，<code>0.0.0.0/0</code> 和 <code>::/0</code> 分别表示 IPv4、IPv6 默认网关的前缀；命令只读取路由信息，不会改写网络配置。</p>
+<p><img src="https://www.yaoyaolingxian.blog/assets/media/95a1ebe1-6ec5-4f83-bc56-66cdaf21ad95.webp" alt="Windows 开启 TUN 前后分别核对 IPv4 与 IPv6 默认路由的示意图"></p>
+<p><em>示意图：左右表示前后两次快照，上下表示两种地址族；图中的卡片不是实际路由输出。</em></p>
+<h2 id="heading-1">读表时看四件事</h2>
+<ol>
+<li><strong>接口名</strong>：新出现的虚拟接口可能与客户端有关，但名称由具体软件决定，不要只凭名字下结论。</li>
+<li><strong>下一跳与前缀</strong>：同一地址族可能有多条默认路由。先把完整行留存，别只抄其中一行的网关。</li>
+<li><strong>路由与接口度量值</strong>：微软的 <a href="https://learn.microsoft.com/powershell/module/nettcpip/get-netipinterface">Get-NetIPInterface 文档</a> 说明，系统选择路由时会考虑路由度量值和接口度量值之和；比较时还要看目标匹配的前缀，不能简单认为“数值小的网卡必然接管所有应用”。</li>
+<li><strong>IPv6 是否另有路径</strong>：只查 IPv4 就宣布“全局代理生效”，可能漏掉另一地址族。若客户端只代理某些协议或应用，最终结果还受它自己的模式与规则影响。</li>
+</ol>
+<h2 id="heading-2">用真实任务完成验收</h2>
+<p>选择一个你有权访问、能重复的网页或应用任务，在 TUN 关闭和开启两种状态各做一次。记录是否成功、错误原文及客户端的模式说明。若路由表变化但应用表现不变，进一步检查应用内代理、分流规则和目标是否有更具体路由；若两种状态都失败，先排查原本的网络。不要为了“修好”而直接删除默认路由、改接口度量值或关闭防火墙，这会干扰其他连接。</p>
+<p>机场推荐和客户端教程里常说“打开 TUN 即可全局生效”，这句话并不能替代你的前后快照与实际任务。验收结论应写成：<strong>某设备、某模式、某地址族、某任务在当时是否按预期工作</strong>。分享路由截图前遮掉本地 IP、网关和设备标识。</p>
+<h2 id="heading-3">可核验来源</h2>
+<ul>
+<li><a href="https://learn.microsoft.com/powershell/module/nettcpip/get-netroute">Microsoft Learn：Get-NetRoute</a>，默认路由前缀与只读查询。核验日期：2026-10-14。</li>
+<li><a href="https://learn.microsoft.com/powershell/module/nettcpip/get-netipinterface">Microsoft Learn：Get-NetIPInterface</a>，接口度量值的含义。核验日期：2026-10-14。</li>
+</ul>
+</div>
+<div class="article-likes" data-pagefind-ignore>
+<button id="page-like" class="like-button" type="button" aria-pressed="false" aria-describedby="page-like-message" disabled>
+<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/></svg>
+<span id="page-like-label">点赞</span><span id="page-like-count">—</span>
+</button><p id="page-like-message" role="status"></p>
+</div>
+<div class="article-tags" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/tags/network-performance/"># 网络性能</a><a href="https://www.yaoyaolingxian.blog/tags/tun/"># TUN</a></div>
+<nav class="pagination" aria-label="相邻文章" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/posts/airport-recommendation-guide/">← 上一篇</a><a href="https://www.yaoyaolingxian.blog/posts/windows-adapter-counter-interval-check/">下一篇 →</a></nav>
+<section class="comments-section" data-pagefind-ignore><h2>评论</h2><div id="comments"></div></section>
+</article>
+</div><div class="article-rail network-rail">
+<aside class="toc"><div>本篇目录</div><nav aria-label="文章目录"><a class="level-2" href="#heading">做一份只读的前后快照</a><a class="level-2" href="#heading-1">读表时看四件事</a><a class="level-2" href="#heading-2">用真实任务完成验收</a><a class="level-2" href="#heading-3">可核验来源</a></nav></aside>
+<aside class="ad-slot" aria-label="文章相关内容" data-ad-position="article_sidebar" data-pagefind-ignore><a class="ad-card" href="https://goflybit.com/#/register?code=gPinVG8C" target="_blank" rel="sponsored noopener noreferrer" aria-label="FlyBit · 内容页侧边邀请入口（在新标签页打开）" data-ad-link>
+
+<div class="ad-copy"><h3>FlyBit</h3>
+<p>先看当前试用与套餐，再决定是否适合自己。</p>
+<p>邀请码：<strong>gPinVG8C</strong></p>
+<p><strong>查看注册入口 →</strong></p>
+<p>推广链接 · 资格与费用以服务方页面为准</p>
+</div>
+</a><a class="ad-card" href="https://99ba.net/#/register?code=sExBbdk9" target="_blank" rel="sponsored noopener noreferrer" aria-label="99吧 · 内容页侧边邀请入口（在新标签页打开）" data-ad-link>
+
+<div class="ad-copy"><h3>99吧</h3>
+<p>先看当前试用与套餐，再决定是否适合自己。</p>
+<p>邀请码：<strong>sExBbdk9</strong></p>
+<p><strong>查看注册入口 →</strong></p>
+<p>推广链接 · 资格与费用以服务方页面为准</p>
+</div>
+</a></aside></div></div>
+
+</main></div>
+<button id="back-to-top" class="back-to-top" type="button" aria-label="返回顶部" title="返回顶部" hidden>
+<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h14M12 20V8m-5 5 5-5 5 5"/></svg>
+</button>
+</div>
+<footer class="site-footer">
+<nav class="friend-links" aria-label="友情链接"><span class="friend-links-label">友情链接</span><a href="https://kkjichang.cc/" target="_blank" rel="noopener noreferrer">可靠机场推荐</a><a href="https://pyjichang.cc/" target="_blank" rel="noopener noreferrer">便宜机场推荐</a><a href="https://wdjichang.cc/" target="_blank" rel="noopener noreferrer">稳定机场推荐</a><a href="https://fengyy.org/" target="_blank" rel="noopener noreferrer">风悠悠</a><a href="https://zjtf.org/" target="_blank" rel="noopener noreferrer">酌酒听风</a></nav>
+<span>© @遥遥领先 2026</span>
+<a href="https://www.yaoyaolingxian.blog/posts/about-site/">关于本站与作者</a>
+</footer>
+
+
+<dialog id="search-dialog" class="reader-dialog site-search" aria-labelledby="search-title" data-reader-dialog data-pagefind-ignore>
+<header class="reader-dialog-header"><h2 id="search-title">搜索文章</h2><button class="dialog-close" type="button" data-close-dialog aria-label="关闭搜索" title="关闭搜索">×</button></header>
+<div class="reader-dialog-body">
+
+<div id="site-search-ui" data-module="https://www.yaoyaolingxian.blog/pagefind/pagefind-component-ui.js" data-stylesheet="https://www.yaoyaolingxian.blog/pagefind/pagefind-component-ui.css" hidden>
+
+<pagefind-config bundle-path="https://www.yaoyaolingxian.blog/pagefind/" base-url="https://www.yaoyaolingxian.blog/" lang="zh-cn" no-worker></pagefind-config>
+<pagefind-input placeholder="搜索文章标题或正文"></pagefind-input>
+<pagefind-summary></pagefind-summary>
+<pagefind-results></pagefind-results>
+</div>
+<p id="search-status" class="search-status" role="status">正在加载搜索…</p>
+<button id="search-retry" class="button" type="button" hidden>重新加载</button>
+
+</div>
+</dialog>
+
+<script id="blog-comments-config" type="application/json">{"comments":true,"likes":true,"locale":"zh-CN","pageKey":"/p/0091762a-5f0e-4e2f-9262-eb978c01132f/","pageTitle":"TUN 显示已连接，Windows 路由真的切了吗？做一次前后对照","server":"https://upfqpobmiewm.sealosgzg.site","site":"xblog-f49c63bc-e1a5-4cf0-b2f5-6e9bc109b533","views":true,"viewsBase":0}</script>
+</body></html>

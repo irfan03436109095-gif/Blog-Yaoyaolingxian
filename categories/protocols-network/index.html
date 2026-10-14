@@ -18,7 +18,7 @@
 <meta name="twitter:description" content="解释代理协议、线路、DNS 与分流，帮助理解连接过程。">
 <meta name="twitter:image" content="https://www.yaoyaolingxian.blog/assets/media/d5b2829f-bc45-489e-896a-d04b27ec97c1.webp">
 
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@id":"https://www.yaoyaolingxian.blog/categories/protocols-network/#collection","@type":"CollectionPage","description":"解释代理协议、线路、DNS 与分流，帮助理解连接过程。","inLanguage":"zh-CN","mainEntity":{"@type":"ItemList","itemListElement":[{"@type":"ListItem","name":"curl 的 remote_ip 是机场出口吗？分清连接地址与服务端观察","position":1,"url":"https://www.yaoyaolingxian.blog/posts/curl-remote-ip-proxy-peer/"},{"@type":"ListItem","name":"curl 显示 0 号退出码却是 404？分清传输成功与 HTTP 失败","position":2,"url":"https://www.yaoyaolingxian.blog/posts/curl-http-status-exit-code/"},{"@type":"ListItem","name":"同一节点第二次握手更快？TLS 会话恢复会影响测速","position":3,"url":"https://www.yaoyaolingxian.blog/posts/tls-session-resumption-timing/"},{"@type":"ListItem","name":"节点慢在 DNS、连接还是首字节？用 curl 拆分耗时","position":4,"url":"https://www.yaoyaolingxian.blog/posts/curl-stage-timing-check/"},{"@type":"ListItem","name":"网页聊天能打开却一直连接中？看懂 WebSocket 101 握手","position":5,"url":"https://www.yaoyaolingxian.blog/posts/websocket-101-proxy-check/"},{"@type":"ListItem","name":"规则、全局、直连模式怎么选？代理分流的判断与排错","position":6,"url":"https://www.yaoyaolingxian.blog/posts/rule-global-direct/"},{"@type":"ListItem","name":"代理 DNS 怎么工作：节点解析、网站解析与 Fake-IP 入门","position":7,"url":"https://www.yaoyaolingxian.blog/posts/proxy-dns-explained/"},{"@type":"ListItem","name":"Hysteria 2 与 QUIC 是什么？UDP 网络下的适用条件与排查","position":8,"url":"https://www.yaoyaolingxian.blog/posts/quic-hysteria2/"},{"@type":"ListItem","name":"Shadowsocks、Trojan、VLESS 怎么选？协议与客户端兼容指南","position":9,"url":"https://www.yaoyaolingxian.blog/posts/proxy-protocol-comparison/"},{"@type":"ListItem","name":"直连、中转和专线机场有什么区别？先看路径再看名称","position":10,"url":"https://www.yaoyaolingxian.blog/posts/direct-relay-dedicated-lines/"}]},"name":"协议与网络","url":"https://www.yaoyaolingxian.blog/categories/protocols-network/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://www.yaoyaolingxian.blog/","name":"遥遥领先性价比机场","position":1},{"@type":"ListItem","item":"https://www.yaoyaolingxian.blog/categories/protocols-network/","name":"协议与网络","position":2}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@id":"https://www.yaoyaolingxian.blog/categories/protocols-network/#collection","@type":"CollectionPage","description":"解释代理协议、线路、DNS 与分流，帮助理解连接过程。","inLanguage":"zh-CN","mainEntity":{"@type":"ItemList","itemListElement":[{"@type":"ListItem","name":"TUN 显示已连接，Windows 路由真的切了吗？做一次前后对照","position":1,"url":"https://www.yaoyaolingxian.blog/posts/windows-tun-default-route-check/"},{"@type":"ListItem","name":"curl 的 remote_ip 是机场出口吗？分清连接地址与服务端观察","position":2,"url":"https://www.yaoyaolingxian.blog/posts/curl-remote-ip-proxy-peer/"},{"@type":"ListItem","name":"curl 显示 0 号退出码却是 404？分清传输成功与 HTTP 失败","position":3,"url":"https://www.yaoyaolingxian.blog/posts/curl-http-status-exit-code/"},{"@type":"ListItem","name":"同一节点第二次握手更快？TLS 会话恢复会影响测速","position":4,"url":"https://www.yaoyaolingxian.blog/posts/tls-session-resumption-timing/"},{"@type":"ListItem","name":"节点慢在 DNS、连接还是首字节？用 curl 拆分耗时","position":5,"url":"https://www.yaoyaolingxian.blog/posts/curl-stage-timing-check/"},{"@type":"ListItem","name":"网页聊天能打开却一直连接中？看懂 WebSocket 101 握手","position":6,"url":"https://www.yaoyaolingxian.blog/posts/websocket-101-proxy-check/"},{"@type":"ListItem","name":"规则、全局、直连模式怎么选？代理分流的判断与排错","position":7,"url":"https://www.yaoyaolingxian.blog/posts/rule-global-direct/"},{"@type":"ListItem","name":"代理 DNS 怎么工作：节点解析、网站解析与 Fake-IP 入门","position":8,"url":"https://www.yaoyaolingxian.blog/posts/proxy-dns-explained/"},{"@type":"ListItem","name":"Hysteria 2 与 QUIC 是什么？UDP 网络下的适用条件与排查","position":9,"url":"https://www.yaoyaolingxian.blog/posts/quic-hysteria2/"},{"@type":"ListItem","name":"Shadowsocks、Trojan、VLESS 怎么选？协议与客户端兼容指南","position":10,"url":"https://www.yaoyaolingxian.blog/posts/proxy-protocol-comparison/"}]},"name":"协议与网络","url":"https://www.yaoyaolingxian.blog/categories/protocols-network/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://www.yaoyaolingxian.blog/","name":"遥遥领先性价比机场","position":1},{"@type":"ListItem","item":"https://www.yaoyaolingxian.blog/categories/protocols-network/","name":"协议与网络","position":2}]}]}</script>
 
 <script>(()=>{let mode='system';try{const saved=localStorage.getItem('reader-theme');if(['system','light','dark'].includes(saved))mode=saved}catch{}const root=document.documentElement;root.dataset.colorMode=mode;root.classList.toggle('dark',mode==='dark'||(mode==='system'&&matchMedia('(prefers-color-scheme: dark)').matches))})();</script>
 <link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/style.css">
@@ -79,6 +79,22 @@
 
 
 
+<img src="https://www.yaoyaolingxian.blog/assets/media/95a1ebe1-6ec5-4f83-bc56-66cdaf21ad95.webp" width="1200" height="800" alt="TUN 显示已连接，Windows 路由真的切了吗？做一次前后对照" loading="lazy" decoding="async"></figure>
+<div class="card-content"><div class="card-topic"><a href="https://www.yaoyaolingxian.blog/categories/protocols-network/">协议与网络</a></div><h2><a href="https://www.yaoyaolingxian.blog/posts/windows-tun-default-route-check/">TUN 显示已连接，Windows 路由真的切了吗？做一次前后对照</a></h2><p class="card-summary">用只读 PowerShell 命令比较 TUN 开启前后的 IPv4、IPv6 默认路由，再用实际应用任务验收。</p><div class="card-footer"><span><a rel="author" href="https://www.yaoyaolingxian.blog/posts/about-site/#author-jiayou">加油</a><time datetime="2026-10-14T09:26:24&#43;08:00">2026-10-14</time></span><a class="read-more" href="https://www.yaoyaolingxian.blog/posts/windows-tun-default-route-check/" aria-label="阅读TUN 显示已连接，Windows 路由真的切了吗？做一次前后对照">阅读全文 <span aria-hidden="true">↗</span></a></div></div></article>
+
+
+<article class="article-card network-card has-cover"><figure class="article-cover">
+
+
+
+
+
+
+
+
+
+
+
 <img src="https://www.yaoyaolingxian.blog/assets/theme/images/thumb-cc9b481e-6bb8-43eb-8782-1145bc8fa03a.webp" srcset="https://www.yaoyaolingxian.blog/assets/theme/images/thumb-cc9b481e-6bb8-43eb-8782-1145bc8fa03a.webp 640w, https://www.yaoyaolingxian.blog/assets/media/8a2ff24c-1708-470e-8104-ab9af8a3dc92.webp 1200w" sizes="(max-width: 760px) calc(100vw - 72px), 184px" width="1200" height="800" alt="curl 的 remote_ip 是机场出口吗？分清连接地址与服务端观察" loading="lazy" decoding="async"></figure>
 <div class="card-content"><div class="card-topic"><a href="https://www.yaoyaolingxian.blog/categories/protocols-network/">协议与网络</a></div><h2><a href="https://www.yaoyaolingxian.blog/posts/curl-remote-ip-proxy-peer/">curl 的 remote_ip 是机场出口吗？分清连接地址与服务端观察</a></h2><p class="card-summary">remote_ip 记录 curl 最近连接的对端，使用本地代理时不应把它当成目标网站看到的出口地址。</p><div class="card-footer"><span><a rel="author" href="https://www.yaoyaolingxian.blog/posts/about-site/#author-jiayou">加油</a><time datetime="2026-10-06T09:25:10&#43;08:00">2026-10-06</time></span><a class="read-more" href="https://www.yaoyaolingxian.blog/posts/curl-remote-ip-proxy-peer/" aria-label="阅读curl 的 remote_ip 是机场出口吗？分清连接地址与服务端观察">阅读全文 <span aria-hidden="true">↗</span></a></div></div></article>
 
@@ -113,12 +129,8 @@
 
 <article class="article-card network-card">
 <div class="card-content"><div class="card-topic"><a href="https://www.yaoyaolingxian.blog/categories/protocols-network/">协议与网络</a></div><h2><a href="https://www.yaoyaolingxian.blog/posts/proxy-protocol-comparison/">Shadowsocks、Trojan、VLESS 怎么选？协议与客户端兼容指南</a></h2><p class="card-summary">比较 Shadowsocks、Trojan 与 VLESS 时，应同时检查客户端内核、传输配置和安全参数。本文解释协议名称能说明什么以及不能说明什么。</p><div class="card-footer"><span><a rel="author" href="https://www.yaoyaolingxian.blog/posts/about-site/#author-pilot">王牌飞行员</a><time datetime="2026-09-20T00:35:49&#43;08:00">2026-09-20</time></span><a class="read-more" href="https://www.yaoyaolingxian.blog/posts/proxy-protocol-comparison/" aria-label="阅读Shadowsocks、Trojan、VLESS 怎么选？协议与客户端兼容指南">阅读全文 <span aria-hidden="true">↗</span></a></div></div></article>
-
-
-<article class="article-card network-card">
-<div class="card-content"><div class="card-topic"><a href="https://www.yaoyaolingxian.blog/categories/protocols-network/">协议与网络</a></div><h2><a href="https://www.yaoyaolingxian.blog/posts/direct-relay-dedicated-lines/">直连、中转和专线机场有什么区别？先看路径再看名称</a></h2><p class="card-summary">理解直连、中转和专线宣传词分别描述什么，区分入口、出口、容量与服务承诺，并用实际测试判断线路是否适合自己。</p><div class="card-footer"><span><a rel="author" href="https://www.yaoyaolingxian.blog/posts/about-site/#author-pilot">王牌飞行员</a><time datetime="2026-09-20T00:35:43&#43;08:00">2026-09-20</time></span><a class="read-more" href="https://www.yaoyaolingxian.blog/posts/direct-relay-dedicated-lines/" aria-label="阅读直连、中转和专线机场有什么区别？先看路径再看名称">阅读全文 <span aria-hidden="true">↗</span></a></div></div></article>
 </section>
-
+<nav class="pagination" aria-label="分页"><span></span><span>1 / 2</span><a href="https://www.yaoyaolingxian.blog/categories/protocols-network/page/2/">下一页 →</a></nav>
 </div>
 </div>
 </main></div></div>
