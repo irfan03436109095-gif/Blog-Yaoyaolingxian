@@ -392,3 +392,39 @@ html[data-theme="yaoyao-network"] body::-webkit-scrollbar,
   .yaoyao-site .latest-rail { position:static; max-height:none; overflow:visible; padding-top:0; }
   .yaoyao-site .article-navigation nav { max-height:250px; }
 }
+
+/* 1.1.5 待确认：推荐与导航等宽，图片缩小，移除外框、重复广告及区块标题。 */
+.yaoyao-site .home-rail,
+.yaoyao-site .home-rail .ad-card,
+.yaoyao-site .home-rail .article-navigation { border:0; border-radius:0; background:transparent; box-shadow:none; }
+.yaoyao-site .home-rail .ad-card,
+.yaoyao-site .home-rail .article-navigation { width:180px; max-width:100%; margin-inline:auto; }
+.yaoyao-site .home-rail .ad-copy { padding:14px; }
+.yaoyao-site .home-rail .ad-copy img,
+.yaoyao-site .home-rail .ad-image { width:88px; height:88px; aspect-ratio:1; object-fit:cover; margin-inline:auto; border-radius:8px; }
+.yaoyao-site .home-rail { position:static; max-height:none; overflow:visible; }
+.yaoyao-site .home-rail .article-navigation nav { max-height:none; overflow:visible; }
+.yaoyao-site .latest-articles { margin-top:30px; scroll-margin-top:24px; }
+.yaoyao-site .article-rail { padding-right:0; }
+.yaoyao-site .article-rail .ad-slot { gap:12px; }
+.yaoyao-site .article-rail .ad-card { width:180px; max-width:100%; margin-inline:auto; }
+.yaoyao-site .article-rail .ad-image,
+.yaoyao-site .article-rail .ad-copy img { width:80px; height:80px; aspect-ratio:1; object-fit:contain; margin-inline:auto; }
+.yaoyao-site .article-rail .ad-card > .ad-image { margin-top:10px; }
+.yaoyao-site .article-rail .ad-copy { padding:10px 12px; font-size:12px; line-height:1.7; }
+.yaoyao-site .article-rail .ad-copy :is(h2,h3,h4) { font-size:14px; line-height:1.6; }
+.yaoyao-site .article-rail .ad-copy p { margin-bottom:8px; }
+.yaoyao-site .article-rail .ad-copy p:last-child { margin-bottom:0; }
+@media (min-width:981px) {
+  .yaoyao-site .reading-columns { grid-template-columns:180px minmax(0, 1fr); }
+  .yaoyao-site .home-wide-content {
+    --home-content-left:max(212px, calc((100vw - 1200px) / 2));
+    width:min(1200px, calc(100% - 232px)); max-width:none;
+    margin-left:var(--home-content-left); margin-right:20px;
+  }
+  .yaoyao-site .home-wide-content .home-introduction {
+    margin-left:calc(16px - var(--home-content-left));
+    grid-template-columns:calc(var(--home-content-left) - 32px) minmax(0, 1fr); gap:16px;
+  }
+  .yaoyao-site .home-wide-content .home-rail { width:180px; padding:0; }
+}
