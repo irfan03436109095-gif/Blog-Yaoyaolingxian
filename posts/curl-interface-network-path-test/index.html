@@ -2,22 +2,22 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>电脑同时连 Wi-Fi 和网线，curl 怎么固定出口做对照？ · 遥遥领先性价比机场</title>
-<meta name="description" content="电脑同时连接Wi-Fi和网线怎样公平测速？用curl --interface固定出口，记录远端地址与分阶段耗时。">
+<title>电脑同时连Wi-Fi和网线，curl怎样限定本地地址做对照？ · 遥遥领先性价比机场</title>
+<meta name="description" content="按操作系统能力指定curl本地地址或接口，区分curl本段连接和代理程序后续出站，交替比较Wi-Fi与网线的有限任务。">
 <meta name="keywords" content="curl interface,Wi-Fi网线对比,机场测速,网络出口,连接测试">
 <meta name="robots" content="index,follow,max-image-preview:large"><link rel="canonical" href="https://www.yaoyaolingxian.blog/posts/curl-interface-network-path-test/">
-<meta property="og:title" content="电脑同时连 Wi-Fi 和网线，curl 怎么固定出口做对照？">
-<meta property="og:description" content="电脑同时连接Wi-Fi和网线怎样公平测速？用curl --interface固定出口，记录远端地址与分阶段耗时。">
+<meta property="og:title" content="电脑同时连Wi-Fi和网线，curl怎样限定本地地址做对照？">
+<meta property="og:description" content="按操作系统能力指定curl本地地址或接口，区分curl本段连接和代理程序后续出站，交替比较Wi-Fi与网线的有限任务。">
 <meta property="og:url" content="https://www.yaoyaolingxian.blog/posts/curl-interface-network-path-test/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="遥遥领先性价比机场">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://www.yaoyaolingxian.blog/assets/media/d5b2829f-bc45-489e-896a-d04b27ec97c1.webp"><meta property="og:image:alt" content="遥遥领先性价比机场">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="电脑同时连 Wi-Fi 和网线，curl 怎么固定出口做对照？">
-<meta name="twitter:description" content="电脑同时连接Wi-Fi和网线怎样公平测速？用curl --interface固定出口，记录远端地址与分阶段耗时。">
+<meta name="twitter:title" content="电脑同时连Wi-Fi和网线，curl怎样限定本地地址做对照？">
+<meta name="twitter:description" content="按操作系统能力指定curl本地地址或接口，区分curl本段连接和代理程序后续出站，交替比较Wi-Fi与网线的有限任务。">
 <meta name="twitter:image" content="https://www.yaoyaolingxian.blog/assets/media/d5b2829f-bc45-489e-896a-d04b27ec97c1.webp">
-<meta name="author" content="王牌飞行员"><meta property="article:published_time" content="2026-10-01T10:59:03&#43;08:00"><meta property="article:modified_time" content="2026-10-01T10:59:51&#43;08:00"><meta property="article:tag" content="线路测试"><meta property="article:tag" content="故障排查案例">
+<meta name="author" content="王牌飞行员"><meta property="article:published_time" content="2026-10-01T10:59:03&#43;08:00"><meta property="article:modified_time" content="2026-11-04T17:32:57&#43;08:00"><meta property="article:tag" content="线路测试"><meta property="article:tag" content="故障排查案例">
 
 
 
@@ -38,12 +38,12 @@
 <script type="application/ld+json">{
 "@context":"https://schema.org","@graph":[{
 "@type":"BlogPosting","@id":"https://www.yaoyaolingxian.blog/posts/curl-interface-network-path-test/#article","url":"https://www.yaoyaolingxian.blog/posts/curl-interface-network-path-test/","mainEntityOfPage":"https://www.yaoyaolingxian.blog/posts/curl-interface-network-path-test/",
-"headline":"电脑同时连 Wi-Fi 和网线，curl 怎么固定出口做对照？","description":"电脑同时连接Wi-Fi和网线怎样公平测速？用curl --interface固定出口，记录远端地址与分阶段耗时。","inLanguage":"zh-CN",
-"datePublished":"2026-10-01T10:59:03+08:00","dateModified":"2026-10-01T10:59:51+08:00",
+"headline":"电脑同时连Wi-Fi和网线，curl怎样限定本地地址做对照？","description":"按操作系统能力指定curl本地地址或接口，区分curl本段连接和代理程序后续出站，交替比较Wi-Fi与网线的有限任务。","inLanguage":"zh-CN",
+"datePublished":"2026-10-01T10:59:03+08:00","dateModified":"2026-11-04T17:32:57+08:00",
 "author":{"@type":"Person","name":"王牌飞行员","url":"https://www.yaoyaolingxian.blog/posts/about-site/#author-pilot"},
 "publisher":{"@type":"Organization","name":"遥遥领先性价比机场","url":"https://www.yaoyaolingxian.blog/","logo":{"@type":"ImageObject","url":"https://www.yaoyaolingxian.blog/assets/media/d5b2829f-bc45-489e-896a-d04b27ec97c1.webp"}}
 
-},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"遥遥领先性价比机场","item":"https://www.yaoyaolingxian.blog/"},{"@type":"ListItem","position":2,"name":"电脑同时连 Wi-Fi 和网线，curl 怎么固定出口做对照？","item":"https://www.yaoyaolingxian.blog/posts/curl-interface-network-path-test/"}]}]}</script>
+},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"遥遥领先性价比机场","item":"https://www.yaoyaolingxian.blog/"},{"@type":"ListItem","position":2,"name":"电脑同时连Wi-Fi和网线，curl怎样限定本地地址做对照？","item":"https://www.yaoyaolingxian.blog/posts/curl-interface-network-path-test/"}]}]}</script>
 
 
 <script>(()=>{let mode='system';try{const saved=localStorage.getItem('reader-theme');if(['system','light','dark'].includes(saved))mode=saved}catch{}const root=document.documentElement;root.dataset.colorMode=mode;root.classList.toggle('dark',mode==='dark'||(mode==='system'&&matchMedia('(prefers-color-scheme: dark)').matches))})();</script>
@@ -87,24 +87,24 @@
 <div class="page-viewport article-viewport"><div class="page-scroll article-scroll">
 <main id="main" tabindex="-1" class="network-workspace network-reading" data-has-toc="false">
 
-<nav class="breadcrumbs" aria-label="面包屑导航"><ol><li><a href="https://www.yaoyaolingxian.blog/">遥遥领先性价比机场</a></li><li><span aria-current="page">电脑同时连 Wi-Fi 和网线，curl 怎么固定出口做对照？</span></li></ol></nav>
+<nav class="breadcrumbs" aria-label="面包屑导航"><ol><li><a href="https://www.yaoyaolingxian.blog/">遥遥领先性价比机场</a></li><li><span aria-current="page">电脑同时连Wi-Fi和网线，curl怎样限定本地地址做对照？</span></li></ol></nav>
 
 <div class="network-columns reading-columns"><div class="reading-content">
 <article data-pagefind-body>
 <header class="article-header">
 <div class="eyebrow" data-pagefind-ignore>网络手记</div>
-<h1 data-pagefind-meta="title">电脑同时连 Wi-Fi 和网线，curl 怎么固定出口做对照？</h1>
+<h1 data-pagefind-meta="title">电脑同时连Wi-Fi和网线，curl怎样限定本地地址做对照？</h1>
 <div class="metadata" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/posts/about-site/#author-pilot" rel="author">王牌飞行员</a><time datetime="2026-10-01T10:59:03&#43;08:00">2026-10-01</time><span><span id="page-views">—</span> 次阅读</span></div>
 <div class="chips" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/categories/troubleshooting/">故障排查</a></div>
 </header>
 <div class="prose">
-<p>笔记本同时连着 Wi‑Fi 和网线时，即使机场节点没变，两次测试也可能走不同的本地出口。若不固定接口，看到的速度差、丢包或连接时间未必来自节点。curl 的 <code>--interface</code> 可以把请求绑定到指定接口或本地地址，用来做可复查的路径对照。</p>
+<p>笔记本同时连着 Wi‑Fi 和网线时，即使机场节点没变，两次测试也可能走不同的本地出口。若不固定接口，看到的速度差、丢包或连接时间未必来自节点。curl的<code>--interface</code>可按系统能力指定接口或本地地址，但它约束的是curl自身建立的连接；使用本地代理时，不会自动约束代理程序的远端出站。</p>
 <h2 id="heading">先确认接口名称与地址</h2>
 <p>Windows 可用 <code>Get-NetIPConfiguration</code>，macOS 与 Linux 可用 <code>ifconfig</code> 或 <code>ip addr</code> 查看接口。先确认哪一个是 Wi‑Fi、哪一个是有线网卡，并记录各自本地地址、默认网关和 DNS。不要照抄别人电脑上的 <code>eth0</code>，接口名称因系统而异。</p>
-<p>curl 官方手册允许 <code>--interface</code> 指定接口名、本地 IP，或使用带类型前缀的写法。基础示例是：</p>
+<p>curl官方手册允许按平台能力指定接口名、本地IP或带类型前缀的写法。<strong>Windows不支持用网卡名称指定这个选项</strong>，因此不能把<code>Wi-Fi</code>或<code>Ethernet</code>直接抄进命令；先查本机地址，再使用正确的本地IP。Linux等支持接口名的环境，才可按实际名称使用下面的结构：</p>
 <pre><code class="language-bash">curl --interface eth0 https://example.com/
 </code></pre>
-<p>在支持的环境中，也可以绑定明确的本地地址。若命令返回退出码 45，表示指定的出口接口无法使用，应先修正接口名或权限，而不是把它当成机场节点故障。</p>
+<p>Windows PowerShell可按实际本地IPv4地址做有限对照，例如<code>curl.exe -q --interface 192.0.2.10 --connect-timeout 8 --max-time 20 --output NUL https://example.com/</code>。其中<code>192.0.2.10</code>是文档占位地址，必须换成本机该接口当前有效的地址；不是可直接执行的通用配置。绑定IPv4时还要核对目标地址族与路由条件。若命令返回退出码 45，表示指定的出口接口无法使用，应先修正接口名或权限，而不是把它当成机场节点故障。</p>
 <h2 id="heading-1">做一组公平对照</h2>
 <p>选择一个小而稳定的 HTTPS 地址，先通过 Wi‑Fi 连续请求五次，再通过网线请求五次。更公平的顺序是 Wi‑Fi、网线、网线、Wi‑Fi 交替执行。记录远端地址、连接耗时、首字节耗时、总耗时和退出码。</p>
 <p>命令示例：</p>
@@ -112,16 +112,17 @@
   --write-out &quot;remote=%{remote_ip} connect=%{time_connect} start=%{time_starttransfer} total=%{time_total}\n&quot; \
   https://example.com/
 </code></pre>
-<p>如果本机还运行 TUN 模式代理，绑定物理接口不一定等于绕过代理。应同时查看客户端路由日志或出口 IP，确认请求到底经过哪条链路。</p>
+<p>如果curl显式连接<code>127.0.0.1</code>上的HTTP/SOCKS代理，绑定选项作用于curl到该本地代理的一段，不控制代理进程之后选Wi-Fi还是网线。应另按代理客户端文档验证其出站；不要把这组命令写成机场全路径已固定。如果本机运行TUN，绑定物理接口也不一定等于绕过代理。应同时查看客户端路由日志或出口 IP，确认请求到底经过哪条链路。</p>
 <h2 id="heading-2">结果怎么读</h2>
 <p>若 Wi‑Fi 的连接时间波动大，而网线稳定，先检查无线信号、信道与省电设置。若两种本地接口都在同一节点、同一时间出现相似的首字节升高，更可能是上游路径或目标站负载。若远端 IP 不同，说明 DNS、双栈选择或 CDN 入口也发生了变化，不能直接比较总耗时。</p>
 <h2 id="heading-3">验收标准</h2>
-<p>确认两组命令都成功、证书验证开启、目标 URL 相同，并保留接口名和测试时刻。交换测试顺序后结论仍一致，才能说明差异与本地出口有关。若只有一次最快值不同，证据不足。</p>
+<p>确认两组命令都成功、证书验证开启、目标 URL 相同，并保留接口名和测试时刻。交换测试顺序后若差异仍重复，可形成与本地接入相关的线索，仍不能排除其他随路径变化的变量。若只有一次最快值不同，证据不足。</p>
 <p>这套方法适合在机场推荐测试前排除本地接入差异，也适合定位“插上网线反而更慢”这类问题。</p>
 <h2 id="heading-4">参考资料</h2>
 <ul>
 <li><a href="https://curl.se/docs/manpage.html#--interface">curl 官方手册：--interface</a></li>
 </ul>
+<p>平台能力与代理路径边界复核：2026-11-04。</p>
 </div>
 <div class="article-likes" data-pagefind-ignore>
 <button id="page-like" class="like-button" type="button" aria-pressed="false" aria-describedby="page-like-message" disabled>
@@ -130,7 +131,7 @@
 </button><p id="page-like-message" role="status"></p>
 </div>
 <div class="article-tags" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/tags/connection-testing/"># 线路测试</a><a href="https://www.yaoyaolingxian.blog/tags/troubleshooting/"># 故障排查案例</a></div>
-<nav class="pagination" aria-label="相邻文章" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/posts/xian-national-day-2026-history-three-days/">← 上一篇</a><a href="https://www.yaoyaolingxian.blog/posts/tncap-rating-version-check-guide-20260930/">下一篇 →</a></nav>
+<nav class="pagination" aria-label="相邻文章" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/posts/2026-airport-risk-roundup-value/">← 上一篇</a><a href="https://www.yaoyaolingxian.blog/posts/gpt-61-sol-value-models-plans/">下一篇 →</a></nav>
 <section class="comments-section" data-pagefind-ignore><h2>评论</h2><div id="comments"></div></section>
 </article>
 </div><div class="article-rail network-rail"><aside class="ad-slot" aria-label="文章相关内容" data-ad-position="article_sidebar" data-pagefind-ignore><a class="ad-card ad-card-mixed" href="https://goflybit.com/#/register?code=gPinVG8C" target="_blank" rel="sponsored noopener noreferrer" aria-label="FlyBit · 内容页侧边邀请入口（在新标签页打开）" data-ad-link>
@@ -176,5 +177,5 @@
 </div>
 </dialog>
 
-<script id="blog-comments-config" type="application/json">{"comments":true,"likes":true,"locale":"zh-CN","pageKey":"/p/23a2589f-3194-404b-92ae-bda9f32f59d6/","pageTitle":"电脑同时连 Wi-Fi 和网线，curl 怎么固定出口做对照？","server":"https://upfqpobmiewm.sealosgzg.site","site":"xblog-f49c63bc-e1a5-4cf0-b2f5-6e9bc109b533","views":true,"viewsBase":0}</script>
+<script id="blog-comments-config" type="application/json">{"comments":true,"likes":true,"locale":"zh-CN","pageKey":"/p/23a2589f-3194-404b-92ae-bda9f32f59d6/","pageTitle":"电脑同时连Wi-Fi和网线，curl怎样限定本地地址做对照？","server":"https://upfqpobmiewm.sealosgzg.site","site":"xblog-f49c63bc-e1a5-4cf0-b2f5-6e9bc109b533","views":true,"viewsBase":0}</script>
 </body></html>

@@ -2,22 +2,22 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>TNCAP 进入热搜：看汽车安全星级前，先核对年份、版本与车型 · 遥遥领先性价比机场</title>
-<meta name="description" content="结合 Google 台湾区 TNCAP 热搜，解释新车安全评级应该如何查阅，为什么不能只拿一张星级截图比较不同年份和配置的车辆。">
-<meta name="keywords" content="TNCAP,汽车安全评级,星级评等,评测方法,车型配置">
-<meta name="robots" content="index,follow,max-image-preview:large"><link rel="canonical" href="https://www.yaoyaolingxian.blog/posts/tncap-rating-version-check-guide-20260930/">
-<meta property="og:title" content="TNCAP 进入热搜：看汽车安全星级前，先核对年份、版本与车型">
-<meta property="og:description" content="结合 Google 台湾区 TNCAP 热搜，解释新车安全评级应该如何查阅，为什么不能只拿一张星级截图比较不同年份和配置的车辆。">
-<meta property="og:url" content="https://www.yaoyaolingxian.blog/posts/tncap-rating-version-check-guide-20260930/">
+<title>Chrome 与 Windows 查到的 DNS 不同？先区分浏览器安全 DNS 与系统解析 · 遥遥领先性价比机场</title>
+<meta name="description" content="Chrome 安全 DNS 与 Windows 系统 DNS 结果不同，不一定是机场漏流量。先核对 Chrome 自动或自定义提供商、Windows DNS 设置和缓存，再用同一域名做可复查对照。">
+<meta name="keywords" content="安全DNS,Chrome DoH,Windows DNS,机场分流排障">
+<meta name="robots" content="index,follow,max-image-preview:large"><link rel="canonical" href="https://www.yaoyaolingxian.blog/posts/chrome-windows-dns-path-compare/">
+<meta property="og:title" content="Chrome 与 Windows 查到的 DNS 不同？先区分浏览器安全 DNS 与系统解析">
+<meta property="og:description" content="Chrome 安全 DNS 与 Windows 系统 DNS 结果不同，不一定是机场漏流量。先核对 Chrome 自动或自定义提供商、Windows DNS 设置和缓存，再用同一域名做可复查对照。">
+<meta property="og:url" content="https://www.yaoyaolingxian.blog/posts/chrome-windows-dns-path-compare/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="遥遥领先性价比机场">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://www.yaoyaolingxian.blog/assets/media/d5b2829f-bc45-489e-896a-d04b27ec97c1.webp"><meta property="og:image:alt" content="遥遥领先性价比机场">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="TNCAP 进入热搜：看汽车安全星级前，先核对年份、版本与车型">
-<meta name="twitter:description" content="结合 Google 台湾区 TNCAP 热搜，解释新车安全评级应该如何查阅，为什么不能只拿一张星级截图比较不同年份和配置的车辆。">
-<meta name="twitter:image" content="https://www.yaoyaolingxian.blog/assets/media/d5b2829f-bc45-489e-896a-d04b27ec97c1.webp">
-<meta name="author" content="王牌飞行员"><meta property="article:published_time" content="2026-09-30T21:03:40&#43;08:00"><meta property="article:modified_time" content="2026-09-30T21:04:23&#43;08:00">
+<meta property="og:image" content="https://www.yaoyaolingxian.blog/assets/media/c2cfb6d7-0fb6-4e81-8fd7-03f5613cdccb.webp"><meta property="og:image:alt" content="Chrome 与 Windows 查到的 DNS 不同？先区分浏览器安全 DNS 与系统解析">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Chrome 与 Windows 查到的 DNS 不同？先区分浏览器安全 DNS 与系统解析">
+<meta name="twitter:description" content="Chrome 安全 DNS 与 Windows 系统 DNS 结果不同，不一定是机场漏流量。先核对 Chrome 自动或自定义提供商、Windows DNS 设置和缓存，再用同一域名做可复查对照。">
+<meta name="twitter:image" content="https://www.yaoyaolingxian.blog/assets/media/c2cfb6d7-0fb6-4e81-8fd7-03f5613cdccb.webp">
+<meta name="author" content="加油"><meta property="article:published_time" content="2026-11-06T01:01:24&#43;08:00"><meta property="article:modified_time" content="2026-11-06T01:01:32&#43;08:00"><meta property="article:tag" content="DNS"><meta property="article:tag" content="故障排查案例">
 
 
 
@@ -37,13 +37,13 @@
 
 <script type="application/ld+json">{
 "@context":"https://schema.org","@graph":[{
-"@type":"BlogPosting","@id":"https://www.yaoyaolingxian.blog/posts/tncap-rating-version-check-guide-20260930/#article","url":"https://www.yaoyaolingxian.blog/posts/tncap-rating-version-check-guide-20260930/","mainEntityOfPage":"https://www.yaoyaolingxian.blog/posts/tncap-rating-version-check-guide-20260930/",
-"headline":"TNCAP 进入热搜：看汽车安全星级前，先核对年份、版本与车型","description":"结合 Google 台湾区 TNCAP 热搜，解释新车安全评级应该如何查阅，为什么不能只拿一张星级截图比较不同年份和配置的车辆。","inLanguage":"zh-CN",
-"datePublished":"2026-09-30T21:03:40+08:00","dateModified":"2026-09-30T21:04:23+08:00",
-"author":{"@type":"Person","name":"王牌飞行员","url":"https://www.yaoyaolingxian.blog/posts/about-site/#author-pilot"},
+"@type":"BlogPosting","@id":"https://www.yaoyaolingxian.blog/posts/chrome-windows-dns-path-compare/#article","url":"https://www.yaoyaolingxian.blog/posts/chrome-windows-dns-path-compare/","mainEntityOfPage":"https://www.yaoyaolingxian.blog/posts/chrome-windows-dns-path-compare/",
+"headline":"Chrome 与 Windows 查到的 DNS 不同？先区分浏览器安全 DNS 与系统解析","description":"Chrome 安全 DNS 与 Windows 系统 DNS 结果不同，不一定是机场漏流量。先核对 Chrome 自动或自定义提供商、Windows DNS 设置和缓存，再用同一域名做可复查对照。","inLanguage":"zh-CN",
+"datePublished":"2026-11-06T01:01:24+08:00","dateModified":"2026-11-06T01:01:32+08:00",
+"author":{"@type":"Person","name":"加油","url":"https://www.yaoyaolingxian.blog/posts/about-site/#author-jiayou"},
 "publisher":{"@type":"Organization","name":"遥遥领先性价比机场","url":"https://www.yaoyaolingxian.blog/","logo":{"@type":"ImageObject","url":"https://www.yaoyaolingxian.blog/assets/media/d5b2829f-bc45-489e-896a-d04b27ec97c1.webp"}}
-
-},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"遥遥领先性价比机场","item":"https://www.yaoyaolingxian.blog/"},{"@type":"ListItem","position":2,"name":"TNCAP 进入热搜：看汽车安全星级前，先核对年份、版本与车型","item":"https://www.yaoyaolingxian.blog/posts/tncap-rating-version-check-guide-20260930/"}]}]}</script>
+,"image":["https://www.yaoyaolingxian.blog/assets/media/c2cfb6d7-0fb6-4e81-8fd7-03f5613cdccb.webp"]
+},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"遥遥领先性价比机场","item":"https://www.yaoyaolingxian.blog/"},{"@type":"ListItem","position":2,"name":"Chrome 与 Windows 查到的 DNS 不同？先区分浏览器安全 DNS 与系统解析","item":"https://www.yaoyaolingxian.blog/posts/chrome-windows-dns-path-compare/"}]}]}</script>
 
 
 <script>(()=>{let mode='system';try{const saved=localStorage.getItem('reader-theme');if(['system','light','dark'].includes(saved))mode=saved}catch{}const root=document.documentElement;root.dataset.colorMode=mode;root.classList.toggle('dark',mode==='dark'||(mode==='system'&&matchMedia('(prefers-color-scheme: dark)').matches))})();</script>
@@ -87,60 +87,37 @@
 <div class="page-viewport article-viewport"><div class="page-scroll article-scroll">
 <main id="main" tabindex="-1" class="network-workspace network-reading" data-has-toc="false">
 
-<nav class="breadcrumbs" aria-label="面包屑导航"><ol><li><a href="https://www.yaoyaolingxian.blog/">遥遥领先性价比机场</a></li><li><span aria-current="page">TNCAP 进入热搜：看汽车安全星级前，先核对年份、版本与车型</span></li></ol></nav>
+<nav class="breadcrumbs" aria-label="面包屑导航"><ol><li><a href="https://www.yaoyaolingxian.blog/">遥遥领先性价比机场</a></li><li><span aria-current="page">Chrome 与 Windows 查到的 DNS 不同？先区分浏览器安全 DNS 与系统解析</span></li></ol></nav>
 
 <div class="network-columns reading-columns"><div class="reading-content">
 <article data-pagefind-body>
 <header class="article-header">
 <div class="eyebrow" data-pagefind-ignore>网络手记</div>
-<h1 data-pagefind-meta="title">TNCAP 进入热搜：看汽车安全星级前，先核对年份、版本与车型</h1>
-<div class="metadata" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/posts/about-site/#author-pilot" rel="author">王牌飞行员</a><time datetime="2026-09-30T21:03:40&#43;08:00">2026-09-30</time><span><span id="page-views">—</span> 次阅读</span></div>
-<div class="chips" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/categories/trending-topics/">热点观察</a></div>
+<h1 data-pagefind-meta="title">Chrome 与 Windows 查到的 DNS 不同？先区分浏览器安全 DNS 与系统解析</h1>
+<div class="metadata" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/posts/about-site/#author-jiayou" rel="author">加油</a><time datetime="2026-11-06T01:01:24&#43;08:00">2026-11-06</time><span><span id="page-views">—</span> 次阅读</span></div>
+<div class="chips" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/categories/protocols-network/">协议与网络</a></div>
 </header>
 <div class="prose">
-<blockquote>
-<p>选题来源：<a href="https://trends.google.com/trending?geo=TW&amp;hl=zh-TW">Google Trends · 台湾 · 过去24小时</a>；采集时间：2026-09-30 20:45—20:59（北京时间）。这是所选地区和时间窗口的趋势记录，不代表全球排名。</p>
-</blockquote>
-<p>TNCAP 出现在本次 Google 台湾区趋势页面；其官网同时列出了第三季车型第二版评等发布消息。本文聚焦怎样阅读评测报告，让一个醒目的星级数字回到完整的测试条件中。<a href="https://www.tncap.org.tw/">TNCAP 官方网站</a></p>
-<h2 id="heading">星级是报告入口，完整条件才决定怎样比较</h2>
-<p>TNCAP 的官方说明使用 0 至 5 星表达评等，并指出测试标准会滚动修订，同一车型在不同年份或版次下，结果也可能不同。因此，引用星级之前应先确认评等年份。<a href="https://www.tncap.org.tw/Message/SingleImage?catalogId=2584fddb-bd4e-4832-bff4-38dc1ea1f99d">TNCAP 星级说明</a></p>
-<p>这给消费者一个直接的阅读顺序：先看是哪一辆车、采用哪一版标准，再看整体星级与各分项说明。只截取星星图案，会让最重要的比较前提消失。</p>
-<h2 id="heading-1">打开报告后先核对四项</h2>
-<table>
-<thead>
-<tr>
-<th>项目</th>
-<th>为什么需要核对</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>品牌、车名与年式</td>
-<td>同名车型可能存在不同代际或配置</td>
-</tr>
-<tr>
-<td>受测版本与销售地区</td>
-<td>报告应与正在考虑的车辆对应</td>
-</tr>
-<tr>
-<td>测试年份和规章版次</td>
-<td>避免把不同标准下的结果直接等同</td>
-</tr>
-<tr>
-<td>各项评价与解释</td>
-<td>了解整体结果背后的具体表现</td>
-</tr>
-</tbody>
-</table>
-<p>TNCAP 网站提供成人保护、儿童保护、弱势道路使用者保护和安全辅助等栏目。阅读时可从这些栏目进入，了解评价分别关心什么，而不是把所有问题压缩成单一总分。</p>
-<h2 id="heading-2">三种常见比较方式需要补充证据</h2>
-<p>第一种是“旧报告高星，新报告低星，所以新车一定全面倒退”。应先排除标准版次和受测配置差异，再讨论变化。</p>
-<p>第二种是“海外同名车高星，本地销售版本也一样”。应先核对当地车款的实际配置与报告适用范围，不能仅凭车名代替对应关系。</p>
-<p>第三种是“某一个分项表现不错，就能代表整体安全”。应回到报告，看其他项目与整体评等说明；单一亮点不足以概括所有测试。</p>
-<p>这些都是证据核对原则，不是在为任何具体车型加分或减分。本文没有据此推荐购买某辆车，也不把实验室评等解释成真实事故中的结果保证。</p>
-<h2 id="heading-3">把查证结果存成一张购车资料卡</h2>
-<p>建议记录完整车型、销售配置、官方报告链接、规章版本和查询日期。若后续看到厂家回应、改进或召回信息，另列一项并链接对应公告，不要直接覆盖原始报告。这样可以区分“当时测了什么”和“后来发生了什么”。</p>
-<p>如果正在与销售人员沟通，可以请对方指出你准备购买的配置对应哪一份官方报告，并把无法确认的项目保留为待核对。资料越具体，比较越有意义；只比热搜标题和一张图片，容易错过真正影响判断的条件。</p>
+<h2 id="chrome--windows--dns--dns-">Chrome 与 Windows 查到的 DNS 不同？先区分浏览器安全 DNS 与系统解析</h2>
+<p>同一域名在 Chrome 里能打开，Windows 其他应用却提示找不到主机，或两处显示不同解析结果时，先别直接判定机场“DNS 泄漏”。Chrome 有独立的安全 DNS 设置；Windows 网络连接也有自己的 DNS 配置。两边若使用不同提供商、不同缓存或不同网络路径，答案可能不同。</p>
+<h3 id="heading">先记录两处设置，不急着改</h3>
+<p>在 Chrome 的“设置 → 隐私和安全 → 安全”查看“使用安全 DNS”：是关闭、自动，还是自定义提供商。Google 帮助说明，自动模式查询失败时可能回退到未加密解析；自定义提供商遇到问题时不会按同样方式回退。在 Windows“设置 → 网络和 Internet → 当前连接”中记下 DNS 服务器及相关加密选项。两处设置的标签可能随系统版本变化，以当前界面为准。</p>
+<h3 id="heading-1">做一次单变量对照</h3>
+<ol>
+<li>固定网络、机场客户端模式和目标域名，记录网页错误和发生时间。先确认其他网站是否正常，避免把全局断网当解析问题。</li>
+<li>只调整 Chrome 的安全 DNS 提供商或暂时关闭该选项，再重载同一网页；记下改前改后结果。随后恢复原设置。</li>
+<li>若只在 Chrome 异常，优先检查浏览器设置、缓存与扩展；若系统其他应用也异常，再检查 Windows 当前连接的 DNS 设置。<code>nslookup</code> 等命令的结果只是其查询路径的证据，不能直接代表 Chrome 最终如何解析，更不能单独证明代理内外流量路径。</li>
+<li>最后以实际应用任务验收：目标页面能否打开、登录或完成下载，同时核对客户端连接记录是否符合预期。</li>
+</ol>
+<p><img src="https://www.yaoyaolingxian.blog/assets/media/c2cfb6d7-0fb6-4e81-8fd7-03f5613cdccb.webp" alt="同一域名从Chrome浏览器和Windows系统分成两条不同的DNS查询路径"></p>
+<p><em>示意图：浏览器安全 DNS 与系统解析可有不同设置，答案差异需结合实际连接判断。</em></p>
+<p>不要为了让两处结果“看起来一致”随意关闭证书验证或禁用所有安全功能。若网络受组织策略管理，Chrome 安全 DNS 可能不可用，应向管理员核对。机场推荐中的 DNS 体验要建立在同条件实测和明确路径上。</p>
+<h3 id="heading-2">资料来源</h3>
+<ul>
+<li><a href="https://support.google.com/chrome/answer/10468685">Google Chrome 帮助：安全 DNS 设置及回退行为</a></li>
+<li><a href="https://learn.microsoft.com/en-us/windows-server/networking/dns/dns-encryption-dns-over-https">Microsoft Learn：DNS over HTTPS 的查询机制</a></li>
+</ul>
+<p>资料核验日期：2026-11-06。</p>
 </div>
 <div class="article-likes" data-pagefind-ignore>
 <button id="page-like" class="like-button" type="button" aria-pressed="false" aria-describedby="page-like-message" disabled>
@@ -148,8 +125,8 @@
 <span id="page-like-label">点赞</span><span id="page-like-count">—</span>
 </button><p id="page-like-message" role="status"></p>
 </div>
-
-<nav class="pagination" aria-label="相邻文章" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/posts/curl-interface-network-path-test/">← 上一篇</a><a href="https://www.yaoyaolingxian.blog/posts/gpt-61-sol-value-models-plans/">下一篇 →</a></nav>
+<div class="article-tags" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/tags/dns/"># DNS</a><a href="https://www.yaoyaolingxian.blog/tags/troubleshooting/"># 故障排查案例</a></div>
+<nav class="pagination" aria-label="相邻文章" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/posts/airport-recommendation-guide/">← 上一篇</a><a href="https://www.yaoyaolingxian.blog/posts/parallel-transfer-speed-comparison/">下一篇 →</a></nav>
 <section class="comments-section" data-pagefind-ignore><h2>评论</h2><div id="comments"></div></section>
 </article>
 </div><div class="article-rail network-rail"><aside class="ad-slot" aria-label="文章相关内容" data-ad-position="article_sidebar" data-pagefind-ignore><a class="ad-card ad-card-mixed" href="https://goflybit.com/#/register?code=gPinVG8C" target="_blank" rel="sponsored noopener noreferrer" aria-label="FlyBit · 内容页侧边邀请入口（在新标签页打开）" data-ad-link>
@@ -195,5 +172,5 @@
 </div>
 </dialog>
 
-<script id="blog-comments-config" type="application/json">{"comments":true,"likes":true,"locale":"zh-CN","pageKey":"/p/4823e250-24c2-4206-b706-6e9bcf8af586/","pageTitle":"TNCAP 进入热搜：看汽车安全星级前，先核对年份、版本与车型","server":"https://upfqpobmiewm.sealosgzg.site","site":"xblog-f49c63bc-e1a5-4cf0-b2f5-6e9bc109b533","views":true,"viewsBase":0}</script>
+<script id="blog-comments-config" type="application/json">{"comments":true,"likes":true,"locale":"zh-CN","pageKey":"/p/4214716c-95b4-4656-bd5a-c6b344273fc5/","pageTitle":"Chrome 与 Windows 查到的 DNS 不同？先区分浏览器安全 DNS 与系统解析","server":"https://upfqpobmiewm.sealosgzg.site","site":"xblog-f49c63bc-e1a5-4cf0-b2f5-6e9bc109b533","views":true,"viewsBase":0}</script>
 </body></html>
