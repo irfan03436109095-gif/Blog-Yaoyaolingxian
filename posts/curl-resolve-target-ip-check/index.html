@@ -1,0 +1,172 @@
+<!doctype html><html lang="zh-CN" data-theme="yaoyao-network">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>网站疑似解析到旧 IP？用 curl --resolve 做单次目标地址对照 · 遥遥领先性价比机场</title>
+<meta name="description" content="curl --resolve 可为单次请求指定域名和端口对应的地址。用 HTTPS 同条件对照旧新 IP，并注意代理远端解析的边界。">
+<meta name="keywords" content="curl --resolve,DNS排查,机场网络,HTTPS对照">
+<meta name="robots" content="index,follow,max-image-preview:large"><link rel="canonical" href="https://www.yaoyaolingxian.blog/posts/curl-resolve-target-ip-check/">
+<meta property="og:title" content="网站疑似解析到旧 IP？用 curl --resolve 做单次目标地址对照">
+<meta property="og:description" content="curl --resolve 可为单次请求指定域名和端口对应的地址。用 HTTPS 同条件对照旧新 IP，并注意代理远端解析的边界。">
+<meta property="og:url" content="https://www.yaoyaolingxian.blog/posts/curl-resolve-target-ip-check/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="遥遥领先性价比机场">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.yaoyaolingxian.blog/assets/media/e4737633-4f38-4342-8446-04b111568f28.webp"><meta property="og:image:alt" content="网站疑似解析到旧 IP？用 curl --resolve 做单次目标地址对照">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="网站疑似解析到旧 IP？用 curl --resolve 做单次目标地址对照">
+<meta name="twitter:description" content="curl --resolve 可为单次请求指定域名和端口对应的地址。用 HTTPS 同条件对照旧新 IP，并注意代理远端解析的边界。">
+<meta name="twitter:image" content="https://www.yaoyaolingxian.blog/assets/media/e4737633-4f38-4342-8446-04b111568f28.webp">
+<meta name="author" content="加油"><meta property="article:published_time" content="2026-11-07T09:27:29&#43;08:00"><meta property="article:modified_time" content="2026-11-07T09:27:32&#43;08:00"><meta property="article:tag" content="DNS"><meta property="article:tag" content="故障排查案例">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="application/ld+json">{
+"@context":"https://schema.org","@graph":[{
+"@type":"BlogPosting","@id":"https://www.yaoyaolingxian.blog/posts/curl-resolve-target-ip-check/#article","url":"https://www.yaoyaolingxian.blog/posts/curl-resolve-target-ip-check/","mainEntityOfPage":"https://www.yaoyaolingxian.blog/posts/curl-resolve-target-ip-check/",
+"headline":"网站疑似解析到旧 IP？用 curl --resolve 做单次目标地址对照","description":"curl --resolve 可为单次请求指定域名和端口对应的地址。用 HTTPS 同条件对照旧新 IP，并注意代理远端解析的边界。","inLanguage":"zh-CN",
+"datePublished":"2026-11-07T09:27:29+08:00","dateModified":"2026-11-07T09:27:32+08:00",
+"author":{"@type":"Person","name":"加油","url":"https://www.yaoyaolingxian.blog/posts/about-site/#author-jiayou"},
+"publisher":{"@type":"Organization","name":"遥遥领先性价比机场","url":"https://www.yaoyaolingxian.blog/","logo":{"@type":"ImageObject","url":"https://www.yaoyaolingxian.blog/assets/media/d5b2829f-bc45-489e-896a-d04b27ec97c1.webp"}}
+,"image":["https://www.yaoyaolingxian.blog/assets/media/e4737633-4f38-4342-8446-04b111568f28.webp"]
+},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"遥遥领先性价比机场","item":"https://www.yaoyaolingxian.blog/"},{"@type":"ListItem","position":2,"name":"网站疑似解析到旧 IP？用 curl --resolve 做单次目标地址对照","item":"https://www.yaoyaolingxian.blog/posts/curl-resolve-target-ip-check/"}]}]}</script>
+
+
+<script>(()=>{let mode='system';try{const saved=localStorage.getItem('reader-theme');if(['system','light','dark'].includes(saved))mode=saved}catch{}const root=document.documentElement;root.dataset.colorMode=mode;root.classList.toggle('dark',mode==='dark'||(mode==='system'&&matchMedia('(prefers-color-scheme: dark)').matches))})();</script>
+<link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/style.css">
+<link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/advertisements.css">
+<link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/search.css"><script defer src="https://www.yaoyaolingxian.blog/assets/theme/search.js"></script>
+<link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/skin-1.1.5.css">
+<link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/viewer.css">
+<link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/reader.css">
+<link rel="icon" href="https://www.yaoyaolingxian.blog/assets/media/d5b2829f-bc45-489e-896a-d04b27ec97c1.webp">
+<link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/artalk.css"><script defer src="https://www.yaoyaolingxian.blog/assets/theme/artalk.js"></script>
+<script defer src="https://www.yaoyaolingxian.blog/assets/theme/theme.js"></script>
+<script defer src="https://www.yaoyaolingxian.blog/assets/theme/reader.js"></script>
+<script defer src="https://www.yaoyaolingxian.blog/assets/theme/viewer.js"></script>
+<script defer src="https://www.yaoyaolingxian.blog/assets/theme/image-viewer.js"></script>
+
+<script defer src="https://www.yaoyaolingxian.blog/assets/theme/interactions.js"></script>
+<script defer src="https://www.yaoyaolingxian.blog/assets/theme/featured-1.1.5.js"></script>
+<style id="xblog-article-images-half">main article .prose img{width:50%;max-width:50%;height:auto;display:block;margin-left:auto;margin-right:auto;}</style>
+
+<script defer src="https://www.yaoyaolingxian.blog/assets/xblog/google-analytics.js" data-xblog-google-analytics="G-RMWB4R3DHD" data-site-hosts="www.yaoyaolingxian.blog"></script></head>
+
+<body class="yaoyao-site article-page"><a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+<div class="header-inner">
+<a class="brand" href="https://www.yaoyaolingxian.blog/"><img src="https://www.yaoyaolingxian.blog/assets/media/d5b2829f-bc45-489e-896a-d04b27ec97c1.webp" alt="" width="38" height="38"><span>遥遥领先性价比机场</span></a>
+<nav id="site-navigation" aria-label="站点导航"><a href="https://www.yaoyaolingxian.blog/">首页</a><a href="https://www.yaoyaolingxian.blog/posts/airport-recommendation-guide/">机场推荐</a><a href="https://www.yaoyaolingxian.blog/categories/buying-guides/">选购指南</a><a href="https://www.yaoyaolingxian.blog/categories/client-guides/">客户端教程</a><a href="https://www.yaoyaolingxian.blog/categories/protocols-network/">协议与网络</a><a href="https://www.yaoyaolingxian.blog/categories/troubleshooting/">常见问题</a><a href="https://www.yaoyaolingxian.blog/categories/privacy-security/">隐私安全</a></nav>
+<a class="search-toggle" href="https://www.yaoyaolingxian.blog/search/" data-open-dialog="search-dialog" aria-haspopup="dialog" aria-controls="search-dialog" aria-label="搜索" title="搜索"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5"/></svg></a>
+<button id="theme-mode" class="theme-toggle theme-cycle" type="button" aria-label="明暗模式：跟随系统，点击切换为明亮" title="跟随系统 · 点击切换为明亮">
+<svg class="theme-icon-system" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>
+<svg class="theme-icon-moon" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.2 15.5A8.5 8.5 0 0 1 8.5 3.8 8.5 8.5 0 1 0 20.2 15.5Z"/></svg>
+<svg class="theme-icon-sun" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+</button>
+<span id="theme-mode-status" class="visually-hidden" role="status" aria-live="polite"></span>
+<button id="menu-toggle" class="menu-toggle" type="button" aria-controls="site-navigation" aria-expanded="false" aria-label="打开菜单" title="打开菜单">
+<svg class="menu-icon-open" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+<svg class="menu-icon-close" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="m6 6 12 12M6 18 18 6"/></svg>
+</button>
+</div>
+</header>
+<div class="page-viewport article-viewport"><div class="page-scroll article-scroll">
+<main id="main" tabindex="-1" class="network-workspace network-reading" data-has-toc="false">
+
+<nav class="breadcrumbs" aria-label="面包屑导航"><ol><li><a href="https://www.yaoyaolingxian.blog/">遥遥领先性价比机场</a></li><li><span aria-current="page">网站疑似解析到旧 IP？用 curl --resolve 做单次目标地址对照</span></li></ol></nav>
+
+<div class="network-columns reading-columns"><div class="reading-content">
+<article data-pagefind-body>
+<header class="article-header">
+<div class="eyebrow" data-pagefind-ignore>网络手记</div>
+<h1 data-pagefind-meta="title">网站疑似解析到旧 IP？用 curl --resolve 做单次目标地址对照</h1>
+<div class="metadata" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/posts/about-site/#author-jiayou" rel="author">加油</a><time datetime="2026-11-07T09:27:29&#43;08:00">2026-11-07</time><span><span id="page-views">—</span> 次阅读</span></div>
+<div class="chips" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/categories/protocols-network/">协议与网络</a></div>
+</header>
+<div class="prose">
+<h2 id="-ip-curl---resolve-">网站疑似解析到旧 IP？用 curl --resolve 做单次目标地址对照</h2>
+<p>网站换了服务器，电脑却偶尔访问旧页面时，先别把结果直接算到机场节点头上。curl 官方文档说明，<code>--resolve</code> 可在一次请求中为指定“域名:端口”提供地址，类似临时覆盖本次 DNS 结果；它不会修改系统 hosts，也不等于全网 DNS 已更新。</p>
+<h3 id="heading">准备可比较的地址</h3>
+<p>从网站管理员或公开公告取得待比较的目标 IP；不要使用来历不明的“加速 IP”。确认目标域名确实由你有权测试，并记下测试时间、网络和是否启用代理。若站点使用 CDN，某个 IP 可能只代表一个边缘入口。</p>
+<h3 id="-https-">同一终端做两次 HTTPS 请求</h3>
+<p>先运行常规请求，例如 <code>curl -I https://example.com/</code>；再运行 <code>curl --resolve example.com:443:203.0.113.10 -I https://example.com/</code>。这里的域名和地址只是文档示例，实际替换为已核实的目标。比较状态码、证书验证结果与页面标识；不要加 <code>-k</code> 跳过证书校验，也不要把带账号参数的 URL 写进共享日志。若实际站点不允许 HEAD，改用同一只读页面的 GET 对照。</p>
+<p><img src="https://www.yaoyaolingxian.blog/assets/media/e4737633-4f38-4342-8446-04b111568f28.webp" alt="同一域名分别经常规解析与指定目标 IP 访问的对照示意"></p>
+<p><em>示意图：保持域名、端口与 HTTPS 校验不变，只比较目标地址。</em></p>
+<h3 id="heading-1">如何解读差异</h3>
+<p>指定 IP 成功而常规请求失败，说明本机到两个地址的路径结果不同，下一步再查 DNS 记录和缓存。两者都失败，则不应宣称只需换 DNS。通过 HTTP/SOCKS 代理时，目标域名可能由代理端解析；<code>--resolve</code> 未必在目标端生效。先用直连对照弄清本机解析，再看客户端日志或代理侧证据，别把本地命令结果当作整个机场出口的结论。</p>
+<h3 id="heading-2">资料来源</h3>
+<ul>
+<li><a href="https://everything.curl.dev/usingcurl/connections/name.html">curl：Name resolve tricks</a></li>
+<li><a href="https://curl.se/docs/manpage.html">curl 命令手册</a></li>
+</ul>
+<p>资料核验日期：2026-11-07。</p>
+</div>
+<div class="article-likes" data-pagefind-ignore>
+<button id="page-like" class="like-button" type="button" aria-pressed="false" aria-describedby="page-like-message" disabled>
+<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/></svg>
+<span id="page-like-label">点赞</span><span id="page-like-count">—</span>
+</button><p id="page-like-message" role="status"></p>
+</div>
+<div class="article-tags" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/tags/dns/"># DNS</a><a href="https://www.yaoyaolingxian.blog/tags/troubleshooting/"># 故障排查案例</a></div>
+<nav class="pagination" aria-label="相邻文章" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/posts/airport-recommendation-guide/">← 上一篇</a><a href="https://www.yaoyaolingxian.blog/posts/chrome-windows-dns-path-compare/">下一篇 →</a></nav>
+<section class="comments-section" data-pagefind-ignore><h2>评论</h2><div id="comments"></div></section>
+</article>
+</div><div class="article-rail network-rail"><aside class="ad-slot" aria-label="文章相关内容" data-ad-position="article_sidebar" data-pagefind-ignore><a class="ad-card ad-card-mixed" href="https://goflybit.com/#/register?code=gPinVG8C" target="_blank" rel="sponsored noopener noreferrer" aria-label="FlyBit · 内容页侧边邀请入口（在新标签页打开）" data-ad-link>
+<img class="ad-image" src="https://www.yaoyaolingxian.blog/assets/media/f3afc616-2e32-45b9-be60-52eed96cf95f.png" alt="FlyBit · 内容页侧边邀请入口" loading="lazy" decoding="async">
+<div class="ad-copy"><h3>FlyBit</h3>
+<p>先看当前试用与套餐，再决定是否适合自己。</p>
+<h6>推广链接 · 资格与费用以服务方页面为准</h6>
+</div>
+</a><a class="ad-card ad-card-mixed" href="https://99ba.net/#/register?code=sExBbdk9" target="_blank" rel="sponsored noopener noreferrer" aria-label="99吧 · 内容页侧边邀请入口（在新标签页打开）" data-ad-link>
+<img class="ad-image" src="https://www.yaoyaolingxian.blog/assets/media/a9be3d1d-618d-463b-bde0-1d487d2c7be6.png" alt="99吧 · 内容页侧边邀请入口" loading="lazy" decoding="async">
+<div class="ad-copy"><h3>99吧</h3>
+<p>先看当前试用与套餐，再决定是否适合自己。</p>
+<h6>推广链接 · 资格与费用以服务方页面为准</h6>
+</div>
+</a></aside></div></div>
+
+</main></div>
+<button id="back-to-top" class="back-to-top" type="button" aria-label="返回顶部" title="返回顶部" hidden>
+<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h14M12 20V8m-5 5 5-5 5 5"/></svg>
+</button>
+</div>
+<footer class="site-footer">
+<nav class="friend-links" aria-label="友情链接"><span class="friend-links-label">友情链接</span><a href="https://goflybit.com/#/register?code=gPinVG8C" target="_blank" rel="noopener noreferrer">FlyBit</a><a href="https://99ba.net/#/register?code=sExBbdk9" target="_blank" rel="noopener noreferrer">99吧</a><a href="https://t.me/five_91" target="_blank" rel="noopener noreferrer">Telegram联系</a><a href="https://t.me/RouteRadarCN" target="_blank" rel="noopener noreferrer">Telegram频道</a></nav>
+<span>© @遥遥领先 2026</span>
+<a href="https://www.yaoyaolingxian.blog/posts/about-site/">关于本站与作者</a>
+</footer>
+
+
+<dialog id="search-dialog" class="reader-dialog site-search" aria-labelledby="search-title" data-reader-dialog data-pagefind-ignore>
+<header class="reader-dialog-header"><h2 id="search-title">搜索文章</h2><button class="dialog-close" type="button" data-close-dialog aria-label="关闭搜索" title="关闭搜索">×</button></header>
+<div class="reader-dialog-body">
+
+<div id="site-search-ui" data-module="https://www.yaoyaolingxian.blog/pagefind/pagefind-component-ui.js" data-stylesheet="https://www.yaoyaolingxian.blog/pagefind/pagefind-component-ui.css" hidden>
+
+<pagefind-config bundle-path="https://www.yaoyaolingxian.blog/pagefind/" base-url="https://www.yaoyaolingxian.blog/" lang="zh-cn" no-worker></pagefind-config>
+<pagefind-input placeholder="搜索文章标题或正文"></pagefind-input>
+<pagefind-summary></pagefind-summary>
+<pagefind-results></pagefind-results>
+</div>
+<p id="search-status" class="search-status" role="status">正在加载搜索…</p>
+<button id="search-retry" class="button" type="button" hidden>重新加载</button>
+
+</div>
+</dialog>
+
+<script id="blog-comments-config" type="application/json">{"comments":true,"likes":true,"locale":"zh-CN","pageKey":"/p/533fc4da-7277-4f05-bc64-5319ef89ca12/","pageTitle":"网站疑似解析到旧 IP？用 curl --resolve 做单次目标地址对照","server":"https://upfqpobmiewm.sealosgzg.site","site":"xblog-f49c63bc-e1a5-4cf0-b2f5-6e9bc109b533","views":true,"viewsBase":0}</script>
+</body></html>
