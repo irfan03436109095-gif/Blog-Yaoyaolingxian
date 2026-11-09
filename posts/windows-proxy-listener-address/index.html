@@ -1,0 +1,174 @@
+<!doctype html><html lang="zh-CN" data-theme="yaoyao-network">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>代理端口显示已启动，为什么只有本机能连？核对监听地址与进程 · 遥遥领先性价比机场</title>
+<meta name="description" content="Windows 机场客户端端口已启动却无法从其他设备连接？用 Get-NetTCPConnection 核对 Listen、LocalAddress 与 OwningProcess。">
+<meta name="keywords" content="Windows代理端口,监听地址,Get-NetTCPConnection,机场客户端">
+<meta name="robots" content="index,follow,max-image-preview:large"><link rel="canonical" href="https://www.yaoyaolingxian.blog/posts/windows-proxy-listener-address/">
+<meta property="og:title" content="代理端口显示已启动，为什么只有本机能连？核对监听地址与进程">
+<meta property="og:description" content="Windows 机场客户端端口已启动却无法从其他设备连接？用 Get-NetTCPConnection 核对 Listen、LocalAddress 与 OwningProcess。">
+<meta property="og:url" content="https://www.yaoyaolingxian.blog/posts/windows-proxy-listener-address/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="遥遥领先性价比机场">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.yaoyaolingxian.blog/assets/media/dff9ad60-3d55-4e11-8146-2d0dacaaddbf.webp"><meta property="og:image:alt" content="代理端口显示已启动，为什么只有本机能连？核对监听地址与进程">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="代理端口显示已启动，为什么只有本机能连？核对监听地址与进程">
+<meta name="twitter:description" content="Windows 机场客户端端口已启动却无法从其他设备连接？用 Get-NetTCPConnection 核对 Listen、LocalAddress 与 OwningProcess。">
+<meta name="twitter:image" content="https://www.yaoyaolingxian.blog/assets/media/dff9ad60-3d55-4e11-8146-2d0dacaaddbf.webp">
+<meta name="author" content="加油"><meta property="article:published_time" content="2026-11-09T20:24:22&#43;08:00"><meta property="article:modified_time" content="2026-11-09T20:24:31&#43;08:00"><meta property="article:tag" content="网络性能"><meta property="article:tag" content="客户端兼容"><meta property="article:tag" content="故障排查案例">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="application/ld+json">{
+"@context":"https://schema.org","@graph":[{
+"@type":"BlogPosting","@id":"https://www.yaoyaolingxian.blog/posts/windows-proxy-listener-address/#article","url":"https://www.yaoyaolingxian.blog/posts/windows-proxy-listener-address/","mainEntityOfPage":"https://www.yaoyaolingxian.blog/posts/windows-proxy-listener-address/",
+"headline":"代理端口显示已启动，为什么只有本机能连？核对监听地址与进程","description":"Windows 机场客户端端口已启动却无法从其他设备连接？用 Get-NetTCPConnection 核对 Listen、LocalAddress 与 OwningProcess。","inLanguage":"zh-CN",
+"datePublished":"2026-11-09T20:24:22+08:00","dateModified":"2026-11-09T20:24:31+08:00",
+"author":{"@type":"Person","name":"加油","url":"https://www.yaoyaolingxian.blog/posts/about-site/#author-jiayou"},
+"publisher":{"@type":"Organization","name":"遥遥领先性价比机场","url":"https://www.yaoyaolingxian.blog/","logo":{"@type":"ImageObject","url":"https://www.yaoyaolingxian.blog/assets/media/d5b2829f-bc45-489e-896a-d04b27ec97c1.webp"}}
+,"image":["https://www.yaoyaolingxian.blog/assets/media/dff9ad60-3d55-4e11-8146-2d0dacaaddbf.webp"]
+},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"遥遥领先性价比机场","item":"https://www.yaoyaolingxian.blog/"},{"@type":"ListItem","position":2,"name":"代理端口显示已启动，为什么只有本机能连？核对监听地址与进程","item":"https://www.yaoyaolingxian.blog/posts/windows-proxy-listener-address/"}]}]}</script>
+
+
+<script>(()=>{let mode='system';try{const saved=localStorage.getItem('reader-theme');if(['system','light','dark'].includes(saved))mode=saved}catch{}const root=document.documentElement;root.dataset.colorMode=mode;root.classList.toggle('dark',mode==='dark'||(mode==='system'&&matchMedia('(prefers-color-scheme: dark)').matches))})();</script>
+<link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/style.css">
+<link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/advertisements.css">
+<link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/search.css"><script defer src="https://www.yaoyaolingxian.blog/assets/theme/search.js"></script>
+<link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/skin-1.1.5.css"><link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/home-ad-rows-1.1.6.css">
+<link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/viewer.css">
+<link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/reader.css">
+<link rel="icon" href="https://www.yaoyaolingxian.blog/assets/media/d5b2829f-bc45-489e-896a-d04b27ec97c1.webp">
+<link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/artalk.css"><script defer src="https://www.yaoyaolingxian.blog/assets/theme/artalk.js"></script>
+<script defer src="https://www.yaoyaolingxian.blog/assets/theme/theme.js"></script>
+<script defer src="https://www.yaoyaolingxian.blog/assets/theme/reader.js"></script>
+<script defer src="https://www.yaoyaolingxian.blog/assets/theme/viewer.js"></script>
+<script defer src="https://www.yaoyaolingxian.blog/assets/theme/image-viewer.js"></script>
+
+<script defer src="https://www.yaoyaolingxian.blog/assets/theme/interactions.js"></script>
+
+<style id="xblog-article-images-half">main article .prose img{width:50%;max-width:50%;height:auto;display:block;margin-left:auto;margin-right:auto;}</style>
+
+<script defer src="https://www.yaoyaolingxian.blog/assets/xblog/google-analytics.js" data-xblog-google-analytics="G-RMWB4R3DHD" data-site-hosts="www.yaoyaolingxian.blog"></script></head>
+
+<body class="yaoyao-site article-page"><a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+<div class="header-inner">
+<a class="brand" href="https://www.yaoyaolingxian.blog/"><img src="https://www.yaoyaolingxian.blog/assets/media/d5b2829f-bc45-489e-896a-d04b27ec97c1.webp" alt="" width="38" height="38"><span>遥遥领先性价比机场</span></a>
+<nav id="site-navigation" aria-label="站点导航"><a href="https://www.yaoyaolingxian.blog/">首页</a><a href="https://www.yaoyaolingxian.blog/posts/airport-recommendation-guide/">机场推荐</a><a href="https://www.yaoyaolingxian.blog/categories/buying-guides/">选购指南</a><a href="https://www.yaoyaolingxian.blog/categories/client-guides/">客户端教程</a><a href="https://www.yaoyaolingxian.blog/categories/protocols-network/">协议与网络</a><a href="https://www.yaoyaolingxian.blog/categories/troubleshooting/">常见问题</a><a href="https://www.yaoyaolingxian.blog/categories/privacy-security/">隐私安全</a></nav>
+<a class="search-toggle" href="https://www.yaoyaolingxian.blog/search/" data-open-dialog="search-dialog" aria-haspopup="dialog" aria-controls="search-dialog" aria-label="搜索" title="搜索"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5"/></svg></a>
+<button id="theme-mode" class="theme-toggle theme-cycle" type="button" aria-label="明暗模式：跟随系统，点击切换为明亮" title="跟随系统 · 点击切换为明亮">
+<svg class="theme-icon-system" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>
+<svg class="theme-icon-moon" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.2 15.5A8.5 8.5 0 0 1 8.5 3.8 8.5 8.5 0 1 0 20.2 15.5Z"/></svg>
+<svg class="theme-icon-sun" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+</button>
+<span id="theme-mode-status" class="visually-hidden" role="status" aria-live="polite"></span>
+<button id="menu-toggle" class="menu-toggle" type="button" aria-controls="site-navigation" aria-expanded="false" aria-label="打开菜单" title="打开菜单">
+<svg class="menu-icon-open" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+<svg class="menu-icon-close" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="m6 6 12 12M6 18 18 6"/></svg>
+</button>
+</div>
+</header>
+<div class="page-viewport article-viewport"><div class="page-scroll article-scroll">
+<main id="main" tabindex="-1" class="network-workspace network-reading" data-has-toc="false">
+
+<nav class="breadcrumbs" aria-label="面包屑导航"><ol><li><a href="https://www.yaoyaolingxian.blog/">遥遥领先性价比机场</a></li><li><span aria-current="page">代理端口显示已启动，为什么只有本机能连？核对监听地址与进程</span></li></ol></nav>
+
+<div class="network-columns reading-columns"><div class="reading-content">
+<article data-pagefind-body>
+<header class="article-header">
+<div class="eyebrow" data-pagefind-ignore>网络手记</div>
+<h1 data-pagefind-meta="title">代理端口显示已启动，为什么只有本机能连？核对监听地址与进程</h1>
+<div class="metadata" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/posts/about-site/#author-jiayou" rel="author">加油</a><time datetime="2026-11-09T20:24:22&#43;08:00">2026-11-09</time><span><span id="page-views">—</span> 次阅读</span></div>
+<div class="chips" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/categories/troubleshooting/">故障排查</a></div>
+</header>
+<div class="prose">
+<p>机场客户端显示“运行中”，电脑浏览器能用，手机填入电脑地址却连不上。先别把这个现象直接当作节点故障：本机代理端口是否监听、监听在什么地址、局域网是否可达，是三个独立问题。</p>
+<h2 id="heading">从客户端抄下真实端口</h2>
+<p>在客户端设置里找到 HTTP、SOCKS 或混合代理端口，确认手机填写的协议与端口相同。不要照抄网上常见端口；同一台电脑可能同时开着多个客户端。先保存配置当前值，避免排障时改乱。</p>
+<p><img src="https://www.yaoyaolingxian.blog/assets/media/dff9ad60-3d55-4e11-8146-2d0dacaaddbf.webp" alt="电脑本机回环连接与局域网手机连接到代理端口的不同路径示意"></p>
+<p><em>示意图：端口“在监听”与“允许另一台设备连接”是两项不同的检查。</em></p>
+<h2 id="-windows-">在 Windows 做只读核对</h2>
+<p>打开 PowerShell，把示例端口改成实际端口：</p>
+<pre><code>Get-NetTCPConnection -LocalPort 7890 -State Listen | Select-Object LocalAddress,LocalPort,State,OwningProcess
+</code></pre>
+<p>微软文档说明该命令可查看本地地址、端口、状态及所属进程。没有 Listen 行，先查客户端内核是否真正启动或端口是否被别的程序占用；有行时，再用进程 ID 核对是不是你启用的客户端。LocalAddress 若只显示回环地址，通常只供本机连接；若显示其他地址，也还需要核对客户端“允许局域网”设置、电脑防火墙和两台设备是否处于可互通的网络。</p>
+<h2 id="heading-1">做最小范围的跨设备验收</h2>
+<p>先在电脑上以 127.0.0.1 和真实端口完成本机测试，再在你控制的家庭网络中用电脑的局域网地址从手机测试同一网页。两次都记录时间、协议和错误。公开 Wi-Fi、公司网络可能隔离设备；不要为了测试就把代理监听放到所有网络或关闭防火墙。若确需局域网访问，只在可信网络按客户端文档开启相应选项，测试结束后按原配置收回。</p>
+<p>验收是：能指出端口由哪个进程监听、绑定哪个地址，并知道失败发生在本机监听、局域网可达还是上游节点阶段。</p>
+<h2 id="heading-2">核验资料</h2>
+<ol>
+<li><a href="https://learn.microsoft.com/en-us/powershell/module/nettcpip/get-nettcpconnection?view=windowsserver2025-ps">官方资料 1</a></li>
+</ol>
+<p>资料核验日期：2026-11-09（北京时间）。</p>
+</div>
+<div class="article-likes" data-pagefind-ignore>
+<button id="page-like" class="like-button" type="button" aria-pressed="false" aria-describedby="page-like-message" disabled>
+<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/></svg>
+<span id="page-like-label">点赞</span><span id="page-like-count">—</span>
+</button><p id="page-like-message" role="status"></p>
+</div>
+<div class="article-tags" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/tags/network-performance/"># 网络性能</a><a href="https://www.yaoyaolingxian.blog/tags/client-compatibility/"># 客户端兼容</a><a href="https://www.yaoyaolingxian.blog/tags/troubleshooting/"># 故障排查案例</a></div>
+<nav class="pagination" aria-label="相邻文章" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/posts/airport-recommendation-guide/">← 上一篇</a><a href="https://www.yaoyaolingxian.blog/posts/low-frequency-airport-subscription-first-connection-guide/">下一篇 →</a></nav>
+<section class="comments-section" data-pagefind-ignore><h2>评论</h2><div id="comments"></div></section>
+</article>
+</div><div class="article-rail network-rail"><aside class="ad-slot" aria-label="文章相关内容" data-ad-position="article_sidebar" data-pagefind-ignore><a class="ad-card ad-card-mixed" href="https://goflybit.com/#/register?code=gPinVG8C" target="_blank" rel="sponsored noopener noreferrer" aria-label="FlyBit · 内容页侧边邀请入口（在新标签页打开）" data-ad-link>
+<img class="ad-image" src="https://www.yaoyaolingxian.blog/assets/media/f3afc616-2e32-45b9-be60-52eed96cf95f.png" alt="FlyBit · 内容页侧边邀请入口" loading="lazy" decoding="async">
+<div class="ad-copy"><h3>FlyBit</h3>
+<p>先看当前试用与套餐，再决定是否适合自己。</p>
+<h6>推广链接 · 资格与费用以服务方页面为准</h6>
+</div>
+</a><a class="ad-card ad-card-mixed" href="https://99ba.net/#/register?code=sExBbdk9" target="_blank" rel="sponsored noopener noreferrer" aria-label="99吧 · 内容页侧边邀请入口（在新标签页打开）" data-ad-link>
+<img class="ad-image" src="https://www.yaoyaolingxian.blog/assets/media/a9be3d1d-618d-463b-bde0-1d487d2c7be6.png" alt="99吧 · 内容页侧边邀请入口" loading="lazy" decoding="async">
+<div class="ad-copy"><h3>99吧</h3>
+<p>先看当前试用与套餐，再决定是否适合自己。</p>
+<h6>推广链接 · 资格与费用以服务方页面为准</h6>
+</div>
+</a></aside></div></div>
+
+</main></div>
+<button id="back-to-top" class="back-to-top" type="button" aria-label="返回顶部" title="返回顶部" hidden>
+<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h14M12 20V8m-5 5 5-5 5 5"/></svg>
+</button>
+</div>
+<footer class="site-footer">
+<nav class="friend-links" aria-label="友情链接"><span class="friend-links-label">友情链接</span><a href="https://goflybit.com/#/register?code=gPinVG8C" target="_blank" rel="noopener noreferrer">FlyBit</a><a href="https://99ba.net/#/register?code=sExBbdk9" target="_blank" rel="noopener noreferrer">99吧</a><a href="https://t.me/five_91" target="_blank" rel="noopener noreferrer">Telegram联系</a><a href="https://t.me/RouteRadarCN" target="_blank" rel="noopener noreferrer">Telegram频道</a></nav>
+<span>© @遥遥领先 2026</span>
+<a href="https://www.yaoyaolingxian.blog/posts/about-site/">关于本站与作者</a>
+</footer>
+
+
+<dialog id="search-dialog" class="reader-dialog site-search" aria-labelledby="search-title" data-reader-dialog data-pagefind-ignore>
+<header class="reader-dialog-header"><h2 id="search-title">搜索文章</h2><button class="dialog-close" type="button" data-close-dialog aria-label="关闭搜索" title="关闭搜索">×</button></header>
+<div class="reader-dialog-body">
+
+<div id="site-search-ui" data-module="https://www.yaoyaolingxian.blog/pagefind/pagefind-component-ui.js" data-stylesheet="https://www.yaoyaolingxian.blog/pagefind/pagefind-component-ui.css" hidden>
+
+<pagefind-config bundle-path="https://www.yaoyaolingxian.blog/pagefind/" base-url="https://www.yaoyaolingxian.blog/" lang="zh-cn" no-worker></pagefind-config>
+<pagefind-input placeholder="搜索文章标题或正文"></pagefind-input>
+<pagefind-summary></pagefind-summary>
+<pagefind-results></pagefind-results>
+</div>
+<p id="search-status" class="search-status" role="status">正在加载搜索…</p>
+<button id="search-retry" class="button" type="button" hidden>重新加载</button>
+
+</div>
+</dialog>
+
+<script id="blog-comments-config" type="application/json">{"comments":true,"likes":true,"locale":"zh-CN","pageKey":"/p/e50fc074-cfc4-4035-bbcd-75090578f65e/","pageTitle":"代理端口显示已启动，为什么只有本机能连？核对监听地址与进程","server":"https://upfqpobmiewm.sealosgzg.site","site":"xblog-f49c63bc-e1a5-4cf0-b2f5-6e9bc109b533","views":true,"viewsBase":0}</script>
+</body></html>
