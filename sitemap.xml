@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.yaoyaolingxian.blog/</loc>
-    <lastmod>2026-11-09T12:24:40Z</lastmod>
+    <lastmod>2026-11-10T02:36:31Z</lastmod>
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/categories/buying-guides/</loc>
@@ -22,11 +22,11 @@
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/categories/protocols-network/</loc>
-    <lastmod>2026-11-08T01:17:57Z</lastmod>
+    <lastmod>2026-11-10T02:36:31Z</lastmod>
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/categories/protocols-network/page/2/</loc>
-    <lastmod>2026-11-08T01:17:57Z</lastmod>
+    <lastmod>2026-11-10T02:36:31Z</lastmod>
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/categories/risk-observations/</loc>
@@ -54,27 +54,27 @@
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/page/2/</loc>
-    <lastmod>2026-11-09T12:24:40Z</lastmod>
+    <lastmod>2026-11-10T02:36:31Z</lastmod>
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/page/3/</loc>
-    <lastmod>2026-11-09T12:24:40Z</lastmod>
+    <lastmod>2026-11-10T02:36:31Z</lastmod>
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/page/4/</loc>
-    <lastmod>2026-11-09T12:24:40Z</lastmod>
+    <lastmod>2026-11-10T02:36:31Z</lastmod>
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/page/5/</loc>
-    <lastmod>2026-11-09T12:24:40Z</lastmod>
+    <lastmod>2026-11-10T02:36:31Z</lastmod>
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/page/6/</loc>
-    <lastmod>2026-11-09T12:24:40Z</lastmod>
+    <lastmod>2026-11-10T02:36:31Z</lastmod>
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/page/7/</loc>
-    <lastmod>2026-11-09T12:24:40Z</lastmod>
+    <lastmod>2026-11-10T02:36:31Z</lastmod>
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/posts/100mbps-vs-1000mbps-proxy-plan/</loc>
@@ -98,7 +98,7 @@
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/posts/airport-recommendation-guide/</loc>
-    <lastmod>2026-11-09T12:24:40Z</lastmod>
+    <lastmod>2026-11-10T02:36:31Z</lastmod>
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/posts/airport-risk-flashfox-feedback-refund-20261012/</loc>
@@ -207,6 +207,10 @@
   <url>
     <loc>https://www.yaoyaolingxian.blog/posts/gpt-61-sol-value-models-plans/</loc>
     <lastmod>2026-11-07T13:10:03Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.yaoyaolingxian.blog/posts/ipv4-ipv6-curl-path-compare/</loc>
+    <lastmod>2026-11-10T02:36:19Z</lastmod>
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/posts/low-frequency-airport-subscription-first-connection-guide/</loc>
@@ -326,7 +330,7 @@
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/posts/windows-proxy-listener-address/</loc>
-    <lastmod>2026-11-09T12:24:31Z</lastmod>
+    <lastmod>2026-11-10T02:36:31Z</lastmod>
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/posts/windows-tun-default-route-check/</loc>
@@ -374,7 +378,7 @@
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/tags/ipv6/</loc>
-    <lastmod>2026-11-07T13:10:03Z</lastmod>
+    <lastmod>2026-11-10T02:36:31Z</lastmod>
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/tags/mtu/</loc>
@@ -382,11 +386,15 @@
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/tags/network-performance/</loc>
-    <lastmod>2026-11-09T12:24:40Z</lastmod>
+    <lastmod>2026-11-10T02:36:31Z</lastmod>
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/tags/network-performance/page/2/</loc>
-    <lastmod>2026-11-09T12:24:40Z</lastmod>
+    <lastmod>2026-11-10T02:36:31Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.yaoyaolingxian.blog/tags/network-performance/page/3/</loc>
+    <lastmod>2026-11-10T02:36:19Z</lastmod>
   </url>
   <url>
     <loc>https://www.yaoyaolingxian.blog/tags/plan-selection/</loc>
