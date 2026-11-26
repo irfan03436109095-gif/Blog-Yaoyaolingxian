@@ -1,0 +1,179 @@
+<!doctype html><html lang="zh-CN" data-theme="yaoyao-network">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mihomo 重启后选中的机场节点变了？核对 store-selected · 遥遥领先性价比机场</title>
+<meta name="description" content="Mihomo 重启后手动选的策略组成员没有保留？核对 profile.store-selected、生效配置、成员名称和新连接路径。">
+<meta name="keywords" content="Mihomo store-selected,代理组保存选择,机场节点重启复位,select 策略组">
+<meta name="robots" content="index,follow,max-image-preview:large"><link rel="canonical" href="https://www.yaoyaolingxian.blog/posts/mihomo-store-selected-restart-check/">
+<meta property="og:title" content="Mihomo 重启后选中的机场节点变了？核对 store-selected">
+<meta property="og:description" content="Mihomo 重启后手动选的策略组成员没有保留？核对 profile.store-selected、生效配置、成员名称和新连接路径。">
+<meta property="og:url" content="https://www.yaoyaolingxian.blog/posts/mihomo-store-selected-restart-check/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="遥遥领先性价比机场">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.yaoyaolingxian.blog/assets/media/755593ac-141b-4dfd-a995-d37f65e85768.webp"><meta property="og:image:alt" content="Mihomo 重启后选中的机场节点变了？核对 store-selected">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Mihomo 重启后选中的机场节点变了？核对 store-selected">
+<meta name="twitter:description" content="Mihomo 重启后手动选的策略组成员没有保留？核对 profile.store-selected、生效配置、成员名称和新连接路径。">
+<meta name="twitter:image" content="https://www.yaoyaolingxian.blog/assets/media/755593ac-141b-4dfd-a995-d37f65e85768.webp">
+<meta name="author" content="加油"><meta property="article:published_time" content="2026-11-26T09:21:46&#43;08:00"><meta property="article:modified_time" content="2026-11-26T09:21:49&#43;08:00"><meta property="article:tag" content="路由分流"><meta property="article:tag" content="故障排查案例">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="application/ld+json">{
+"@context":"https://schema.org","@graph":[{
+"@type":"BlogPosting","@id":"https://www.yaoyaolingxian.blog/posts/mihomo-store-selected-restart-check/#article","url":"https://www.yaoyaolingxian.blog/posts/mihomo-store-selected-restart-check/","mainEntityOfPage":"https://www.yaoyaolingxian.blog/posts/mihomo-store-selected-restart-check/",
+"headline":"Mihomo 重启后选中的机场节点变了？核对 store-selected","description":"Mihomo 重启后手动选的策略组成员没有保留？核对 profile.store-selected、生效配置、成员名称和新连接路径。","inLanguage":"zh-CN",
+"datePublished":"2026-11-26T09:21:46+08:00","dateModified":"2026-11-26T09:21:49+08:00",
+"author":{"@type":"Person","name":"加油","url":"https://www.yaoyaolingxian.blog/posts/about-site/#author-jiayou"},
+"publisher":{"@type":"Organization","name":"遥遥领先性价比机场","url":"https://www.yaoyaolingxian.blog/","logo":{"@type":"ImageObject","url":"https://www.yaoyaolingxian.blog/assets/media/d5b2829f-bc45-489e-896a-d04b27ec97c1.webp"}}
+,"image":["https://www.yaoyaolingxian.blog/assets/media/755593ac-141b-4dfd-a995-d37f65e85768.webp"]
+},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"遥遥领先性价比机场","item":"https://www.yaoyaolingxian.blog/"},{"@type":"ListItem","position":2,"name":"Mihomo 重启后选中的机场节点变了？核对 store-selected","item":"https://www.yaoyaolingxian.blog/posts/mihomo-store-selected-restart-check/"}]}]}</script>
+
+
+<script>(()=>{let mode='system';try{const saved=localStorage.getItem('reader-theme');if(['system','light','dark'].includes(saved))mode=saved}catch{}const root=document.documentElement;root.dataset.colorMode=mode;root.classList.toggle('dark',mode==='dark'||(mode==='system'&&matchMedia('(prefers-color-scheme: dark)').matches))})();</script>
+<link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/style.css">
+<link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/advertisements.css">
+<link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/search.css"><script defer src="https://www.yaoyaolingxian.blog/assets/theme/search.js"></script>
+<link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/skin-1.1.5.css"><link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/home-ad-rows-1.1.6.css">
+<link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/viewer.css">
+<link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/reader.css">
+<link rel="icon" href="https://www.yaoyaolingxian.blog/assets/media/d5b2829f-bc45-489e-896a-d04b27ec97c1.webp">
+<link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/artalk.css"><script defer src="https://www.yaoyaolingxian.blog/assets/theme/artalk.js"></script>
+<script defer src="https://www.yaoyaolingxian.blog/assets/theme/theme.js"></script>
+<script defer src="https://www.yaoyaolingxian.blog/assets/theme/reader.js"></script>
+<script defer src="https://www.yaoyaolingxian.blog/assets/theme/viewer.js"></script>
+<script defer src="https://www.yaoyaolingxian.blog/assets/theme/image-viewer.js"></script>
+
+<script defer src="https://www.yaoyaolingxian.blog/assets/theme/interactions.js"></script>
+
+<style id="xblog-article-images-half">main article .prose img{width:50%;max-width:50%;height:auto;display:block;margin-left:auto;margin-right:auto;}</style>
+
+<script defer src="https://www.yaoyaolingxian.blog/assets/xblog/google-analytics.js" data-xblog-google-analytics="G-RMWB4R3DHD" data-site-hosts="www.yaoyaolingxian.blog"></script></head>
+
+<body class="yaoyao-site article-page"><a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+<div class="header-inner">
+<a class="brand" href="https://www.yaoyaolingxian.blog/"><img src="https://www.yaoyaolingxian.blog/assets/media/d5b2829f-bc45-489e-896a-d04b27ec97c1.webp" alt="" width="38" height="38"><span>遥遥领先性价比机场</span></a>
+<nav id="site-navigation" aria-label="站点导航"><a href="https://www.yaoyaolingxian.blog/">首页</a><a href="https://www.yaoyaolingxian.blog/posts/airport-recommendation-guide/">机场推荐</a><a href="https://www.yaoyaolingxian.blog/categories/buying-guides/">选购指南</a><a href="https://www.yaoyaolingxian.blog/categories/client-guides/">客户端教程</a><a href="https://www.yaoyaolingxian.blog/categories/protocols-network/">协议与网络</a><a href="https://www.yaoyaolingxian.blog/categories/troubleshooting/">常见问题</a><a href="https://www.yaoyaolingxian.blog/categories/privacy-security/">隐私安全</a></nav>
+<a class="search-toggle" href="https://www.yaoyaolingxian.blog/search/" data-open-dialog="search-dialog" aria-haspopup="dialog" aria-controls="search-dialog" aria-label="搜索" title="搜索"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5"/></svg></a>
+<button id="theme-mode" class="theme-toggle theme-cycle" type="button" aria-label="明暗模式：跟随系统，点击切换为明亮" title="跟随系统 · 点击切换为明亮">
+<svg class="theme-icon-system" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>
+<svg class="theme-icon-moon" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.2 15.5A8.5 8.5 0 0 1 8.5 3.8 8.5 8.5 0 1 0 20.2 15.5Z"/></svg>
+<svg class="theme-icon-sun" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+</button>
+<span id="theme-mode-status" class="visually-hidden" role="status" aria-live="polite"></span>
+<button id="menu-toggle" class="menu-toggle" type="button" aria-controls="site-navigation" aria-expanded="false" aria-label="打开菜单" title="打开菜单">
+<svg class="menu-icon-open" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+<svg class="menu-icon-close" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="m6 6 12 12M6 18 18 6"/></svg>
+</button>
+</div>
+</header>
+<div class="page-viewport article-viewport"><div class="page-scroll article-scroll">
+<main id="main" tabindex="-1" class="network-workspace network-reading" data-has-toc="false">
+
+<nav class="breadcrumbs" aria-label="面包屑导航"><ol><li><a href="https://www.yaoyaolingxian.blog/">遥遥领先性价比机场</a></li><li><span aria-current="page">Mihomo 重启后选中的机场节点变了？核对 store-selected</span></li></ol></nav>
+
+<div class="network-columns reading-columns"><div class="reading-content">
+<article data-pagefind-body>
+<header class="article-header">
+<div class="eyebrow" data-pagefind-ignore>网络手记</div>
+<h1 data-pagefind-meta="title">Mihomo 重启后选中的机场节点变了？核对 store-selected</h1>
+<div class="metadata" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/posts/about-site/#author-jiayou" rel="author">加油</a><time datetime="2026-11-26T09:21:46&#43;08:00">2026-11-26</time><span><span id="page-views">—</span> 次阅读</span></div>
+<div class="chips" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/categories/troubleshooting/">故障排查</a></div>
+</header>
+<div class="prose">
+<p>用同一份机场配置时，昨天手动选了一个节点，今天打开客户端却看到另一个。先查当前是否在同一个手动策略组，再做一次只有核心重启这个变量的对照。这个方法适用于使用 Mihomo 内核且能查看运行配置或策略组的客户端。</p>
+<h2 id="heading">确认客户端实际传给内核的配置</h2>
+<p>在客户端查看当前生效的配置或配置合并结果，找到策略组类型 <code>select</code>，确认你选的是这个组的一项直接成员。组里也可以包含自动组。若你手动留下的是自动组，重启后仍选中该组，但自动组内部选择可能变化。</p>
+<p>Mihomo 文档中的 <code>profile.store-selected</code> 用于保存通过 API 选择的策略组成员，以供下一次启动使用。它属于根配置的 <code>profile</code> 项。如果你的客户端提供持久的本地覆写，可核对生效配置是否包含下面的字段。已有其他 <code>profile</code> 字段时，在原段落里核对或合并。</p>
+<pre><code class="language-yaml">profile:
+  store-selected: true
+</code></pre>
+<p><img src="https://www.yaoyaolingxian.blog/assets/media/755593ac-141b-4dfd-a995-d37f65e85768.webp" alt="重启箭头两侧各有两个选项，两侧都是上方选项被勾选"></p>
+<p><em>示意图。确认同一个手动策略组在重启前后是否保留了选择。</em></p>
+<h2 id="heading-1">重启前后观察同一组</h2>
+<ol>
+<li>选择一个可辨认的候选项，记下当前配置名、策略组名和成员名。保持配置、订阅内容和设备网络不变。</li>
+<li>用客户端提供的方式重启核心。若只关闭界面，核心可能仍在运行。重新打开面板后，先读同一策略组的选择。</li>
+<li>用同一公开页面发起一条新连接。如果客户端有连接详情，核对该请求命中的规则及出站链，旧连接留作历史记录。</li>
+</ol>
+<h2 id="heading-2">怎样解读两种差异</h2>
+<p>如果面板成员在重启时变化，先确认 <code>store-selected</code> 是否实际生效、前后是否加载了同一配置，以及原来的组名和成员名是否仍存在。若手动选择还在但实际连接走了另一组，核对这条请求的规则命中和自动组决策。做机场推荐对照时把组选择与新请求出口各留一条证据，就能看出差别发生在哪一层。</p>
+<h2 id="heading-3">来源与核验日期</h2>
+<p>资料核验日期为 2026-11-26（北京时间）。</p>
+<ul>
+<li><a href="https://wiki.metacubex.one/en/config/general/#cache">Mihomo 官方文档：缓存设置</a></li>
+<li><a href="https://wiki.metacubex.one/en/config/proxy-groups/select/">Mihomo 官方文档：Select 策略组</a></li>
+</ul>
+</div>
+<div class="article-likes" data-pagefind-ignore>
+<button id="page-like" class="like-button" type="button" aria-pressed="false" aria-describedby="page-like-message" disabled>
+<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/></svg>
+<span id="page-like-label">点赞</span><span id="page-like-count">—</span>
+</button><p id="page-like-message" role="status"></p>
+</div>
+<div class="article-tags" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/tags/routing/"># 路由分流</a><a href="https://www.yaoyaolingxian.blog/tags/troubleshooting/"># 故障排查案例</a></div>
+<nav class="pagination" aria-label="相邻文章" data-pagefind-ignore><a href="https://www.yaoyaolingxian.blog/posts/airport-recommendation-guide/">← 上一篇</a><a href="https://www.yaoyaolingxian.blog/posts/mihomo-ruleset-behavior-order-check/">下一篇 →</a></nav>
+<section class="comments-section" data-pagefind-ignore><h2>评论</h2><div id="comments"></div></section>
+</article>
+</div><div class="article-rail network-rail"><aside class="ad-slot" aria-label="文章相关内容" data-ad-position="article_sidebar" data-pagefind-ignore><a class="ad-card ad-card-mixed" href="https://goflybit.com/#/register?code=gPinVG8C" target="_blank" rel="sponsored noopener noreferrer" aria-label="FlyBit · 内容页侧边邀请入口（在新标签页打开）" data-ad-link>
+<img class="ad-image" src="https://www.yaoyaolingxian.blog/assets/media/f3afc616-2e32-45b9-be60-52eed96cf95f.png" alt="FlyBit · 内容页侧边邀请入口" loading="lazy" decoding="async">
+<div class="ad-copy"><h3>FlyBit</h3>
+<p>先看当前试用与套餐，再决定是否适合自己。</p>
+<h6>推广链接 · 资格与费用以服务方页面为准</h6>
+</div>
+</a><a class="ad-card ad-card-mixed" href="https://99ba.net/#/register?code=sExBbdk9" target="_blank" rel="sponsored noopener noreferrer" aria-label="99吧 · 内容页侧边邀请入口（在新标签页打开）" data-ad-link>
+<img class="ad-image" src="https://www.yaoyaolingxian.blog/assets/media/a9be3d1d-618d-463b-bde0-1d487d2c7be6.png" alt="99吧 · 内容页侧边邀请入口" loading="lazy" decoding="async">
+<div class="ad-copy"><h3>99吧</h3>
+<p>先看当前试用与套餐，再决定是否适合自己。</p>
+<h6>推广链接 · 资格与费用以服务方页面为准</h6>
+</div>
+</a></aside></div></div>
+
+</main></div>
+<button id="back-to-top" class="back-to-top" type="button" aria-label="返回顶部" title="返回顶部" hidden>
+<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h14M12 20V8m-5 5 5-5 5 5"/></svg>
+</button>
+</div>
+<footer class="site-footer">
+<nav class="friend-links" aria-label="友情链接"><span class="friend-links-label">友情链接</span><a href="https://goflybit.com/#/register?code=gPinVG8C" target="_blank" rel="noopener noreferrer">FlyBit</a><a href="https://99ba.net/#/register?code=sExBbdk9" target="_blank" rel="noopener noreferrer">99吧</a><a href="https://t.me/five_91" target="_blank" rel="noopener noreferrer">Telegram联系</a><a href="https://t.me/RouteRadarCN" target="_blank" rel="noopener noreferrer">Telegram频道</a></nav>
+<span>© @遥遥领先 2026</span>
+<a href="https://www.yaoyaolingxian.blog/posts/about-site/">关于本站与作者</a>
+</footer>
+
+
+<dialog id="search-dialog" class="reader-dialog site-search" aria-labelledby="search-title" data-reader-dialog data-pagefind-ignore>
+<header class="reader-dialog-header"><h2 id="search-title">搜索文章</h2><button class="dialog-close" type="button" data-close-dialog aria-label="关闭搜索" title="关闭搜索">×</button></header>
+<div class="reader-dialog-body">
+
+<div id="site-search-ui" data-module="https://www.yaoyaolingxian.blog/pagefind/pagefind-component-ui.js" data-stylesheet="https://www.yaoyaolingxian.blog/pagefind/pagefind-component-ui.css" hidden>
+
+<pagefind-config bundle-path="https://www.yaoyaolingxian.blog/pagefind/" base-url="https://www.yaoyaolingxian.blog/" lang="zh-cn" no-worker></pagefind-config>
+<pagefind-input placeholder="搜索文章标题或正文"></pagefind-input>
+<pagefind-summary></pagefind-summary>
+<pagefind-results></pagefind-results>
+</div>
+<p id="search-status" class="search-status" role="status">正在加载搜索…</p>
+<button id="search-retry" class="button" type="button" hidden>重新加载</button>
+
+</div>
+</dialog>
+
+<script id="blog-comments-config" type="application/json">{"comments":true,"likes":true,"locale":"zh-CN","pageKey":"/p/73b3edad-5cc2-4d4f-ad73-27b3e1c558a6/","pageTitle":"Mihomo 重启后选中的机场节点变了？核对 store-selected","server":"https://upfqpobmiewm.sealosgzg.site","site":"xblog-f49c63bc-e1a5-4cf0-b2f5-6e9bc109b533","views":true,"viewsBase":0}</script>
+</body></html>
