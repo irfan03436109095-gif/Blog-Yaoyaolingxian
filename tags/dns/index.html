@@ -18,7 +18,7 @@
 <meta name="twitter:description" content="理解域名解析路径、Fake-IP 与 DNS 排查。">
 <meta name="twitter:image" content="https://www.yaoyaolingxian.blog/assets/media/d5b2829f-bc45-489e-896a-d04b27ec97c1.webp">
 
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@id":"https://www.yaoyaolingxian.blog/tags/dns/#collection","@type":"CollectionPage","description":"理解域名解析路径、Fake-IP 与 DNS 排查。","inLanguage":"zh-CN","mainEntity":{"@type":"ItemList","itemListElement":[{"@type":"ListItem","name":"网站疑似解析到旧 IP？用 curl --resolve 做单次目标地址对照","position":1,"url":"https://www.yaoyaolingxian.blog/posts/curl-resolve-target-ip-check/"},{"@type":"ListItem","name":"Chrome 与 Windows 查到的 DNS 不同？先区分浏览器安全 DNS 与系统解析","position":2,"url":"https://www.yaoyaolingxian.blog/posts/chrome-windows-dns-path-compare/"},{"@type":"ListItem","name":"代理开启后如何检查隐私：出口 IP、DNS 与 WebRTC 的区别","position":3,"url":"https://www.yaoyaolingxian.blog/posts/dns-webrtc-privacy/"},{"@type":"ListItem","name":"代理 DNS 怎么工作：节点解析、网站解析与 Fake-IP 入门","position":4,"url":"https://www.yaoyaolingxian.blog/posts/proxy-dns-explained/"}]},"name":"DNS","url":"https://www.yaoyaolingxian.blog/tags/dns/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://www.yaoyaolingxian.blog/","name":"遥遥领先性价比机场","position":1},{"@type":"ListItem","item":"https://www.yaoyaolingxian.blog/tags/dns/","name":"DNS","position":2}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@id":"https://www.yaoyaolingxian.blog/tags/dns/#collection","@type":"CollectionPage","description":"理解域名解析路径、Fake-IP 与 DNS 排查。","inLanguage":"zh-CN","mainEntity":{"@type":"ItemList","itemListElement":[{"@type":"ListItem","name":"Mihomo 的 IP 规则为什么会触发 DNS？用 no-resolve 做一次对照","position":1,"url":"https://www.yaoyaolingxian.blog/posts/mihomo-no-resolve-ip-rule-check/"},{"@type":"ListItem","name":"网站疑似解析到旧 IP？用 curl --resolve 做单次目标地址对照","position":2,"url":"https://www.yaoyaolingxian.blog/posts/curl-resolve-target-ip-check/"},{"@type":"ListItem","name":"Chrome 与 Windows 查到的 DNS 不同？先区分浏览器安全 DNS 与系统解析","position":3,"url":"https://www.yaoyaolingxian.blog/posts/chrome-windows-dns-path-compare/"},{"@type":"ListItem","name":"代理开启后如何检查隐私：出口 IP、DNS 与 WebRTC 的区别","position":4,"url":"https://www.yaoyaolingxian.blog/posts/dns-webrtc-privacy/"},{"@type":"ListItem","name":"代理 DNS 怎么工作：节点解析、网站解析与 Fake-IP 入门","position":5,"url":"https://www.yaoyaolingxian.blog/posts/proxy-dns-explained/"}]},"name":"DNS","url":"https://www.yaoyaolingxian.blog/tags/dns/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://www.yaoyaolingxian.blog/","name":"遥遥领先性价比机场","position":1},{"@type":"ListItem","item":"https://www.yaoyaolingxian.blog/tags/dns/","name":"DNS","position":2}]}]}</script>
 
 <script>(()=>{let mode='system';try{const saved=localStorage.getItem('reader-theme');if(['system','light','dark'].includes(saved))mode=saved}catch{}const root=document.documentElement;root.dataset.colorMode=mode;root.classList.toggle('dark',mode==='dark'||(mode==='system'&&matchMedia('(prefers-color-scheme: dark)').matches))})();</script>
 <link rel="stylesheet" href="https://www.yaoyaolingxian.blog/assets/theme/style.css">
@@ -65,6 +65,19 @@
 <header class="archive-header"><h1>DNS</h1><p>理解域名解析路径、Fake-IP 与 DNS 排查。</p></header>
 
 <div class="network-columns archive-columns"><div class="content-column"><section class="article-list network-entries" aria-label="文章列表"><article class="article-card network-card has-cover"><figure class="article-cover">
+
+
+
+
+
+
+
+
+
+
+
+<img src="https://www.yaoyaolingxian.blog/assets/media/35a80c0f-6990-4b3e-8389-3f9b35a134ce.webp" width="1200" height="800" alt="Mihomo 的 IP 规则为什么会触发 DNS？用 no-resolve 做一次对照" loading="lazy" decoding="async"></figure>
+<div class="card-content"><div class="card-topic"><a href="https://www.yaoyaolingxian.blog/categories/troubleshooting/">故障排查</a></div><h2><a href="https://www.yaoyaolingxian.blog/posts/mihomo-no-resolve-ip-rule-check/">Mihomo 的 IP 规则为什么会触发 DNS？用 no-resolve 做一次对照</a></h2><p class="card-summary">区分域名请求和已知目标 IP，理解 no-resolve 对目标 IP 规则的作用，并用命中日志复查配置。</p><div class="card-footer"><span><a rel="author" href="https://www.yaoyaolingxian.blog/posts/about-site/#author-jiayou">加油</a><time datetime="2026-11-28T09:18:43&#43;08:00">2026-11-28</time></span><a class="read-more" href="https://www.yaoyaolingxian.blog/posts/mihomo-no-resolve-ip-rule-check/" aria-label="阅读Mihomo 的 IP 规则为什么会触发 DNS？用 no-resolve 做一次对照">阅读全文 <span aria-hidden="true">↗</span></a></div></div></article><article class="article-card network-card has-cover"><figure class="article-cover">
 
 
 
